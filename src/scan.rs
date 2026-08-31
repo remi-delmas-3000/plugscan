@@ -255,6 +255,25 @@ fn normalize_version(raw: String) -> String {
             }
         }
     }
+    // Some vendors pollute CFBundleShortVersionString with trailing text
+    // (Soundtoys: "5.5.5.19885 Authorization: EchoBoy"). When the string
+    // starts with a dotted-numeric version, keep only that leading run.
+    if raw
+        .chars()
+        .next()
+        .map(|c| c.is_ascii_digit())
+        .unwrap_or(false)
+        && raw.contains(|c: char| !c.is_ascii_digit() && c != '.')
+    {
+        let leading: String = raw
+            .chars()
+            .take_while(|c| c.is_ascii_digit() || *c == '.')
+            .collect();
+        let trimmed = leading.trim_end_matches('.');
+        if trimmed.contains('.') && !trimmed.is_empty() {
+            return trimmed.to_string();
+        }
+    }
     raw
 }
 
@@ -537,6 +556,19 @@ mod tests {
         // small ints and dotted strings pass through
         assert_eq!(normalize_version("2".into()), "2");
         assert_eq!(normalize_version("1.4.1.6566".into()), "1.4.1.6566");
+    }
+
+    #[test]
+    fn polluted_short_version_cleaned() {
+        // Soundtoys stuffs junk into CFBundleShortVersionString
+        assert_eq!(
+            normalize_version("5.5.5.19885 Authorization: EchoBoy".into()),
+            "5.5.5.19885"
+        );
+        // a normal version with no junk is untouched
+        assert_eq!(normalize_version("1.4.8".into()), "1.4.8");
+        // a single number with trailing text is NOT split (no dotted version)
+        assert_eq!(normalize_version("2 beta".into()), "2 beta");
     }
 
     #[test]
