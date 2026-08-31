@@ -88,7 +88,10 @@ fn https_or_drop(url: &Option<String>, ctx: &str) -> Option<String> {
     match url {
         Some(u) if u.starts_with("https://") => Some(crate::util::sanitize_line(u)),
         Some(u) => {
-            eprintln!("warning: {ctx}: non-https URL rejected: {}", crate::util::sanitize_line(u));
+            eprintln!(
+                "warning: {ctx}: non-https URL rejected: {}",
+                crate::util::sanitize_line(u)
+            );
             None
         }
         None => None,
@@ -111,8 +114,8 @@ fn validate(mut rf: ResolverFile) -> ResolverFile {
         p.name = crate::util::sanitize_line(&p.name);
         // github_release accepts an "owner/repo" shorthand that expands to
         // the https API URL; everything else must be https already.
-        let gh_shorthand = p.strategy.as_deref() == Some("github_release")
-            && !p.page.contains("://");
+        let gh_shorthand =
+            p.strategy.as_deref() == Some("github_release") && !p.page.contains("://");
         if !gh_shorthand && !p.page.starts_with("https://") {
             eprintln!(
                 "warning: {vendor} {}: non-https page rejected, product dropped",

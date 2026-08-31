@@ -11,7 +11,11 @@ use clap::{Parser, Subcommand};
 use std::path::PathBuf;
 
 #[derive(Parser)]
-#[command(name = "plugscan", version, about = "Fast audio plugin inventory (AU / VST / VST3 / CLAP)")]
+#[command(
+    name = "plugscan",
+    version,
+    about = "Fast audio plugin inventory (AU / VST / VST3 / CLAP)"
+)]
 struct Cli {
     /// Path to the catalog database (default: ~/.local/share/plugscan/catalog.db)
     #[arg(long, global = true)]
@@ -72,6 +76,9 @@ enum Cmd {
         /// Treat checks younger than this as fresh (hours)
         #[arg(long, default_value_t = 24)]
         max_age: i64,
+        /// Emit machine-readable results (one object per bundle)
+        #[arg(long)]
+        json: bool,
     },
     /// Show bundles with known newer versions, plus coverage summary
     Outdated {
@@ -135,6 +142,13 @@ enum ResolverAction {
         #[arg(long)]
         url: String,
     },
+    /// Exercise every resolver live (no catalog needed); exits non-zero on failures
+    Test {
+        /// Only this vendor (substring)
+        vendor: Option<String>,
+        #[arg(long)]
+        json: bool,
+    },
 }
 
 fn default_db_path() -> PathBuf {
@@ -170,7 +184,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Cmd::Info { name, json } => report::info(&conn, &name, json)?,
         Cmd::Doctor { json } => report::doctor(&conn, json)?,
         Cmd::Vendors { json } => report::vendors(&conn, json)?,
-        Cmd::Check { force, max_age } => check::run(&mut conn, force, max_age)?,
+        Cmd::Check { force, max_age, json } => check::run(&mut conn, force, max_age, json)?,
         Cmd::Outdated { json, explain } => report::outdated(&conn, json, explain)?,
         Cmd::Pin { name, undo } => report::set_flag(&conn, &name, "pinned", !undo)?,
         Cmd::Ignore { name, undo } => report::set_flag(&conn, &name, "ignored", !undo)?,
@@ -185,6 +199,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Cmd::Resolver { action } => match action {
             ResolverAction::Debug { vendor } => check::debug_vendor(&conn, &vendor)?,
             ResolverAction::New { vendor, url } => check::new_vendor(&vendor, &url),
+            ResolverAction::Test { vendor, json } => {
+                let failures = check::test_all(json, vendor.as_deref());
+                if failures > 0 {
+                    std::process::exit(1);
+                }
+            }
         },
     }
     Ok(())

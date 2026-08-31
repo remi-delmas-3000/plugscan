@@ -27,6 +27,24 @@ pub fn cmp_versions_prefix(a: &str, b: &str) -> Ordering {
     Ordering::Equal
 }
 
+/// A "latest" whose major version leaps implausibly far past the installed
+/// major is almost certainly a wrong capture (a theme asset ?ver=, an
+/// unrelated number on a redesigned page), not a real release. Guards against
+/// forward false-positives the way the never-report-backwards rule guards
+/// backward ones. Bound is generous: real major bumps are +1..+3; asset noise
+/// is +20 or more against a 1.x-3.x install.
+pub fn implausible_jump(installed: &str, latest: &str) -> bool {
+    let major = |s: &str| -> Option<u64> {
+        s.split(|c: char| !c.is_ascii_digit())
+            .find(|t| !t.is_empty())
+            .and_then(|t| t.parse().ok())
+    };
+    match (major(installed), major(latest)) {
+        (Some(i), Some(l)) => l > i + 20,
+        _ => false,
+    }
+}
+
 pub fn cmp_versions(a: &str, b: &str) -> Ordering {
     let nums = |s: &str| -> Vec<u64> {
         s.split(|c: char| !c.is_ascii_digit())
@@ -152,9 +170,7 @@ pub fn info(conn: &Connection, name: &str, json: bool) -> rusqlite::Result<()> {
          ORDER BY v.name COLLATE NOCASE, p.name COLLATE NOCASE",
     )?;
     let bundles: Vec<(i64, String, String, Option<String>)> = stmt
-        .query_map([name], |r| {
-            Ok((r.get(0)?, r.get(1)?, r.get(2)?, r.get(3)?))
-        })?
+        .query_map([name], |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?, r.get(3)?)))?
         .collect::<Result<_, _>>()?;
 
     let mut details = Vec::new();
@@ -271,7 +287,10 @@ pub fn doctor(conn: &Connection, json: bool) -> rusqlite::Result<()> {
                 println!("  … and {} more (use --json for all)", items.len() - 50);
             }
         };
-        section("VERSION MISMATCH ACROSS FORMATS", &report.version_mismatches);
+        section(
+            "VERSION MISMATCH ACROSS FORMATS",
+            &report.version_mismatches,
+        );
         section("UNKNOWN VERSION", &report.unknown_versions);
         section("DUPLICATE INSTALLS", &report.duplicates);
         section("REMOVED IN LAST RECONCILIATION", &report.recently_removed);
@@ -349,6 +368,7 @@ struct OutdatedReport {
     stale: Vec<StaleRow>,
     pinned_stale: Vec<String>,
     resolver_stale: Vec<String>,
+    resolver_suspect: Vec<String>,
     manual_check: Vec<(String, i64)>,
     managed: Vec<ManagedRow>,
     unresolved_vendors: i64,
@@ -402,6 +422,7 @@ pub fn outdated(conn: &Connection, json: bool, explain: bool) -> rusqlite::Resul
         stale: Vec::new(),
         pinned_stale: Vec::new(),
         resolver_stale: Vec::new(),
+        resolver_suspect: Vec::new(),
         manual_check: Vec::new(),
         managed: Vec::new(),
         unresolved_vendors: 0,
@@ -430,6 +451,15 @@ pub fn outdated(conn: &Connection, json: bool, explain: bool) -> rusqlite::Resul
             .unwrap_or("?")
             .to_string();
         match &row.latest {
+            Some(latest)
+                if cmp_versions_prefix(latest, &installed) == Ordering::Greater
+                    && implausible_jump(&installed, latest) =>
+            {
+                report.resolver_suspect.push(format!(
+                    "{} {} (page says {latest}, installed {installed} — implausible jump, likely wrong capture)",
+                    row.vendor, row.bundle
+                ));
+            }
             Some(latest) if cmp_versions_prefix(latest, &installed) == Ordering::Greater => {
                 if row.pinned {
                     report
@@ -461,9 +491,7 @@ pub fn outdated(conn: &Connection, json: bool, explain: bool) -> rusqlite::Resul
             Some(_) => report.up_to_date += 1,
             None => match &row.manager {
                 Some(m) => {
-                    let e = managed
-                        .entry(row.vendor.clone())
-                        .or_insert((0, m.clone()));
+                    let e = managed.entry(row.vendor.clone()).or_insert((0, m.clone()));
                     e.0 += 1;
                 }
                 None if manual_vendors.contains(&row.vendor) => {
@@ -482,9 +510,9 @@ pub fn outdated(conn: &Connection, json: bool, explain: bool) -> rusqlite::Resul
             manager_app,
         });
     }
-    report.managed.sort_by(|a, b| b.bundles.cmp(&a.bundles));
+    report.managed.sort_by_key(|m| std::cmp::Reverse(m.bundles));
     report.manual_check = manual_counts.into_iter().collect();
-    report.manual_check.sort_by(|a, b| b.1.cmp(&a.1));
+    report.manual_check.sort_by_key(|m| std::cmp::Reverse(m.1));
     report.unresolved_vendors = unresolved.len() as i64;
     report.unresolved_products = unresolved.values().sum();
 
@@ -549,6 +577,15 @@ pub fn outdated(conn: &Connection, json: bool, explain: bool) -> rusqlite::Resul
             }
         }
     }
+    if !report.resolver_suspect.is_empty() {
+        println!(
+            "\nRESOLVER SUSPECT ({}) — latest leaps implausibly past installed; verify the resolver regex",
+            report.resolver_suspect.len()
+        );
+        for r in report.resolver_suspect.iter().take(20) {
+            println!("  {r}");
+        }
+    }
     if !report.resolver_stale.is_empty() {
         println!(
             "\nRESOLVER STALE ({}) — vendor page trails installed; fix or reverify these resolvers",
@@ -559,7 +596,10 @@ pub fn outdated(conn: &Connection, json: bool, explain: bool) -> rusqlite::Resul
         }
     }
     if !report.pinned_stale.is_empty() {
-        println!("\nPINNED (stale but held): {}", report.pinned_stale.join(", "));
+        println!(
+            "\nPINNED (stale but held): {}",
+            report.pinned_stale.join(", ")
+        );
     }
     if !report.manual_check.is_empty() {
         println!(
@@ -571,13 +611,19 @@ pub fn outdated(conn: &Connection, json: bool, explain: bool) -> rusqlite::Resul
             println!("  {vendor:<28} {n:>4} bundles");
         }
         if report.manual_check.len() > 12 {
-            println!("  … and {} more (--json for all)", report.manual_check.len() - 12);
+            println!(
+                "  … and {} more (--json for all)",
+                report.manual_check.len() - 12
+            );
         }
     }
     if !report.managed.is_empty() {
         println!("\nMANAGED ELSEWHERE (launch the manager to update)");
         for m in report.managed.iter().take(15) {
-            println!("  {:<24} {:>4} bundles   → {}", m.vendor, m.bundles, m.manager_app);
+            println!(
+                "  {:<24} {:>4} bundles   → {}",
+                m.vendor, m.bundles, m.manager_app
+            );
         }
     }
     println!(
@@ -614,14 +660,96 @@ pub fn set_flag(conn: &Connection, name: &str, flag: &str, value: bool) -> rusql
                 _ => unreachable!("unknown user_meta flag"),
             };
             conn.execute(sql, params![id, value as i64])?;
-            println!("{} {}: {}", if value { "set" } else { "cleared" }, flag, label);
+            println!(
+                "{} {}: {}",
+                if value { "set" } else { "cleared" },
+                flag,
+                label
+            );
         }
         _ => {
-            println!("Ambiguous — matches {} bundles, be more specific:", matches.len());
+            println!(
+                "Ambiguous — matches {} bundles, be more specific:",
+                matches.len()
+            );
             for (_, label) in matches.iter().take(20) {
                 println!("  {label}");
             }
         }
     }
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use proptest::prelude::*;
+    use std::cmp::Ordering;
+
+    #[test]
+    fn prefix_examples() {
+        assert_eq!(cmp_versions_prefix("3.5", "3.5.1"), Ordering::Equal);
+        assert_eq!(cmp_versions_prefix("3.5.1", "3.5"), Ordering::Equal);
+        assert_eq!(cmp_versions_prefix("4.13", "4.2"), Ordering::Greater);
+        assert_eq!(cmp_versions_prefix("1.4.1.6566", "1.4.1"), Ordering::Equal);
+    }
+
+    #[test]
+    fn full_examples() {
+        assert_eq!(cmp_versions("1.0", "1.0.0"), Ordering::Equal);
+        assert_eq!(cmp_versions("4.13", "4.2"), Ordering::Greater);
+        assert_eq!(cmp_versions("2.0.30", "2.0.9"), Ordering::Greater);
+    }
+
+    #[test]
+    fn implausible_examples() {
+        // theme asset ?ver=26.6 against Diva 1.4.8
+        assert!(implausible_jump("1.4.8", "26.6"));
+        // real major bumps are fine
+        assert!(!implausible_jump("12.4.5", "13.0"));
+        assert!(!implausible_jump("3.13.2", "3.14.1"));
+        assert!(!implausible_jump("26.1.5", "27.0"));
+    }
+
+    proptest! {
+        // cmp_versions is a total order: reflexive and antisymmetric.
+        #[test]
+        fn cmp_reflexive(a in "[0-9]{1,4}(\\.[0-9]{1,4}){0,3}") {
+            prop_assert_eq!(cmp_versions(&a, &a), Ordering::Equal);
+            prop_assert_eq!(cmp_versions_prefix(&a, &a), Ordering::Equal);
+        }
+
+        #[test]
+        fn cmp_antisymmetric(
+            a in "[0-9]{1,4}(\\.[0-9]{1,4}){0,3}",
+            b in "[0-9]{1,4}(\\.[0-9]{1,4}){0,3}",
+        ) {
+            let ab = cmp_versions(&a, &b);
+            let ba = cmp_versions(&b, &a);
+            prop_assert_eq!(ab, ba.reverse());
+        }
+
+        // Appending a positive component never makes a version smaller under
+        // the full comparator (missing components read as zero).
+        #[test]
+        fn appending_component_is_ge(
+            a in "[0-9]{1,4}(\\.[0-9]{1,4}){0,2}",
+            extra in 1u32..9999,
+        ) {
+            let longer = format!("{a}.{extra}");
+            prop_assert_ne!(cmp_versions(&longer, &a), Ordering::Less);
+        }
+
+        // A backwards move and an implausible jump are mutually exclusive
+        // classifications: never both true for the same pair.
+        #[test]
+        fn suspect_only_forward(
+            i in 0u64..40, l in 0u64..200,
+        ) {
+            let (iv, lv) = (i.to_string(), l.to_string());
+            if implausible_jump(&iv, &lv) {
+                prop_assert_eq!(cmp_versions_prefix(&lv, &iv), Ordering::Greater);
+            }
+        }
+    }
 }

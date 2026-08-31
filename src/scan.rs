@@ -62,9 +62,7 @@ fn find_waves_plugins() -> Vec<(PathBuf, &'static str)> {
 }
 
 fn read_waves_plugin(path: &Path, mtime: i64) -> ScannedBundle {
-    let name = crate::util::sanitize_line(
-        path.file_stem().and_then(|s| s.to_str()).unwrap_or("?"),
-    );
+    let name = crate::util::sanitize_line(path.file_stem().and_then(|s| s.to_str()).unwrap_or("?"));
     let get = |v: &Value, key: &str| {
         v.as_dictionary()
             .and_then(|d| d.get(key))
@@ -123,13 +121,17 @@ fn find_daw_apps() -> Vec<(PathBuf, &'static str, &'static str)> {
     let home = std::env::var("HOME").unwrap_or_default();
     let mut out = Vec::new();
     for dir in ["/Applications".to_string(), format!("{home}/Applications")] {
-        let Ok(entries) = fs::read_dir(&dir) else { continue };
+        let Ok(entries) = fs::read_dir(&dir) else {
+            continue;
+        };
         for entry in entries.flatten() {
             let path = entry.path();
             if path.extension().and_then(|e| e.to_str()) != Some("app") {
                 continue;
             }
-            let Some(stem) = path.file_stem().and_then(|s| s.to_str()) else { continue };
+            let Some(stem) = path.file_stem().and_then(|s| s.to_str()) else {
+                continue;
+            };
             if let Some((_, vendor, product)) = DAW_APPS
                 .iter()
                 .find(|(pat, _, _)| stem.to_lowercase().starts_with(&pat.to_lowercase()))
@@ -329,7 +331,10 @@ pub fn run(conn: &mut Connection, full: bool) -> rusqlite::Result<()> {
     let waves = find_waves_plugins();
     let seen_waves: Vec<String> = waves.iter().map(|(p, _)| p.display().to_string()).collect();
     let daw_apps = find_daw_apps();
-    let seen_daw: Vec<String> = daw_apps.iter().map(|(p, _, _)| p.display().to_string()).collect();
+    let seen_daw: Vec<String> = daw_apps
+        .iter()
+        .map(|(p, _, _)| p.display().to_string())
+        .collect();
     let seen_paths: HashSet<String> = seen_daw
         .iter()
         .cloned()
@@ -345,7 +350,11 @@ pub fn run(conn: &mut Connection, full: bool) -> rusqlite::Result<()> {
         let rows = stmt.query_map([], |r| {
             Ok((
                 r.get::<_, String>(0)?,
-                (r.get::<_, i64>(1)?, r.get::<_, i64>(2)?, r.get::<_, Option<String>>(3)?),
+                (
+                    r.get::<_, i64>(1)?,
+                    r.get::<_, i64>(2)?,
+                    r.get::<_, Option<String>>(3)?,
+                ),
             ))
         })?;
         for row in rows {
@@ -466,7 +475,15 @@ pub fn run(conn: &mut Connection, full: bool) -> rusqlite::Result<()> {
                      ON CONFLICT(path) DO UPDATE SET bundle_id=excluded.bundle_id,
                        version=excluded.version, bundle_id=excluded.bundle_id,
                        mtime=excluded.mtime, last_seen=excluded.last_seen, removed_at=NULL",
-                    params![bundle_id, sb.path, sb.format, sb.version, sb.bundle_id, sb.mtime, now],
+                    params![
+                        bundle_id,
+                        sb.path,
+                        sb.format,
+                        sb.version,
+                        sb.bundle_id,
+                        sb.mtime,
+                        now
+                    ],
                 )?;
             }
         }
@@ -505,4 +522,64 @@ pub fn run(conn: &mut Connection, full: bool) -> rusqlite::Result<()> {
     );
     println!("  added: {added}   removed: {removed}   version-changed: {changed}");
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use proptest::prelude::*;
+
+    #[test]
+    fn packed_decimal_examples() {
+        // Arturia-style packed 32-bit: 0x00010401 = 66561 -> "1.4.1"
+        assert_eq!(normalize_version("66561".into()), "1.4.1");
+        assert_eq!(normalize_version("262146".into()), "4.0.2");
+        // small ints and dotted strings pass through
+        assert_eq!(normalize_version("2".into()), "2");
+        assert_eq!(normalize_version("1.4.1.6566".into()), "1.4.1.6566");
+    }
+
+    #[test]
+    fn packed_hex_examples() {
+        // XILS-style: 0x010103 -> "1.1.3"
+        assert_eq!(normalize_version("0x010103".into()), "1.1.3");
+        assert_eq!(normalize_version("0x020000".into()), "2.0.0");
+    }
+
+    #[test]
+    fn product_name_grouping() {
+        // format suffix stripped so variants group into one bundle
+        assert_eq!(normalize_product_name("ADAPTIVERB AU"), "ADAPTIVERB");
+        assert_eq!(
+            normalize_product_name("BC Chorus 4 VST3(Mono)"),
+            "BC Chorus 4 (Mono)"
+        );
+        // channel qualifier and plain names untouched
+        assert_eq!(normalize_product_name("Pro-Q 4"), "Pro-Q 4");
+    }
+
+    proptest! {
+        // normalize_product_name is idempotent.
+        #[test]
+        fn product_name_idempotent(s in "[A-Za-z0-9 ()-]{1,40}") {
+            let n = normalize_product_name(&s);
+            prop_assert_eq!(normalize_product_name(&n), n.clone());
+        }
+
+        // A decoded packed version always has three dot-separated numeric parts.
+        #[test]
+        fn packed_decodes_to_triple(v in 0x10000u32..=0xffffffu32) {
+            let decoded = normalize_version(v.to_string());
+            let parts: Vec<&str> = decoded.split('.').collect();
+            prop_assert_eq!(parts.len(), 3);
+            prop_assert!(parts.iter().all(|p| p.parse::<u32>().is_ok()));
+        }
+
+        // Already-dotted versions are never mangled.
+        #[test]
+        fn dotted_passthrough(a in 0u32..99, b in 0u32..99, c in 0u32..99) {
+            let v = format!("{a}.{b}.{c}");
+            prop_assert_eq!(normalize_version(v.clone()), v);
+        }
+    }
 }

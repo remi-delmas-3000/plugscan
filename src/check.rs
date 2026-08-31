@@ -126,9 +126,7 @@ pub fn resolve_version(f: &mut Fetcher, pr: &BundleResolver) -> Result<String, S
 
     let version = match strategy {
         "page_regex" => {
-            let re = refine
-                .as_ref()
-                .ok_or("page_regex requires version_regex")?;
+            let re = refine.as_ref().ok_or("page_regex requires version_regex")?;
             let body = f.page(&pr.page).ok_or("fetch failed")?;
             re.captures_iter(&body)
                 .filter_map(|c| c.get(1))
@@ -220,7 +218,106 @@ fn action_url(pr: &BundleResolver, version: &str) -> String {
     url.replace("${version}", version)
 }
 
-pub fn run(conn: &mut Connection, force: bool, max_age_hours: i64) -> rusqlite::Result<()> {
+/// Grouping key so all requests to one host run on a single thread, in
+/// sequence, with a politeness delay: keeps plugscan from hammering any one
+/// server (KVR Audio in particular, whose ~114 bundles share one host).
+fn host_key(pr: &BundleResolver) -> String {
+    if pr.strategy.as_deref() == Some("github_release") {
+        return "api.github.com".to_string();
+    }
+    pr.page
+        .strip_prefix("https://")
+        .and_then(|s| s.split(['/', '?']).next())
+        .unwrap_or(&pr.page)
+        .to_string()
+}
+
+/// Shared agents built once; each host-group thread clones them (cheap, Arc
+/// inside) and keeps its own page cache so a shared page is fetched once.
+fn build_agents() -> (ureq::Agent, ureq::Agent) {
+    let agent: ureq::Agent = ureq::Agent::config_builder()
+        .timeout_global(Some(std::time::Duration::from_secs(20)))
+        .tls_config(tls())
+        .build()
+        .into();
+    let no_redirect: ureq::Agent = ureq::Agent::config_builder()
+        .timeout_global(Some(std::time::Duration::from_secs(20)))
+        .max_redirects(0)
+        .http_status_as_error(false)
+        .tls_config(tls())
+        .build()
+        .into();
+    (agent, no_redirect)
+}
+
+/// One unit of check work: a resolver entry plus the catalog bundle id it
+/// maps to (None when exercising resolvers without a catalog).
+pub struct Work<'a> {
+    pub vendor: &'a str,
+    pub name: &'a str,
+    pub via: Option<&'a str>,
+    pub pr: &'a BundleResolver,
+    pub bundle_id: Option<i64>,
+}
+
+pub struct Outcome {
+    pub vendor: String,
+    pub name: String,
+    pub via: Option<String>,
+    pub bundle_id: Option<i64>,
+    pub result: Result<String, String>,
+}
+
+use rayon::prelude::*;
+use std::collections::BTreeMap;
+
+/// Fetch all work items concurrently: hosts in parallel (bounded pool),
+/// sequential within a host with a politeness delay.
+fn run_concurrent(items: Vec<Work>) -> Vec<Outcome> {
+    let mut groups: BTreeMap<String, Vec<Work>> = BTreeMap::new();
+    for w in items {
+        groups.entry(host_key(w.pr)).or_default().push(w);
+    }
+    let (agent, no_redirect) = build_agents();
+    let pool = rayon::ThreadPoolBuilder::new()
+        .num_threads(8)
+        .build()
+        .expect("thread pool");
+    pool.install(|| {
+        groups
+            .into_par_iter()
+            .flat_map_iter(|(_host, work)| {
+                let mut f = Fetcher {
+                    agent: agent.clone(),
+                    no_redirect: no_redirect.clone(),
+                    cache: HashMap::new(),
+                };
+                let mut out = Vec::with_capacity(work.len());
+                for (i, w) in work.iter().enumerate() {
+                    if i > 0 {
+                        // Only delay between distinct fetches; cache hits are free.
+                        std::thread::sleep(std::time::Duration::from_millis(250));
+                    }
+                    out.push(Outcome {
+                        vendor: w.vendor.to_string(),
+                        name: w.name.to_string(),
+                        via: w.via.map(str::to_string),
+                        bundle_id: w.bundle_id,
+                        result: resolve_version(&mut f, w.pr),
+                    });
+                }
+                out
+            })
+            .collect()
+    })
+}
+
+pub fn run(
+    conn: &mut Connection,
+    force: bool,
+    max_age_hours: i64,
+    json: bool,
+) -> rusqlite::Result<()> {
     let resolvers = resolver::load_all();
     if resolvers.is_empty() {
         println!("No resolvers found (looked in $PLUGSCAN_RESOLVERS / --resolvers, ~/.config/plugscan/resolvers).");
@@ -236,7 +333,10 @@ pub fn run(conn: &mut Connection, force: bool, max_age_hours: i64) -> rusqlite::
         )?;
         let rows = stmt.query_map([], |r| {
             Ok((
-                (r.get::<_, String>(0)?, r.get::<_, String>(1)?.to_lowercase()),
+                (
+                    r.get::<_, String>(0)?,
+                    r.get::<_, String>(1)?.to_lowercase(),
+                ),
                 r.get::<_, i64>(2)?,
             ))
         })?;
@@ -246,10 +346,10 @@ pub fn run(conn: &mut Connection, force: bool, max_age_hours: i64) -> rusqlite::
         }
     }
 
-    let mut fetcher = Fetcher::new();
-    let (mut checked, mut skipped, mut missing, mut failed, mut vendor_skips) =
-        (0u32, 0u32, 0u32, 0u32, 0u32);
-
+    // Build the work list serially (needs the DB for the freshness check),
+    // then fetch concurrently.
+    let (mut missing, mut skipped, mut vendor_skips) = (0u32, 0u32, 0u32);
+    let mut items: Vec<Work> = Vec::new();
     for rf in &resolvers {
         if rf.skip.is_some() {
             vendor_skips += 1;
@@ -274,45 +374,151 @@ pub fn run(conn: &mut Connection, force: bool, max_age_hours: i64) -> rusqlite::
                     continue;
                 }
             }
-            match resolve_version(&mut fetcher, pr) {
-                Ok(version) => {
-                    conn.execute(
-                        "INSERT INTO checks(bundle_id, latest_version, url, source, checked_at)
-                         VALUES(?1, ?2, ?3, ?4, ?5)
-                         ON CONFLICT(bundle_id) DO UPDATE SET
-                           latest_version=excluded.latest_version, url=excluded.url,
-                           source=excluded.source, checked_at=excluded.checked_at",
-                        params![
-                            bundle_id,
-                            version,
-                            sanitize_line(&action_url(pr, &version)),
-                            match &pr.via {
-                                Some(via) => format!("resolver:{} via {via}", rf.vendor),
-                                None => format!("resolver:{}", rf.vendor),
-                            },
-                            now
-                        ],
-                    )?;
-                    match &pr.via {
-                        Some(via) => println!(
-                            "  {} {} → latest {} [via {via}]",
-                            rf.vendor, pr.name, version
-                        ),
-                        None => println!("  {} {} → latest {}", rf.vendor, pr.name, version),
-                    }
-                    checked += 1;
-                }
-                Err(reason) => {
-                    eprintln!("warning: {} {}: {reason}", rf.vendor, pr.name);
-                    failed += 1;
-                }
+            items.push(Work {
+                vendor: &rf.vendor,
+                name: &pr.name,
+                via: pr.via.as_deref(),
+                pr,
+                bundle_id: Some(bundle_id),
+            });
+        }
+    }
+
+    let outcomes = run_concurrent(items);
+
+    // Write results serially (rusqlite Connection is not Sync).
+    let (mut checked, mut failed) = (0u32, 0u32);
+    let tx = conn.transaction()?;
+    for o in &outcomes {
+        match &o.result {
+            Ok(version) => {
+                let action = outcomes_action_url(&resolvers, &o.vendor, &o.name, version);
+                tx.execute(
+                    "INSERT INTO checks(bundle_id, latest_version, url, source, checked_at)
+                     VALUES(?1, ?2, ?3, ?4, ?5)
+                     ON CONFLICT(bundle_id) DO UPDATE SET
+                       latest_version=excluded.latest_version, url=excluded.url,
+                       source=excluded.source, checked_at=excluded.checked_at",
+                    params![
+                        o.bundle_id,
+                        version,
+                        sanitize_line(&action),
+                        match &o.via {
+                            Some(via) => format!("resolver:{} via {via}", o.vendor),
+                            None => format!("resolver:{}", o.vendor),
+                        },
+                        now
+                    ],
+                )?;
+                checked += 1;
             }
+            Err(_) => failed += 1,
+        }
+    }
+    tx.commit()?;
+
+    if json {
+        emit_json(&outcomes);
+        return Ok(());
+    }
+    for o in &outcomes {
+        match &o.result {
+            Ok(v) => match &o.via {
+                Some(via) => println!("  {} {} → latest {v} [via {via}]", o.vendor, o.name),
+                None => println!("  {} {} → latest {v}", o.vendor, o.name),
+            },
+            Err(reason) => eprintln!("warning: {} {}: {reason}", o.vendor, o.name),
         }
     }
     println!(
         "\nChecked {checked} bundles ({skipped} fresh, {missing} not installed, {failed} failed, {vendor_skips} vendors skip-listed)"
     );
     Ok(())
+}
+
+fn outcomes_action_url(
+    resolvers: &[resolver::ResolverFile],
+    vendor: &str,
+    name: &str,
+    version: &str,
+) -> String {
+    for rf in resolvers {
+        if rf.vendor == vendor {
+            for pr in &rf.bundles {
+                if pr.name == name {
+                    return action_url(pr, version);
+                }
+            }
+        }
+    }
+    String::new()
+}
+
+fn emit_json(outcomes: &[Outcome]) {
+    let rows: Vec<serde_json::Value> = outcomes
+        .iter()
+        .map(|o| {
+            serde_json::json!({
+                "vendor": o.vendor,
+                "bundle": o.name,
+                "via": o.via,
+                "ok": o.result.is_ok(),
+                "version": o.result.as_ref().ok(),
+                "error": o.result.as_ref().err(),
+            })
+        })
+        .collect();
+    println!("{}", serde_json::to_string_pretty(&rows).unwrap());
+}
+
+/// `resolver test`: exercise every resolver entry against the live web with
+/// no catalog required — the CI nightly-exercise command. Reports which
+/// extractions fail so resolver rot surfaces within a day. Exit-status via
+/// the returned failure count.
+pub fn test_all(json: bool, vendor_filter: Option<&str>) -> u32 {
+    let resolvers = resolver::load_all();
+    let mut items: Vec<Work> = Vec::new();
+    for rf in &resolvers {
+        if rf.skip.is_some() {
+            continue;
+        }
+        if let Some(f) = vendor_filter {
+            if !rf.vendor.to_lowercase().contains(&f.to_lowercase()) {
+                continue;
+            }
+        }
+        for pr in &rf.bundles {
+            items.push(Work {
+                vendor: &rf.vendor,
+                name: &pr.name,
+                via: pr.via.as_deref(),
+                pr,
+                bundle_id: None,
+            });
+        }
+    }
+    let total = items.len();
+    let outcomes = run_concurrent(items);
+    let failed: Vec<&Outcome> = outcomes.iter().filter(|o| o.result.is_err()).collect();
+
+    if json {
+        emit_json(&outcomes);
+    } else {
+        for o in &failed {
+            println!(
+                "FAIL  {} {}: {}",
+                o.vendor,
+                o.name,
+                o.result.as_ref().err().unwrap()
+            );
+        }
+        println!(
+            "\nExercised {total} resolver entries: {} ok, {} FAILED",
+            total - failed.len(),
+            failed.len()
+        );
+    }
+    failed.len() as u32
 }
 
 /// `resolver debug <vendor>`: run the vendor's resolver verbosely — the
@@ -343,7 +549,10 @@ pub fn debug_vendor(conn: &Connection, vendor: &str) -> rusqlite::Result<()> {
                 )
                 .ok();
             println!("\n  [{}]", pr.name);
-            println!("    strategy:  {}", pr.strategy.as_deref().unwrap_or("page_regex"));
+            println!(
+                "    strategy:  {}",
+                pr.strategy.as_deref().unwrap_or("page_regex")
+            );
             println!("    page:      {}", pr.page);
             if let Some(re) = &pr.version_regex {
                 println!("    regex:     {re}");
@@ -412,7 +621,9 @@ pub fn new_vendor(vendor: &str, url: &str) {
         }
     }
     let Some(body) = fetcher.page(url) else {
-        println!("# fetch failed — site may block non-browser clients; write a manual-only resolver:");
+        println!(
+            "# fetch failed — site may block non-browser clients; write a manual-only resolver:"
+        );
         println!("[manual]\nsteps = \"...\"");
         return;
     };
@@ -435,7 +646,10 @@ pub fn new_vendor(vendor: &str, url: &str) {
         .filter(|v| seen.insert(v.clone()))
         .take(8)
         .collect();
-    println!("# version-like strings on the page (in order): {}", hits.join(", "));
+    println!(
+        "# version-like strings on the page (in order): {}",
+        hits.join(", ")
+    );
     println!("# anchor a regex on nearby bundle text, first match must be latest:");
     println!("[[bundle]]\nname = \"PRODUCT\"\npage = \"{url}\"\nversion_regex = 'PRODUCT[^0-9]*([0-9]+\\.[0-9.]+)'");
 }

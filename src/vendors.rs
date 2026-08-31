@@ -1,20 +1,38 @@
-/// Vendor identity resolution: raw strings from bundle metadata are messy
-/// ("Plugin-alliance", "Uaudio", "iZotope, Inc."), so everything funnels
-/// through an alias map before it reaches the catalog.
+// Vendor identity resolution: raw strings from bundle metadata are messy
+// ("Plugin-alliance", "Uaudio", "iZotope, Inc."), so everything funnels
+// through an alias map before it reaches the catalog.
 
 const ALIASES: &[(&[&str], &str)] = &[
-    (&["plugin-alliance", "plugin alliance gmbh", "brainworx"], "Plugin Alliance"),
+    (
+        &["plugin-alliance", "plugin alliance gmbh", "brainworx"],
+        "Plugin Alliance",
+    ),
     (&["izotope", "izotope, inc.", "izotope inc."], "iZotope"),
-    (&["uaudio", "universal audio (uadx)", "universal audio, inc."], "Universal Audio"),
-    (&["pspaudioware", "pspaudioware.com", "psp audioware"], "PSP Audioware"),
+    (
+        &["uaudio", "universal audio (uadx)", "universal audio, inc."],
+        "Universal Audio",
+    ),
+    (
+        &["pspaudioware", "pspaudioware.com", "psp audioware"],
+        "PSP Audioware",
+    ),
     (&["ikmultimedia", "ik multimedia us, llc"], "IK Multimedia"),
-    (&["native-instruments", "native instruments gmbh"], "Native Instruments"),
+    (
+        &["native-instruments", "native instruments gmbh"],
+        "Native Instruments",
+    ),
     (&["_510k"], "510k"),
     (&["_futurephonic"], "Futurephonic"),
     (&["fabfilter"], "FabFilter"),
     (&["soundtoys", "sound toys"], "Soundtoys"),
-    (&["valhalladsp", "valhalla dsp, llc", "valhalla dsp"], "Valhalla DSP"),
-    (&["air music technology", "air music tech", "airmusictech"], "AIR Music Technology"),
+    (
+        &["valhalladsp", "valhalla dsp, llc", "valhalla dsp"],
+        "Valhalla DSP",
+    ),
+    (
+        &["air music technology", "air music tech", "airmusictech"],
+        "AIR Music Technology",
+    ),
     (&["ssl", "solid state logic"], "Solid State Logic"),
     (&["waves", "waves audio ltd.", "wavesaudio"], "Waves"),
     (&["korg", "korg inc."], "KORG"),
@@ -24,8 +42,14 @@ const ALIASES: &[(&[&str], &str)] = &[
     (&["d16-group", "d16 group audio software"], "D16 Group"),
     (&["sugar-bytes", "sugar bytes gmbh"], "Sugar Bytes"),
     (&["meldaproduction", "melda"], "MeldaProduction"),
-    (&["tdr", "tokyo dawn records", "tokyo dawn labs"], "Tokyo Dawn Labs"),
-    (&["goodhertz", "goodhertz inc", "goodhertz, inc."], "Goodhertz"),
+    (
+        &["tdr", "tokyo dawn records", "tokyo dawn labs"],
+        "Tokyo Dawn Labs",
+    ),
+    (
+        &["goodhertz", "goodhertz inc", "goodhertz, inc."],
+        "Goodhertz",
+    ),
     (&["neuraldsp", "neural dsp technologies"], "Neural DSP"),
     (&["cherryaudio", "cherry audio llc"], "Cherry Audio"),
     (&["gforce", "gforce software"], "GForce Software"),
@@ -36,7 +60,10 @@ const ALIASES: &[(&[&str], &str)] = &[
     (&["softube", "softube ab"], "Softube"),
     (&["arturia", "arturia sa"], "Arturia"),
     (&["apple", "apple, inc.", "apple inc."], "Apple"),
-    (&["steinberg", "steinberg media technologies gmbh"], "Steinberg"),
+    (
+        &["steinberg", "steinberg media technologies gmbh"],
+        "Steinberg",
+    ),
     (&["celemony", "celemony software gmbh"], "Celemony"),
     (&["sonnox", "sonnox ltd"], "Sonnox"),
     (&["kilohearts", "kilohearts ab"], "Kilohearts"),
@@ -49,7 +76,10 @@ const ALIASES: &[(&[&str], &str)] = &[
     (&["bogrendigital", "bogren digital"], "Bogren Digital"),
     (&["auroradsp", "aurora dsp"], "Aurora DSP"),
     (&["babyaudio", "baby audio"], "BABY Audio"),
-    (&["kiiveaudio", "kiive audio", "kiive", "mycompany"], "Kiive Audio"),
+    (
+        &["kiiveaudio", "kiive audio", "kiive", "mycompany"],
+        "Kiive Audio",
+    ),
     // Mappings below were verified by the resolver-sweep research agents
     // (2026-08-30) from product-name evidence; several are JUCE-template
     // junk ("MyCompany") or per-format metadata variants.
@@ -66,7 +96,18 @@ const ALIASES: &[(&[&str], &str)] = &[
     (&["audiounit"], "Synapse Audio"),
     (&["uk"], "Mastering the Mix"),
     (&["distfilter"], "Diginoiz"),
-    (&["vplus", "vplusinst", "polykb2", "polykb3", "xils201", "xils5000", "cs80"], "XILS-lab"),
+    (
+        &[
+            "vplus",
+            "vplusinst",
+            "polykb2",
+            "polykb3",
+            "xils201",
+            "xils5000",
+            "cs80",
+        ],
+        "XILS-lab",
+    ),
     (&["process"], "Process.audio"),
     (&["aurora"], "Aurora DSP"),
     (&["decided"], "Decidedly"),
@@ -83,7 +124,10 @@ const ALIASES: &[(&[&str], &str)] = &[
     (&["higherplane", "higher-plane"], "Higher Plane Software"),
     (&["synthfactory"], "TheSynthFactory"),
     (&["thxltd"], "THX Ltd"),
-    (&["atkinsonadvancedmodeling"], "Atkinson Advanced Modeling, LLC"),
+    (
+        &["atkinsonadvancedmodeling"],
+        "Atkinson Advanced Modeling, LLC",
+    ),
     (&["aguilaramp"], "Aguilar"),
     (&["fineclassics"], "Fine Classics Plugins"),
     (&["tbtech"], "Threebodytech"),
@@ -168,4 +212,44 @@ pub fn vendor_for_product(product: &str) -> Option<&'static str> {
 /// Vendor strings that carry no identity (broken bundle metadata).
 pub fn is_junk_vendor(name: &str) -> bool {
     matches!(normkey(name).as_str(), "vst3" | "" | "?")
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use proptest::prelude::*;
+
+    #[test]
+    fn known_aliases() {
+        assert_eq!(canonical("Plugin-alliance"), "Plugin Alliance");
+        assert_eq!(canonical("Uaudio"), "Universal Audio");
+        assert_eq!(canonical("iZotope, Inc."), "iZotope");
+        assert_eq!(canonical("D16group"), "D16 Group");
+        assert_eq!(canonical("WavesAudio"), "Waves");
+    }
+
+    #[test]
+    fn junk_detected() {
+        assert!(is_junk_vendor("Vst3"));
+        assert!(is_junk_vendor("?"));
+        assert!(is_junk_vendor(""));
+        assert!(!is_junk_vendor("FabFilter"));
+    }
+
+    proptest! {
+        // normkey keeps only lowercase alphanumerics and is idempotent.
+        #[test]
+        fn normkey_idempotent(s in ".{0,40}") {
+            let k = normkey(&s);
+            prop_assert_eq!(normkey(&k), k.clone());
+            prop_assert!(k.chars().all(|c| c.is_ascii_lowercase() || c.is_ascii_digit()));
+        }
+
+        // canonical is idempotent: canonicalizing a canonical name is a no-op.
+        #[test]
+        fn canonical_idempotent(s in "[A-Za-z0-9 ._-]{1,40}") {
+            let c = canonical(&s);
+            prop_assert_eq!(canonical(&c), c.clone());
+        }
+    }
 }

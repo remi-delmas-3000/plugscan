@@ -135,11 +135,7 @@ enum Probe {
     Page,
 }
 
-fn download_if_file(
-    agent: &ureq::Agent,
-    url: &str,
-    dest_dir: &Path,
-) -> Result<Probe, String> {
+fn download_if_file(agent: &ureq::Agent, url: &str, dest_dir: &Path) -> Result<Probe, String> {
     let (mut res, final_url) = get_verified(agent, url)?;
     let content_type = res
         .headers()
@@ -156,8 +152,8 @@ fn download_if_file(
         .as_deref()
         .map(|d| d.to_lowercase().contains("attachment"))
         .unwrap_or(false);
-    let is_page = content_type.starts_with("text/html")
-        || content_type.starts_with("application/xhtml");
+    let is_page =
+        content_type.starts_with("text/html") || content_type.starts_with("application/xhtml");
     if is_page && !is_attachment {
         return Ok(Probe::Page);
     }
@@ -320,7 +316,12 @@ pub fn run(
                 continue;
             }
         }
-        println!("  probing {} {} → {}", t.vendor, t.bundle, sanitize_line(&t.url));
+        println!(
+            "  probing {} {} → {}",
+            t.vendor,
+            t.bundle,
+            sanitize_line(&t.url)
+        );
         let dest_dir = archive_root()
             .join(slug(&t.vendor))
             .join(slug(&t.bundle))
@@ -400,13 +401,16 @@ pub fn clear(conn: &mut Connection, bundle: Option<&str>) -> rusqlite::Result<()
              FROM downloads d JOIN bundles p ON p.id = d.bundle_id
              WHERE (?1 IS NULL OR p.name LIKE '%' || ?1 || '%')",
         )?;
-        let mapped = stmt.query_map(params![bundle], |r| {
-            Ok((r.get(0)?, r.get(1)?, r.get(2)?))
-        })?;
+        let mapped = stmt.query_map(params![bundle], |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?)))?;
         mapped.collect::<Result<_, _>>()?
     };
     if rows.is_empty() {
-        println!("Nothing archived{}.", bundle.map(|p| format!(" matching \"{p}\"")).unwrap_or_default());
+        println!(
+            "Nothing archived{}.",
+            bundle
+                .map(|p| format!(" matching \"{p}\""))
+                .unwrap_or_default()
+        );
         return Ok(());
     }
     let mut freed: i64 = 0;
@@ -476,9 +480,8 @@ pub fn import(
         return Ok(());
     };
 
-    let data = std::fs::read(file).map_err(|e| {
-        rusqlite::Error::ToSqlConversionFailure(Box::new(e))
-    })?;
+    let data =
+        std::fs::read(file).map_err(|e| rusqlite::Error::ToSqlConversionFailure(Box::new(e)))?;
     let sha = format!("{:x}", Sha256::digest(&data));
     let bytes = data.len() as i64;
     let filename = file
@@ -498,8 +501,18 @@ pub fn import(
          VALUES(?1,?2,NULL,?3,?4,?5,?6)
          ON CONFLICT(bundle_id, version) DO UPDATE SET path=excluded.path,
            sha256=excluded.sha256, bytes=excluded.bytes, fetched_at=excluded.fetched_at",
-        params![bundle_id, version, dest.display().to_string(), sha, bytes, unix_now()],
+        params![
+            bundle_id,
+            version,
+            dest.display().to_string(),
+            sha,
+            bytes,
+            unix_now()
+        ],
     )?;
-    println!("archived {vendor} — {product_name} {version} → {}", dest.display());
+    println!(
+        "archived {vendor} — {product_name} {version} → {}",
+        dest.display()
+    );
     Ok(())
 }

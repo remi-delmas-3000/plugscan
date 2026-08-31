@@ -1,0 +1,43 @@
+name: ci
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  build-test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+      - uses: Swatinem/rust-cache@v2
+      - name: Format
+        run: cargo fmt --check
+      - name: Clippy
+        run: cargo clippy --all-targets -- -D warnings
+      - name: Test
+        run: cargo test --release
+      - name: License and advisory policy
+        run: |
+          cargo install cargo-deny --locked
+          cargo deny check licenses advisories
+
+  resolver-schema:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate resolver TOMLs parse
+        run: |
+          python3 - <<'PY'
+          import glob, tomllib, sys
+          bad = 0
+          for f in glob.glob("resolvers/*.toml"):
+              try:
+                  tomllib.load(open(f, "rb"))
+              except Exception as e:
+                  print(f"PARSE FAIL {f}: {e}"); bad += 1
+          sys.exit(1 if bad else 0)
+          PY

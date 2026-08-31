@@ -17,5 +17,8 @@ regex = "1"
 sha2 = "0.10"
 ureq = { version = "3", default-features = false, features = ["native-tls", "gzip"] }
 
+[dev-dependencies]
+proptest = "1"
+
 [profile.release]
 lto = true
