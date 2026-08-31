@@ -195,7 +195,19 @@ fn find_bundles(root: &Path, depth: u32, out: &mut Vec<(PathBuf, &'static str)>)
 }
 
 fn mtime_of(path: &Path) -> i64 {
-    fs::metadata(path)
+    // Stat the Info.plist we actually read the version from, not the bundle
+    // directory. Some installers replace Contents/* (Info.plist, binary)
+    // without bumping the top-level .component/.vst3 directory mtime, which
+    // would leave the cache showing a stale version. Observed with the
+    // gearmulator update (2.2.6 -> 2.2.9): the .component dir kept its old
+    // mtime while Contents/Info.plist was rewritten.
+    let plist = path.join("Contents/Info.plist");
+    let target = if plist.exists() {
+        plist.as_path()
+    } else {
+        path
+    };
+    fs::metadata(target)
         .and_then(|m| m.modified())
         .ok()
         .and_then(|t| t.duration_since(UNIX_EPOCH).ok())
