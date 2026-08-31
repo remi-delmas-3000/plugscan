@@ -4,6 +4,7 @@
 # returns a login SPA (HTTP 404) to unauthenticated clients. Verified live 2026-08.
 vendor = "Mixed In Key"
 homepage = "https://mixedinkey.com"
+download_via = "Mixed In Key account portal (access.mixedinkey.com) — sign in to download the current installer"
 skip = "Versions only in the login-gated account portal (access.mixedinkey.com); no public version endpoint or changelog. Each product ships its own installer; re-verified 2026-08-31: the Sparkle appcast at builds.mixedinkey.com needs a per-product key param (404 without it) and no unauthenticated catalog exists"
 [manual]
 login = "https://access.mixedinkey.com"

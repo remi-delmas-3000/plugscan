@@ -15,7 +15,12 @@ allow = ["MIT", "Apache-2.0", "Unicode-3.0"]
 # with the native-tls backend, which is what we actually use at runtime
 # (system trust store via Security.framework). Scoped exception, not a
 # policy widening. Accepted 2026-08-30.
-exceptions = [{ name = "webpki-root-certs", allow = ["CDLA-Permissive-2.0"] }]
+exceptions = [
+    { name = "webpki-root-certs", allow = ["CDLA-Permissive-2.0"] },
+    # plugscan's own crate is GPL-3.0-or-later; the MIT/Apache policy governs
+    # inbound dependencies, not the project.
+    { name = "plugscan", allow = ["GPL-3.0-or-later"] },
+]
 
 [bans]
 multiple-versions = "allow"

@@ -2,6 +2,7 @@
 # carry no update/version endpoint URLs; no local manager app.
 vendor = "NoiseAsh"
 homepage = "https://noiseash.com"
+download_via = "NoiseAsh account (noiseash.com) — installers behind login"
 skip = "No public version source: product pages carry no version strings, plugins have no update-check endpoint, and installers are account-only; re-verified 2026-08-31: the /downloads/ page and wp-json search were re-checked and serve no versioned links (paid installers are login-gated; only free plugins expose dropbox zips)"
 [manual]
 login = "https://noiseash.com/my-account/"

@@ -2,6 +2,7 @@
 # asset versions and /changelog 404s. Manual-only.
 vendor = "Ultra.Audio"
 homepage = "https://ultra.audio"
+download_via = "the Ultra.Audio desktop app self-updates; download it from ultra.audio (login required)"
 skip = "ultra.audio/download 302s to /signin (verified); app self-updates in place, no public version endpoint"
 
 [manual]

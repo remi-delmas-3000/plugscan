@@ -4,6 +4,7 @@
 # Plugin Alliance Installation Manager.
 vendor = "Mixland"
 homepage = "https://mixland.io"
+download_via = "Mixland account area — installers and versions after login"
 skip = "no public version info: Shopify products.json and product pages carry no version strings (verified 2026-08); downloads behind customer login; re-verified 2026-08-31: Shopify products.json, /pages/support and /pages/ext carry no versions and the HISE binary only calls an activation endpoint"
 [manual]
 login = "https://mixland.io/account/login"

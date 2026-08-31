@@ -6,6 +6,7 @@
 # store (no update endpoint).
 vendor = "OwnHammer"
 homepage = "https://ownhammer.com"
+download_via = "OwnHammer account library — download the current installer after login"
 skip = "No version numbers anywhere: Shopify store pages and /products.json carry none, and the iLok-licensed plugins have no update-check endpoint; re-verified 2026-08-31: /products.json body_html for chugginator + studio-standard is version-free and the binaries embed only ownhammer.com/iLok URLs"
 
 [manual]

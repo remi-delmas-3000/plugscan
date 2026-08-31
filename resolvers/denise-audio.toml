@@ -6,6 +6,7 @@
 # account portal. Nothing web-scrapeable maps to the installed version -> skip.
 vendor = "Denise Audio"
 homepage = "https://www.deniseaudio.com"
+download_via = "denise.io account — installers delivered through the account area"
 skip = "Webflow site with no public per-plugin version; downloads are unversioned S3 zips and versions live only in the my.babyaud.io account portal; re-verified 2026-08-31: the /downloads and /legacy-downloads pages serve only unversioned S3 zips and the Webflow product pages carry no version"
 [manual]
 login = "https://my.babyaud.io/auth/login"
