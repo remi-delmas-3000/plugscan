@@ -366,6 +366,7 @@ struct ManagedRow {
 #[derive(Serialize)]
 struct OutdatedReport {
     stale: Vec<StaleRow>,
+    unconfirmed: Vec<StaleRow>,
     pinned_stale: Vec<String>,
     resolver_stale: Vec<String>,
     resolver_suspect: Vec<String>,
@@ -423,6 +424,7 @@ pub fn outdated(conn: &Connection, json: bool, explain: bool) -> rusqlite::Resul
 
     let mut report = OutdatedReport {
         stale: Vec::new(),
+        unconfirmed: Vec::new(),
         pinned_stale: Vec::new(),
         resolver_stale: Vec::new(),
         resolver_suspect: Vec::new(),
@@ -487,18 +489,27 @@ pub fn outdated(conn: &Connection, json: bool, explain: bool) -> rusqlite::Resul
                         .pinned_stale
                         .push(format!("{} {}", row.vendor, row.bundle));
                 } else {
-                    report.stale.push(StaleRow {
+                    let via = row
+                        .source
+                        .as_deref()
+                        .and_then(|s| s.split_once(" via "))
+                        .map(|(_, v)| v.to_string());
+                    let sr = StaleRow {
                         vendor: row.vendor.clone(),
                         bundle: row.bundle.clone(),
                         installed,
                         latest: latest.clone(),
                         url: row.url.clone(),
-                        via: row
-                            .source
-                            .as_deref()
-                            .and_then(|s| s.split_once(" via "))
-                            .map(|(_, v)| v.to_string()),
-                    });
+                        via: via.clone(),
+                    };
+                    // Third-party sources (KVR) are developer-submitted and
+                    // demonstrably run ahead of actual macOS releases; never
+                    // assert a firm update from them, only a possibility.
+                    if via.is_some() {
+                        report.unconfirmed.push(sr);
+                    } else {
+                        report.stale.push(sr);
+                    }
                 }
             }
             // Vendor page trails the installed version: the resolver is
@@ -625,6 +636,40 @@ pub fn outdated(conn: &Connection, json: bool, explain: bool) -> rusqlite::Resul
                 }
                 if let Some(steps) = &m.steps {
                     println!("    {steps}");
+                }
+            }
+        }
+    }
+    if !report.unconfirmed.is_empty() {
+        println!(
+            "\nPOSSIBLY OUTDATED ({} — third-party source, unverified; trust the vendor if it disagrees)",
+            report.unconfirmed.len()
+        );
+        use std::collections::BTreeMap as BMap2;
+        let mut ug: BMap2<(String, String, String), Vec<&StaleRow>> = BMap2::new();
+        for s in &report.unconfirmed {
+            ug.entry((s.vendor.clone(), s.installed.clone(), s.latest.clone()))
+                .or_default()
+                .push(s);
+        }
+        for ((vendor, installed, latest), rows) in &ug {
+            let via = rows[0]
+                .via
+                .as_deref()
+                .map(|v| format!(" [via {v}]"))
+                .unwrap_or_default();
+            if rows.len() >= 4 {
+                println!(
+                    "  {:<18} {} plugins  {installed} → {latest}{via}",
+                    vendor,
+                    rows.len()
+                );
+            } else {
+                for s in rows {
+                    println!(
+                        "  {:<18} {:<28} {installed} → {latest}{via}",
+                        s.vendor, s.bundle
+                    );
                 }
             }
         }
