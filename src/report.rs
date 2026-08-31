@@ -368,7 +368,7 @@ struct OutdatedReport {
     stale: Vec<StaleRow>,
     unconfirmed: Vec<StaleRow>,
     pinned_stale: Vec<String>,
-    resolver_stale: Vec<String>,
+    resolver_stale: Vec<(String, String, String, String)>,
     resolver_suspect: Vec<String>,
     paid_upgrade: Vec<String>,
     manual_check: Vec<(String, i64)>,
@@ -515,9 +515,11 @@ pub fn outdated(conn: &Connection, json: bool, explain: bool) -> rusqlite::Resul
             // Vendor page trails the installed version: the resolver is
             // stale or the page lies — never shown as an update.
             Some(latest) if cmp_versions_prefix(latest, &installed) == Ordering::Less => {
-                report.resolver_stale.push(format!(
-                    "{} {} (page says {latest}, installed {installed})",
-                    row.vendor, row.bundle
+                report.resolver_stale.push((
+                    row.vendor.clone(),
+                    row.bundle.clone(),
+                    latest.clone(),
+                    installed.clone(),
                 ));
             }
             Some(_) => report.up_to_date += 1,
@@ -697,8 +699,25 @@ pub fn outdated(conn: &Connection, json: bool, explain: bool) -> rusqlite::Resul
             "\nRESOLVER STALE ({}) — vendor page trails installed; fix or reverify these resolvers",
             report.resolver_stale.len()
         );
-        for r in report.resolver_stale.iter().take(20) {
-            println!("  {r}");
+        use std::collections::BTreeMap as RsMap;
+        let mut rg: RsMap<(String, String, String), Vec<&String>> = RsMap::new();
+        for (vendor, bundle, page, installed) in &report.resolver_stale {
+            rg.entry((vendor.clone(), page.clone(), installed.clone()))
+                .or_default()
+                .push(bundle);
+        }
+        for ((vendor, page, installed), bundles) in &rg {
+            if bundles.len() >= 4 {
+                println!(
+                    "  {} {} plugins (page says {page}, installed {installed})",
+                    vendor,
+                    bundles.len()
+                );
+            } else {
+                for b in bundles {
+                    println!("  {vendor} {b} (page says {page}, installed {installed})");
+                }
+            }
         }
     }
     if !report.pinned_stale.is_empty() {
