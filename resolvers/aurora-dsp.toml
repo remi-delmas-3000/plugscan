@@ -1,134 +1,128 @@
-# Correction 2026-08-31 (wave-3 re-test): the skip was wrong. The plugin
-# binaries fetch their in-app "update available" notice from a PUBLIC Firebase
-# Realtime Database (found via strings on the .component):
-#   https://aurora-b10f0-default-rtdb.europe-west1.firebasedatabase.app/News.json
-# It returns a JSON map keyed by product name, each with a "pluginVersion"
-# field holding the current published version. No auth, answers plain GET.
-# All 17 products here verified live 2026-08-31 (>= installed; several newer,
-# e.g. Rhino 1.7.2, Mammoth 1.6.2, Banshee Nano 1.0.5, AK476 1.0.2).
-# EXCLUDED (no key in the feed): Gate Mate Pre, Kobraa, Laboga Mr Hector Suite.
+# Aurora DSP's authoritative source is the public download-files page, which
+# server-renders each product block: the version sits ~210 chars before that
+# product's .pkg installer link. (The Firebase News.json used earlier lagged
+# actual releases: Banshee 1.0.5 vs real 1.1.0, Mammoth 1.6.2 vs 1.7.0.)
+# Rust regex has no lookahead, so each entry bounds the gap with {0,300}.
+# Verified live 2026-08-31.
 vendor = "Aurora DSP"
 homepage = "https://auroradsp.com"
 
-[manual]
-login = "https://auroradsp.com/module/mymodule/login"
-steps = "Log in to the Aurora DSP client area for installers (auroradsp.com/download-files). The in-app updater reads News.json (public) for the current version of each plugin."
-
 [[product]]
 name = "Absylon"
-page = "https://aurora-b10f0-default-rtdb.europe-west1.firebasedatabase.app/News.json"
-strategy = "json"
-json_path = "Absylon.pluginVersion"
+page = "https://auroradsp.com/download-files"
+version_regex = '([0-9]+\.[0-9]+(?:\.[0-9]+)?)[\s\S]{0,300}?Absylon\.pkg'
 download = "https://auroradsp.com/download-files"
 
 [[product]]
 name = "Absylon Bass"
-page = "https://aurora-b10f0-default-rtdb.europe-west1.firebasedatabase.app/News.json"
-strategy = "json"
-json_path = "Absylon Bass.pluginVersion"
+page = "https://auroradsp.com/download-files"
+version_regex = '([0-9]+\.[0-9]+(?:\.[0-9]+)?)[\s\S]{0,300}?AbsylonBass\.pkg'
 download = "https://auroradsp.com/download-files"
 
 [[product]]
 name = "AK476"
-page = "https://aurora-b10f0-default-rtdb.europe-west1.firebasedatabase.app/News.json"
-strategy = "json"
-json_path = "AK476.pluginVersion"
+page = "https://auroradsp.com/download-files"
+version_regex = '([0-9]+\.[0-9]+(?:\.[0-9]+)?)[\s\S]{0,300}?AK-476\.pkg'
 download = "https://auroradsp.com/download-files"
 
 [[product]]
 name = "Banshee Nano"
-page = "https://aurora-b10f0-default-rtdb.europe-west1.firebasedatabase.app/News.json"
-strategy = "json"
-json_path = "Banshee Nano.pluginVersion"
+page = "https://auroradsp.com/download-files"
+version_regex = '([0-9]+\.[0-9]+(?:\.[0-9]+)?)[\s\S]{0,300}?BansheeNano\.pkg'
 download = "https://auroradsp.com/download-files"
 
 [[product]]
 name = "Cerbes"
-page = "https://aurora-b10f0-default-rtdb.europe-west1.firebasedatabase.app/News.json"
-strategy = "json"
-json_path = "Cerbes.pluginVersion"
+page = "https://auroradsp.com/download-files"
+version_regex = '([0-9]+\.[0-9]+(?:\.[0-9]+)?)[\s\S]{0,300}?Cerbes\.pkg'
 download = "https://auroradsp.com/download-files"
 
 [[product]]
 name = "Dead Kitty"
-page = "https://aurora-b10f0-default-rtdb.europe-west1.firebasedatabase.app/News.json"
-strategy = "json"
-json_path = "Dead Kitty.pluginVersion"
+page = "https://auroradsp.com/download-files"
+version_regex = '([0-9]+\.[0-9]+(?:\.[0-9]+)?)[\s\S]{0,300}?DeadKitty\.pkg'
 download = "https://auroradsp.com/download-files"
 
 [[product]]
 name = "Digbeth"
-page = "https://aurora-b10f0-default-rtdb.europe-west1.firebasedatabase.app/News.json"
-strategy = "json"
-json_path = "Digbeth.pluginVersion"
+page = "https://auroradsp.com/download-files"
+version_regex = '([0-9]+\.[0-9]+(?:\.[0-9]+)?)[\s\S]{0,300}?LaneyDigbeth\.pkg'
 download = "https://auroradsp.com/download-files"
 
 [[product]]
 name = "EQ510"
-page = "https://aurora-b10f0-default-rtdb.europe-west1.firebasedatabase.app/News.json"
-strategy = "json"
-json_path = "EQ510.pluginVersion"
+page = "https://auroradsp.com/download-files"
+version_regex = '([0-9]+\.[0-9]+(?:\.[0-9]+)?)[\s\S]{0,300}?EQ510\.pkg'
 download = "https://auroradsp.com/download-files"
 
 [[product]]
 name = "Gate Mate Post"
-page = "https://aurora-b10f0-default-rtdb.europe-west1.firebasedatabase.app/News.json"
-strategy = "json"
-json_path = "Gate Mate Post.pluginVersion"
+page = "https://auroradsp.com/download-files"
+version_regex = '([0-9]+\.[0-9]+(?:\.[0-9]+)?)[\s\S]{0,300}?GateMate\.pkg'
+download = "https://auroradsp.com/download-files"
+
+[[product]]
+name = "Gate Mate Pre"
+page = "https://auroradsp.com/download-files"
+version_regex = '([0-9]+\.[0-9]+(?:\.[0-9]+)?)[\s\S]{0,300}?GateMate\.pkg'
 download = "https://auroradsp.com/download-files"
 
 [[product]]
 name = "Gorilla"
-page = "https://aurora-b10f0-default-rtdb.europe-west1.firebasedatabase.app/News.json"
-strategy = "json"
-json_path = "Gorilla.pluginVersion"
+page = "https://auroradsp.com/download-files"
+version_regex = '([0-9]+\.[0-9]+(?:\.[0-9]+)?)[\s\S]{0,300}?Gorilla\.pkg'
 download = "https://auroradsp.com/download-files"
 
 [[product]]
 name = "Ironheart"
-page = "https://aurora-b10f0-default-rtdb.europe-west1.firebasedatabase.app/News.json"
-strategy = "json"
-json_path = "Ironheart.pluginVersion"
+page = "https://auroradsp.com/download-files"
+version_regex = '([0-9]+\.[0-9]+(?:\.[0-9]+)?)[\s\S]{0,300}?Ironheart\.pkg'
+download = "https://auroradsp.com/download-files"
+
+[[product]]
+name = "Kobraa"
+page = "https://auroradsp.com/download-files"
+version_regex = '([0-9]+\.[0-9]+(?:\.[0-9]+)?)[\s\S]{0,300}?Kobraa\.pkg'
 download = "https://auroradsp.com/download-files"
 
 [[product]]
 name = "L2 Aura"
-page = "https://aurora-b10f0-default-rtdb.europe-west1.firebasedatabase.app/News.json"
-strategy = "json"
-json_path = "L2 Aura.pluginVersion"
+page = "https://auroradsp.com/download-files"
+version_regex = '([0-9]+\.[0-9]+(?:\.[0-9]+)?)[\s\S]{0,300}?L2-AURA\.pkg'
 download = "https://auroradsp.com/download-files"
 
 [[product]]
 name = "Laboga Chainsaw Distortion"
-page = "https://aurora-b10f0-default-rtdb.europe-west1.firebasedatabase.app/News.json"
-strategy = "json"
-json_path = "Laboga Chainsaw Distortion.pluginVersion"
+page = "https://auroradsp.com/download-files"
+version_regex = '([0-9]+\.[0-9]+(?:\.[0-9]+)?)[\s\S]{0,300}?Chainsaw\.pkg'
+download = "https://auroradsp.com/download-files"
+
+[[product]]
+name = "Laboga Mr Hector Suite"
+page = "https://auroradsp.com/download-files"
+version_regex = '([0-9]+\.[0-9]+(?:\.[0-9]+)?)[\s\S]{0,300}?Hectorsuite\.pkg'
 download = "https://auroradsp.com/download-files"
 
 [[product]]
 name = "Mammoth"
-page = "https://aurora-b10f0-default-rtdb.europe-west1.firebasedatabase.app/News.json"
-strategy = "json"
-json_path = "Mammoth.pluginVersion"
+page = "https://auroradsp.com/download-files"
+version_regex = '([0-9]+\.[0-9]+(?:\.[0-9]+)?)[\s\S]{0,300}?Mammoth\.pkg'
 download = "https://auroradsp.com/download-files"
 
 [[product]]
 name = "Mr Hector"
-page = "https://aurora-b10f0-default-rtdb.europe-west1.firebasedatabase.app/News.json"
-strategy = "json"
-json_path = "Mr Hector.pluginVersion"
+page = "https://auroradsp.com/download-files"
+version_regex = '([0-9]+\.[0-9]+(?:\.[0-9]+)?)[\s\S]{0,300}?MrHector\.pkg'
 download = "https://auroradsp.com/download-files"
 
 [[product]]
 name = "Rhino"
-page = "https://aurora-b10f0-default-rtdb.europe-west1.firebasedatabase.app/News.json"
-strategy = "json"
-json_path = "Rhino.pluginVersion"
+page = "https://auroradsp.com/download-files"
+version_regex = '([0-9]+\.[0-9]+(?:\.[0-9]+)?)[\s\S]{0,300}?Rhino_1\.7\.pkg'
 download = "https://auroradsp.com/download-files"
 
 [[product]]
 name = "RottenPoolVerb"
-page = "https://aurora-b10f0-default-rtdb.europe-west1.firebasedatabase.app/News.json"
-strategy = "json"
-json_path = "RottenPoolVerb.pluginVersion"
+page = "https://auroradsp.com/download-files"
+version_regex = '([0-9]+\.[0-9]+(?:\.[0-9]+)?)[\s\S]{0,300}?RottenPoolVerb\.pkg'
 download = "https://auroradsp.com/download-files"
