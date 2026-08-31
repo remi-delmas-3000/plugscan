@@ -1,9 +1,11 @@
 name: resolver-exercise
 
 # Nightly: run every resolver against the live web so extraction rot surfaces
-# within a day. A failing extraction (site redesign, dead page, moved version
-# string) fails the job and opens/updates a tracking issue. This is the cheap
-# substitute for MacUpdater's 24/7 verification servers.
+# within a day. Failures are classified: a "structural" failure (regex/json
+# no longer matches — real rot from a site redesign) fails the job and opens a
+# tracking issue; a "network" failure (timeout, transient 5xx) is retried in
+# the binary and, if still failing, only logged — it never opens an issue.
+# This keeps the signal clean: alerts mean rot, not a flaky night.
 on:
   schedule:
     - cron: "17 6 * * *"
@@ -19,18 +21,21 @@ jobs:
       - name: Build
         run: cargo build --release
       - name: Exercise all resolvers
-        id: exercise
         run: |
           ./target/release/plugscan --resolvers ./resolvers resolver test --json > result.json || true
           python3 - <<'PY'
-          import json
+          import json, sys
           rows = json.load(open("result.json"))
-          fails = [r for r in rows if not r["ok"]]
-          print(f"{len(rows)-len(fails)}/{len(rows)} resolver entries OK, {len(fails)} failed")
-          if fails:
-              lines = "\n".join(f"- **{r['vendor']} {r['bundle']}**: {r['error']}" for r in fails[:100])
-              open("report.md","w").write(f"## Resolver rot report\n\n{len(fails)} entries failed:\n\n{lines}\n")
-          import sys; sys.exit(1 if fails else 0)
+          rot = [r for r in rows if r.get("error_kind") == "structural"]
+          net = [r for r in rows if r.get("error_kind") == "network"]
+          ok = len(rows) - len(rot) - len(net)
+          print(f"{ok}/{len(rows)} ok, {len(rot)} structural rot, {len(net)} transient network")
+          if rot:
+              lines = "\n".join(f"- **{r['vendor']} {r['bundle']}**: {r['error']}" for r in rot[:100])
+              open("report.md","w").write(
+                  f"## Resolver rot detected\n\n{len(rot)} resolvers no longer extract a version "
+                  f"(site redesign / moved version string). Transient network failures are excluded.\n\n{lines}\n")
+          sys.exit(1 if rot else 0)
           PY
       - name: Open or update rot-tracking issue
         if: failure()

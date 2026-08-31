@@ -124,12 +124,71 @@ fn compile(re: &Option<String>, ctx: &str) -> Result<Option<Regex>, String> {
     }
 }
 
-/// Extract the latest version for one bundle. Err carries a reason for
-/// `resolver debug` and the check summary.
-pub fn resolve_version(f: &mut Fetcher, pr: &BundleResolver) -> Result<String, String> {
+/// Classify why a resolve failed. Network errors are transient and worth a
+/// retry (and must not fail CI); structural errors are real resolver rot.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum ErrorKind {
+    /// The fetch itself failed: DNS, TLS, timeout, connection reset.
+    Network,
+    /// The page loaded but extraction failed: regex/json_path did not match,
+    /// bad config, prerelease-only. This is what "resolver rot" looks like.
+    Structural,
+}
+
+#[derive(Debug, Clone)]
+pub struct CheckError {
+    pub kind: ErrorKind,
+    pub message: String,
+}
+impl CheckError {
+    fn net(m: impl Into<String>) -> Self {
+        CheckError {
+            kind: ErrorKind::Network,
+            message: m.into(),
+        }
+    }
+    fn structural(m: impl Into<String>) -> Self {
+        CheckError {
+            kind: ErrorKind::Structural,
+            message: m.into(),
+        }
+    }
+}
+impl std::fmt::Display for CheckError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.message)
+    }
+}
+
+/// What a strategy needs fetched, separated from extraction so the extraction
+/// logic is testable offline against fixtures.
+enum FetchPlan {
+    Page(String),
+    Headers(String),
+}
+
+fn fetch_plan(pr: &BundleResolver) -> FetchPlan {
+    match pr.strategy.as_deref().unwrap_or("page_regex") {
+        "header" => FetchPlan::Headers(pr.page.clone()),
+        "github_release" => {
+            let repo = pr
+                .page
+                .trim_start_matches("https://github.com/")
+                .trim_end_matches('/');
+            FetchPlan::Page(format!(
+                "https://api.github.com/repos/{repo}/releases/latest"
+            ))
+        }
+        _ => FetchPlan::Page(pr.page.clone()),
+    }
+}
+
+/// Pure extraction: given the already-fetched text, apply the strategy. No
+/// network, no I/O — this is the unit-tested core.
+pub fn extract_version(pr: &BundleResolver, text: &str) -> Result<String, CheckError> {
     let exclude = Regex::new(pr.exclude_regex.as_deref().unwrap_or(DEFAULT_EXCLUDE))
-        .map_err(|e| format!("bad exclude_regex: {e}"))?;
-    let refine = compile(&pr.version_regex, "version_regex")?;
+        .map_err(|e| CheckError::structural(format!("bad exclude_regex: {e}")))?;
+    let refine = compile(&pr.version_regex, "version_regex").map_err(CheckError::structural)?;
     let strategy = pr.strategy.as_deref().unwrap_or("page_regex");
 
     let refine_or_pass = |s: &str| -> Option<String> {
@@ -144,47 +203,46 @@ pub fn resolve_version(f: &mut Fetcher, pr: &BundleResolver) -> Result<String, S
 
     let version = match strategy {
         "page_regex" => {
-            let re = refine.as_ref().ok_or("page_regex requires version_regex")?;
-            let body = f.page(&pr.page).ok_or("fetch failed")?;
-            re.captures_iter(&body)
+            let re = refine
+                .as_ref()
+                .ok_or_else(|| CheckError::structural("page_regex requires version_regex"))?;
+            re.captures_iter(text)
                 .filter_map(|c| c.get(1))
                 .map(|m| m.as_str().to_string())
                 .find(|v| !exclude.is_match(v))
-                .ok_or("no non-prerelease match on page")?
+                .ok_or_else(|| CheckError::structural("no non-prerelease match on page"))?
         }
         "json" => {
-            let body = f.page(&pr.page).ok_or("fetch failed")?;
-            let doc: serde_json::Value =
-                serde_json::from_str(&body).map_err(|e| format!("invalid JSON: {e}"))?;
-            let path = pr.json_path.as_deref().ok_or("json requires json_path")?;
-            let v = json_at(&doc, path).ok_or("json_path not found")?;
+            let doc: serde_json::Value = serde_json::from_str(text)
+                .map_err(|e| CheckError::structural(format!("invalid JSON: {e}")))?;
+            let path = pr
+                .json_path
+                .as_deref()
+                .ok_or_else(|| CheckError::structural("json requires json_path"))?;
+            let v =
+                json_at(&doc, path).ok_or_else(|| CheckError::structural("json_path not found"))?;
             let raw = match v {
                 serde_json::Value::String(s) => s.clone(),
                 other => other.to_string(),
             };
-            refine_or_pass(&raw).ok_or("version_regex did not match json value")?
+            refine_or_pass(&raw)
+                .ok_or_else(|| CheckError::structural("version_regex did not match json value"))?
         }
         "github_release" => {
-            let repo = pr
-                .page
-                .trim_start_matches("https://github.com/")
-                .trim_end_matches('/');
-            let api = format!("https://api.github.com/repos/{repo}/releases/latest");
-            let body = f.page(&api).ok_or("github api fetch failed")?;
-            let doc: serde_json::Value =
-                serde_json::from_str(&body).map_err(|e| format!("invalid JSON: {e}"))?;
+            let doc: serde_json::Value = serde_json::from_str(text)
+                .map_err(|e| CheckError::structural(format!("invalid JSON: {e}")))?;
             if doc.get("prerelease").and_then(|v| v.as_bool()) == Some(true) {
-                return Err("latest release is a prerelease".into());
+                return Err(CheckError::structural("latest release is a prerelease"));
             }
             let tag = doc
                 .get("tag_name")
                 .and_then(|v| v.as_str())
-                .ok_or("no tag_name")?;
+                .ok_or_else(|| CheckError::structural("no tag_name"))?;
             let stripped = tag.trim_start_matches(['v', 'V']).to_string();
-            refine_or_pass(&stripped).ok_or("version_regex did not match tag")?
+            refine_or_pass(&stripped)
+                .ok_or_else(|| CheckError::structural("version_regex did not match tag"))?
         }
         "sparkle" => {
-            let body = f.page(&pr.page).ok_or("appcast fetch failed")?;
             let candidates = [
                 r#"sparkle:shortVersionString="([^"]+)""#,
                 r"<sparkle:shortVersionString>([^<]+)<",
@@ -195,7 +253,7 @@ pub fn resolve_version(f: &mut Fetcher, pr: &BundleResolver) -> Result<String, S
             for pat in candidates {
                 let re = Regex::new(pat).unwrap();
                 let hit: Option<String> = re
-                    .captures_iter(&body)
+                    .captures_iter(text)
                     .filter_map(|c| c.get(1))
                     .map(|m| m.as_str().to_string())
                     .find(|v| !exclude.is_match(v));
@@ -204,27 +262,48 @@ pub fn resolve_version(f: &mut Fetcher, pr: &BundleResolver) -> Result<String, S
                     break;
                 }
             }
-            found.ok_or("no version in appcast")?
+            found.ok_or_else(|| CheckError::structural("no version in appcast"))?
         }
         "header" => {
-            let re = refine.as_ref().ok_or("header requires version_regex")?;
-            let joined = f.headers(&pr.page).ok_or("request failed")?;
-            re.captures(&joined)
+            let re = refine
+                .as_ref()
+                .ok_or_else(|| CheckError::structural("header requires version_regex"))?;
+            re.captures(text)
                 .and_then(|c| c.get(1))
                 .map(|m| m.as_str().to_string())
-                .ok_or("version not in redirect headers")?
+                .ok_or_else(|| CheckError::structural("version not in redirect headers"))?
         }
-        other => return Err(format!("unknown strategy: {other}")),
+        other => return Err(CheckError::structural(format!("unknown strategy: {other}"))),
     };
 
     let version = sanitize_line(&version);
     if exclude.is_match(&version) {
-        return Err(format!("matched prerelease: {version}"));
+        return Err(CheckError::structural(format!(
+            "matched prerelease: {version}"
+        )));
     }
     if version.is_empty() {
-        return Err("empty version".into());
+        return Err(CheckError::structural("empty version"));
     }
     Ok(version)
+}
+
+/// Fetch (network) then extract (pure). Fetch failures are Network errors.
+pub fn resolve_version_kind(f: &mut Fetcher, pr: &BundleResolver) -> Result<String, CheckError> {
+    let text = match fetch_plan(pr) {
+        FetchPlan::Page(url) => f
+            .page(&url)
+            .ok_or_else(|| CheckError::net("fetch failed"))?,
+        FetchPlan::Headers(url) => f
+            .headers(&url)
+            .ok_or_else(|| CheckError::net("request failed"))?,
+    };
+    extract_version(pr, &text)
+}
+
+/// String-only wrapper kept for the debug/new tools.
+pub fn resolve_version(f: &mut Fetcher, pr: &BundleResolver) -> Result<String, String> {
+    resolve_version_kind(f, pr).map_err(|e| e.message)
 }
 
 fn action_url(pr: &BundleResolver, version: &str) -> String {
@@ -283,7 +362,7 @@ pub struct Outcome {
     pub name: String,
     pub via: Option<String>,
     pub bundle_id: Option<i64>,
-    pub result: Result<String, String>,
+    pub result: Result<String, CheckError>,
 }
 
 use rayon::prelude::*;
@@ -314,12 +393,25 @@ fn run_concurrent(items: Vec<Work>) -> Vec<Outcome> {
                 };
                 let mut out = Vec::with_capacity(work.len());
                 for w in work.iter() {
+                    // Retry network failures (transient); structural failures
+                    // (real rot) fail immediately — retrying a broken regex is
+                    // pointless and only delays the run.
+                    let mut result = resolve_version_kind(&mut f, w.pr);
+                    let mut tries = 0;
+                    while let Err(e) = &result {
+                        if e.kind != ErrorKind::Network || tries >= 2 {
+                            break;
+                        }
+                        tries += 1;
+                        std::thread::sleep(std::time::Duration::from_millis(500 * tries));
+                        result = resolve_version_kind(&mut f, w.pr);
+                    }
                     out.push(Outcome {
                         vendor: w.vendor.to_string(),
                         name: w.name.to_string(),
                         via: w.via.map(str::to_string),
                         bundle_id: w.bundle_id,
-                        result: resolve_version(&mut f, w.pr),
+                        result,
                     });
                 }
                 out
@@ -443,7 +535,7 @@ pub fn run(
                 Some(via) => println!("  {} {} → latest {v} [via {via}]", o.vendor, o.name),
                 None => println!("  {} {} → latest {v}", o.vendor, o.name),
             },
-            Err(reason) => eprintln!("warning: {} {}: {reason}", o.vendor, o.name),
+            Err(e) => eprintln!("warning: {} {}: {}", o.vendor, o.name, e.message),
         }
     }
     println!(
@@ -480,7 +572,11 @@ fn emit_json(outcomes: &[Outcome]) {
                 "via": o.via,
                 "ok": o.result.is_ok(),
                 "version": o.result.as_ref().ok(),
-                "error": o.result.as_ref().err(),
+                "error": o.result.as_ref().err().map(|e| e.message.clone()),
+                "error_kind": o.result.as_ref().err().map(|e| match e.kind {
+                    ErrorKind::Network => "network",
+                    ErrorKind::Structural => "structural",
+                }),
             })
         })
         .collect();
@@ -515,26 +611,43 @@ pub fn test_all(json: bool, vendor_filter: Option<&str>) -> u32 {
     }
     let total = items.len();
     let outcomes = run_concurrent(items);
-    let failed: Vec<&Outcome> = outcomes.iter().filter(|o| o.result.is_err()).collect();
+    let structural: Vec<&Outcome> = outcomes
+        .iter()
+        .filter(|o| matches!(&o.result, Err(e) if e.kind == ErrorKind::Structural))
+        .collect();
+    let network: Vec<&Outcome> = outcomes
+        .iter()
+        .filter(|o| matches!(&o.result, Err(e) if e.kind == ErrorKind::Network))
+        .collect();
 
     if json {
         emit_json(&outcomes);
     } else {
-        for o in &failed {
+        for o in &structural {
             println!(
-                "FAIL  {} {}: {}",
+                "ROT   {} {}: {}",
+                o.vendor,
+                o.name,
+                o.result.as_ref().err().unwrap()
+            );
+        }
+        for o in &network {
+            println!(
+                "net?  {} {}: {} (transient, not a failure)",
                 o.vendor,
                 o.name,
                 o.result.as_ref().err().unwrap()
             );
         }
         println!(
-            "\nExercised {total} resolver entries: {} ok, {} FAILED",
-            total - failed.len(),
-            failed.len()
+            "\nExercised {total} resolver entries: {} ok, {} rot, {} transient network",
+            total - structural.len() - network.len(),
+            structural.len(),
+            network.len()
         );
     }
-    failed.len() as u32
+    // Only structural failures (real rot) fail CI; network blips do not.
+    structural.len() as u32
 }
 
 /// `resolver debug <vendor>`: run the vendor's resolver verbosely — the
@@ -668,4 +781,222 @@ pub fn new_vendor(vendor: &str, url: &str) {
     );
     println!("# anchor a regex on nearby bundle text, first match must be latest:");
     println!("[[bundle]]\nname = \"PRODUCT\"\npage = \"{url}\"\nversion_regex = 'PRODUCT[^0-9]*([0-9]+\\.[0-9.]+)'");
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::resolver::BundleResolver;
+
+    fn r(strategy: Option<&str>, regex: Option<&str>, json_path: Option<&str>) -> BundleResolver {
+        BundleResolver {
+            name: "X".into(),
+            page: "https://example.com".into(),
+            strategy: strategy.map(str::to_string),
+            version_regex: regex.map(str::to_string),
+            json_path: json_path.map(str::to_string),
+            exclude_regex: None,
+            via: None,
+            download: None,
+            changelog: None,
+        }
+    }
+
+    // --- page_regex ---
+    #[test]
+    fn page_regex_first_match_is_latest() {
+        // vendor changelog lists newest first
+        let body = "<h2>Pro-Q 4.13</h2> ... <h2>Pro-Q 4.10</h2>";
+        let pr = r(None, Some(r"Pro-Q ([0-9]+\.[0-9]+)"), None);
+        assert_eq!(extract_version(&pr, body).unwrap(), "4.13");
+    }
+
+    #[test]
+    fn page_regex_skips_prerelease_to_stable() {
+        let body = "Latest: 2.0.0-beta then stable 1.9.5";
+        let pr = r(None, Some(r"([0-9]+\.[0-9]+\.[0-9]+(?:-beta)?)"), None);
+        // default exclude drops the beta, takes the next
+        assert_eq!(extract_version(&pr, body).unwrap(), "1.9.5");
+    }
+
+    #[test]
+    fn page_regex_ignores_theme_asset_when_anchored() {
+        // the real Eventide/McDSP trap: ?ver= asset tokens must not win
+        let body = "styles.css?ver=6.12.0 ... Blackhole Installer (Mac 64-bit) Version 3.11.4";
+        let pr = r(
+            None,
+            Some(r"Mac[^)]*\)[^0-9]*Version ([0-9]+\.[0-9.]+)"),
+            None,
+        );
+        assert_eq!(extract_version(&pr, body).unwrap(), "3.11.4");
+    }
+
+    #[test]
+    fn page_regex_no_match_is_structural() {
+        let pr = r(None, Some(r"Version ([0-9.]+)"), None);
+        let e = extract_version(&pr, "no versions here").unwrap_err();
+        assert_eq!(e.kind, ErrorKind::Structural);
+    }
+
+    #[test]
+    fn page_regex_missing_regex_is_structural() {
+        let pr = r(None, None, None);
+        assert_eq!(
+            extract_version(&pr, "x").unwrap_err().kind,
+            ErrorKind::Structural
+        );
+    }
+
+    // --- json ---
+    #[test]
+    fn json_dotpath_and_array_index() {
+        let body = r#"{"results":[{"version":"1.7.13"},{"version":"1.0.0"}]}"#;
+        let pr = r(Some("json"), None, Some("results.0.version"));
+        assert_eq!(extract_version(&pr, body).unwrap(), "1.7.13");
+    }
+
+    #[test]
+    fn json_numeric_value_stringifies() {
+        let body = r#"{"v": 26}"#;
+        let pr = r(Some("json"), None, Some("v"));
+        assert_eq!(extract_version(&pr, body).unwrap(), "26");
+    }
+
+    #[test]
+    fn json_path_missing_is_structural() {
+        let pr = r(Some("json"), None, Some("nope.here"));
+        assert_eq!(
+            extract_version(&pr, "{}").unwrap_err().kind,
+            ErrorKind::Structural
+        );
+    }
+
+    #[test]
+    fn json_invalid_is_structural() {
+        let pr = r(Some("json"), None, Some("v"));
+        assert_eq!(
+            extract_version(&pr, "<html>").unwrap_err().kind,
+            ErrorKind::Structural
+        );
+    }
+
+    #[test]
+    fn json_refine_regex_on_value() {
+        let body = r#"{"tag":"release-3.4.6-final"}"#;
+        let pr = r(Some("json"), Some(r"([0-9]+\.[0-9]+\.[0-9]+)"), Some("tag"));
+        assert_eq!(extract_version(&pr, body).unwrap(), "3.4.6");
+    }
+
+    // --- github_release ---
+    #[test]
+    fn github_strips_v_prefix() {
+        let body = r#"{"tag_name":"v1.0.3","prerelease":false}"#;
+        let pr = r(Some("github_release"), None, None);
+        assert_eq!(extract_version(&pr, body).unwrap(), "1.0.3");
+    }
+
+    #[test]
+    fn github_rejects_prerelease() {
+        let body = r#"{"tag_name":"v2.0.0","prerelease":true}"#;
+        let pr = r(Some("github_release"), None, None);
+        assert_eq!(
+            extract_version(&pr, body).unwrap_err().kind,
+            ErrorKind::Structural
+        );
+    }
+
+    // --- sparkle ---
+    #[test]
+    fn sparkle_short_version_attr() {
+        let body = r#"<item><enclosure sparkle:shortVersionString="2.3.1" sparkle:version="2301"/></item>"#;
+        let pr = r(Some("sparkle"), None, None);
+        assert_eq!(extract_version(&pr, body).unwrap(), "2.3.1");
+    }
+
+    #[test]
+    fn sparkle_element_form() {
+        let body = "<sparkle:shortVersionString>1.4.9</sparkle:shortVersionString>";
+        let pr = r(Some("sparkle"), None, None);
+        assert_eq!(extract_version(&pr, body).unwrap(), "1.4.9");
+    }
+
+    // --- header ---
+    #[test]
+    fn header_extracts_from_redirect() {
+        let joined =
+            "https://cdn.example.com/Thing_v1.2.3_mac.dmg\nattachment; filename=Thing_v1.2.3.dmg\n";
+        let pr = r(Some("header"), Some(r"_v([0-9]+\.[0-9]+\.[0-9]+)_"), None);
+        assert_eq!(extract_version(&pr, joined).unwrap(), "1.2.3");
+    }
+
+    // --- misc ---
+    #[test]
+    fn unknown_strategy_is_structural() {
+        let pr = r(Some("telepathy"), None, None);
+        assert_eq!(
+            extract_version(&pr, "x").unwrap_err().kind,
+            ErrorKind::Structural
+        );
+    }
+
+    #[test]
+    fn control_chars_stripped_from_version() {
+        let pr = r(None, Some(r"v(.+)"), None);
+        // a version capture with an embedded escape is sanitized
+        let got = extract_version(&pr, "v1.2\x1b[31m.3").unwrap();
+        assert!(!got.contains('\x1b'));
+    }
+
+    use proptest::prelude::*;
+
+    proptest! {
+        // The extraction engine must NEVER panic, whatever a live page throws
+        // at it: arbitrary bytes, every strategy, arbitrary user regex. It may
+        // only ever return Ok or Err.
+        #[test]
+        fn extract_never_panics(
+            text in ".{0,600}",
+            strat in prop::option::of(prop::sample::select(vec![
+                "page_regex", "json", "github_release", "sparkle", "header", "bogus",
+            ])),
+            rx in prop::option::of("[A-Za-z0-9().*+?\\ -]{0,20}"),
+            jp in prop::option::of("[a-z0-9.]{0,20}"),
+        ) {
+            let pr = r(strat, rx.as_deref(), jp.as_deref());
+            let _ = extract_version(&pr, &text);
+        }
+
+        // A user-supplied version_regex that fails to compile is a structural
+        // error, never a panic.
+        #[test]
+        fn bad_user_regex_is_structural_not_panic(rx in ".{0,30}") {
+            let pr = r(None, Some(&rx), None);
+            if let Err(e) = extract_version(&pr, "some 1.2.3 text") {
+                // compile failures and no-match are both structural
+                prop_assert_eq!(e.kind, ErrorKind::Structural);
+            }
+        }
+
+        // Any successfully extracted version is free of control characters
+        // (the terminal-injection guard holds for all inputs).
+        #[test]
+        fn extracted_version_has_no_control_chars(
+            text in ".{0,400}",
+            rx in "[A-Za-z0-9().*+? -]{1,20}",
+        ) {
+            let pr = r(None, Some(&rx), None);
+            if let Ok(v) = extract_version(&pr, &text) {
+                prop_assert!(!v.chars().any(|c| c.is_control()));
+            }
+        }
+
+        // JSON strategy on arbitrary text never panics and only errs structurally.
+        #[test]
+        fn json_strategy_robust(text in ".{0,400}", path in "[a-z0-9.]{0,20}") {
+            let pr = r(Some("json"), None, Some(&path));
+            if let Err(e) = extract_version(&pr, &text) {
+                prop_assert_eq!(e.kind, ErrorKind::Structural);
+            }
+        }
+    }
 }
