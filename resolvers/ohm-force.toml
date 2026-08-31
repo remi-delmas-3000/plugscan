@@ -1,11 +1,30 @@
-# Ohm Force's site publishes no plugin version numbers on public pages;
-# installers come from the account downloads.
-# Wave-2 re-check 2026-08-30: the OhmBoyz Infinity binary references only the
-# ohmforce.com HomePage.do (legacy Java site) — no update-check endpoint.
+# Correction 2026-08-31: the earlier skip ("no update-check endpoint") was
+# wrong. Each plugin binary embeds a public S3 version file used by its
+# update check, e.g.
+#   https://s3.amazonaws.com/static.ohmforce.com/plugins/Frohmager/FrohmagerVersion.txt
+# The files are plain text containing just the dotted version. Verified live:
+# Frohmager 1.1.1, OhmBoyz Infinity 1.1.3, Ohmicide[S] 1.0.1 (all >= installed).
 vendor = "Ohm Force"
 homepage = "https://www.ohmforce.com"
-skip = "No public version source: the legacy ohmforce.com site publishes no plugin versions and the plugins have no update-check endpoint"
 
 [manual]
 login = "https://www.ohmforce.com/Account.do"
 steps = "Log in at ohmforce.com; the account download area lists the latest installers for OhmBoyz Infinity, Frohmager and Ohmicide."
+
+[[product]]
+name = "Frohmager"
+page = "https://s3.amazonaws.com/static.ohmforce.com/plugins/Frohmager/FrohmagerVersion.txt"
+version_regex = '([0-9]+\.[0-9.]+)'
+download = "https://www.ohmforce.com"
+
+[[product]]
+name = "OhmBoyz Infinity"
+page = "https://s3.amazonaws.com/static.ohmforce.com/plugins/OhmboyzInfinity/OhmboyzInfinityVersion.txt"
+version_regex = '([0-9]+\.[0-9.]+)'
+download = "https://www.ohmforce.com/ohmboyz-infinity"
+
+[[product]]
+name = "Ohmicide[S]"
+page = "https://s3.amazonaws.com/static.ohmforce.com/plugins/Ohmicide%5BS%5D/Ohmicide%5BS%5DVersion.txt"
+version_regex = '([0-9]+\.[0-9.]+)'
+download = "https://www.ohmforce.com"

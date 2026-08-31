@@ -4,7 +4,7 @@
 # The public downloads-and-manuals page only links manuals, not installer versions.
 vendor = "Synchro Arts"
 homepage = "https://www.synchroarts.com"
-skip = "no public version source: app.synchroarts.com is an authenticated LANDR-platform SPA and the public site only hosts manuals (verified 2026-08)"
+skip = "no public version source: app.synchroarts.com is an authenticated LANDR-platform SPA and the public site only hosts manuals (verified 2026-08); re-verified 2026-08-31: the public Zendesk KB API (synchroarts.zendesk.com/api/v2/help_center) is reachable but its articles carry no per-release version numbers, and synchroarts.com/downloads serves only asset-versioned JS"
 
 [manual]
 login = "https://app.synchroarts.com/my-plugins"

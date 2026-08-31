@@ -5,7 +5,7 @@
 vendor = "Output"
 homepage = "https://output.com"
 download_via = "Output Hub — Output's desktop manager app (get it from output.com after logging in); it shows and installs the latest versions of Movement, Portal and Thermal"
-skip = "No public version endpoint: output.com is JS-rendered with no version strings, and the Output Hub API requires an authenticated login session"
+skip = "No public version endpoint: output.com is JS-rendered with no version strings, and the Output Hub API requires an authenticated login session; re-verified 2026-08-31: the Movement binary points at api.output.com/graphql which returns generic_auth_401 to unauthenticated queries - no public version endpoint"
 
 [manual]
 login = "https://output.com/login"

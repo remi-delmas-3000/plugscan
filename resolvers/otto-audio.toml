@@ -1,9 +1,40 @@
-# Otto Audio (ottoaudio.net, Shopify) publishes no version numbers on its store
-# pages. Re-checked 2026-08 via /products.json: none of the 37 products carry
-# version strings in body_html.
+# Re-tested 2026-08-31: the earlier "no version strings in body_html" claim is
+# wrong. /products.json body_html DOES carry versions: "Current Plugin version
+# number is 1.7.0" (lead-bass-vsti, djaa-maasta-ulltraa,
+# djazz-masta-30-virtual-instrument -> 1.9.9) and "Current version is 1.7.7"
+# (ii-ii-ii-ii-amp-sim). Verified live 2026-08-31 against installed
+# LEAD 1.7.0, DJAA MAASTA UllTRAA 1.7.0, II II II II 1.7.7. Per-product
+# /products/<handle>.js JSON endpoints serve the same body_html.
 vendor = "Otto Audio"
 homepage = "https://ottoaudio.net"
-skip = "no public version info: Shopify products.json and store pages carry no version strings (verified 2026-08)"
 
 [manual]
 steps = "Downloads are delivered via the order email / Shopify account at ottoaudio.net; re-download links there carry the current installer for II II II II, LEAD and DJAA MAASTA."
+
+[[product]]
+name = "DJAA MAASTA"
+page = "https://ottoaudio.net/products/djazz-masta-30-virtual-instrument.js"
+strategy = "page_regex"
+version_regex = 'Current Plugin version number is ([0-9]+\.[0-9.]+)'
+download = "https://ottoaudio.net/products/djazz-masta-30-virtual-instrument"
+
+[[product]]
+name = "DJAA MAASTA UllTRAA"
+page = "https://ottoaudio.net/products/djaa-maasta-ulltraa.js"
+strategy = "page_regex"
+version_regex = 'Current Plugin version number is ([0-9]+\.[0-9.]+)'
+download = "https://ottoaudio.net/products/djaa-maasta-ulltraa"
+
+[[product]]
+name = "II II II II"
+page = "https://ottoaudio.net/products/ii-ii-ii-ii-amp-sim.js"
+strategy = "page_regex"
+version_regex = 'Current (?:[Pp]lugin )?version(?: number)? is ([0-9]+\.[0-9.]+)'
+download = "https://ottoaudio.net/products/ii-ii-ii-ii-amp-sim"
+
+[[product]]
+name = "LEAD"
+page = "https://ottoaudio.net/products/lead-bass-vsti.js"
+strategy = "page_regex"
+version_regex = 'Current Plugin version number is ([0-9]+\.[0-9.]+)'
+download = "https://ottoaudio.net/products/lead-bass-vsti"

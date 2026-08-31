@@ -1,10 +1,18 @@
-# Fiedler-audio (fiedler-audio.com, Dolby Atmos tools; "fiedler audio splat").
-# WordPress/Elementor site: the splat page and /downloads/ carry no plugin version
-# strings (verified live; the only x.y.z values are WP/JS asset versions) and
-# purchases/trials run through FastSpring. Manual-only.
+# Correction 2026-08-31: the earlier skip only checked fiedler-audio.com.
+# splat is also distributed by Plugin Alliance (the plugin binary embeds
+# plugin-alliance.com URLs), and the new Shopify-based plugin-alliance.com
+# product page serves installer versions server-side: "Installer v1.0.0
+# (Mac, ...)". Verified live against installed 1.0.0. The "Installation
+# Manager v..." links on the same page never match ("Installation Manager v"
+# != "Installer v").
 vendor = "Fiedler-audio"
 homepage = "https://fiedler-audio.com"
-skip = "fiedler-audio.com publishes no version strings on the splat page or /downloads/ (verified; only WP asset versions)"
 
 [manual]
-steps = "Open fiedler-audio.com/splat/ and fiedler-audio.com/downloads/ for the latest splat installer/trial; the installed version is shown in the plugin UI. Updates are announced via the Fiedler Audio newsletter."
+steps = "Download the splat installer from the plugin-alliance.com splat product page (Downloads tab) or fiedler-audio.com/downloads/; activation via Plugin Alliance."
+
+[[product]]
+name = "fiedler audio splat"
+page = "https://www.plugin-alliance.com/products/splat"
+version_regex = 'Installer v([0-9]+\.[0-9.]+) \(Mac'
+download = "https://www.plugin-alliance.com/products/splat"

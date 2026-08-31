@@ -1,12 +1,57 @@
-# Cableguys does not publish plugin versions publicly. Re-checked 2026-08: the update
-# checker endpoint (cableguys.com/update?product=...) now serves a static page that
-# answers "we couldn't find any information for this product" for guessable codes -
-# real product codes / version info are only available to the logged-in updater.
-# Product pages carry no version text; KVR is Cloudflare-blocked for curl.
+# Third-party source: KVR Audio product-database pages (developer-maintained,
+# may lag releases). The earlier "KVR is Cloudflare-blocked for curl" claim
+# only holds for HTTP/2 clients: KVR serves HTTP/1.1 + browser UA requests
+# (plugscan's ureq client qualifies; verified live 2026-08-31).
+# Single-product pages; id="verosx" is the Mac "Product Version" field.
+# Verified 2026-08-31, all exact matches to installed: ShaperBox 3.6.3,
+# HalfTime 1.1.12, Kickstart 2.0.9, MidiShaper 1.6.3, Curve 2.6.3,
+# FilterShaper XL 1.0.6, Snapback 1.1.2.
+# "Curve" KVR page tracks Curve 2; "Nicky Romero Kickstart" tracks Kickstart 2.
 vendor = "Cableguys"
 homepage = "https://www.cableguys.com"
-skip = "no public version source: update endpoint rejects unauthenticated/unknown product codes and product pages carry no version text (verified 2026-08)"
 
 [manual]
 login = "https://www.cableguys.com/login"
 steps = "Log in at cableguys.com, then your account download area shows the latest ShaperBox/HalfTime/Kickstart/MidiShaper/Curve/FilterShaper/Snapback installers with version numbers; plugins also self-report updates in their UI."
+
+[[product]]
+name = "Curve 2"
+page = "https://www.kvraudio.com/product/curve-by-cableguys"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "FilterShaper XL"
+page = "https://www.kvraudio.com/product/filtershaper-xl-by-cableguys"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "HalfTime"
+page = "https://www.kvraudio.com/product/halftime-by-cableguys"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "Kickstart 2"
+page = "https://www.kvraudio.com/product/nicky-romero-kickstart-by-cableguys"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "MidiShaper"
+page = "https://www.kvraudio.com/product/midishaper-by-cableguys"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "ShaperBox 3"
+page = "https://www.kvraudio.com/product/shaperbox-by-cableguys"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "Snapback"
+page = "https://www.kvraudio.com/product/snapback-by-cableguys"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"

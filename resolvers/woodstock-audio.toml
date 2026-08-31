@@ -5,7 +5,7 @@
 # carries no version strings; the Open Compressor binary has no update endpoint.
 vendor = "Woodstock Audio"
 homepage = "https://woodstockaudio.com"
-skip = "No version numbers anywhere: Shopify store pages and /products.json carry none, and the plugins have no update-check endpoint"
+skip = "No version numbers anywhere: Shopify store pages and /products.json carry none, and the plugins have no update-check endpoint; re-verified 2026-08-31: /products/compressor product page recrawled - only theme/library version tokens, no plugin version"
 
 [manual]
 login = "https://woodstockaudio.com/account/login"

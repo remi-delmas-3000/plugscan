@@ -4,7 +4,7 @@
 # served page at all, so there is nothing to regex.
 vendor = "Modalics"
 homepage = "https://www.modalics.com"
-skip = "no version data in served HTML: the Wix ChangeBlog page is fully JS-rendered and its warmup data contains no changelog entries (verified 2026-08)"
+skip = "no version data in served HTML: the Wix ChangeBlog page is fully JS-rendered and its warmup data contains no changelog entries (verified 2026-08); re-verified 2026-08-31: the Wix blog RSS (modalics.com/blog-feed.xml) IS fetchable but stale - newest Beat Scholar changelog post says 1.4.8 while 1.5.0 is installed, and BitFuzzer/Plugin Buddy have no changelog posts"
 
 [manual]
 steps = "Check modalics.com/beatscholarversions in a browser for the Beat Scholar changelog; installers via the account/order emails."

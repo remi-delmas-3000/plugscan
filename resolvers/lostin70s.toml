@@ -1,10 +1,50 @@
-# Lostin70s (lostin70s.com) is a JS-rendered Angular SPA - the HTML shell contains no
-# product data - and the TLS certificate chain fails strict verification (curl fails
-# without -k; re-verified 2026-08), so the resolver engine cannot fetch it at all.
-# Free plugins; versions only visible in the rendered site.
+# Correction 2026-08-31: both halves of the earlier skip are now wrong.
+# The TLS chain verifies cleanly again (plain curl succeeds), and although the
+# site is an Angular SPA, its backing API is public JSON:
+#   https://www.lostin70s.com/api/products          (all products, "version" field)
+#   https://www.lostin70s.com/api/products/<ID>     (single product)
+# Verified live: BassDeluxe 1.3.0, DevilSpring 1.2.0, HaNonB70 1.5.3,
+# KeysOfThe70s 2.2.2, ModernDeluxe 2.3.1 (all == installed).
+# LivePedalboard1 and ToneDeluxeV2 are no longer in the vendor catalog
+# (discontinued/replaced - not present in /api/products), so they have no
+# resolver entries.
 vendor = "Lostin70s"
 homepage = "https://www.lostin70s.com"
-skip = "TLS certificate chain fails strict verification and the site is a JS-rendered Angular SPA with no product data in static HTML (verified 2026-08)"
 
 [manual]
-steps = "Open lostin70s.com in a browser (site is JS-rendered); each plugin page shows the current version next to its free download links. All plugins are free - re-download to update."
+steps = "All plugins are free - re-download the latest installer from lostin70s.com (product pages show the current version)."
+
+[[product]]
+name = "BassDeluxe1"
+page = "https://www.lostin70s.com/api/products/BassDeluxe"
+strategy = "json"
+json_path = "version"
+download = "https://www.lostin70s.com/products/BassDeluxe"
+
+[[product]]
+name = "DevilSpring1"
+page = "https://www.lostin70s.com/api/products/DevilSpring"
+strategy = "json"
+json_path = "version"
+download = "https://www.lostin70s.com/products/DevilSpring"
+
+[[product]]
+name = "HaNonB701"
+page = "https://www.lostin70s.com/api/products/HaNonB70"
+strategy = "json"
+json_path = "version"
+download = "https://www.lostin70s.com/products/HaNonB70"
+
+[[product]]
+name = "KeysOfThe70s2"
+page = "https://www.lostin70s.com/api/products/KeysOfThe70s"
+strategy = "json"
+json_path = "version"
+download = "https://www.lostin70s.com/products/KeysOfThe70s"
+
+[[product]]
+name = "ModernDeluxe2"
+page = "https://www.lostin70s.com/api/products/ModernDeluxe"
+strategy = "json"
+json_path = "version"
+download = "https://www.lostin70s.com/products/ModernDeluxe"

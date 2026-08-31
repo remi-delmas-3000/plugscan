@@ -5,7 +5,7 @@
 # The whole v7 line versions in lockstep (installed line is 7.3.0).
 vendor = "McDSP"
 homepage = "https://mcdsp.com"
-skip = "no version info in public HTML: downloads login-gated, homepage only carries stale v7.0/v7.1 marketing text (verified 2026-08)"
+skip = "no version info in public HTML: downloads login-gated, homepage only carries stale v7.0/v7.1 marketing text (verified 2026-08); re-verified 2026-08-31: /downloads/ and /support/ re-fetched - still only v7.0/v7.1 marketing text vs 7.3.0 installed"
 
 [manual]
 login = "https://mcdsp.com/login/"

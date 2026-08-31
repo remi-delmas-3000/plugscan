@@ -1,8 +1,17 @@
-# vovious.com states no plugin version anywhere reachable by curl (the only x.y.z
-# strings are third-party JS assets, e.g. FastSpring). Manual-only.
+# Correction 2026-08-31: the earlier skip ("no public version source") was
+# wrong. www.vovious.com/releaseNotes is a server-side page whose newest entry
+# is "Version 1.0.16 (2026-08-17)" (entries newest-first), and
+# /downloadMac 302s to the versioned installer (Vovious-1.0.16.dmg) without
+# login. Verified live against installed 1.0.16.
 vendor = "Vovious"
-homepage = "https://vovious.com"
-skip = "no public version source; the in-app update check uses the licensed API at licensing.vovious.com (root 404s to plain GET, verified)"
+homepage = "https://www.vovious.com"
 
 [manual]
-steps = "Open vovious.com, log in / use the download section for the latest Vovious installer; version is shown in the installer filename and in-app."
+steps = "Free 30-day trial installers download directly from vovious.com; licenses via FastSpring purchase email."
+
+[[product]]
+name = "Vovious"
+page = "https://www.vovious.com/releaseNotes"
+version_regex = 'Version ([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://www.vovious.com/releaseNotes"
+download = "https://www.vovious.com/downloadMac"

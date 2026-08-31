@@ -1,12 +1,23 @@
-# audiomodern.com serves a Cloudflare "Attention Required" block page to
-# non-browser clients, so no automated resolver. Manual walkthrough only.
-# Wave-2 re-check 2026-08-30: still Cloudflare-blocked ("Attention Required")
-# for plain HTTP clients; the Riffer binary has no update endpoint (only shop /
-# contact / Mailchimp URLs).
+# Third-party source: KVR Audio product-database pages (developer-maintained,
+# may lag releases). audiomodern.com itself is Cloudflare-blocked to HTTP
+# clients, but KVR serves HTTP/1.1 + browser UA requests (plugscan's ureq
+# client qualifies; verified live 2026-08-31: Freezr 1.0.6 >= 1.0.4 installed,
+# Riffer 3.1.2 exact). Single-product pages; id="verosx" = Mac version field.
 vendor = "Audiomodern"
 homepage = "https://audiomodern.com"
-skip = "audiomodern.com serves a Cloudflare block page to non-browser clients and the plugins have no update-check endpoint"
 
 [manual]
 login = "https://audiomodern.com/my-account/"
 steps = "Log in at audiomodern.com/my-account; installers for Riffer / Freezr are under Downloads. Update announcements appear on the product pages (audiomodern.com/shop/plugins/<name>/) and forum.audiomodern.com."
+
+[[product]]
+name = "Freezr"
+page = "https://www.kvraudio.com/product/freezr-by-audiomodern"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "Riffer"
+page = "https://www.kvraudio.com/product/riffer-by-audiomodern"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"

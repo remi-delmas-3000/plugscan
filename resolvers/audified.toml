@@ -6,7 +6,7 @@
 # rejects unauthenticated requests ("Missing Authentication Token", 403).
 vendor = "Audified"
 homepage = "https://audified.com"
-skip = "No public version source: site pages carry no versions and the plugins' api.audified.com endpoint requires authentication"
+skip = "No public version source: site pages carry no versions and the plugins' api.audified.com endpoint requires authentication; re-verified 2026-08-31: audified.com/products/u78-saturator/ + /mixchecker-ultra/ still version-free, and the U78 Release Notes PDF sits at an unversioned wp-content URL"
 
 [manual]
 login = "https://shop.audified.com/account/login"

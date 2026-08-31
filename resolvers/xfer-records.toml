@@ -4,7 +4,7 @@
 # live behind the account downloads area.
 vendor = "Xfer Records"
 homepage = "https://xferrecords.com"
-skip = "no public version info: product/support pages carry no plugin version numbers (verified 2026-08); versions only in the login-gated downloads area"
+skip = "no public version info: product/support pages carry no plugin version numbers (verified 2026-08); versions only in the login-gated downloads area; re-verified 2026-08-31: Serum2's binary is PACE-encrypted (zero URL/changelog strings to mine) and the serum-2 product page's only x.y.z numbers are webfont asset versions"
 
 [manual]
 login = "https://xferrecords.com/customer_sessions/new"

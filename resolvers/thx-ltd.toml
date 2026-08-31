@@ -1,9 +1,20 @@
-# THX Ltd (THX Spatial Creator). thx.com is behind a Cloudflare challenge for
-# automated fetches (verified: "Attention Required" page), and no local app with
-# an update feed is installed. Manual-only.
+# Correction 2026-08-31: the earlier skip ("thx.com Cloudflare-blocked, no
+# public version endpoint") looked at the wrong site. THX Spatial Creator is
+# distributed by Plugin Alliance, and the new Shopify-based plugin-alliance.com
+# product page serves installer versions server-side:
+# "Installer v1.1.0 (Mac, ...)" -> files.plugin-alliance.com/products/installer/
+# thx_spatial_creator_mac_1_1_0.zip. Verified live against installed v1.1.0.
+# (The "Installation Manager v1.4.0" links on the same page never match the
+# regex because they say "Installation Manager v", not "Installer v".)
 vendor = "THX Ltd"
 homepage = "https://www.thx.com"
-skip = "thx.com is Cloudflare-blocked to automated fetches; no public version endpoint found"
 
 [manual]
-steps = "Open thx.com (Spatial Creator product page) in a browser for the latest THX Spatial Creator build; the app/installer and your THX account show the current version."
+login = "https://www.plugin-alliance.com/account/login"
+steps = "Download the installer from the plugin-alliance.com Spatial Creator product page (Downloads tab); activation via your Plugin Alliance account."
+
+[[product]]
+name = "THX Spatial Creator"
+page = "https://www.plugin-alliance.com/products/spatial-creator"
+version_regex = 'Installer v([0-9]+\.[0-9.]+) \(Mac'
+download = "https://www.plugin-alliance.com/products/spatial-creator"

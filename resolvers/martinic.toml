@@ -1,10 +1,37 @@
-# martinic.com serves 403 to non-browser clients even with a full Chrome User-Agent
-# (re-verified 2026-08), so the product pages cannot be scraped even though they
-# exist and show versions in a browser.
+# Third-party source: KVR Audio product-database pages (developer-maintained,
+# may lag releases; plugscan's never-report-backwards guard makes lag safe).
+# KVR 403s HTTP/2 clients but serves HTTP/1.1 requests with a browser UA fine
+# (ureq is HTTP/1.1, verified live 2026-08-31 with plugscan's exact UA).
+# Each page is single-product; id="verosx" is the Mac "Product Version" field.
+# Verified 2026-08-31: AX Chorus 1.3.4, AX73 1.4.4, AXFX 1.1.4, Pianet T 1.0.4
+# (all >= installed).
 vendor = "Martinic"
 homepage = "https://www.martinic.com"
-skip = "martinic.com returns 403 to all non-browser clients, including requests with a full Chrome UA (verified 2026-08)"
 
 [manual]
 login = "https://www.martinic.com/en/account"
 steps = "Open martinic.com in a browser; each product page (e.g. /en/products/ax73) and the account downloads list the current installer version."
+
+[[product]]
+name = "Martinic AX Chorus"
+page = "https://www.kvraudio.com/product/ax-chorus-by-martinic"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "Martinic AX73"
+page = "https://www.kvraudio.com/product/ax73-by-martinic"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "Martinic AXFX"
+page = "https://www.kvraudio.com/product/axfx-by-martinic"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "Martinic Pianet T"
+page = "https://www.kvraudio.com/product/pianet-t-by-martinic"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"

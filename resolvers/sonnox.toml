@@ -1,14 +1,203 @@
-# Checked 2026-08-30: sonnox.com is a BigCommerce store (store hash s-8pfrvbtcba); product
-# pages (sonnox.com/products/<handle>) carry price/description but no plugin version. The
-# support site (support.sonnox.com, Zendesk) Cloudflare-blocks non-browser clients (403 to
-# curl and WebFetch); its public Help Center API (support.sonnox.com/api/v2/help_center/...)
-# is reachable but the 74 articles are FAQ/licensing only -- no per-plugin version list.
-# ListenHub app has no Sparkle feed. Current versions (e.g. "3.02.0[136]") live only behind
-# login at my.sonnox.com. No automatable public source.
+# Correction 2026-08-31 (wave-3 re-test): the skip was wrong. The public
+# sonnox.com/installer-database widget loads its data from a PUBLIC Google
+# Sheets CSV (no auth, no Cloudflare):
+#   Product Name,Version Number,...,Mac Installer URL,...,Release Notes URL
+# The CSV lists the current version of every plug-in (verified live
+# 2026-08-31 against all 23 installed bundles; all match). Also note the
+# Zendesk help-center API (sonnox.zendesk.com/api/v2/help_center/en-gb/...)
+# answers curl fine, so "blocks non-browser clients" was wrong too.
+# NOTE: installed catalog versions carry a build suffix in brackets
+# (e.g. 4.04.0[11320]); the CSV publishes only the dotted version, so
+# comparisons should ignore the bracketed build number.
+# SuprEsser variants (HighRes/HR/LL/LowLatency) and the two VoxD halves
+# (Thicken/Widen) ship in one installer, so they share the parent's row.
 vendor = "Sonnox"
 homepage = "https://www.sonnox.com"
-skip = "Current plug-in versions are only in the logged-in my.sonnox.com account area; the public store pages carry no versions and the Zendesk support site blocks non-browser clients."
 
 [manual]
 login = "https://my.sonnox.com"
-steps = "Log in at my.sonnox.com for installers and licences; the account area shows the current version (format 3.02.0[136]) for each plug-in. Store product pages and the support Help Center do not list current versions."
+steps = "Public installers for every plug-in: sonnox.com/installer-database (data from the public Google-Sheets CSV, direct dload.sonnoxplugins.com links, no login needed)."
+
+[[product]]
+name = "Oxford DeBuzzer"
+page = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-xQQaeJnzlI4TY_FXNA8Uccx5iAGmF78_EELOC1_5ak42VvLtVzjcvu7CaVqL3x7WwmG0IFk6UHaL/pub?gid=0&single=true&output=csv"
+strategy = "page_regex"
+version_regex = 'Oxford\ DeBuzzer,([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.sonnox.com/installer-database"
+changelog = "https://dload.sonnoxplugins.com/pub/plugins/ReleaseNotes/Oxford_DeBuzzer_Release_Notes.html"
+
+[[product]]
+name = "Oxford DeClicker"
+page = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-xQQaeJnzlI4TY_FXNA8Uccx5iAGmF78_EELOC1_5ak42VvLtVzjcvu7CaVqL3x7WwmG0IFk6UHaL/pub?gid=0&single=true&output=csv"
+strategy = "page_regex"
+version_regex = 'Oxford\ DeClicker,([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.sonnox.com/installer-database"
+changelog = "https://dload.sonnoxplugins.com/pub/plugins/ReleaseNotes/Oxford_DeClicker_Release_Notes.html"
+
+[[product]]
+name = "Oxford DeNoiser"
+page = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-xQQaeJnzlI4TY_FXNA8Uccx5iAGmF78_EELOC1_5ak42VvLtVzjcvu7CaVqL3x7WwmG0IFk6UHaL/pub?gid=0&single=true&output=csv"
+strategy = "page_regex"
+version_regex = 'Oxford\ DeNoiser,([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.sonnox.com/installer-database"
+changelog = "https://dload.sonnoxplugins.com/pub/plugins/ReleaseNotes/Oxford_DeNoiser_Release_Notes.html"
+
+[[product]]
+name = "Oxford Drum Gate"
+page = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-xQQaeJnzlI4TY_FXNA8Uccx5iAGmF78_EELOC1_5ak42VvLtVzjcvu7CaVqL3x7WwmG0IFk6UHaL/pub?gid=0&single=true&output=csv"
+strategy = "page_regex"
+version_regex = 'Oxford\ Drum\ Gate,([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.sonnox.com/installer-database"
+changelog = "https://dload.sonnoxplugins.com/pub/plugins/ReleaseNotes/Oxford_Drum_Gate_Release_Notes.html"
+
+[[product]]
+name = "Oxford Dynamic EQ"
+page = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-xQQaeJnzlI4TY_FXNA8Uccx5iAGmF78_EELOC1_5ak42VvLtVzjcvu7CaVqL3x7WwmG0IFk6UHaL/pub?gid=0&single=true&output=csv"
+strategy = "page_regex"
+version_regex = 'Oxford\ Dynamic\ EQ,([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.sonnox.com/installer-database"
+changelog = "https://dload.sonnoxplugins.com/pub/plugins/ReleaseNotes/Oxford_Dynamic_EQ_Release_Notes.html"
+
+[[product]]
+name = "Oxford Dynamics"
+page = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-xQQaeJnzlI4TY_FXNA8Uccx5iAGmF78_EELOC1_5ak42VvLtVzjcvu7CaVqL3x7WwmG0IFk6UHaL/pub?gid=0&single=true&output=csv"
+strategy = "page_regex"
+version_regex = 'Oxford\ Dynamics,([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.sonnox.com/installer-database"
+changelog = "https://dload.sonnoxplugins.com/pub/plugins/ReleaseNotes/Oxford_Dynamics_Release_Notes.html"
+
+[[product]]
+name = "Oxford Envolution"
+page = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-xQQaeJnzlI4TY_FXNA8Uccx5iAGmF78_EELOC1_5ak42VvLtVzjcvu7CaVqL3x7WwmG0IFk6UHaL/pub?gid=0&single=true&output=csv"
+strategy = "page_regex"
+version_regex = 'Oxford\ Envolution,([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.sonnox.com/installer-database"
+changelog = "https://dload.sonnoxplugins.com/pub/plugins/ReleaseNotes/Oxford_Envolution_Release_Notes.html"
+
+[[product]]
+name = "Oxford EQ"
+page = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-xQQaeJnzlI4TY_FXNA8Uccx5iAGmF78_EELOC1_5ak42VvLtVzjcvu7CaVqL3x7WwmG0IFk6UHaL/pub?gid=0&single=true&output=csv"
+strategy = "page_regex"
+version_regex = 'Oxford\ EQ,([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.sonnox.com/installer-database"
+changelog = "https://dload.sonnoxplugins.com/pub/plugins/ReleaseNotes/Oxford_EQ_Release_Notes.html"
+
+[[product]]
+name = "Oxford Inflator"
+page = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-xQQaeJnzlI4TY_FXNA8Uccx5iAGmF78_EELOC1_5ak42VvLtVzjcvu7CaVqL3x7WwmG0IFk6UHaL/pub?gid=0&single=true&output=csv"
+strategy = "page_regex"
+version_regex = 'Oxford\ Inflator,([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.sonnox.com/installer-database"
+changelog = "https://dload.sonnoxplugins.com/pub/plugins/ReleaseNotes/Oxford_Inflator_Release_Notes.html"
+
+[[product]]
+name = "Oxford Limiter"
+page = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-xQQaeJnzlI4TY_FXNA8Uccx5iAGmF78_EELOC1_5ak42VvLtVzjcvu7CaVqL3x7WwmG0IFk6UHaL/pub?gid=0&single=true&output=csv"
+strategy = "page_regex"
+version_regex = 'Oxford\ Limiter,([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.sonnox.com/installer-database"
+changelog = "https://dload.sonnoxplugins.com/pub/plugins/ReleaseNotes/Oxford_Limiter_Release_Notes.html"
+
+[[product]]
+name = "Oxford Reverb"
+page = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-xQQaeJnzlI4TY_FXNA8Uccx5iAGmF78_EELOC1_5ak42VvLtVzjcvu7CaVqL3x7WwmG0IFk6UHaL/pub?gid=0&single=true&output=csv"
+strategy = "page_regex"
+version_regex = 'Oxford\ Reverb,([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.sonnox.com/installer-database"
+changelog = "https://dload.sonnoxplugins.com/pub/plugins/ReleaseNotes/Oxford_Reverb_Release_Notes.html"
+
+[[product]]
+name = "Oxford SuprEsser"
+page = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-xQQaeJnzlI4TY_FXNA8Uccx5iAGmF78_EELOC1_5ak42VvLtVzjcvu7CaVqL3x7WwmG0IFk6UHaL/pub?gid=0&single=true&output=csv"
+strategy = "page_regex"
+version_regex = 'Oxford\ SuprEsser,([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.sonnox.com/installer-database"
+changelog = "https://dload.sonnoxplugins.com/pub/plugins/ReleaseNotes/Oxford_SuprEsser_Release_Notes.html"
+
+[[product]]
+name = "Oxford SuprEsser HighRes"
+page = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-xQQaeJnzlI4TY_FXNA8Uccx5iAGmF78_EELOC1_5ak42VvLtVzjcvu7CaVqL3x7WwmG0IFk6UHaL/pub?gid=0&single=true&output=csv"
+strategy = "page_regex"
+version_regex = 'Oxford\ SuprEsser,([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.sonnox.com/installer-database"
+changelog = "https://dload.sonnoxplugins.com/pub/plugins/ReleaseNotes/Oxford_SuprEsser_Release_Notes.html"
+
+[[product]]
+name = "Oxford SuprEsser HR"
+page = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-xQQaeJnzlI4TY_FXNA8Uccx5iAGmF78_EELOC1_5ak42VvLtVzjcvu7CaVqL3x7WwmG0IFk6UHaL/pub?gid=0&single=true&output=csv"
+strategy = "page_regex"
+version_regex = 'Oxford\ SuprEsser,([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.sonnox.com/installer-database"
+changelog = "https://dload.sonnoxplugins.com/pub/plugins/ReleaseNotes/Oxford_SuprEsser_Release_Notes.html"
+
+[[product]]
+name = "Oxford SuprEsser LL"
+page = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-xQQaeJnzlI4TY_FXNA8Uccx5iAGmF78_EELOC1_5ak42VvLtVzjcvu7CaVqL3x7WwmG0IFk6UHaL/pub?gid=0&single=true&output=csv"
+strategy = "page_regex"
+version_regex = 'Oxford\ SuprEsser,([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.sonnox.com/installer-database"
+changelog = "https://dload.sonnoxplugins.com/pub/plugins/ReleaseNotes/Oxford_SuprEsser_Release_Notes.html"
+
+[[product]]
+name = "Oxford SuprEsser LowLatency"
+page = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-xQQaeJnzlI4TY_FXNA8Uccx5iAGmF78_EELOC1_5ak42VvLtVzjcvu7CaVqL3x7WwmG0IFk6UHaL/pub?gid=0&single=true&output=csv"
+strategy = "page_regex"
+version_regex = 'Oxford\ SuprEsser,([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.sonnox.com/installer-database"
+changelog = "https://dload.sonnoxplugins.com/pub/plugins/ReleaseNotes/Oxford_SuprEsser_Release_Notes.html"
+
+[[product]]
+name = "Oxford TransMod"
+page = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-xQQaeJnzlI4TY_FXNA8Uccx5iAGmF78_EELOC1_5ak42VvLtVzjcvu7CaVqL3x7WwmG0IFk6UHaL/pub?gid=0&single=true&output=csv"
+strategy = "page_regex"
+version_regex = 'Oxford\ TransMod,([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.sonnox.com/installer-database"
+changelog = "https://dload.sonnoxplugins.com/pub/plugins/ReleaseNotes/Oxford_TransMod_Release_Notes.html"
+
+[[product]]
+name = "Sonnox Claro"
+page = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-xQQaeJnzlI4TY_FXNA8Uccx5iAGmF78_EELOC1_5ak42VvLtVzjcvu7CaVqL3x7WwmG0IFk6UHaL/pub?gid=0&single=true&output=csv"
+strategy = "page_regex"
+version_regex = 'Toolbox\ Claro,([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.sonnox.com/installer-database"
+changelog = "https://dload.sonnoxplugins.com/pub/plugins/ReleaseNotes/Toolbox_Claro_Release_Notes.html"
+
+[[product]]
+name = "Sonnox Fraunhofer Pro-Codec"
+page = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-xQQaeJnzlI4TY_FXNA8Uccx5iAGmF78_EELOC1_5ak42VvLtVzjcvu7CaVqL3x7WwmG0IFk6UHaL/pub?gid=0&single=true&output=csv"
+strategy = "page_regex"
+version_regex = 'Oxford\ Fraunhofer\ Pro\-Codec,([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.sonnox.com/installer-database"
+changelog = "https://dload.sonnoxplugins.com/pub/plugins/support/SonnoxFPCRel.html"
+
+[[product]]
+name = "Sonnox ListenHub"
+page = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-xQQaeJnzlI4TY_FXNA8Uccx5iAGmF78_EELOC1_5ak42VvLtVzjcvu7CaVqL3x7WwmG0IFk6UHaL/pub?gid=0&single=true&output=csv"
+strategy = "page_regex"
+version_regex = 'Toolbox\ ListenHub,([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.sonnox.com/installer-database"
+changelog = "https://dload.sonnoxplugins.com/pub/plugins/ReleaseNotes/Toolbox_ListenHub_Release_Notes.html"
+
+[[product]]
+name = "Sonnox Voca"
+page = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-xQQaeJnzlI4TY_FXNA8Uccx5iAGmF78_EELOC1_5ak42VvLtVzjcvu7CaVqL3x7WwmG0IFk6UHaL/pub?gid=0&single=true&output=csv"
+strategy = "page_regex"
+version_regex = 'Toolbox\ Voca,([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.sonnox.com/installer-database"
+changelog = "https://dload.sonnoxplugins.com/pub/plugins/ReleaseNotes/Toolbox_Voca_Release_Notes.html"
+
+[[product]]
+name = "VoxD Thicken"
+page = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-xQQaeJnzlI4TY_FXNA8Uccx5iAGmF78_EELOC1_5ak42VvLtVzjcvu7CaVqL3x7WwmG0IFk6UHaL/pub?gid=0&single=true&output=csv"
+strategy = "page_regex"
+version_regex = 'Toolbox\ VoxDoubler,([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.sonnox.com/installer-database"
+changelog = "https://dload.sonnoxplugins.com/pub/plugins/ReleaseNotes/Toolbox_VoxDoubler_Release_Notes.html"
+
+[[product]]
+name = "VoxD Widen"
+page = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-xQQaeJnzlI4TY_FXNA8Uccx5iAGmF78_EELOC1_5ak42VvLtVzjcvu7CaVqL3x7WwmG0IFk6UHaL/pub?gid=0&single=true&output=csv"
+strategy = "page_regex"
+version_regex = 'Toolbox\ VoxDoubler,([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.sonnox.com/installer-database"
+changelog = "https://dload.sonnoxplugins.com/pub/plugins/ReleaseNotes/Toolbox_VoxDoubler_Release_Notes.html"

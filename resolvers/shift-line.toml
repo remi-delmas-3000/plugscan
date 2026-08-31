@@ -5,7 +5,7 @@
 # JS-rendered Tilda page shell with no version strings for plain clients.
 vendor = "Shift Line"
 homepage = "https://shift-line.com"
-skip = "No scrapeable version source: the plugin's own update page (digital.shift-line.com/astronautplugin/update) is a JS-rendered Tilda page and the site publishes no plugin versions"
+skip = "No scrapeable version source: the plugin's own update page (digital.shift-line.com/astronautplugin/update) is a JS-rendered Tilda page and the site publishes no plugin versions; re-verified 2026-08-31: digital.shift-line.com/astronautplugin/update re-fetched - 1.5KB Tilda JS stub with no server-side version data"
 
 [manual]
 steps = "Plugin builds (Astronaut, OktabEP, Prism) via shift-line.com/downloads and their store/Bandcamp order links; no public changelog."

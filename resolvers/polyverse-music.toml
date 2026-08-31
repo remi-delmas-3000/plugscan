@@ -7,7 +7,7 @@
 # versions in the served HTML).
 vendor = "Polyverse Music"
 homepage = "https://polyversemusic.com"
-skip = "No public version source: the EDD products API the plugins use is disabled (redirects to the store) and the /update/ page is JS-rendered"
+skip = "No public version source: the EDD products API the plugins use is disabled (redirects to the store) and the /update/ page is JS-rendered; re-verified 2026-08-31: the binary's endpoints polyversemusic.com/edd-api/products/ and /update both serve the generic storefront HTML with no version strings"
 
 [manual]
 steps = "Open polyversemusic.com/downloads in a browser for the latest installers of Manipulator, Filterverse and Supermodal; release announcements on the Polyverse blog."

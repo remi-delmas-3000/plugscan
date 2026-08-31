@@ -1,8 +1,17 @@
-# beyerdynamic.com's Headphone Lab page is a marketing/download page with no
-# version string (Next.js app). Manual-only.
+# Correction 2026-08-31: the earlier skip ("Next.js page ships no version
+# string") missed the plugin's own update feed. The Headphone Lab binary
+# embeds https://file-exchange.beyerdynamic.com/exchange/HeadphoneLab/update.json
+# which serves {"version": "1.1.0", "link": ...} publicly (verified live;
+# installed 1.0.0, so 1.1.0 is a real newer release).
 vendor = "beyerdynamic"
 homepage = "https://www.beyerdynamic.com"
-skip = "Next.js page ships no version string in its payload and no direct download links (verified)"
 
 [manual]
-steps = "Go to beyerdynamic.com/headphone-lab and download the free Headphone Lab plugin; version is visible in the plugin UI/installer."
+steps = "Download the free Headphone Lab plugin via the link in the update feed (beyerdynamic.com/headphone-lab-software-bddownload); version also visible in the plugin UI."
+
+[[product]]
+name = "Headphone Lab"
+page = "https://file-exchange.beyerdynamic.com/exchange/HeadphoneLab/update.json"
+strategy = "json"
+json_path = "version"
+download = "https://beyerdynamic.com/headphone-lab-software-bddownload"

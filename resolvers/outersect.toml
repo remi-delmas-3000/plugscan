@@ -2,7 +2,7 @@
 # the Tracktion marketplace account (JS-rendered, no public changelog). Manual-only.
 vendor = "Outersect"
 homepage = "https://www.tracktion.com"
-skip = "distributed via Tracktion marketplace behind account login; no public version source"
+skip = "distributed via Tracktion marketplace behind account login; no public version source; re-verified 2026-08-31: tracktion.com's sitemap lists no OM or marketplace product page and the OM binary embeds no update URL - marketplace versions stay behind the Tracktion login"
 
 [manual]
 login = "https://marketplace.tracktion.com"

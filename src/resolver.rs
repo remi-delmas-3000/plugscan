@@ -58,6 +58,10 @@ pub struct BundleResolver {
     /// (?i)alpha|beta|rc|nightly|dev|demo
     #[serde(default)]
     pub exclude_regex: Option<String>,
+    /// Provenance when the page is not the vendor's own site
+    /// ("Plugin Boutique", "Rekkerd"). Surfaced in check and outdated output.
+    #[serde(default)]
+    pub via: Option<String>,
     /// May contain "${version}", substituted after resolution.
     #[serde(default)]
     pub download: Option<String>,
@@ -117,6 +121,7 @@ fn validate(mut rf: ResolverFile) -> ResolverFile {
             return false;
         }
         p.page = crate::util::sanitize_line(&p.page);
+        p.via = p.via.as_deref().map(crate::util::sanitize_line);
         p.download = https_or_drop(&p.download, &vendor);
         p.changelog = https_or_drop(&p.changelog, &vendor);
         true

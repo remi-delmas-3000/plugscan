@@ -1,10 +1,88 @@
-# Excite Audio publishes no public version/changelog page; downloads/updates are
-# delivered via a Plugin Boutique user account (login-gated). KVR product pages are
-# Cloudflare-challenged. No machine-checkable source exists.
+# Third-party source: KVR Audio product-database pages (developer-maintained,
+# may lag releases). KVR needs HTTP/1.1 + browser UA (plugscan's ureq client
+# qualifies; verified live 2026-08-31). Single-product pages; id="verosx" is
+# the Mac "Product Version" field.
+# Plugin Boutique product pages (Excite Audio's own store) carry NO version
+# strings in served HTML - checked 2026-08-31 - so KVR it is.
+# The six Lifeline Console bundles (Console + Comp/EQ/Mod/Pre/Wear modules)
+# ship in one installer and share one version; all point at the Console page.
+# Verified 2026-08-31: all KVR versions >= installed (e.g. Bloom Vocal Aether
+# 1.2.0 vs 1.1.0 installed, VISION 4X 1.2.2 exact).
 vendor = "Excite Audio"
 homepage = "https://www.exciteaudio.com"
-skip = "no public version source: site carries no version strings and updates are delivered only through the login-gated Plugin Boutique account"
 
 [manual]
 login = "https://www.pluginboutique.com/user/sign_in"
-steps = "Log in to Plugin Boutique, open My Account > My Downloads, find the Excite Audio product - latest installer version is shown there. KVR news (kvraudio.com/developer/excite-audio) announces updates."
+steps = "Log in to Plugin Boutique, open My Account > My Downloads, find the Excite Audio product - latest installer version is shown there."
+
+[[product]]
+name = "Bloom Bass Impulse"
+page = "https://www.kvraudio.com/product/bloom-bass-impulse-by-excite-audio"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "Bloom Vocal Aether"
+page = "https://www.kvraudio.com/product/bloom-vocal-aether-by-excite-audio"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "Evolve Dark Matter"
+page = "https://www.kvraudio.com/product/evolve-dark-matter-by-excite-audio"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "Lifeline Console"
+page = "https://www.kvraudio.com/product/lifeline-console-by-excite-audio"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "Lifeline Comp Module"
+page = "https://www.kvraudio.com/product/lifeline-console-by-excite-audio"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "Lifeline EQ Module"
+page = "https://www.kvraudio.com/product/lifeline-console-by-excite-audio"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "Lifeline Mod Module"
+page = "https://www.kvraudio.com/product/lifeline-console-by-excite-audio"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "Lifeline Pre Module"
+page = "https://www.kvraudio.com/product/lifeline-console-by-excite-audio"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "Lifeline Wear Module"
+page = "https://www.kvraudio.com/product/lifeline-console-by-excite-audio"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "Motion Dimension"
+page = "https://www.kvraudio.com/product/motion-dimension-by-excite-audio"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "Motion Harmonic"
+page = "https://www.kvraudio.com/product/motion-harmonic-by-excite-audio"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "VISION 4X"
+page = "https://www.kvraudio.com/product/vision-4x-by-excite-audio"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"

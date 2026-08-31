@@ -1,10 +1,241 @@
-# Re-checked 2026-08-31: Shopify /products.json (full catalog) contains no
-# version strings; plugin binaries (MixWave Benson Chimera.component) carry no
-# update/version endpoint URLs; standalone apps but no manager app.
+# Correction 2026-08-31 (wave-3 re-test): the skip was wrong. The public
+# downloads page mixwave.com/pages/downloads is driven by the theme asset
+# product-downloads.js, which contains productDownloadsData with a
+# per-product currentVersion field plus direct (public, unauthenticated)
+# S3 installer links for every plugin, including full legacy version
+# history. All 32 tracked bundles verified live 2026-08-31 (all >= installed).
+# NOTE: the asset lives under the theme path /cdn/shop/t/46/; if the theme id
+# changes, the current asset URL is referenced from
+# https://mixwave.com/pages/downloads (script tag "product-downloads.js").
+# "Collection" products (Benson Chimera/Monarch, JHS Loud Is More Good,
+# Milkman Creamer) are the parent installers for those bundles.
 vendor = "MixWave"
 homepage = "https://mixwave.com"
-skip = "Shopify storefront is version-free (catalog JSON checked) and plugins have no update-check endpoint."
 
 [manual]
 login = "https://mixwave.com/account"
-steps = "Downloads come from the MixWave customer portal (mixwave.com/account) or purchase emails. Shopify product pages carry no version info."
+steps = "Public installers for every plugin: mixwave.com/pages/downloads (search & filter; direct S3 links, no login required)."
+
+[[product]]
+name = "MixWave 1981 DRV"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"1981\ DRV"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave Ashdown ABM EVO IV"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"Ashdown\ ABM\ EVO\ IV"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave Benson Chimera"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"Benson\ Chimera\ Collection"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave Benson Delay"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"Benson\ Delay"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave Benson Florist"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"Benson\ Florist"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave Benson Germanium Boost"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"Benson\ Germanium\ Boost"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave Benson Germanium Fuzz"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"Benson\ Germanium\ Fuzz"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave Benson Monarch"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"Benson\ Monarch\ Collection"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave Benson Preamp"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"Benson\ Preamp"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave Benson Studio Tall Bird"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"Benson\ Studio\ Tall\ Bird"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave Benson Tall Bird"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"Benson\ Tall\ Bird"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave Centurion"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"Centurion"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave EHX Big Muff"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"EHX\ Big\ Muff"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave EHX Deluxe Memory Man"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"EHX\ Deluxe\ Memory\ Man"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave EHX Electric Mistress"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"EHX\ Electric\ Mistress"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave EHX POG"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"EHX\ POG"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave EHX Small Clone"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"EHX\ Small\ Clone"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave JHS Hard Drive"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"JHS\ Hard\ Drive"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave JHS Loud Is More Good"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"JHS\ Loud\ Is\ More\ Good\ Collection"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave JHS Morning Glory"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"JHS\ Morning\ Glory"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave JHS NOTASPRING"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"JHS N[^"]*TASPRING"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave JHS Panther Cub"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"JHS\ Panther\ Cub"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave JHS Pulp N Peel"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"JHS\ Pulp\ N\ Peel"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave Manuel Gardner Fernandes"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"Manuel\ Gardner\ Fernandes"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave Milkman Creamer"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"Milkman\ Creamer\ Collection"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave Milkman Harmonic Tremolo Reverb"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"Milkman\ Harmonic\ Tremolo\ Reverb"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave Milkman JHS Slap Boost"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"Milkman\ JHS\ Slap\ Boost"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave Milkman Pop Top Boost"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"Milkman\ Pop\ Top\ Boost"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave Overdrive"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"Overdrive"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave Spiritbox - Mike Stringer"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"Spiritbox\ \-\ Mike\ Stringer"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave Tweed 1955"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"Tweed\ 1955"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"
+
+[[product]]
+name = "MixWave Two-Rock Bloomfield Drive"
+page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
+strategy = "page_regex"
+version_regex = 'productName:"Two\-Rock\ Bloomfield\ Drive"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+download = "https://mixwave.com/pages/downloads"

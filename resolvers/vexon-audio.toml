@@ -5,7 +5,7 @@
 # /products.json), and the PolyShimmer binary has no update endpoint.
 vendor = "Vexon Audio"
 homepage = "https://www.vexonaudio.com"
-skip = "No public version source: WordPress product pages carry no version strings and the plugins have no update-check endpoint"
+skip = "No public version source: WordPress product pages carry no version strings and the plugins have no update-check endpoint; re-verified 2026-08-31: site now Cloudflare-403s bare-browser UAs but answers plugscan's UA, and the /poly-shimmer/ page still contains only WP/theme asset versions (wp-json search 403s)"
 
 [manual]
 steps = "Check vexonaudio.com product pages (products/polly-shimmer) and your purchase email/Payhip library for installer downloads; version updates are announced via KVR news (search 'Vexon Audio' on kvraudio.com)."

@@ -1,15 +1,25 @@
-# Desktop versions of Fly Tape II / Lo Fly Dirt are built and distributed by
-# AIR Music Tech (airmusictech.com) via the inMusic Profile account portal.
-# Neither airmusictech.com nor msxaudio.com states the plugin version on any
-# public page (verified: airmusictech.com/effects/lo-fly-dirt only mentions MPC
-# firmware versions), so manual walkthrough only.
-# The plugin binaries talk to api.inmusicbrands.com / auth.profile.inmusicbrands.com
-# (authenticated inMusic endpoints, no public version feed).
+# Third-party source: KVR Audio product-database pages (developer-maintained,
+# may lag releases). The desktop builds are published on KVR under AIR Music
+# Technology (the inMusic sister brand that builds them), with full four-part
+# build numbers. Verified live 2026-08-31: Fly Tape II 1.0.0.27 and Lo Fly
+# Dirt 1.0.0.55 - exact matches to installed. KVR needs HTTP/1.1 + browser UA
+# (plugscan's ureq client qualifies); id="verosx" = Mac version field.
 vendor = "MSXII Sound Design"
 homepage = "https://www.msxaudio.com"
 download_via = "inMusic Software Center / inMusic Profile (profile.inmusicbrands.com) — lists and installs the latest Fly Tape II and Lo Fly Dirt versions"
-skip = "No public version source: distribution goes through the authenticated inMusic Profile portal and no site page states plugin versions"
 
 [manual]
 login = "https://profile.inmusicbrands.com"
 steps = "Log in to the inMusic Profile (profile.inmusicbrands.com), open Software/Downloads: latest Fly Tape II and Lo Fly Dirt installers are listed there with version numbers. Product info at airmusictech.com/effects/."
+
+[[product]]
+name = "Fly Tape II"
+page = "https://www.kvraudio.com/product/fly-tape-ii-by-air-music-technology"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "Lo Fly Dirt"
+page = "https://www.kvraudio.com/product/lo-fly-dirt-by-air-music-technology"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"

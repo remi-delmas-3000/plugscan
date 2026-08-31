@@ -1,11 +1,150 @@
-# Re-checked 2026-08-31: Shopify /products.json (full catalog) contains no
-# version strings; plugin binaries (AmpKnob - RevC.component) carry no
-# update/version endpoint URLs. Installed versions are build-style
-# (e.g. 1.0.246) and are never published on the site.
+# Correction 2026-08-31 (wave-3 re-test): the PUBLIC downloads page
+# https://bogrendigital.com/pages/downloads serves direct installer links on
+# files.bogrendigital.com with the full build version in the filename
+# (e.g. "Ampknob - BDH 5169 MAC v1.2.134.pkg"), server-side, no login.
+# The earlier skip ("versions only in installers/account downloads") only
+# checked the Shopify catalog JSON, not this page. Links are %-encoded in the
+# HTML, so the regexes match the encoded form.
+# All 20 tracked bundles verified live 2026-08-31; 19 match or exceed the
+# installed version. "AmpKnob - RevC" is EXCLUDED: the page still links
+# v1.3.139 while 1.3.140 is installed (page lags the newest build), so no
+# safe resolver for that one bundle.
 vendor = "Bogren Digital"
 homepage = "https://bogrendigital.com"
-skip = "Shopify storefront is version-free (catalog JSON checked); build-number versions are only visible in the installers/account downloads."
 
 [manual]
 login = "https://bogrendigital.com/account"
-steps = "Log in at bogrendigital.com/account; installers under My Downloads. Product pages carry no version strings."
+steps = "Public installers (all products, current versions): bogrendigital.com/pages/downloads. AmpKnob - RevC on that page can lag the newest build; get it from My Downloads after login."
+
+[[product]]
+name = "Ampknob - BDE 120"
+page = "https://bogrendigital.com/pages/downloads"
+strategy = "page_regex"
+version_regex = 'Ampknob%20-%20BDE%20120%20MAC%20v([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://bogrendigital.com/pages/downloads"
+
+[[product]]
+name = "Ampknob - BDH 5169"
+page = "https://bogrendigital.com/pages/downloads"
+strategy = "page_regex"
+version_regex = 'Ampknob%20-%20BDH%205169%20MAC%20v([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://bogrendigital.com/pages/downloads"
+
+[[product]]
+name = "Ampknob - BDH 66o6 Plus"
+page = "https://bogrendigital.com/pages/downloads"
+strategy = "page_regex"
+version_regex = 'Ampknob%20-%20BDH%2066o6%20Plus%20MAC%20v([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://bogrendigital.com/pages/downloads"
+
+[[product]]
+name = "Ampknob - BDH III"
+page = "https://bogrendigital.com/pages/downloads"
+strategy = "page_regex"
+version_regex = 'Ampknob%20-%20BDH%20III%20MAC%20v([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://bogrendigital.com/pages/downloads"
+
+[[product]]
+name = "Ampknob - BDM 410 JVH"
+page = "https://bogrendigital.com/pages/downloads"
+strategy = "page_regex"
+version_regex = 'Ampknob%20-%20BDM%20410%20JVH%20MAC%20v([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://bogrendigital.com/pages/downloads"
+
+[[product]]
+name = "Ampknob - BDM 75"
+page = "https://bogrendigital.com/pages/downloads"
+strategy = "page_regex"
+version_regex = 'Ampknob%20-%20BDM%2075%20MAC%20v([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://bogrendigital.com/pages/downloads"
+
+[[product]]
+name = "Ampknob - BDM 800 Badboy"
+page = "https://bogrendigital.com/pages/downloads"
+strategy = "page_regex"
+version_regex = 'Ampknob%20-%20BDM%20800%20Badboy%20MAC%20v([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://bogrendigital.com/pages/downloads"
+
+[[product]]
+name = "Ampknob - BH4"
+page = "https://bogrendigital.com/pages/downloads"
+strategy = "page_regex"
+version_regex = 'Ampknob%20-%20BH4%20MAC%20v([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://bogrendigital.com/pages/downloads"
+
+[[product]]
+name = "Ampknob - Duet"
+page = "https://bogrendigital.com/pages/downloads"
+strategy = "page_regex"
+version_regex = 'Ampknob%20-%20Duet%20MAC%20v([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://bogrendigital.com/pages/downloads"
+
+[[product]]
+name = "Ampknob - Fatman"
+page = "https://bogrendigital.com/pages/downloads"
+strategy = "page_regex"
+version_regex = 'Ampknob%20-%20Fatman%20MAC%20v([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://bogrendigital.com/pages/downloads"
+
+[[product]]
+name = "Ampknob - MLC S_Zero 100"
+page = "https://bogrendigital.com/pages/downloads"
+strategy = "page_regex"
+version_regex = 'Ampknob%20-%20MLC%20S_Zero%20100%20MAC%20v([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://bogrendigital.com/pages/downloads"
+
+[[product]]
+name = "Ampknob - Trivium Lead"
+page = "https://bogrendigital.com/pages/downloads"
+strategy = "page_regex"
+version_regex = 'Ampknob%20-%20Trivium%20Lead%20MAC%20v([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://bogrendigital.com/pages/downloads"
+
+[[product]]
+name = "Ampknob - Trivium Rhythm"
+page = "https://bogrendigital.com/pages/downloads"
+strategy = "page_regex"
+version_regex = 'Ampknob%20-%20Trivium%20Rhythm%20MAC%20v([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://bogrendigital.com/pages/downloads"
+
+[[product]]
+name = "BassKnob - STD"
+page = "https://bogrendigital.com/pages/downloads"
+strategy = "page_regex"
+version_regex = 'BassKnob%20-%20STD%20MAC%20v([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://bogrendigital.com/pages/downloads"
+
+[[product]]
+name = "Bassknob - Trivium"
+page = "https://bogrendigital.com/pages/downloads"
+strategy = "page_regex"
+version_regex = 'Bassknob%20-%20Trivium%20MAC%20v([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://bogrendigital.com/pages/downloads"
+
+[[product]]
+name = "IRDX Core"
+page = "https://bogrendigital.com/pages/downloads"
+strategy = "page_regex"
+version_regex = 'IRDX%20Core%20MAC%20v([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://bogrendigital.com/pages/downloads"
+
+[[product]]
+name = "IRDX Studio"
+page = "https://bogrendigital.com/pages/downloads"
+strategy = "page_regex"
+version_regex = 'IRDX%20Studio%20([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://bogrendigital.com/pages/downloads"
+
+[[product]]
+name = "MLC S_Zero 100"
+page = "https://bogrendigital.com/pages/downloads"
+strategy = "page_regex"
+version_regex = '/MLC%20S_Zero%20100%20MAC%20v([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://bogrendigital.com/pages/downloads"
+
+[[product]]
+name = "MLC S_Zero 93"
+page = "https://bogrendigital.com/pages/downloads"
+strategy = "page_regex"
+version_regex = '/MLC%20S_Zero%2093%20MAC%20v([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://bogrendigital.com/pages/downloads"

@@ -1,10 +1,138 @@
-# valhalladsp.com sits behind Cloudflare, which blocks non-browser clients by TLS
-# fingerprint. Verified 2026-08-30 with the standard Chrome UA: product pages,
-# /wp-json/wp/v2/pages all return HTTP 403. No endpoint is reachable without a real
-# browser, so no automated resolver is possible. Manual walkthrough only.
+# Re-tested 2026-08-31: Cloudflare only 403s curl's HTTP/2 fingerprint. With
+# HTTP/1.1 + gzip + a Chrome UA (what ureq sends) every product page serves full
+# server-side HTML containing "Current Version: X.Y.Z (updated ...)". Verified
+# live: valhalladelay -> 3.0.5, valhalla-supermassive -> 5.0.0,
+# valhalla-vintage-verb -> 4.0.5 (all == installed). Product slugs from
+# https://valhalladsp.com/product-sitemap.xml. _x64 / AU64 catalog variants are
+# the same plugin and share the base product's page.
 vendor = "Valhalla DSP"
 homepage = "https://valhalladsp.com"
-skip = "Cloudflare blocks non-browser clients (403 on product pages and wp-json via TLS fingerprinting); versions only readable in a real browser."
 
 [manual]
-steps = "Versions are announced on valhalladsp.com/blog. Downloads are public: each product page has Mac installer links; no login needed. Registered users can also use the link from their purchase email."
+steps = "Versions are stated on each product page ('Current Version: ...'). Downloads are public: each product page has Mac installer links; no login needed."
+
+[[product]]
+name = "ValhallaDelay"
+page = "https://valhalladsp.com/shop/delay/valhalladelay/"
+strategy = "page_regex"
+version_regex = 'Current Version: ([0-9]+\.[0-9.]+)'
+download = "https://valhalladsp.com/shop/delay/valhalladelay/"
+
+[[product]]
+name = "ValhallaFreqEcho"
+page = "https://valhalladsp.com/shop/delay/valhalla-freq-echo/"
+strategy = "page_regex"
+version_regex = 'Current Version: ([0-9]+\.[0-9.]+)'
+download = "https://valhalladsp.com/shop/delay/valhalla-freq-echo/"
+
+[[product]]
+name = "ValhallaFutureVerb"
+page = "https://valhalladsp.com/shop/reverb/valhallafutureverb/"
+strategy = "page_regex"
+version_regex = 'Current Version: ([0-9]+\.[0-9.]+)'
+download = "https://valhalladsp.com/shop/reverb/valhallafutureverb/"
+
+[[product]]
+name = "ValhallaPlate"
+page = "https://valhalladsp.com/shop/reverb/valhalla-plate/"
+strategy = "page_regex"
+version_regex = 'Current Version: ([0-9]+\.[0-9.]+)'
+download = "https://valhalladsp.com/shop/reverb/valhalla-plate/"
+
+[[product]]
+name = "ValhallaRoom"
+page = "https://valhalladsp.com/shop/reverb/valhalla-room/"
+strategy = "page_regex"
+version_regex = 'Current Version: ([0-9]+\.[0-9.]+)'
+download = "https://valhalladsp.com/shop/reverb/valhalla-room/"
+
+[[product]]
+name = "ValhallaRoom_x64"
+page = "https://valhalladsp.com/shop/reverb/valhalla-room/"
+strategy = "page_regex"
+version_regex = 'Current Version: ([0-9]+\.[0-9.]+)'
+download = "https://valhalladsp.com/shop/reverb/valhalla-room/"
+
+[[product]]
+name = "ValhallaRoomAU64"
+page = "https://valhalladsp.com/shop/reverb/valhalla-room/"
+strategy = "page_regex"
+version_regex = 'Current Version: ([0-9]+\.[0-9.]+)'
+download = "https://valhalladsp.com/shop/reverb/valhalla-room/"
+
+[[product]]
+name = "ValhallaShimmer"
+page = "https://valhalladsp.com/shop/reverb/valhalla-shimmer/"
+strategy = "page_regex"
+version_regex = 'Current Version: ([0-9]+\.[0-9.]+)'
+download = "https://valhalladsp.com/shop/reverb/valhalla-shimmer/"
+
+[[product]]
+name = "ValhallaShimmer_x64"
+page = "https://valhalladsp.com/shop/reverb/valhalla-shimmer/"
+strategy = "page_regex"
+version_regex = 'Current Version: ([0-9]+\.[0-9.]+)'
+download = "https://valhalladsp.com/shop/reverb/valhalla-shimmer/"
+
+[[product]]
+name = "ValhallaShimmerAU64"
+page = "https://valhalladsp.com/shop/reverb/valhalla-shimmer/"
+strategy = "page_regex"
+version_regex = 'Current Version: ([0-9]+\.[0-9.]+)'
+download = "https://valhalladsp.com/shop/reverb/valhalla-shimmer/"
+
+[[product]]
+name = "ValhallaSpaceModulator"
+page = "https://valhalladsp.com/shop/modulation/valhalla-space-modulator/"
+strategy = "page_regex"
+version_regex = 'Current Version: ([0-9]+\.[0-9.]+)'
+download = "https://valhalladsp.com/shop/modulation/valhalla-space-modulator/"
+
+[[product]]
+name = "ValhallaSupermassive"
+page = "https://valhalladsp.com/shop/reverb/valhalla-supermassive/"
+strategy = "page_regex"
+version_regex = 'Current Version: ([0-9]+\.[0-9.]+)'
+download = "https://valhalladsp.com/shop/reverb/valhalla-supermassive/"
+
+[[product]]
+name = "ValhallaUberMod"
+page = "https://valhalladsp.com/shop/delay/valhalla-uber-mod/"
+strategy = "page_regex"
+version_regex = 'Current Version: ([0-9]+\.[0-9.]+)'
+download = "https://valhalladsp.com/shop/delay/valhalla-uber-mod/"
+
+[[product]]
+name = "ValhallaUberMod_x64"
+page = "https://valhalladsp.com/shop/delay/valhalla-uber-mod/"
+strategy = "page_regex"
+version_regex = 'Current Version: ([0-9]+\.[0-9.]+)'
+download = "https://valhalladsp.com/shop/delay/valhalla-uber-mod/"
+
+[[product]]
+name = "ValhallaUberModAU64"
+page = "https://valhalladsp.com/shop/delay/valhalla-uber-mod/"
+strategy = "page_regex"
+version_regex = 'Current Version: ([0-9]+\.[0-9.]+)'
+download = "https://valhalladsp.com/shop/delay/valhalla-uber-mod/"
+
+[[product]]
+name = "ValhallaVintageVerb"
+page = "https://valhalladsp.com/shop/reverb/valhalla-vintage-verb/"
+strategy = "page_regex"
+version_regex = 'Current Version: ([0-9]+\.[0-9.]+)'
+download = "https://valhalladsp.com/shop/reverb/valhalla-vintage-verb/"
+
+[[product]]
+name = "ValhallaVintageVerb_x64"
+page = "https://valhalladsp.com/shop/reverb/valhalla-vintage-verb/"
+strategy = "page_regex"
+version_regex = 'Current Version: ([0-9]+\.[0-9.]+)'
+download = "https://valhalladsp.com/shop/reverb/valhalla-vintage-verb/"
+
+[[product]]
+name = "ValhallaVintageVerbAU64"
+page = "https://valhalladsp.com/shop/reverb/valhalla-vintage-verb/"
+strategy = "page_regex"
+version_regex = 'Current Version: ([0-9]+\.[0-9.]+)'
+download = "https://valhalladsp.com/shop/reverb/valhalla-vintage-verb/"

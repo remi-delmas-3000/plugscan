@@ -286,11 +286,20 @@ pub fn run(conn: &mut Connection, force: bool, max_age_hours: i64) -> rusqlite::
                             bundle_id,
                             version,
                             sanitize_line(&action_url(pr, &version)),
-                            format!("resolver:{}", rf.vendor),
+                            match &pr.via {
+                                Some(via) => format!("resolver:{} via {via}", rf.vendor),
+                                None => format!("resolver:{}", rf.vendor),
+                            },
                             now
                         ],
                     )?;
-                    println!("  {} {} → latest {}", rf.vendor, pr.name, version);
+                    match &pr.via {
+                        Some(via) => println!(
+                            "  {} {} → latest {} [via {via}]",
+                            rf.vendor, pr.name, version
+                        ),
+                        None => println!("  {} {} → latest {}", rf.vendor, pr.name, version),
+                    }
                     checked += 1;
                 }
                 Err(reason) => {
@@ -389,6 +398,7 @@ pub fn new_vendor(vendor: &str, url: &str) {
             version_regex: None,
             json_path: None,
             exclude_regex: None,
+            via: None,
             download: None,
             changelog: None,
         };

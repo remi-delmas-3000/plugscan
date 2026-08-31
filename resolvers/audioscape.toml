@@ -4,7 +4,7 @@
 # storefront), so not even the Shopify JSON route exists.
 vendor = "Audioscape"
 homepage = "https://www.audio-scape.com"
-skip = "no public version source: no version numbers on the store pages and no products.json feed (verified 2026-08)"
+skip = "no public version source: no version numbers on the store pages and no products.json feed (verified 2026-08); re-verified 2026-08-31: the site is Squarespace (audio-scape.com) and /products?format=json returns only a landing block with no product items or version strings"
 
 [manual]
 steps = "Installers via the Kiive Audio / AudioScape order emails or the kiiveaudio.com account downloads; product pages at audio-scape.com/audioscape-plugins."

@@ -3,7 +3,7 @@
 # Performer's own). Manual-only.
 vendor = "Deskew Technologies, LLC"
 homepage = "https://gigperformer.com"
-skip = "GPRelayer is bundled with Gig Performer but versioned independently; no standalone version source"
+skip = "GPRelayer is bundled with Gig Performer but versioned independently; no standalone version source; re-verified 2026-08-31: gigperformer.com serves 0-byte responses to non-browser clients and GPRelayer's 1.0.x versioning is independent of Gig Performer's anyway"
 
 [manual]
 steps = "Download the latest Gig Performer installer from gigperformer.com/download (GPRelayer is bundled); update announcements at community.gigperformer.com."

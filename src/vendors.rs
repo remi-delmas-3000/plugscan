@@ -16,7 +16,7 @@ const ALIASES: &[(&[&str], &str)] = &[
     (&["valhalladsp", "valhalla dsp, llc", "valhalla dsp"], "Valhalla DSP"),
     (&["air music technology", "air music tech", "airmusictech"], "AIR Music Technology"),
     (&["ssl", "solid state logic"], "Solid State Logic"),
-    (&["waves", "waves audio ltd."], "Waves"),
+    (&["waves", "waves audio ltd.", "wavesaudio"], "Waves"),
     (&["korg", "korg inc."], "KORG"),
     (&["roland", "roland cloud", "rolandcloud"], "Roland"),
     (&["antares", "antares audio technologies"], "Antares"),

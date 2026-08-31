@@ -28,6 +28,67 @@ fn format_for_ext(ext: &str) -> Option<&'static str> {
     }
 }
 
+/// Waves plugins are individual .bundle folders under /Applications/Waves/
+/// Plug-Ins V<N>/, loaded at runtime by the WaveShell host. Enumerate the
+/// newest installed version directory only: older V<N> dirs are kept for
+/// session compatibility and would otherwise register as stale duplicates.
+/// Each .bundle carries a normal CFBundleShortVersionString.
+fn find_waves_plugins() -> Vec<(PathBuf, &'static str)> {
+    let base = Path::new("/Applications/Waves");
+    let Ok(entries) = fs::read_dir(base) else {
+        return Vec::new();
+    };
+    let newest = entries
+        .flatten()
+        .filter_map(|e| {
+            let name = e.file_name().to_string_lossy().into_owned();
+            name.strip_prefix("Plug-Ins V")
+                .and_then(|n| n.parse::<u32>().ok())
+                .map(|v| (v, e.path()))
+        })
+        .max_by_key(|(v, _)| *v);
+    let Some((_, dir)) = newest else {
+        return Vec::new();
+    };
+    let Ok(bundles) = fs::read_dir(&dir) else {
+        return Vec::new();
+    };
+    bundles
+        .flatten()
+        .map(|e| e.path())
+        .filter(|p| p.extension().and_then(|x| x.to_str()) == Some("bundle"))
+        .map(|p| (p, "Waves"))
+        .collect()
+}
+
+fn read_waves_plugin(path: &Path, mtime: i64) -> ScannedBundle {
+    let name = crate::util::sanitize_line(
+        path.file_stem().and_then(|s| s.to_str()).unwrap_or("?"),
+    );
+    let get = |v: &Value, key: &str| {
+        v.as_dictionary()
+            .and_then(|d| d.get(key))
+            .and_then(|x| x.as_string())
+            .map(str::to_string)
+    };
+    let (version, bundle_id) = match Value::from_file(path.join("Contents/Info.plist")) {
+        Ok(v) => (
+            get(&v, "CFBundleShortVersionString").map(|s| crate::util::sanitize_line(&s)),
+            get(&v, "CFBundleIdentifier").map(|s| crate::util::sanitize_line(&s)),
+        ),
+        Err(_) => (None, None),
+    };
+    ScannedBundle {
+        path: path.display().to_string(),
+        format: "Waves",
+        name,
+        version,
+        bundle_id,
+        vendor: "Waves".to_string(),
+        mtime,
+    }
+}
+
 fn search_roots() -> Vec<PathBuf> {
     let home = std::env::var("HOME").unwrap_or_default();
     let bases = [
@@ -115,6 +176,14 @@ fn find_bundles(root: &Path, depth: u32, out: &mut Vec<(PathBuf, &'static str)>)
             .extension()
             .and_then(|e| e.to_str())
             .and_then(format_for_ext);
+        let is_waveshell = path
+            .file_name()
+            .and_then(|n| n.to_str())
+            .map(|n| n.starts_with("WaveShell"))
+            .unwrap_or(false);
+        if is_waveshell {
+            continue;
+        }
         if let Some(fmt) = fmt {
             out.push((path, fmt));
         } else if path.is_dir() {
@@ -257,11 +326,14 @@ pub fn run(conn: &mut Connection, full: bool) -> rusqlite::Result<()> {
             (p, f, mtime)
         }));
     }
+    let waves = find_waves_plugins();
+    let seen_waves: Vec<String> = waves.iter().map(|(p, _)| p.display().to_string()).collect();
     let daw_apps = find_daw_apps();
     let seen_daw: Vec<String> = daw_apps.iter().map(|(p, _, _)| p.display().to_string()).collect();
     let seen_paths: HashSet<String> = seen_daw
         .iter()
         .cloned()
+        .chain(seen_waves.iter().cloned())
         .chain(found.iter().map(|(p, _, _)| p.display().to_string()))
         .collect();
 
@@ -307,6 +379,16 @@ pub fn run(conn: &mut Connection, full: bool) -> rusqlite::Result<()> {
                 unchanged_ids.push(*id)
             }
             _ => scanned.push(read_app(path, vendor, product, mtime)),
+        }
+    }
+    for (path, _) in &waves {
+        let mtime = mtime_of(path);
+        let key = path.display().to_string();
+        match existing.get(&key) {
+            Some((id, cached_mtime, _)) if !full && *cached_mtime == mtime => {
+                unchanged_ids.push(*id)
+            }
+            _ => scanned.push(read_waves_plugin(path, mtime)),
         }
     }
 

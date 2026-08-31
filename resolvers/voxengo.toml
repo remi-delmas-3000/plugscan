@@ -1,9 +1,16 @@
-# Voxengo product pages encode the version only in download filenames without a dot
-# (e.g. VoxengoSPANPlus_125_... = 1.25), so no dotted-version regex is possible.
-# KVR product pages are Cloudflare-403 to curl. Manual-only.
+# Voxengo product pages encode the version only in undotted download filenames
+# (VoxengoSPANPlus_125_... = 1.25). The mapping IS deterministic for Voxengo's
+# x.yy scheme (major digit + two-digit minor; TEOTE_116 = 1.16 confirms), but
+# the resolver cannot express it: version_regex has a single capture and no
+# rewrite, so it can only yield "125", which cmp_versions parses as [125] vs
+# installed [1,25] and would report a bogus update forever. No dotted version
+# exists anywhere scrapeable: /press/ archives release notes ("Voxengo CurveEQ
+# 3.14 ... released") but is paginated 15/page newest-first, so a SPAN Plus
+# entry is only transiently present; /rss/ carries the same 15 newest items
+# (currently no SPAN Plus entry). KVR is Cloudflare-403. Manual-only.
 vendor = "Voxengo"
 homepage = "https://www.voxengo.com"
-skip = "version appears only in undotted download filenames (SPANPlus_125 vs installed 1.25); a regex capture would yield 125, which cannot be reliably mapped to the dotted form, and the news page carries no dotted versions (verified)"
+skip = "version appears only in undotted installer filenames (SPANPlus_125 = 1.25) and the single-capture regex cannot insert the dot (a 125 capture always compares newer than 1.25); re-verified 2026-08-31: mapping is deterministic but inexpressible, /press/ + /rss/ list dotted versions only for the ~15 newest releases (no SPAN Plus entry present)"
 
 [manual]
 steps = "Open https://www.voxengo.com/product/spanplus/ and check the download filenames (e.g. SPANPlus_125 = version 1.25). Downloads are free-form on the product page; purchased licenses via voxengo.com login."

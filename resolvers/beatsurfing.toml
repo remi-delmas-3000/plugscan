@@ -3,7 +3,7 @@
 # and installers are delivered via personal download links / the user account.
 vendor = "BEATSURFING"
 homepage = "https://beatsurfing.com"
-skip = "no public version info: product pages and knowledge base carry no version numbers; installers via personal download links behind login"
+skip = "no public version info: product pages and knowledge base carry no version numbers; installers via personal download links behind login; re-verified 2026-08-31: WooCommerce product sitemap crawled and the RANDOM product page rechecked - only asset ?ver= tokens, no plugin versions"
 
 [manual]
 login = "https://beatsurfing.com/my-account/"

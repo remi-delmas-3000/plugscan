@@ -1,8 +1,17 @@
-# schulz.audio product pages (e.g. /products/portacrunch-424/) publish no version
-# strings reachable by curl. Manual-only.
+# Correction 2026-08-31: the earlier skip ("product pages publish no version
+# strings") was wrong. The schulz.audio product page's download buttons carry
+# the dotted version in their tooltip titles:
+#   title="Download Schulz PortaCrunch 424  1.0.11 for Mac"
+# (note: double space before the number). Verified live: 1.0.11 >= installed
+# 1.0.9. The trial download links are public (no login).
 vendor = "schulz.audio"
 homepage = "https://schulz.audio"
-skip = "product pages publish no version strings"
 
 [manual]
-steps = "Open schulz.audio/products/portacrunch-424/ and use the download/purchase links; the current version is shown in the installer/plugin UI."
+steps = "Free trial installers download directly from the product page's Try on Mac button; licensed downloads via the same page after purchase."
+
+[[product]]
+name = "Schulz PortaCrunch 424"
+page = "https://schulz.audio/products/schulz-portacrunch-424/"
+version_regex = 'Download Schulz PortaCrunch 424\s+([0-9]+\.[0-9.]+) for Mac'
+download = "https://schulz.audio/products/schulz-portacrunch-424/"

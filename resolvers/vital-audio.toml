@@ -2,7 +2,7 @@
 # version string reachable by curl. Updates are offered in-app. Manual-only.
 vendor = "Vital Audio"
 homepage = "https://vital.audio"
-skip = "the only public endpoint, https://vital.audio/dist/vital_version.txt, is stale (returns 0.8.5 vs installed 1.6.4, verified live); current versions are behind the account login"
+skip = "the only public endpoint, https://vital.audio/dist/vital_version.txt, is stale (returns 0.8.5 vs installed 1.6.4, verified live); current versions are behind the account login; re-verified 2026-08-31: the Vital 1.6.4 binary itself still points only at vital.audio/dist/vital_version.txt (which serves 0.8.5) and api.vital.audio does not resolve"
 
 [manual]
 login = "https://account.vital.audio"

@@ -1,8 +1,16 @@
-# rhodesmusic.com (WooCommerce) publishes no plugin version numbers on the V-Pan
-# product page (only WP/JS asset versions). Manual-only.
+# Re-tested 2026-08-31: the site is now Shopify and the V-Pan product page
+# (rhodesmusic.com/products/v-pan) serves "Current plugin version: 1.1.0" in
+# plain server-side HTML (== installed 1.1.0, verified live). The earlier
+# WooCommerce-era conclusion (no version published) is obsolete.
 vendor = "Rhodes"
 homepage = "https://rhodesmusic.com"
-skip = "rhodesmusic.com publishes no plugin version; downloads behind account login"
 
 [manual]
-steps = "Log in to your rhodesmusic.com account; V-Pan downloads are under My Account > Downloads. Product page: rhodesmusic.com/rhodes-v-pan-plugin/."
+steps = "Log in to your rhodesmusic.com account; V-Pan downloads are under My Account > Downloads. Product page: rhodesmusic.com/products/v-pan."
+
+[[product]]
+name = "V-Pan"
+page = "https://rhodesmusic.com/products/v-pan"
+strategy = "page_regex"
+version_regex = 'Current plugin version: ([0-9]+\.[0-9.]+)'
+download = "https://rhodesmusic.com/products/v-pan"

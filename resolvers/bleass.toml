@@ -6,7 +6,7 @@
 vendor = "BLEASS"
 homepage = "https://www.bleass.com"
 download_via = "BLEASS Plugins Installer — BLEASS's desktop manager app (see bleass.com/bpi-help/); it checks for and installs plugin updates"
-skip = "No public version source: product pages and the software-updates blog carry no version numbers for Spectral Resonator or Vox"
+skip = "No public version source: product pages and the software-updates blog carry no version numbers for Spectral Resonator or Vox; re-verified 2026-08-31: per-product pages found via wp-sitemap (bleass.com/product/bleass-vox and /bleass-spectral-resonator) carry only boilerplate 'version 1.0' text, no real plugin versions"
 
 [manual]
 login = "https://www.bleass.com/my-account/"

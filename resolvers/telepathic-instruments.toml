@@ -1,8 +1,15 @@
-# Shopify store; the Pistil product page contains only theme/JS version strings,
-# no plugin version. Updates are delivered via emailed download links. Manual-only.
+# Third-party source: KVR Audio product-database page (developer-maintained,
+# may lag releases). KVR needs HTTP/1.1 + browser UA (plugscan's ureq client
+# qualifies; verified live 2026-08-31: Pistil 1.0.2, exact match to installed).
+# Single-product page; id="verosx" is the Mac "Product Version" field.
 vendor = "Telepathic Instruments"
 homepage = "https://telepathicinstruments.com"
-skip = "Shopify page carries no version info; installers delivered via emailed links only"
 
 [manual]
 steps = "Pistil download link and authorization code are emailed on purchase; re-request via telepathicinstruments.com support or check the product page https://telepathicinstruments.com/products/pistil for update announcements."
+
+[[product]]
+name = "Pistil"
+page = "https://www.kvraudio.com/product/pistil-by-telepathic-instruments"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"

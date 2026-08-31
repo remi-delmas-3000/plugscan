@@ -3,7 +3,7 @@
 # no scrapeable version). No public GitHub releases for this plugin. Manual-only.
 vendor = "Steven Atkinson"
 homepage = "https://www.neuralampmodeler.com"
-skip = "neuralampmodeler.com is JS-rendered Wix with no version string; no ParametricOD repo among sdatkinson GitHub repos (verified via API)"
+skip = "neuralampmodeler.com is JS-rendered Wix with no version string; no ParametricOD repo among sdatkinson GitHub repos (verified via API); re-verified 2026-08-31: Wix blog-posts sitemap crawled - posts cover NAM trainer/core releases only, no ParametricOD version announcements"
 
 [manual]
 steps = "Go to neuralampmodeler.com (Users/Downloads section) and download the latest ParametricOD build; version announcements appear on the NAM blog."

@@ -7,7 +7,7 @@
 vendor = "UVI"
 homepage = "https://www.uvi.net"
 download_via = "UVI Portal (uvi.net/download-uvi-portal): the desktop manager installs and updates all UVI products for the logged-in account."
-skip = "Every UVI product updates through the UVI Portal manager against the authenticated portal.uvi.net; no public per-product version source (product pages and Falcon page expose no version, no changelog endpoint, no Sparkle feed)."
+skip = "Every UVI product updates through the UVI Portal manager against the authenticated portal.uvi.net; no public per-product version source (product pages and Falcon page expose no version, no changelog endpoint, no Sparkle feed).; re-verified 2026-08-31: uvi.net/falcon carries only marketing 'Falcon 2026' (not the 26.x.y plugin version), product pages expose no JSON-LD softwareVersion, and UVIWorkstation.app is PACE-protected so its binary yields no update-URL strings"
 
 [manual]
 login = "https://www.uvi.net/my-products"

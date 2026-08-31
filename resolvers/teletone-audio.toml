@@ -5,7 +5,7 @@
 # product-page URLs (no update endpoint).
 vendor = "Teletone Audio"
 homepage = "https://teletoneaudio.com"
-skip = "No version numbers anywhere: Shopify store pages and /products.json carry none, and the plugins have no update-check endpoint"
+skip = "No version numbers anywhere: Shopify store pages and /products.json carry none, and the plugins have no update-check endpoint; re-verified 2026-08-31: /products.json body_html still version-free, /pages/manuals (mined from the binaries) links only unversioned PDF manuals, and the binaries embed only product-page/my.teletoneaudio.com URLs"
 
 [manual]
 steps = "Installers via the Teletone Audio account / order emails; support portal at teletoneaudio.com/pages/support."

@@ -2,7 +2,7 @@
 # exposes no current version string (installed 2.7.x). Manual-only.
 vendor = "TheSynthFactory"
 homepage = "https://thesynthfactory.com"
-skip = "public page still titled HoriZEN 2.0 with no current version (installed 2.7.x); downloads behind account login"
+skip = "public page still titled HoriZEN 2.0 with no current version (installed 2.7.x); downloads behind account login; re-verified 2026-08-31: thesynthfactory.com/horizen now redirects to a version-free EDD downloads page, and the tracktion.com/products/horizen marketplace page also serves no version string"
 
 [manual]
 login = "https://thesynthfactory.com/my-account/"

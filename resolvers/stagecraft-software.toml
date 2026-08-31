@@ -1,8 +1,17 @@
-# stagecraftsoftware.com product pages publish no plugin version numbers
-# (only a JS 'version=2.0' asset string). Manual-only.
+# Re-tested 2026-08-31 by mining the EchoThief binary: it embeds
+# https://api.stagecraftsoftware.com/updates/get_all_current_versions/ which
+# answers plain GET with ?OS=osx (param name is capital "OS"; "os" is
+# rejected) and returns JSON: [{"product": "...", "version": 9.15,
+# "download": "https://stagecraft-s3-prod.s3..."}] for all 31 products.
+# Verified live: EchoThief -> 9.15 (installed reports 9.0.2; the API uses the
+# vendor's two-part numbering and is the authoritative latest). "version" is
+# a bare JSON number, so match it with a regex over the raw body.
 vendor = "Stagecraft Software"
 homepage = "https://www.stagecraftsoftware.com"
-skip = "no version strings or changelog published on stagecraftsoftware.com"
 
-[manual]
-steps = "Open stagecraftsoftware.com/products/echothief/ and download the installer; the installed version is visible in the plugin UI. No public changelog."
+[[product]]
+name = "EchoThief"
+page = "https://api.stagecraftsoftware.com/updates/get_all_current_versions/?OS=osx"
+strategy = "page_regex"
+version_regex = '"product": "EchoThief", "version": ([0-9]+(?:\.[0-9]+)*)'
+download = "https://stagecraft-s3-prod.s3.us-west-1.amazonaws.com/API/Products/EchoThief/${version}/EchoThief%20Installer.pkg"

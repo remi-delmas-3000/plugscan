@@ -1,8 +1,17 @@
-# Phaseburn ONE is in public beta (installed 0.1.x); phaseburn.com / phaseburn.net
-# do not resolve and no stable changelog page exists yet. Manual-only.
+# Correction 2026-08-31: the earlier skip ("no stable site or changelog yet")
+# is stale. phaseburn.music is live and its homepage embeds JSON-LD with
+# "alternateName":"Phaseburn ONE","softwareVersion":"0.1.1" served statically
+# (verified live against installed 0.1.1). Note: builds are beta (0.x), so the
+# default prerelease exclude must not see the word "beta" - the regex captures
+# only the JSON-LD number.
 vendor = "Phaseburn Music"
-homepage = "https://www.kvraudio.com/forum/viewtopic.php?p=9289547"
-skip = "beta distributed via KVR forum thread; no stable site or changelog yet"
+homepage = "https://phaseburn.music"
 
 [manual]
-steps = "Phaseburn ONE beta builds are announced on the KVR Instruments forum thread ('Public Beta: Phaseburn ONE') and Gearspace; full release planned Oct 2026. Revisit for an official site/changelog after release."
+steps = "Download Phaseburn ONE from phaseburn.music; beta build announcements also on the KVR Instruments forum thread."
+
+[[product]]
+name = "Phaseburn ONE"
+page = "https://phaseburn.music/"
+version_regex = '"softwareVersion":"([0-9]+\.[0-9.]+)"'
+download = "https://phaseburn.music/"

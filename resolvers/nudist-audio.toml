@@ -6,7 +6,7 @@
 # and the Nudistort binary has no update endpoint.
 vendor = "Nudist Audio"
 homepage = "https://www.nudistaudio.com"
-skip = "No public version source: JS-rendered Next.js site with no version strings in served HTML or data routes, and no plugin update endpoint"
+skip = "No public version source: JS-rendered Next.js site with no version strings in served HTML or data routes, and no plugin update endpoint; re-verified 2026-08-31: homepage re-fetched - App-Router Next.js with no __NEXT_DATA__ and no version strings in served HTML or chunk URLs"
 
 [manual]
 login = "https://www.nudistaudio.com/login"

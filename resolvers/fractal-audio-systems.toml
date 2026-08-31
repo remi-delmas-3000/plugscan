@@ -1,14 +1,23 @@
-# Fractal Audio's site (WordPress) publishes no plugin/app version numbers;
-# Cab-Lab and companion software releases are announced on the forum and
-# delivered via the account.
-# Wave-2 re-check 2026-08-30: the Cab-Lab 4 app binary references an RSS feed
-# (fractalaudio.com/rss/dfgherycgnmhju/ -> 403 to plain clients) and a Rails API
-# (cablab.fractalaudio.com/api/download_links.json -> 404 without an
-# authenticated session/params); no /fullerton or /pasadena product pages exist.
+# Correction 2026-08-31 (wave-3 re-test): partially wrong. The ICONS:Fullerton
+# plugin publishes a PUBLIC release-notes PDF whose section titles are stored as
+# plaintext (uncompressed) PDF outline entries "VERSION x.y.z | <date>", newest
+# first:
+#   https://www.fractalaudio.com/downloads/manuals/icons/ICONS-Fullerton-Release-Notes.pdf
+# First "VERSION" match = latest. Verified live 2026-08-31: 1.1.0 >= installed 1.1.
+# Still no public version source for Cab-Lab 4 (installed 1.01.00) or Pasadena
+# (installed 1.0.0, brand-new plugin with only a manual PDF, no release-notes
+# PDF yet); those stay unresolved. The cablab API remains auth-gated.
 vendor = "Fractal Audio Systems"
 homepage = "https://www.fractalaudio.com"
-skip = "No public version source: the Cab-Lab update feed returns 403 and the cablab API requires an authenticated Shopify session; releases are announced only on the forum"
 
 [manual]
-login = "https://shop.fractalaudio.com/account/login"
-steps = "Log into the Fractal Audio account; Cab-Lab downloads live in the account area, release announcements on forum.fractalaudio.com."
+login = "https://cablab.fractalaudio.com"
+steps = "ICONS plugins install/update via the ICONS app and the Fractal account; Cab-Lab 4 downloads from cablab.fractalaudio.com (login). ICONS:Fullerton current version is in its public release-notes PDF."
+
+[[product]]
+name = "FullertonComplete"
+page = "https://www.fractalaudio.com/downloads/manuals/icons/ICONS-Fullerton-Release-Notes.pdf"
+strategy = "page_regex"
+version_regex = 'VERSION ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.fractalaudio.com/icons-amp-modeling-plugin/"
+changelog = "https://www.fractalaudio.com/downloads/manuals/icons/ICONS-Fullerton-Release-Notes.pdf"

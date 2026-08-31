@@ -7,7 +7,7 @@
 # has no update endpoint.
 vendor = "SongWish"
 homepage = "https://songwish.ca"
-skip = "songwish.ca is a JS SPA (hash-named bundles, no stable scrapeable URL) and the plugins have no update-check endpoint"
+skip = "songwish.ca is a JS SPA (hash-named bundles, no stable scrapeable URL) and the plugins have no update-check endpoint; re-verified 2026-08-31: the Vite bundle (assets/index-*.js) was mined - it contains 'reMIDI 4' marketing text and JS-library versions but no plugin release version, and the bundle URL is hash-named"
 
 [manual]
 steps = "Open songwish.ca in a browser; the store/download area serves the latest reMIDI 4 installer (covers reMIDI 4 and reMIDI 4 MFX). Installation notes at songwish.ca/remidi-4-installation. Release announcements appear on the KVR SongWish developer page."

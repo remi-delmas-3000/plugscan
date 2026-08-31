@@ -244,7 +244,7 @@ pub fn doctor(conn: &Connection, json: bool) -> rusqlite::Result<()> {
              FROM plugins b
              JOIN bundles p ON p.id = b.bundle_id
              JOIN vendors v ON v.id = p.vendor_id
-             WHERE b.removed_at IS NULL
+             WHERE b.removed_at IS NULL AND p.name != 'Waves Shell'
              GROUP BY p.id, b.format
              HAVING count(*) > 1
              ORDER BY v.name COLLATE NOCASE",
@@ -334,6 +334,7 @@ struct StaleRow {
     installed: String,
     latest: String,
     url: Option<String>,
+    via: Option<String>,
 }
 
 #[derive(Serialize)]
@@ -359,7 +360,7 @@ pub fn outdated(conn: &Connection, json: bool, explain: bool) -> rusqlite::Resul
     let mut stmt = conn.prepare(
         "SELECT v.name, p.name,
                 group_concat(DISTINCT COALESCE(b.version, '?')),
-                c.latest_version, c.url,
+                c.latest_version, c.url, c.source,
                 COALESCE(um.ignored, 0), COALESCE(um.pinned, 0),
                 v.manager_app
          FROM bundles p
@@ -376,6 +377,7 @@ pub fn outdated(conn: &Connection, json: bool, explain: bool) -> rusqlite::Resul
         versions: String,
         latest: Option<String>,
         url: Option<String>,
+        source: Option<String>,
         ignored: bool,
         pinned: bool,
         manager: Option<String>,
@@ -388,9 +390,10 @@ pub fn outdated(conn: &Connection, json: bool, explain: bool) -> rusqlite::Resul
                 versions: r.get::<_, Option<String>>(2)?.unwrap_or_default(),
                 latest: r.get(3)?,
                 url: r.get(4)?,
-                ignored: r.get::<_, i64>(5)? != 0,
-                pinned: r.get::<_, i64>(6)? != 0,
-                manager: r.get(7)?,
+                source: r.get(5)?,
+                ignored: r.get::<_, i64>(6)? != 0,
+                pinned: r.get::<_, i64>(7)? != 0,
+                manager: r.get(8)?,
             })
         })?
         .collect::<Result<_, _>>()?;
@@ -439,6 +442,11 @@ pub fn outdated(conn: &Connection, json: bool, explain: bool) -> rusqlite::Resul
                         installed,
                         latest: latest.clone(),
                         url: row.url.clone(),
+                        via: row
+                            .source
+                            .as_deref()
+                            .and_then(|s| s.split_once(" via "))
+                            .map(|(_, v)| v.to_string()),
                     });
                 }
             }
@@ -491,11 +499,15 @@ pub fn outdated(conn: &Connection, json: bool, explain: bool) -> rusqlite::Resul
         println!("STALE ({} bundles)", report.stale.len());
         for s in &report.stale {
             println!(
-                "  {:<18} {:<28} {} → {}    {}",
+                "  {:<18} {:<28} {} → {}{}    {}",
                 s.vendor,
                 s.bundle,
                 s.installed,
                 s.latest,
+                s.via
+                    .as_deref()
+                    .map(|v| format!(" [via {v}]"))
+                    .unwrap_or_default(),
                 s.url.as_deref().unwrap_or("")
             );
         }

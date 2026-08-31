@@ -7,7 +7,7 @@
 # update endpoint (code-signing cert URLs only).
 vendor = "MozaicBeats"
 homepage = "https://mozaicbeats.com"
-skip = "mozaicbeats.com is unreachable from HTTP clients and the plugins have no update-check endpoint"
+skip = "mozaicbeats.com is unreachable from HTTP clients and the plugins have no update-check endpoint; re-verified 2026-08-31: mozaicbeats.com and www still fail to connect over HTTP/HTTPS and the Chord Prism 2 binary embeds no update endpoint"
 
 [manual]
 steps = "Open mozaicbeats.com in a browser and check the Chord Prism 2 page / your account downloads for the latest installer; updates are also announced in the Mozaic Beats vendor forum on kvraudio.com (forum topic 'Chord Prism' downloads)."
