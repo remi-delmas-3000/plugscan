@@ -1,5 +1,6 @@
-# LiquidSonics lists every installer with versioned filenames (e.g. Illusion-v1.4.6) on one
-# public downloads page. Windows builds can be a point release ahead of macOS; first match wins.
+# LiquidSonics lists every installer with versioned filenames on one public downloads page.
+# Windows builds can be a point release ahead of macOS, so every regex anchors on the
+# '-macOS' installer suffix — matching the Windows build would report a phantom update.
 vendor = "LiquidSonics"
 homepage = "https://www.liquidsonics.com"
 
@@ -9,29 +10,29 @@ steps = "All installers are public at liquidsonics.com/downloads/ (no login). Li
 [[product]]
 name = "Cinematic Rooms Professional"
 page = "https://www.liquidsonics.com/downloads/"
-version_regex = 'Cinematic_Rooms_Professional-v([0-9]+\.[0-9.]+)'
+version_regex = 'Cinematic_Rooms_Professional-v([0-9]+\.[0-9.]+)-macOS'
 download = "https://www.liquidsonics.com/downloads/"
 
 [[product]]
 name = "Illusion"
 page = "https://www.liquidsonics.com/downloads/"
-version_regex = 'Illusion-v([0-9]+\.[0-9.]+)'
+version_regex = 'Illusion-v([0-9]+\.[0-9.]+)-macOS'
 download = "https://www.liquidsonics.com/downloads/"
 
 [[product]]
 name = "Lustrous Plates"
 page = "https://www.liquidsonics.com/downloads/"
-version_regex = 'Lustrous_Plates-v([0-9]+\.[0-9.]+)'
+version_regex = 'Lustrous_Plates-v([0-9]+\.[0-9.]+)-macOS'
 download = "https://www.liquidsonics.com/downloads/"
 
 [[product]]
 name = "Reverberate"
 page = "https://www.liquidsonics.com/downloads/"
-version_regex = 'Reverberate-v([0-9]+\.[0-9.]+)'
+version_regex = 'Reverberate-v([0-9]+\.[0-9.]+)-macOS'
 download = "https://www.liquidsonics.com/downloads/"
 
 [[product]]
 name = "Seventh Heaven Professional"
 page = "https://www.liquidsonics.com/downloads/"
-version_regex = 'Seventh_Heaven_Professional-(?:Plugins|Update|Complete)_v([0-9]+\.[0-9.]+)'
+version_regex = 'Seventh_Heaven_Professional-(?:Plugins|Update|Complete)_v([0-9]+\.[0-9.]+)-macOS'
 download = "https://www.liquidsonics.com/downloads/"
