@@ -1,13 +1,265 @@
-# Re-checked 2026-08-30: the downloads archive (eventideaudio.com/downloads/, and the
-# per-product /downloads/?product=<Name> pages) is server-rendered but lists product names
-# only -- the plugin version and download link are injected via JS after account login.
-# No version strings (e.g. 3.11.x) appear in the served HTML anywhere; the numbers on the page
-# (4.13.1 etc.) are the Astra WordPress theme's asset ?ver=. There is no Eventide download
-# manager on macOS (only per-plugin uninstallers ship). No public per-plugin version source.
+# Correction 2026-08-31 (user report): the downloads pages DO serve versions
+# server-side without login. Each /downloads/?product=<name> page carries
+# "<name> Installer (Mac 64-bit)" followed by <div class='version-number'>
+# Version X.Y.Z</div>. The earlier wave-2 conclusion (auth-gated) was wrong:
+# it mistook theme asset ?ver= numbers for the only version strings served.
+# "No MIDI" and "Dual" variants ship inside the parent product's installer,
+# so they point at the parent's page.
 vendor = "Eventide"
 homepage = "https://www.eventideaudio.com"
-skip = "Plugin versions are shown only after account login; the downloads pages render product names but load versions/installers via authenticated JS, and there is no download-manager app or public version feed."
 
 [manual]
 login = "https://www.eventideaudio.com/my-account/"
-steps = "Log in at eventideaudio.com (My Account), then eventideaudio.com/downloads/ for installers. Each plugin's current version is shown next to its download only after login; product/marketing pages do not state plugin versions."
+steps = "Installers: eventideaudio.com/downloads/ (filter by product). Versions are shown next to each installer; the download itself needs login."
+
+[[product]]
+name = "Blackhole"
+page = "https://www.eventideaudio.com/downloads/?product=Blackhole%C2%AE"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=Blackhole%C2%AE"
+
+[[product]]
+name = "Blackhole Immersive"
+page = "https://www.eventideaudio.com/downloads/?product=Blackhole+Immersive"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=Blackhole+Immersive"
+
+[[product]]
+name = "Blackhole No MIDI"
+page = "https://www.eventideaudio.com/downloads/?product=Blackhole%C2%AE"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=Blackhole%C2%AE"
+
+[[product]]
+name = "CrushStation"
+page = "https://www.eventideaudio.com/downloads/?product=CrushStation%C2%AE"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=CrushStation%C2%AE"
+
+[[product]]
+name = "Crystals"
+page = "https://www.eventideaudio.com/downloads/?product=Crystals"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=Crystals"
+
+[[product]]
+name = "DeBoom"
+page = "https://www.eventideaudio.com/downloads/?product=DeBoom"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=DeBoom"
+
+[[product]]
+name = "EChannel"
+page = "https://www.eventideaudio.com/downloads/?product=EChannel"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=EChannel"
+
+[[product]]
+name = "EQ45"
+page = "https://www.eventideaudio.com/downloads/?product=EQ45"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=EQ45"
+
+[[product]]
+name = "EQ65"
+page = "https://www.eventideaudio.com/downloads/?product=EQ65"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=EQ65"
+
+[[product]]
+name = "H3000 Band Delays"
+page = "https://www.eventideaudio.com/downloads/?product=H3000+Band+Delays"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=H3000+Band+Delays"
+
+[[product]]
+name = "H3000 Band Delays Mk II"
+page = "https://www.eventideaudio.com/downloads/?product=H3000+Band+Delays+Mk+II"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=H3000+Band+Delays+Mk+II"
+
+[[product]]
+name = "H3000 Factory"
+page = "https://www.eventideaudio.com/downloads/?product=H3000+Factory"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=H3000+Factory"
+
+[[product]]
+name = "H3000 Factory Mk II"
+page = "https://www.eventideaudio.com/downloads/?product=H3000+Factory+Mk+II"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=H3000+Factory+Mk+II"
+
+[[product]]
+name = "H910 Dual Harmonizer"
+page = "https://www.eventideaudio.com/downloads/?product=H910+Harmonizer%C2%AE"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=H910+Harmonizer%C2%AE"
+
+[[product]]
+name = "H910 Harmonizer"
+page = "https://www.eventideaudio.com/downloads/?product=H910+Harmonizer%C2%AE"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=H910+Harmonizer%C2%AE"
+
+[[product]]
+name = "H949 Dual Harmonizer"
+page = "https://www.eventideaudio.com/downloads/?product=H949+Harmonizer%C2%AE"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=H949+Harmonizer%C2%AE"
+
+[[product]]
+name = "H949 Harmonizer"
+page = "https://www.eventideaudio.com/downloads/?product=H949+Harmonizer%C2%AE"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=H949+Harmonizer%C2%AE"
+
+[[product]]
+name = "Instant Flanger Mk II"
+page = "https://www.eventideaudio.com/downloads/?product=Instant+Flanger+Mk+II"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=Instant+Flanger+Mk+II"
+
+[[product]]
+name = "Instant Phaser Mk II"
+page = "https://www.eventideaudio.com/downloads/?product=Instant+Phaser+Mk+II"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=Instant+Phaser+Mk+II"
+
+[[product]]
+name = "MangledVerb"
+page = "https://www.eventideaudio.com/downloads/?product=MangledVerb"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=MangledVerb"
+
+[[product]]
+name = "MicroPitch"
+page = "https://www.eventideaudio.com/downloads/?product=MicroPitch"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=MicroPitch"
+
+[[product]]
+name = "MicroPitch Immersive"
+page = "https://www.eventideaudio.com/downloads/?product=MicroPitch+Immersive"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=MicroPitch+Immersive"
+
+[[product]]
+name = "Octavox"
+page = "https://www.eventideaudio.com/downloads/?product=Octavox"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=Octavox"
+
+[[product]]
+name = "Octavox No MIDI"
+page = "https://www.eventideaudio.com/downloads/?product=Octavox"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=Octavox"
+
+[[product]]
+name = "Omnipressor"
+page = "https://www.eventideaudio.com/downloads/?product=Omnipressor%C2%AE"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=Omnipressor%C2%AE"
+
+[[product]]
+name = "Physion Mk II"
+page = "https://www.eventideaudio.com/downloads/?product=Physion+Mk+II"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=Physion+Mk+II"
+
+[[product]]
+name = "Precision Time Align"
+page = "https://www.eventideaudio.com/downloads/?product=Precision+Time+Align"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=Precision+Time+Align"
+
+[[product]]
+name = "Quadravox"
+page = "https://www.eventideaudio.com/downloads/?product=Quadravox"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=Quadravox"
+
+[[product]]
+name = "Rotary Mod"
+page = "https://www.eventideaudio.com/downloads/?product=Rotary+Mod"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=Rotary+Mod"
+
+[[product]]
+name = "Sheen Machine"
+page = "https://www.eventideaudio.com/downloads/?product=Sheen+Machine"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=Sheen+Machine"
+
+[[product]]
+name = "ShimmerVerb"
+page = "https://www.eventideaudio.com/downloads/?product=ShimmerVerb"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=ShimmerVerb"
+
+[[product]]
+name = "SP2016 Reverb"
+page = "https://www.eventideaudio.com/downloads/?product=SP2016+Reverb"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=SP2016+Reverb"
+
+[[product]]
+name = "SplitEQ"
+page = "https://www.eventideaudio.com/downloads/?product=SplitEQ"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=SplitEQ"
+
+[[product]]
+name = "Spring"
+page = "https://www.eventideaudio.com/downloads/?product=Spring"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=Spring"
+
+[[product]]
+name = "Temperance Lite"
+page = "https://www.eventideaudio.com/downloads/?product=Temperance+Lite"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=Temperance+Lite"
+
+[[product]]
+name = "Temperance Pro"
+page = "https://www.eventideaudio.com/downloads/?product=Temperance+Pro"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=Temperance+Pro"
+
+[[product]]
+name = "TriceraChorus"
+page = "https://www.eventideaudio.com/downloads/?product=TriceraChorus"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=TriceraChorus"
+
+[[product]]
+name = "Tverb"
+page = "https://www.eventideaudio.com/downloads/?product=Tverb"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=Tverb"
+
+[[product]]
+name = "UltraChannel"
+page = "https://www.eventideaudio.com/downloads/?product=UltraChannel"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=UltraChannel"
+
+[[product]]
+name = "UltraReverb"
+page = "https://www.eventideaudio.com/downloads/?product=UltraReverb"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=UltraReverb"
+
+[[product]]
+name = "UltraTap"
+page = "https://www.eventideaudio.com/downloads/?product=UltraTap"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=UltraTap"
+
+[[product]]
+name = "Undulator"
+page = "https://www.eventideaudio.com/downloads/?product=Undulator"
+version_regex = "\\(Mac[^)]*\\)</a><div class='version-number'>Version ([0-9]+\\.[0-9.]+)"
+download = "https://www.eventideaudio.com/downloads/?product=Undulator"
