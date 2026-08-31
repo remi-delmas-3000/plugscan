@@ -353,6 +353,7 @@ pub struct Work<'a> {
     pub vendor: &'a str,
     pub name: &'a str,
     pub via: Option<&'a str>,
+    pub paid_from: Option<&'a str>,
     pub pr: &'a BundleResolver,
     pub bundle_id: Option<i64>,
 }
@@ -361,6 +362,7 @@ pub struct Outcome {
     pub vendor: String,
     pub name: String,
     pub via: Option<String>,
+    pub paid_from: Option<String>,
     pub bundle_id: Option<i64>,
     pub result: Result<String, CheckError>,
 }
@@ -410,6 +412,7 @@ fn run_concurrent(items: Vec<Work>) -> Vec<Outcome> {
                         vendor: w.vendor.to_string(),
                         name: w.name.to_string(),
                         via: w.via.map(str::to_string),
+                        paid_from: w.paid_from.map(str::to_string),
                         bundle_id: w.bundle_id,
                         result,
                     });
@@ -425,6 +428,7 @@ pub fn run(
     force: bool,
     max_age_hours: i64,
     json: bool,
+    vendor_filter: Option<&str>,
 ) -> rusqlite::Result<()> {
     let resolvers = resolver::load_all();
     if resolvers.is_empty() {
@@ -463,6 +467,11 @@ pub fn run(
             vendor_skips += 1;
             continue;
         }
+        if let Some(vf) = vendor_filter {
+            if !rf.vendor.to_lowercase().contains(&vf.to_lowercase()) {
+                continue;
+            }
+        }
         for pr in &rf.bundles {
             let key = (rf.vendor.clone(), pr.name.to_lowercase());
             let Some(&bundle_id) = bundles.get(&key) else {
@@ -486,6 +495,7 @@ pub fn run(
                 vendor: &rf.vendor,
                 name: &pr.name,
                 via: pr.via.as_deref(),
+                paid_from: pr.paid_from.as_deref(),
                 pr,
                 bundle_id: Some(bundle_id),
             });
@@ -502,11 +512,12 @@ pub fn run(
             Ok(version) => {
                 let action = outcomes_action_url(&resolvers, &o.vendor, &o.name, version);
                 tx.execute(
-                    "INSERT INTO checks(bundle_id, latest_version, url, source, checked_at)
-                     VALUES(?1, ?2, ?3, ?4, ?5)
+                    "INSERT INTO checks(bundle_id, latest_version, url, source, checked_at, paid_from)
+                     VALUES(?1, ?2, ?3, ?4, ?5, ?6)
                      ON CONFLICT(bundle_id) DO UPDATE SET
                        latest_version=excluded.latest_version, url=excluded.url,
-                       source=excluded.source, checked_at=excluded.checked_at",
+                       source=excluded.source, checked_at=excluded.checked_at,
+                       paid_from=excluded.paid_from",
                     params![
                         o.bundle_id,
                         version,
@@ -515,7 +526,8 @@ pub fn run(
                             Some(via) => format!("resolver:{} via {via}", o.vendor),
                             None => format!("resolver:{}", o.vendor),
                         },
-                        now
+                        now,
+                        o.paid_from,
                     ],
                 )?;
                 checked += 1;
@@ -604,6 +616,7 @@ pub fn test_all(json: bool, vendor_filter: Option<&str>) -> u32 {
                 vendor: &rf.vendor,
                 name: &pr.name,
                 via: pr.via.as_deref(),
+                paid_from: pr.paid_from.as_deref(),
                 pr,
                 bundle_id: None,
             });
@@ -737,6 +750,7 @@ pub fn new_vendor(vendor: &str, url: &str) {
             json_path: None,
             exclude_regex: None,
             via: None,
+            paid_from: None,
             download: None,
             changelog: None,
         };
@@ -797,6 +811,7 @@ mod tests {
             json_path: json_path.map(str::to_string),
             exclude_regex: None,
             via: None,
+            paid_from: None,
             download: None,
             changelog: None,
         }

@@ -369,6 +369,7 @@ struct OutdatedReport {
     pinned_stale: Vec<String>,
     resolver_stale: Vec<String>,
     resolver_suspect: Vec<String>,
+    paid_upgrade: Vec<String>,
     manual_check: Vec<(String, i64)>,
     managed: Vec<ManagedRow>,
     unresolved_vendors: i64,
@@ -380,7 +381,7 @@ pub fn outdated(conn: &Connection, json: bool, explain: bool) -> rusqlite::Resul
     let mut stmt = conn.prepare(
         "SELECT v.name, p.name,
                 group_concat(DISTINCT COALESCE(b.version, '?')),
-                c.latest_version, c.url, c.source,
+                c.latest_version, c.url, c.source, c.paid_from,
                 COALESCE(um.ignored, 0), COALESCE(um.pinned, 0),
                 v.manager_app
          FROM bundles p
@@ -398,6 +399,7 @@ pub fn outdated(conn: &Connection, json: bool, explain: bool) -> rusqlite::Resul
         latest: Option<String>,
         url: Option<String>,
         source: Option<String>,
+        paid_from: Option<String>,
         ignored: bool,
         pinned: bool,
         manager: Option<String>,
@@ -411,9 +413,10 @@ pub fn outdated(conn: &Connection, json: bool, explain: bool) -> rusqlite::Resul
                 latest: r.get(3)?,
                 url: r.get(4)?,
                 source: r.get(5)?,
-                ignored: r.get::<_, i64>(6)? != 0,
-                pinned: r.get::<_, i64>(7)? != 0,
-                manager: r.get(8)?,
+                paid_from: r.get(6)?,
+                ignored: r.get::<_, i64>(7)? != 0,
+                pinned: r.get::<_, i64>(8)? != 0,
+                manager: r.get(9)?,
             })
         })?
         .collect::<Result<_, _>>()?;
@@ -423,6 +426,7 @@ pub fn outdated(conn: &Connection, json: bool, explain: bool) -> rusqlite::Resul
         pinned_stale: Vec::new(),
         resolver_stale: Vec::new(),
         resolver_suspect: Vec::new(),
+        paid_upgrade: Vec::new(),
         manual_check: Vec::new(),
         managed: Vec::new(),
         unresolved_vendors: 0,
@@ -433,10 +437,15 @@ pub fn outdated(conn: &Connection, json: bool, explain: bool) -> rusqlite::Resul
     let mut unresolved: std::collections::BTreeMap<String, i64> = Default::default();
     // Vendors with a resolver file but no automatable bundles: they publish
     // no version info, but we know exactly how a human updates them.
-    let manual_vendors: std::collections::HashSet<String> = crate::resolver::load_all()
-        .into_iter()
+    let resolver_files = crate::resolver::load_all();
+    let manual_vendors: std::collections::HashSet<String> = resolver_files
+        .iter()
         .filter(|rf| rf.manual.is_some() || rf.skip.is_some())
-        .map(|rf| rf.vendor)
+        .map(|rf| rf.vendor.clone())
+        .collect();
+    let download_via: std::collections::HashMap<String, String> = resolver_files
+        .iter()
+        .filter_map(|rf| rf.download_via.clone().map(|v| (rf.vendor.clone(), v)))
         .collect();
     let mut manual_counts: std::collections::BTreeMap<String, i64> = Default::default();
 
@@ -457,6 +466,18 @@ pub fn outdated(conn: &Connection, json: bool, explain: bool) -> rusqlite::Resul
             {
                 report.resolver_suspect.push(format!(
                     "{} {} (page says {latest}, installed {installed} — implausible jump, likely wrong capture)",
+                    row.vendor, row.bundle
+                ));
+            }
+            Some(latest)
+                if cmp_versions_prefix(latest, &installed) == Ordering::Greater
+                    && row.paid_from.as_deref().is_some_and(|pf| {
+                        cmp_versions(&installed, pf) == Ordering::Less
+                            && cmp_versions(latest, pf) != Ordering::Less
+                    }) =>
+            {
+                report.paid_upgrade.push(format!(
+                    "{} {} ({installed} → {latest}, paid major upgrade)",
                     row.vendor, row.bundle
                 ));
             }
@@ -525,19 +546,50 @@ pub fn outdated(conn: &Connection, json: bool, explain: bool) -> rusqlite::Resul
         println!("STALE: none known");
     } else {
         println!("STALE ({} bundles)", report.stale.len());
+        // Collapse lockstep vendors: when many bundles share one vendor and
+        // the same installed→latest transition (Melda's 43 plugins all
+        // 17.08→17.09, Soundtoys' 29 at one version), show one line instead
+        // of flooding the list. Vendors with their own installer app show it.
+        use std::collections::BTreeMap;
+        let mut groups: BTreeMap<(String, String, String), Vec<&StaleRow>> = BTreeMap::new();
         for s in &report.stale {
-            println!(
-                "  {:<18} {:<28} {} → {}{}    {}",
-                s.vendor,
-                s.bundle,
-                s.installed,
-                s.latest,
-                s.via
+            groups
+                .entry((s.vendor.clone(), s.installed.clone(), s.latest.clone()))
+                .or_default()
+                .push(s);
+        }
+        for ((vendor, installed, latest), rows) in &groups {
+            if rows.len() >= 4 {
+                let dest = download_via
+                    .get(vendor.as_str())
+                    .map(|app| format!("update via {app}"))
+                    .unwrap_or_else(|| rows[0].url.clone().unwrap_or_default());
+                let via = rows[0]
+                    .via
                     .as_deref()
                     .map(|v| format!(" [via {v}]"))
-                    .unwrap_or_default(),
-                s.url.as_deref().unwrap_or("")
-            );
+                    .unwrap_or_default();
+                println!(
+                    "  {:<18} {} plugins  {installed} → {latest}{via}    {dest}",
+                    vendor,
+                    rows.len()
+                );
+            } else {
+                for s in rows {
+                    println!(
+                        "  {:<18} {:<28} {} → {}{}    {}",
+                        s.vendor,
+                        s.bundle,
+                        s.installed,
+                        s.latest,
+                        s.via
+                            .as_deref()
+                            .map(|v| format!(" [via {v}]"))
+                            .unwrap_or_default(),
+                        s.url.as_deref().unwrap_or("")
+                    );
+                }
+            }
         }
     }
     if explain {
@@ -575,6 +627,15 @@ pub fn outdated(conn: &Connection, json: bool, explain: bool) -> rusqlite::Resul
                     println!("    {steps}");
                 }
             }
+        }
+    }
+    if !report.paid_upgrade.is_empty() {
+        println!(
+            "\nPAID UPGRADE AVAILABLE ({}) — a newer paid major version exists (not a free update)",
+            report.paid_upgrade.len()
+        );
+        for p in report.paid_upgrade.iter().take(30) {
+            println!("  {p}");
         }
     }
     if !report.resolver_suspect.is_empty() {

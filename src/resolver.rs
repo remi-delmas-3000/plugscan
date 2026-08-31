@@ -62,6 +62,12 @@ pub struct BundleResolver {
     /// ("Plugin Boutique", "Rekkerd"). Surfaced in check and outdated output.
     #[serde(default)]
     pub via: Option<String>,
+    /// Versions at or above this are a paid major upgrade to a distinct
+    /// product (e.g. RePitch 2 vs RePitch 1). When an installed version below
+    /// this is compared against a latest at or above it, outdated reports a
+    /// paid upgrade rather than a routine stale update.
+    #[serde(default)]
+    pub paid_from: Option<String>,
     /// May contain "${version}", substituted after resolution.
     #[serde(default)]
     pub download: Option<String>,
@@ -125,6 +131,7 @@ fn validate(mut rf: ResolverFile) -> ResolverFile {
         }
         p.page = crate::util::sanitize_line(&p.page);
         p.via = p.via.as_deref().map(crate::util::sanitize_line);
+        p.paid_from = p.paid_from.as_deref().map(crate::util::sanitize_line);
         p.download = https_or_drop(&p.download, &vendor);
         p.changelog = https_or_drop(&p.changelog, &vendor);
         true

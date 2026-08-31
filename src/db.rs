@@ -29,6 +29,8 @@ fn migrate_terminology(conn: &Connection) -> rusqlite::Result<()> {
              ALTER TABLE downloads RENAME COLUMN product_id TO bundle_id;",
         )?;
     }
+    // paid_from column added 2026-08-31; ignore error if it already exists.
+    let _ = conn.execute("ALTER TABLE checks ADD COLUMN paid_from TEXT", []);
     Ok(())
 }
 
@@ -81,7 +83,8 @@ CREATE TABLE IF NOT EXISTS checks(
     latest_version TEXT,
     url            TEXT,
     source         TEXT,
-    checked_at     INTEGER
+    checked_at     INTEGER,
+    paid_from      TEXT
 );
 CREATE TABLE IF NOT EXISTS user_meta(
     bundle_id  INTEGER PRIMARY KEY REFERENCES bundles(id),

@@ -79,6 +79,9 @@ enum Cmd {
         /// Emit machine-readable results (one object per bundle)
         #[arg(long)]
         json: bool,
+        /// Only re-check this vendor (substring)
+        #[arg(long)]
+        vendor: Option<String>,
     },
     /// Show bundles with known newer versions, plus coverage summary
     Outdated {
@@ -184,7 +187,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Cmd::Info { name, json } => report::info(&conn, &name, json)?,
         Cmd::Doctor { json } => report::doctor(&conn, json)?,
         Cmd::Vendors { json } => report::vendors(&conn, json)?,
-        Cmd::Check { force, max_age, json } => check::run(&mut conn, force, max_age, json)?,
+        Cmd::Check { force, max_age, json, vendor } => check::run(&mut conn, force, max_age, json, vendor.as_deref())?,
         Cmd::Outdated { json, explain } => report::outdated(&conn, json, explain)?,
         Cmd::Pin { name, undo } => report::set_flag(&conn, &name, "pinned", !undo)?,
         Cmd::Ignore { name, undo } => report::set_flag(&conn, &name, "ignored", !undo)?,

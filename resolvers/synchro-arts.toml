@@ -22,6 +22,8 @@ name = "RePitch"
 page = "https://www.kvraudio.com/product/repitch-2-standard-by-synchro-arts"
 version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
 via = "KVR Audio"
+paid_from = "2.0"
+
 
 [[product]]
 name = "RevoiceProLink"
