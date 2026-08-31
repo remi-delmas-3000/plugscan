@@ -4,6 +4,9 @@
 # (plugscan's ureq client qualifies; verified live 2026-08-31, exact matches
 # to installed: Fermenter 1.2.1, Nudistort 1.2.6).
 # Single-product pages; id="verosx" is the Mac "Product Version" field.
+# vendor-direct re-checked 2026-08-31: nudistaudio.com/download and
+# /download/<product> gate the installer behind account login and carry no
+# server-side version string (only a Facebook-pixel "version='2.0'"). KVR wins.
 vendor = "Nudist Audio"
 homepage = "https://www.nudistaudio.com"
 

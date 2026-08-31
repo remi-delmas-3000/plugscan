@@ -7,6 +7,9 @@
 # Revoice Pro 5.1.33 (>= 5.1.32; the four RevoicePro* helper bundles ship in
 # the Revoice Pro installer and share its version), VocAlign Pro 6.1.32
 # (>= 6.1.30), VocAlign Ultra 1.4.1 (installed version unknown in catalog).
+# vendor-direct re-checked 2026-08-31: synchroarts.com/downloads-and-manuals
+# hosts only manuals plus a Zendesk "Legacy Installers" link; current installer
+# versions live behind app.synchroarts.com login. No server-side version. KVR wins.
 vendor = "Synchro Arts"
 homepage = "https://www.synchroarts.com"
 

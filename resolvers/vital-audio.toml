@@ -4,6 +4,8 @@
 # the real release: Mac 1.6.4, exact match to installed (verified live
 # 2026-08-31). KVR needs HTTP/1.1 + browser UA (plugscan's ureq client
 # qualifies); id="verosx" is the Mac "Product Version" field.
+# vendor-direct re-checked 2026-08-31: vital.audio's own dist/vital_version.txt
+# is still 0.8.5 (stale), so the vendor source is worse than KVR's 1.6.4. KVR stays.
 vendor = "Vital Audio"
 homepage = "https://vital.audio"
 

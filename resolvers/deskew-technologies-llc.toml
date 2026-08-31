@@ -3,6 +3,9 @@
 # of Gig Performer's versioning (verified live 2026-08-31: 1.0.22, exact
 # match to installed). KVR needs HTTP/1.1 + browser UA (plugscan's ureq
 # client qualifies); id="verosx" is the Mac "Product Version" field.
+# vendor-direct re-checked 2026-08-31: gigperformer.com/release-notes tracks the
+# Gig Performer app version (5.x/6.x), not GPRelayer's independent 1.0.x that
+# KVR tracks. No vendor-direct source for the GPRelayer version, so KVR stays.
 vendor = "Deskew Technologies, LLC"
 homepage = "https://gigperformer.com"
 

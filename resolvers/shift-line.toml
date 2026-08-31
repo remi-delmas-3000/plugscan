@@ -5,6 +5,9 @@
 # Prism (installed 0.1, early/beta build) has no KVR page and no other indexed
 # version source was found - that bundle stays unresolved.
 # Single-product pages; id="verosx" is the Mac "Product Version" field.
+# vendor-direct re-checked 2026-08-31: shift-line.com/downloads only hosts
+# hardware-pedal PDFs and IR packs (Astronaut III guides, CabZone), no plugin
+# installer or version string. KVR remains the source for the plugin builds.
 vendor = "Shift Line"
 homepage = "https://shift-line.com"
 

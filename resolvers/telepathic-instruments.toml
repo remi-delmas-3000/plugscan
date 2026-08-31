@@ -2,6 +2,9 @@
 # may lag releases). KVR needs HTTP/1.1 + browser UA (plugscan's ureq client
 # qualifies; verified live 2026-08-31: Pistil 1.0.2, exact match to installed).
 # Single-product page; id="verosx" is the Mac "Product Version" field.
+# vendor-direct re-checked 2026-08-31: telepathicinstruments.com is a Shopify
+# store; the Pistil download/auth is emailed on purchase and the on-site
+# "firmware" CTA targets the Orchid hardware, not the plugin. No plugin version. KVR wins.
 vendor = "Telepathic Instruments"
 homepage = "https://telepathicinstruments.com"
 

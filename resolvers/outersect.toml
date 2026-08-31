@@ -2,6 +2,9 @@
 # may lag releases). KVR needs HTTP/1.1 + browser UA (plugscan's ureq client
 # qualifies; verified live 2026-08-31: Outersect Modeler 1.2.11, exact match
 # to installed OM). id="verosx" is the Mac "Product Version" field.
+# vendor-direct re-checked 2026-08-31: tracktion.com Outersect Modeler page is
+# marketing-only and downloads live behind marketplace.tracktion.com login; no
+# server-side version string exposed. KVR remains the source.
 vendor = "Outersect"
 homepage = "https://www.tracktion.com"
 

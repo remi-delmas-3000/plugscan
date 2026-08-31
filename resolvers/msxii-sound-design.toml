@@ -4,6 +4,10 @@
 # build numbers. Verified live 2026-08-31: Fly Tape II 1.0.0.27 and Lo Fly
 # Dirt 1.0.0.55 - exact matches to installed. KVR needs HTTP/1.1 + browser UA
 # (plugscan's ureq client qualifies); id="verosx" = Mac version field.
+# vendor-direct re-checked 2026-08-31: the desktop builds live behind the
+# inMusic Profile login (profile.inmusicbrands.com), and airmusictech.com pages
+# carry only WordPress asset tokens. No public vendor-direct version, so KVR
+# (AIR Music Technology product pages, with the full four-part builds) stays.
 vendor = "MSXII Sound Design"
 homepage = "https://www.msxaudio.com"
 download_via = "inMusic Software Center / inMusic Profile (profile.inmusicbrands.com) — lists and installs the latest Fly Tape II and Lo Fly Dirt versions"

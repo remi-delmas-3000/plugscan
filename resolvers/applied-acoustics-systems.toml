@@ -1,17 +1,18 @@
-# Third-party source: KVR Audio product-database pages (developer-maintained,
-# may lag releases). KVR needs HTTP/1.1 + browser UA (plugscan's ureq client
-# qualifies; verified live 2026-08-31). Single-product pages; id="verosx" is
-# the Mac "Product Version" field.
-# Verified 2026-08-31: AAS Player 1.6.7 (exact), Chromaphone 3.2.0 (>= 3.1.5),
-# Objeq Delay 2 2.0.0 (exact). The original Objeq Delay (installed 1.3.4) has
-# no KVR page anymore - /product/objeq-delay-by-... 301s to the Objeq Delay 2
-# page - so it has no entry (superseded product, version frozen).
+# Vendor-direct: each AAS product has a public /<product>/resources/ page with
+# a "Latest installers" section listing the current macOS installer and its
+# version ("Chromaphone 3 v3.2.0 for macOS"). First match in document order is
+# the current release. Verified live 2026-08-31: Chromaphone 3 v3.2.0
+# (>= 3.1.5 installed), Objeq Delay v1.3.5 (>= 1.3.4), Objeq Delay 2 v2.0.0
+# (exact). The free "AAS Player" has no such resources page, so it stays on
+# the KVR product-database page (id="verosx" = Mac version field; needs
+# HTTP/1.1 + browser UA, which plugscan's ureq client provides;
+# verified 2026-08-31: 1.6.7, exact match to installed).
 vendor = "Applied Acoustics Systems"
 homepage = "https://www.applied-acoustics.com"
 
 [manual]
 login = "https://www.applied-acoustics.com/login/"
-steps = "Log in at applied-acoustics.com; the Downloads/My Products area lists the current installer version for Chromaphone, Objeq Delay and AAS Player. Plugins also have a built-in update check."
+steps = "Log in at applied-acoustics.com; the Downloads/My Products area lists the current installer version for Chromaphone, Objeq Delay and AAS Player. Plugins also have a built-in update check. Public per-product version history: applied-acoustics.com/<product>/resources/."
 
 [[product]]
 name = "AAS Player"
@@ -21,12 +22,18 @@ via = "KVR Audio"
 
 [[product]]
 name = "Chromaphone 3"
-page = "https://www.kvraudio.com/product/chromaphone-by-applied-acoustics-systems"
-version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
-via = "KVR Audio"
+page = "https://www.applied-acoustics.com/chromaphone-3/resources/"
+version_regex = 'Chromaphone 3 v([0-9]+\.[0-9]+\.[0-9]+) for macOS'
+download = "https://www.applied-acoustics.com/chromaphone-3/resources/"
+
+[[product]]
+name = "Objeq Delay"
+page = "https://www.applied-acoustics.com/objeq-delay/resources/"
+version_regex = 'Objeq Delay v([0-9]+\.[0-9]+\.[0-9]+) for macOS'
+download = "https://www.applied-acoustics.com/objeq-delay/resources/"
 
 [[product]]
 name = "Objeq Delay 2"
-page = "https://www.kvraudio.com/product/objeq-delay-2-by-applied-acoustics-systems"
-version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
-via = "KVR Audio"
+page = "https://www.applied-acoustics.com/objeq-delay-2/resources/"
+version_regex = 'Objeq Delay 2 v([0-9]+\.[0-9]+\.[0-9]+) for macOS'
+download = "https://www.applied-acoustics.com/objeq-delay-2/resources/"

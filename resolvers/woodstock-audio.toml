@@ -4,6 +4,9 @@
 # (plugscan's ureq client qualifies; verified live 2026-08-31:
 # Open Compressor 1.0.7 exact, Waveform Compressor 1.0.7 >= 1.0.6 installed).
 # Single-product pages; id="verosx" is the Mac "Product Version" field.
+# vendor-direct re-checked 2026-08-31: woodstockaudio.com is a Shopify store;
+# installers live behind account order history and the page carries no
+# server-side version string (only browser-UA tokens). KVR wins.
 vendor = "Woodstock Audio"
 homepage = "https://woodstockaudio.com"
 

@@ -7,6 +7,10 @@
 # HalfTime 1.1.12, Kickstart 2.0.9, MidiShaper 1.6.3, Curve 2.6.3,
 # FilterShaper XL 1.0.6, Snapback 1.1.2.
 # "Curve" KVR page tracks Curve 2; "Nicky Romero Kickstart" tracks Kickstart 2.
+# vendor-direct re-checked 2026-08-31: cableguys.com is a Nuxt SPA whose
+# _payload.json does carry versions, but as positional index references (name
+# and version are both array indices), so no name-anchored regex is possible.
+# Too fragile for a regex resolver, so KVR stays.
 vendor = "Cableguys"
 homepage = "https://www.cableguys.com"
 

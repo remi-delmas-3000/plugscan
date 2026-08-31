@@ -3,6 +3,9 @@
 # KVR needs HTTP/1.1 + browser UA (plugscan's ureq client qualifies; verified
 # live 2026-08-31: Aguilar Plugin Suite 1.3.2, exact match to installed).
 # id="verosx" is the Mac "Product Version" field.
+# vendor-direct re-checked 2026-08-31: aguilaramp.com is a Shopify store; the
+# plugin-suite page carries only theme/hCaptcha asset tokens, no installer
+# version. No vendor-direct version source, so KVR stays.
 vendor = "Aguilar"
 homepage = "https://aguilaramp.com"
 

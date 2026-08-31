@@ -5,6 +5,8 @@
 # (effect + instrument) ship in the same installer/version.
 # KVR needs HTTP/1.1 + browser UA (plugscan's ureq client qualifies);
 # id="verosx" is the Mac "Product Version" field.
+# vendor-direct re-checked 2026-08-31: mozaicbeats.com is unreachable from HTTP
+# clients (no response), so no vendor-direct source; KVR stays.
 vendor = "MozaicBeats"
 homepage = "https://mozaicbeats.com"
 

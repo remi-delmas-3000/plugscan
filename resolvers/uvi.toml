@@ -8,6 +8,10 @@
 # installed exactly or newer (e.g. Relayer 1.5.8, SparkVerb 1.5.0).
 # The five UVI Tape * bundles ship as one "Tape Suite" product/version;
 # the three UVIWorkstation* bundles share the uvi-workstation page.
+# vendor-direct re-checked 2026-08-31: uvi.net product pages are marketing-only
+# (Falcon shows just a "Version 2026" year label, no per-product X.Y.Z) and
+# updates are delivered by the UVI Portal desktop app. KVR tracks the real
+# per-product versions better, so it stays the source.
 vendor = "UVI"
 homepage = "https://www.uvi.net"
 download_via = "UVI Portal (uvi.net/download-uvi-portal): the desktop manager installs and updates all UVI products for the logged-in account."

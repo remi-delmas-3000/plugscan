@@ -3,6 +3,9 @@
 # qualifies; verified live 2026-08-31, all exact matches to installed:
 # MK 609 1.0.2, V-Comp 1.0.5, Golden 58 1.1.0, XL-305R 1.1.2).
 # Single-product pages; id="verosx" is the Mac "Product Version" field.
+# vendor-direct re-checked 2026-08-31: audio-scape.com is a WordPress/Jetpack
+# store; product pages carry only framework asset tokens, no plugin version.
+# No vendor-direct source, so KVR stays.
 vendor = "Audioscape"
 homepage = "https://www.audio-scape.com"
 

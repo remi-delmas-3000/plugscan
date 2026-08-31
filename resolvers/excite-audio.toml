@@ -8,6 +8,9 @@
 # ship in one installer and share one version; all point at the Console page.
 # Verified 2026-08-31: all KVR versions >= installed (e.g. Bloom Vocal Aether
 # 1.2.0 vs 1.1.0 installed, VISION 4X 1.2.2 exact).
+# vendor-direct re-checked 2026-08-31: exciteaudio.com serves a JS-only shell
+# (~114 bytes, no server-side version) and the Plugin Boutique pages carry no
+# version strings. No vendor-direct source, so KVR stays.
 vendor = "Excite Audio"
 homepage = "https://www.exciteaudio.com"
 

@@ -1,68 +1,67 @@
-# Third-party source: KVR Audio product-database pages (developer-maintained,
-# may lag releases). KVR needs HTTP/1.1 + browser UA (plugscan's ureq client
-# qualifies; verified live 2026-08-31, all >= installed: 7DeadlySnares 1.1.1,
-# Beatfader 1.2.0, CHEat code 1.2.3, LOW 1.1.2, LunchTable 1.1.3,
-# RANDOM 1.2.3, RANDOM Metal 1.0.12, VRAC+ 1.0.2).
-# "Beatfader MIDI" ships in the Beatfader installer and shares its version.
-# The LOW page is KVR's "LOW (Low)" bass synth entry.
-# Single-product pages; id="verosx" is the Mac "Product Version" field.
+# Vendor-direct: each BEATSURFING plugin's product page embeds a changelog fed
+# by a public JSON at download.beatsurfing.com/<name>ReleaseNotes.json. The
+# newest release is the first array element; its "version" field is the current
+# version and "url_mac"/"url_win" are the installers. Verified live 2026-08-31,
+# all >= installed: 7DeadlySnares 1.1.1, Beatfader 1.2.0, CHEat code 1.2.3,
+# LOW 1.1.2, LunchTable 1.1.3, RANDOM 1.2.3, RANDOM Metal 1.0.12, VRAC+ 1.0.2.
+# "Beatfader MIDI" ships in the Beatfader installer and shares its JSON/version.
 vendor = "BEATSURFING"
 homepage = "https://beatsurfing.com"
 
 [manual]
 login = "https://beatsurfing.com/my-account/"
-steps = "Log in at beatsurfing.com/my-account, open the Downloads section to grab the latest installers; version numbers are only visible in the installer file names / release emails."
+steps = "Log in at beatsurfing.com/my-account, open the Downloads section to grab the latest installers. Each product page (beatsurfing.com/audio-plugins/<name>/) shows a changelog with the current version."
 
 [[product]]
 name = "7DeadlySnares"
-page = "https://www.kvraudio.com/product/7deadlysnares-by-beatsurfing"
-version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
-via = "KVR Audio"
+page = "https://download.beatsurfing.com/7deadlysnaresReleaseNotes.json"
+version_regex = '"version"\s*:\s*"([0-9][0-9A-Za-z.]*)"'
+download = "https://beatsurfing.com/audio-plugins/7deadlysnares/"
 
 [[product]]
 name = "Beatfader"
-page = "https://www.kvraudio.com/product/beatfader-by-beatsurfing"
-version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
-via = "KVR Audio"
+page = "https://download.beatsurfing.com/beatfaderReleaseNotes.json"
+version_regex = '"version"\s*:\s*"([0-9][0-9A-Za-z.]*)"'
+download = "https://beatsurfing.com/audio-plugins/beatfader/"
 
 [[product]]
 name = "Beatfader MIDI"
-page = "https://www.kvraudio.com/product/beatfader-by-beatsurfing"
-version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
-via = "KVR Audio"
+page = "https://download.beatsurfing.com/beatfaderReleaseNotes.json"
+version_regex = '"version"\s*:\s*"([0-9][0-9A-Za-z.]*)"'
+download = "https://beatsurfing.com/audio-plugins/beatfader/"
 
 [[product]]
 name = "CHEat code"
-page = "https://www.kvraudio.com/product/cheat-code-by-beatsurfing"
-version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
-via = "KVR Audio"
+page = "https://download.beatsurfing.com/cheat-codeReleaseNotes.json"
+version_regex = '"version"\s*:\s*"([0-9][0-9A-Za-z.]*)"'
+download = "https://beatsurfing.com/audio-plugins/cheat-code/"
 
 [[product]]
 name = "LOW"
-page = "https://www.kvraudio.com/product/low-low-by-beatsurfing"
-version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
-via = "KVR Audio"
+page = "https://download.beatsurfing.com/lowReleaseNotes.json"
+version_regex = '"version"\s*:\s*"([0-9][0-9A-Za-z.]*)"'
+download = "https://beatsurfing.com/audio-plugins/low/"
 
 [[product]]
 name = "LunchTable"
-page = "https://www.kvraudio.com/product/lunchtable-by-beatsurfing"
-version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
-via = "KVR Audio"
+page = "https://download.beatsurfing.com/lunchtableReleaseNotes.json"
+version_regex = '"version"\s*:\s*"([0-9][0-9A-Za-z.]*)"'
+download = "https://beatsurfing.com/audio-plugins/lunchtable/"
 
 [[product]]
 name = "RANDOM"
-page = "https://www.kvraudio.com/product/random-by-beatsurfing"
-version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
-via = "KVR Audio"
+page = "https://download.beatsurfing.com/randomReleaseNotes.json"
+version_regex = '"version"\s*:\s*"([0-9][0-9A-Za-z.]*)"'
+download = "https://beatsurfing.com/audio-plugins/random/"
 
 [[product]]
 name = "RANDOM Metal"
-page = "https://www.kvraudio.com/product/random-metal-by-beatsurfing"
-version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
-via = "KVR Audio"
+page = "https://download.beatsurfing.com/random-metalReleaseNotes.json"
+version_regex = '"version"\s*:\s*"([0-9][0-9A-Za-z.]*)"'
+download = "https://beatsurfing.com/audio-plugins/random-metal/"
 
 [[product]]
 name = "VRAC+"
-page = "https://www.kvraudio.com/product/vrac-by-beatsurfing"
-version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
-via = "KVR Audio"
+page = "https://download.beatsurfing.com/vracReleaseNotes.json"
+version_regex = '"version"\s*:\s*"([0-9][0-9A-Za-z.]*)"'
+download = "https://beatsurfing.com/audio-plugins/vrac/"

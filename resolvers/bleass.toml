@@ -3,6 +3,9 @@
 # qualifies; verified live 2026-08-31, exact matches to installed:
 # Spectral Resonator 1.0.9, Vox 1.0.5).
 # Single-product pages; id="verosx" is the Mac "Product Version" field.
+# vendor-direct re-checked 2026-08-31: bleass.com product and software-updates
+# pages carry only WordPress asset tokens; updates ship via the BLEASS Plugins
+# Installer app with no per-plugin version in served HTML. So KVR stays.
 vendor = "BLEASS"
 homepage = "https://www.bleass.com"
 download_via = "BLEASS Plugins Installer — BLEASS's desktop manager app (see bleass.com/bpi-help/); it checks for and installs plugin updates"

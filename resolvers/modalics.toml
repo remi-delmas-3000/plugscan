@@ -6,6 +6,10 @@
 # Beat Scholar MIDI ships in the Beat Scholar installer and shares its
 # version; "Plugin Buddy" is KVR's "Plugin Buddy Free" entry.
 # Single-product pages; id="verosx" is the Mac "Product Version" field.
+# vendor-direct re-checked 2026-08-31: modalics.com/beatscholarversions (Wix
+# ChangeBlog) is server-rendered but stale - newest post is "Beat Scholar
+# Version 1.2.6", behind the installed 1.5.0 - so it would report backwards.
+# KVR (currently ahead) stays.
 vendor = "Modalics"
 homepage = "https://www.modalics.com"
 

@@ -3,6 +3,8 @@
 # HTTP/2 clients: KVR serves HTTP/1.1 + browser UA requests (plugscan's ureq
 # client qualifies; verified live 2026-08-31: S.K.Y. Keys 1.0.0, exact match
 # to installed). id="verosx" is the Mac "Product Version" field.
+# vendor-direct re-checked 2026-08-31: skystudios.shop no longer resolves in
+# DNS (with or without www), so no vendor-direct source is reachable. KVR remains.
 vendor = "S.K.Y. Studios"
 homepage = "https://www.skystudios.shop"
 

@@ -7,6 +7,9 @@
 # PinkTrombone / PinkTromboneFX (installed 1.0.5) have no KVR page and no
 # other indexed version source was found - those two bundles stay unresolved.
 # Single-product pages; id="verosx" is the Mac "Product Version" field.
+# vendor-direct re-checked 2026-08-31: xferrecords.com product pages expose
+# only stale demo-download paths (e.g. cthulhu-demo-1-1); full installers and
+# release notes live behind account login, and Serum 2 is PACE-locked. KVR wins.
 vendor = "Xfer Records"
 homepage = "https://xferrecords.com"
 

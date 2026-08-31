@@ -4,6 +4,9 @@
 # the Mac "Product Version" field.
 # Verified 2026-08-31: Movement 1.3.0 and Portal 1.3.0 (>= 1.2.1 installed),
 # Thermal Mac 1.2.1 (exact; the Windows field is already 1.3.0).
+# vendor-direct re-checked 2026-08-31: output.com product pages are a Vue/
+# module-federation SPA behind Cloudflare (no server-side version) and updates
+# are delivered by the Output Hub desktop app, not a public version page. KVR wins.
 vendor = "Output"
 homepage = "https://output.com"
 download_via = "Output Hub — Output's desktop manager app (get it from output.com after logging in); it shows and installs the latest versions of Movement, Portal and Thermal"

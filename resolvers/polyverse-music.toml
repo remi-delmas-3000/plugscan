@@ -3,6 +3,9 @@
 # qualifies; verified live 2026-08-31: Filterverse 1.2.1 >= 1.2.0 installed,
 # Manipulator 1.4.9 >= 1.4.8, Supermodal 1.0 vs 1.0.0 installed).
 # Single-product pages; id="verosx" is the Mac "Product Version" field.
+# vendor-direct re-checked 2026-08-31: polyversemusic.com/downloads renders
+# empty server-side; product pages route downloads through an Easy-Digital-
+# Downloads add-to-cart (no version), so no vendor-direct version string. KVR wins.
 vendor = "Polyverse Music"
 homepage = "https://polyversemusic.com"
 

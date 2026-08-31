@@ -5,6 +5,9 @@
 # live 2026-08-31: reMIDI 4 at 4.5.0 >= 4.4.2 installed).
 # reMIDI 4 and reMIDI 4 MFX ship from the same installer and share a version.
 # id="verosx" is the Mac "Product Version" field.
+# vendor-direct re-checked 2026-08-31: songwish.ca is a client-rendered SPA
+# (empty <div id="root">, no server-side version); releases are announced on
+# KVR, so KVR stays the source.
 vendor = "SongWish"
 homepage = "https://songwish.ca"
 
