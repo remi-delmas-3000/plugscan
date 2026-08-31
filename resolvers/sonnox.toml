@@ -1,0 +1,14 @@
+# Checked 2026-08-30: sonnox.com is a BigCommerce store (store hash s-8pfrvbtcba); product
+# pages (sonnox.com/products/<handle>) carry price/description but no plugin version. The
+# support site (support.sonnox.com, Zendesk) Cloudflare-blocks non-browser clients (403 to
+# curl and WebFetch); its public Help Center API (support.sonnox.com/api/v2/help_center/...)
+# is reachable but the 74 articles are FAQ/licensing only -- no per-plugin version list.
+# ListenHub app has no Sparkle feed. Current versions (e.g. "3.02.0[136]") live only behind
+# login at my.sonnox.com. No automatable public source.
+vendor = "Sonnox"
+homepage = "https://www.sonnox.com"
+skip = "Current plug-in versions are only in the logged-in my.sonnox.com account area; the public store pages carry no versions and the Zendesk support site blocks non-browser clients."
+
+[manual]
+login = "https://my.sonnox.com"
+steps = "Log in at my.sonnox.com for installers and licences; the account area shows the current version (format 3.02.0[136]) for each plug-in. Store product pages and the support Help Center do not list current versions."

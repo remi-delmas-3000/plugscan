@@ -1,0 +1,10 @@
+# Re-checked 2026-08-31: Shopify /products.json (full catalog) contains no
+# version strings; plugin binaries (NFuse.component) carry no update/version
+# endpoint URLs; no local manager app.
+vendor = "Kiive Audio"
+homepage = "https://kiiveaudio.com"
+skip = "Shopify storefront is version-free (catalog JSON and product pages checked) and plugins have no update-check endpoint."
+
+[manual]
+login = "https://kiiveaudio.com/account"
+steps = "Log in at kiiveaudio.com/account; installers via account downloads or purchase emails. Shopify product pages carry no reliable version strings."

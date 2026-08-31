@@ -1,0 +1,11 @@
+# Ohm Force's site publishes no plugin version numbers on public pages;
+# installers come from the account downloads.
+# Wave-2 re-check 2026-08-30: the OhmBoyz Infinity binary references only the
+# ohmforce.com HomePage.do (legacy Java site) — no update-check endpoint.
+vendor = "Ohm Force"
+homepage = "https://www.ohmforce.com"
+skip = "No public version source: the legacy ohmforce.com site publishes no plugin versions and the plugins have no update-check endpoint"
+
+[manual]
+login = "https://www.ohmforce.com/Account.do"
+steps = "Log in at ohmforce.com; the account download area lists the latest installers for OhmBoyz Infinity, Frohmager and Ohmicide."

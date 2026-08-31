@@ -1,0 +1,13 @@
+# Product page embeds JSON-LD with "softwareVersion": "2.1" (two-segment version;
+# installed versions may have a trailing .0). Static site, curl-friendly.
+vendor = "Auburn Sounds"
+homepage = "https://www.auburnsounds.com"
+
+[manual]
+steps = "Go to auburnsounds.com > Products > Inner Pitch; the free/full download link is on the product page."
+
+[[product]]
+name = "Auburn Sounds Inner Pitch 2"
+page = "https://www.auburnsounds.com/products/InnerPitch.html"
+version_regex = '"softwareVersion": "([0-9]+\.[0-9.]+)"'
+download = "https://www.auburnsounds.com/products/InnerPitch.html"

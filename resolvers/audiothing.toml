@@ -1,0 +1,23 @@
+# AudioThing product pages carry a changelog listing "vX.Y.Z" newest-first.
+# Verified on Springs and Reels 2026-08-30. Some product changelogs lag behind
+# shipped builds (miniBit page showed 1.6.5 vs 1.7.0 installed), so only the
+# pages that passed the sanity check are listed.
+vendor = "AudioThing"
+homepage = "https://www.audiothing.net"
+
+[manual]
+login = "https://www.audiothing.net/account/"
+steps = "Log in at audiothing.net/account/ for full installers; each product page shows a changelog with the latest version."
+
+[[product]]
+name = "Springs"
+page = "https://www.audiothing.net/effects/springs/"
+version_regex = 'v([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://www.audiothing.net/effects/springs/"
+
+[[product]]
+name = "Reels"
+page = "https://www.audiothing.net/effects/reels/"
+version_regex = 'v([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://www.audiothing.net/effects/reels/"
+

@@ -1,0 +1,8 @@
+# vovious.com states no plugin version anywhere reachable by curl (the only x.y.z
+# strings are third-party JS assets, e.g. FastSpring). Manual-only.
+vendor = "Vovious"
+homepage = "https://vovious.com"
+skip = "no public version source; the in-app update check uses the licensed API at licensing.vovious.com (root 404s to plain GET, verified)"
+
+[manual]
+steps = "Open vovious.com, log in / use the download section for the latest Vovious installer; version is shown in the installer filename and in-app."

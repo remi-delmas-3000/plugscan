@@ -1,0 +1,15 @@
+# Modartt publishes a full Pianoteq changelog at modartt.com/pianoteq_changes, but
+# the whole site is JS-rendered (curl gets an empty shell; the check_version endpoint
+# and RSS feed carry no minor-version numbers either), so no scrapeable page.
+# Wave-2 re-check 2026-08-30: the pianoteq_changes page is served as an empty
+# template whose changelog content is loaded by ES-module JS using a per-page
+# token (meta modartt:token), so no stable JSON endpoint is exposed; the
+# Pianoteq 9 binary contains no plaintext update URL, and forum.modartt.com
+# release threads are user-titled (unreliable for first-match-is-latest).
+vendor = "Modartt"
+homepage = "https://www.modartt.com"
+skip = "modartt.com is fully JS-rendered with token-gated data loading; no scrapeable version endpoint found on site, forum, RSS, or in the app binary"
+
+[manual]
+login = "https://www.modartt.com/user_area"
+steps = "Open https://www.modartt.com/pianoteq_changes in a browser for the version history (JS-rendered), then log in to the Modartt user area to download the latest Pianoteq installer; the app's built-in 'Check for updates' also reports the newest version."

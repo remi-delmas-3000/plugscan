@@ -1,0 +1,14 @@
+# Alias note: catalog vendors 'Uvisoundsource' (UVIWorkstation) refer to the same company.
+# Checked 2026-08-30: uvi.net product pages (e.g. uvi.net/falcon) carry no plugin version in
+# served HTML (the "versions/1763..." tokens are asset cache-busting timestamps, not releases)
+# and expose no changelog/version-history or JSON version endpoint. UVI Portal.app (net.uvi.
+# UVIPortal, v3.0.15) has no Sparkle SUFeedURL; it only talks to the authenticated
+# portal.uvi.net. Updates for every product ship through UVI Portal -- no public version feed.
+vendor = "UVI"
+homepage = "https://www.uvi.net"
+download_via = "UVI Portal (uvi.net/download-uvi-portal): the desktop manager installs and updates all UVI products for the logged-in account."
+skip = "Every UVI product updates through the UVI Portal manager against the authenticated portal.uvi.net; no public per-product version source (product pages and Falcon page expose no version, no changelog endpoint, no Sparkle feed)."
+
+[manual]
+login = "https://www.uvi.net/my-products"
+steps = "Updates are managed by the UVI Portal app; log in at uvi.net/my-products to see registered products and installers. Product pages do not expose clean version strings."

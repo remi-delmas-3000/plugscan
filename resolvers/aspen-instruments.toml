@@ -1,0 +1,20 @@
+# aspeninstruments.com product pages link installers on downloads.aspeninstruments.com
+# with the version in the path (e.g. .../black-diamond-distortion/1.2.4/...).
+# Anchor on that path: the page also contains an Astro generator version and preset data.
+vendor = "Aspen Instruments"
+homepage = "https://aspeninstruments.com"
+
+[manual]
+steps = "Both plugins are free; download buttons on aspeninstruments.com/plugins/<name>/ serve the latest Mac/Win/Linux installers. No account needed."
+
+[[product]]
+name = "Black Diamond Distortion"
+page = "https://aspeninstruments.com/plugins/black-diamond-distortion/"
+version_regex = 'black-diamond-distortion/([0-9]+\.[0-9.]+)'
+download = "https://aspeninstruments.com/plugins/black-diamond-distortion/"
+
+[[product]]
+name = "Black Diamond Probe"
+page = "https://aspeninstruments.com/plugins/black-diamond-probe/"
+version_regex = 'black-diamond-probe/([0-9]+\.[0-9.]+)'
+download = "https://aspeninstruments.com/plugins/black-diamond-probe/"

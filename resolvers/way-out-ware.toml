@@ -1,0 +1,12 @@
+# Way Out Ware Odyssey is a real WayOutWare/AIR Music Technology collaboration and
+# the installed version 1.2.1.14 follows AIR's 4-part scheme (not junk metadata).
+# However AIR's product page currently states "Odyssey Version 1.2.0.8", which is
+# OLDER than the installed 1.2.1.14 (page is stale), so no regex resolver is safe.
+# wayoutware.com is a legacy site with no version info.
+vendor = "Way Out Ware"
+homepage = "https://www.airmusictech.com"
+download_via = "inMusic Software Center / inMusic Profile (profile.inmusicbrands.com) — delivers the actual latest Odyssey installer"
+skip = "AIR's Odyssey product page states 1.2.0.8, which is OLDER than the installed 1.2.1.14 (stale page), so no page resolver is safe; real updates come via the authenticated inMusic portal"
+
+[manual]
+steps = "Check https://www.airmusictech.com/virtual-instruments/odyssey/ (version banner is often stale) and update through the inMusic Software Center / your inMusic profile at profile.inmusicbrands.com, which delivers the actual latest installer."

@@ -1,0 +1,10 @@
+# reFX. Downloads and per-product changelogs (Nexus, Rippler, Vanguard) are behind
+# the account login at refx.com/downloads/; public pages carry no version numbers.
+vendor = "reFX"
+homepage = "https://refx.com"
+download_via = "reFX Cloud app (from refx.com/downloads/, requires account) - installs and updates Rippler"
+skip = "versions and changelogs are behind the refx.com account login"
+
+[manual]
+login = "https://refx.com/downloads/"
+steps = "Log in at refx.com and open the Downloads page; each product row links its changelog and manual (per refx.com/support/). Rippler updates also install via the reFX Cloud app."

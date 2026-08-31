@@ -1,0 +1,14 @@
+# Overloud's TH-U page advertises the current free update ("free update
+# v2.0.15") as the first vX.Y.Z on the page. Gem Comp160 and REmatrix pages
+# carry no version info; those updates go through the Overloud account.
+vendor = "Overloud"
+homepage = "https://www.overloud.com"
+
+[manual]
+login = "https://www.overloud.com/user/login"
+steps = "Log in at overloud.com, My Products area lists downloads with versions for TH-U, Gem series and REmatrix."
+
+[[product]]
+name = "TH-U"
+page = "https://www.overloud.com/products/th-u-full"
+version_regex = 'v([0-9]+\.[0-9]+\.[0-9]+)'

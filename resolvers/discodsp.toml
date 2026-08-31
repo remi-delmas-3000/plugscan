@@ -1,0 +1,14 @@
+# Product pages embed JSON-LD with "softwareVersion" (single occurrence).
+# Note: "v1.8" strings on the Retromulator page refer to emulated OPL chip
+# revisions, not the plugin version.
+vendor = "discoDSP"
+homepage = "https://www.discodsp.com"
+
+[manual]
+steps = "Log in at discodsp.com; downloads are under your account. Product pages state the current version in their metadata/changelog popup."
+
+[[product]]
+name = "Retromulator"
+page = "https://www.discodsp.com/retromulator/"
+version_regex = '"softwareVersion": "([0-9]+\.[0-9.]+)'
+download = "https://www.discodsp.com/retromulator/"

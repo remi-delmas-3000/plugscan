@@ -1,0 +1,10 @@
+# Re-checked 2026-08-31: Shopify /products.json (full catalog) contains no
+# version strings; plugin binaries (MixWave Benson Chimera.component) carry no
+# update/version endpoint URLs; standalone apps but no manager app.
+vendor = "MixWave"
+homepage = "https://mixwave.com"
+skip = "Shopify storefront is version-free (catalog JSON checked) and plugins have no update-check endpoint."
+
+[manual]
+login = "https://mixwave.com/account"
+steps = "Downloads come from the MixWave customer portal (mixwave.com/account) or purchase emails. Shopify product pages carry no version info."

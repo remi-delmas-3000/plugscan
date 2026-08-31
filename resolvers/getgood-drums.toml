@@ -1,0 +1,37 @@
+# GGD's public downloads page links installers under versioned paths, e.g.
+# downloads.getgooddrums.com/files/StudioCabs1-5/1.5.23/GGD+Studio+Cabs+Cali.dmg
+vendor = "GetGood Drums"
+homepage = "https://www.getgooddrums.com"
+
+[manual]
+steps = "Free installers on getgooddrums.com/pages/downloads; sample libraries and licenses via the GGD account."
+
+[[product]]
+name = "GGD Smash and Grab v2"
+page = "https://www.getgooddrums.com/pages/downloads"
+version_regex = 'SmashGrab/([0-9]+\.[0-9]+\.[0-9]+)/'
+download = "https://www.getgooddrums.com/pages/downloads"
+
+[[product]]
+name = "GGD Studio Cabs Cali 1-5"
+page = "https://www.getgooddrums.com/pages/downloads"
+version_regex = 'StudioCabs1-5/([0-9]+\.[0-9]+\.[0-9]+)/GGD\+Studio\+Cabs\+Cali'
+download = "https://www.getgooddrums.com/pages/downloads"
+
+[[product]]
+name = "GGD Studio Cabs Contenders Round 1"
+page = "https://www.getgooddrums.com/pages/downloads"
+version_regex = 'StudioCabs1-5/([0-9]+\.[0-9]+\.[0-9]+)/GGD\+Studio\+Cabs\+Contenders'
+download = "https://www.getgooddrums.com/pages/downloads"
+
+[[product]]
+name = "GGD Studio Cabs Goldstack 1-5"
+page = "https://www.getgooddrums.com/pages/downloads"
+version_regex = 'StudioCabs1-5/([0-9]+\.[0-9]+\.[0-9]+)/GGD\+Studio\+Cabs\+Goldstack'
+download = "https://www.getgooddrums.com/pages/downloads"
+
+[[product]]
+name = "GGD Studio Cabs Zilla 1-5"
+page = "https://www.getgooddrums.com/pages/downloads"
+version_regex = 'StudioCabs1-5/([0-9]+\.[0-9]+\.[0-9]+)/GGD\+Studio\+Cabs\+Zilla'
+download = "https://www.getgooddrums.com/pages/downloads"

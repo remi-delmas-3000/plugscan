@@ -1,0 +1,12 @@
+# audiomodern.com serves a Cloudflare "Attention Required" block page to
+# non-browser clients, so no automated resolver. Manual walkthrough only.
+# Wave-2 re-check 2026-08-30: still Cloudflare-blocked ("Attention Required")
+# for plain HTTP clients; the Riffer binary has no update endpoint (only shop /
+# contact / Mailchimp URLs).
+vendor = "Audiomodern"
+homepage = "https://audiomodern.com"
+skip = "audiomodern.com serves a Cloudflare block page to non-browser clients and the plugins have no update-check endpoint"
+
+[manual]
+login = "https://audiomodern.com/my-account/"
+steps = "Log in at audiomodern.com/my-account; installers for Riffer / Freezr are under Downloads. Update announcements appear on the product pages (audiomodern.com/shop/plugins/<name>/) and forum.audiomodern.com."

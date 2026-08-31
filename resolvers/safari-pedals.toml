@@ -1,0 +1,216 @@
+# manage.safaripedals.com/plugins/ is a public JSON feed with the latest
+# version for every current plugin (endpoint found via the Safari Pedals
+# Installer app; verified live 2026-08-31, e.g. Gorilla Drive 2.1.0).
+# Entries use page_regex on the JSON body because the "plugins" array order is
+# not stable enough for positional json_path. Cubby, Meaw Assist, Meaw Chain,
+# Polyrex and Super-Chunk are not in the feed and stay manual-only.
+vendor = "Safari Pedals"
+homepage = "https://safaripedals.com"
+download_via = "Safari Pedals Installer app (in /Applications; download from safaripedals.com account) installs and updates all plugins."
+
+[manual]
+login = "https://safaripedals.com/account"
+steps = "Log in at safaripedals.com (Account) for installers; the plugins also self-update via the Safari Pedals Installer."
+
+[[product]]
+name = "Bull Sub Machine"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"Bull Sub Machine",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "Camel Strip"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"The Camel Strip",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "Cassette Bunny"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"Cassette Bunny",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "Cobra Fuzz"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"Cobra Fuzz",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "Dirty Dog Reverb"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"Dirty Dog Reverb",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "Dragon EQ"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"Dragon Eq",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "Falcon Air EQ"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"Falcon Air EQ",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "Flamingo Verb"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"Flamingo Verb",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "Fox Echo Chorus"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"Fox Echo Chorus",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "Gorilla Drive"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"Gorilla Drive",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "Hawk Phaser"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"Hawk Phaser",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "Hippie Elephant Reverb"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"Hippie Elephant Reverb",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "LadyBug Reverb"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"LadyBug Reverb",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "Level-Or"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"Level-Or",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "Lion Master"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"Lion Master",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "Noam's Mastering Console"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = "\"name\":\\s*\"Noam's Mastering Console\",\\s*\"version\":\\s*\"([0-9][0-9.]*)\""
+download = "https://safaripedals.com"
+
+[[product]]
+name = "Owl Control"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"Owl Control",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "Pixel Cat"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"Pixel Cat",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "Rabbit Tape"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"Rabbit Tape",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "Rhino Reverb"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"Rhino Reverb",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "Silver Llama Amp"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"Silver Llama Amp",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "Silver Llama FX"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"Silver Llama FX",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "Sun Bear Bus Compressor"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"Sun Bear Bus Compressor",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "The Herd"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"The Herd",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "TimeMachine"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"Time Machine",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "Twin Panda Amp"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"Twin Panda Amp",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "Twin Panda FX"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"Twin Panda FX",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "Yak Delay"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"Yak Delay",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"
+
+[[product]]
+name = "Zebra Clipper"
+page = "https://manage.safaripedals.com/plugins/"
+strategy = "page_regex"
+version_regex = '"name":\s*"Zebra Clipper",\s*"version":\s*"([0-9][0-9.]*)"'
+download = "https://safaripedals.com"

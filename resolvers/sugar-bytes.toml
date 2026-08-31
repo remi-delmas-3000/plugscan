@@ -1,0 +1,26 @@
+# Product pages state "Version X.Y.Z (What's new)". Verified on turnado,
+# wow2 and effectrix2 pages 2026-08-30. Other slugs not verified, so not listed.
+vendor = "Sugar Bytes"
+homepage = "https://sugar-bytes.de"
+
+[manual]
+steps = "All installers are public at sugar-bytes.de/downloads; each product page shows its current version next to the download buttons. Serial applied at install."
+
+[[product]]
+name = "Turnado"
+page = "https://sugar-bytes.de/turnado"
+version_regex = 'Version ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://sugar-bytes.de/downloads"
+
+[[product]]
+name = "WOW2"
+page = "https://sugar-bytes.de/wow2"
+version_regex = 'Version ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://sugar-bytes.de/downloads"
+
+[[product]]
+name = "Effectrix2"
+page = "https://sugar-bytes.de/effectrix2"
+version_regex = 'Version ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://sugar-bytes.de/downloads"
+

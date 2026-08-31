@@ -1,0 +1,25 @@
+# Cytomic's homepage links the current installers directly
+# (e.g. TheGlue_v1.9.3_Mac.dmg), so the filename carries the latest version.
+vendor = "Cytomic"
+homepage = "https://cytomic.com"
+
+[manual]
+steps = "Demo/full installers linked straight from cytomic.com; licenses arrive by email after purchase."
+
+[[product]]
+name = "The Glue"
+page = "https://cytomic.com/"
+version_regex = 'TheGlue_v([0-9]+\.[0-9.]+)_Mac'
+download = "https://cytomic.com/files/TheGlue_v${version}_Mac.dmg"
+
+[[product]]
+name = "The Drop"
+page = "https://cytomic.com/"
+version_regex = 'TheDrop_v([0-9]+\.[0-9.]+)_Mac'
+download = "https://cytomic.com/files/TheDrop_v${version}_Mac.dmg"
+
+[[product]]
+name = "The Scream"
+page = "https://cytomic.com/"
+version_regex = 'TheScream_v([0-9]+\.[0-9.]+)_Mac'
+download = "https://cytomic.com/files/TheScream_v${version}_Mac.dmg"

@@ -1,0 +1,36 @@
+# Mastering The Mix (masteringthemix.com, Shopify) publishes no version
+# numbers on its store pages, but the plugins' own update checker queries
+# plain-text version endpoints at 29palms.azurewebsites.net (found in the
+# plugin binaries, e.g. BASSROOM.component references
+# https://29palms.azurewebsites.net/bassroom-version.html). Each endpoint
+# returns just the version string (with a leading UTF-8 BOM), e.g. "1.1.1".
+# Verified live 2026-08-30: BASSROOM 1.1.1, FUSER 1.0.6, STEREOVAULT 1.2.0.
+# All products install/update through the universal MTM installer app
+# (MasteringTheMix_INSTALLER_OSX_MTM.zip on their CDN).
+vendor = "Mastering the Mix"
+homepage = "https://www.masteringthemix.com"
+
+[manual]
+login = "https://www.masteringthemix.com/account/login"
+steps = "Log in at masteringthemix.com; the account downloads page lists current installers for BASSROOM, FUSER, STEREOVAULT etc. Alternatively run the universal MTM installer app, which installs the latest version of every owned plugin."
+
+[[product]]
+name = "BASSROOM"
+page = "https://29palms.azurewebsites.net/bassroom-version.html"
+strategy = "page_regex"
+version_regex = '([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://mtm-cdn-endpoint.azureedge.net/mtm-installers/MasteringTheMix_INSTALLER_OSX_MTM.zip"
+
+[[product]]
+name = "FUSER"
+page = "https://29palms.azurewebsites.net/fuser-version.html"
+strategy = "page_regex"
+version_regex = '([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://mtm-cdn-endpoint.azureedge.net/mtm-installers/MasteringTheMix_INSTALLER_OSX_MTM.zip"
+
+[[product]]
+name = "STEREOVAULT"
+page = "https://29palms.azurewebsites.net/stereovault-version.html"
+strategy = "page_regex"
+version_regex = '([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://mtm-cdn-endpoint.azureedge.net/mtm-installers/MasteringTheMix_INSTALLER_OSX_MTM.zip"

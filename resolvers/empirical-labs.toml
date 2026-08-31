@@ -1,0 +1,14 @@
+# Empirical Labs publishes installer versions on their downloads page, e.g.
+# "ParaDyn 1.0.0" (verified live 2026-08-30, first match captured 1.0.0).
+# iLok authorization; trial installers are the same builds as full versions.
+vendor = "Empirical Labs"
+homepage = "https://www.empiricallabs.com"
+
+[manual]
+steps = "Go to https://www.empiricallabs.com/downloads/ where each plugin installer is listed with its version number; download directly, authorize via iLok."
+
+[[product]]
+name = "ParaDyn"
+page = "https://www.empiricallabs.com/downloads/"
+version_regex = 'ParaDyn[^0-9]*([0-9]+\.[0-9.]+)'
+download = "https://www.empiricallabs.com/downloads/"

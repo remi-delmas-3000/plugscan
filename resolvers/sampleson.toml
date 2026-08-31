@@ -1,0 +1,8 @@
+# sampleson.com product pages (e.g. /repedal.html) publish no version numbers.
+# Manual-only.
+vendor = "Sampleson"
+homepage = "https://sampleson.com"
+skip = "product page publishes no version and no direct download links (verified)"
+
+[manual]
+steps = "Downloads are delivered via purchase email links from sampleson.com; re-request from their site if needed. rePEDAL version is shown in the plugin UI."

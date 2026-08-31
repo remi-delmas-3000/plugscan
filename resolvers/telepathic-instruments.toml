@@ -1,0 +1,8 @@
+# Shopify store; the Pistil product page contains only theme/JS version strings,
+# no plugin version. Updates are delivered via emailed download links. Manual-only.
+vendor = "Telepathic Instruments"
+homepage = "https://telepathicinstruments.com"
+skip = "Shopify page carries no version info; installers delivered via emailed links only"
+
+[manual]
+steps = "Pistil download link and authorization code are emailed on purchase; re-request via telepathicinstruments.com support or check the product page https://telepathicinstruments.com/products/pistil for update announcements."

@@ -1,0 +1,35 @@
+# W.A.Production publishes per-product changelogs on each plugin page, in ASCENDING
+# order (oldest first). Regexes use a greedy (?s).* prefix so the single match
+# captures the LAST (= latest) changelog entry. Entry formats vary per product:
+# "v 2.0.8 - Update ...", "v 3.0.2. b251111 - Update ...", "New Features in version 1.1.6 - ...".
+# BassShaper, ChopBeast2 and DelayRings8Bit pages were not verified; use account downloads.
+vendor = "W.A.Production"
+homepage = "https://www.waproduction.com"
+
+[manual]
+login = "https://www.waproduction.com/login"
+steps = "Log in at waproduction.com, open My Account > Downloads for installers; each plugin page ('What's new' changelog near the bottom) lists version history."
+
+[[product]]
+name = "InstaChord 2"
+page = "https://www.waproduction.com/plugins/view/instachord-2"
+version_regex = '(?s).*v ([0-9]+(?:\.[0-9]+)+)[^-]{0,15}- Update'
+changelog = "https://www.waproduction.com/plugins/view/instachord-2"
+
+[[product]]
+name = "Instacomposer 2"
+page = "https://www.waproduction.com/plugins/view/instacomposer-2"
+version_regex = '(?s).*v ([0-9]+(?:\.[0-9]+)+)[^-]{0,15}- Update'
+changelog = "https://www.waproduction.com/plugins/view/instacomposer-2"
+
+[[product]]
+name = "Instacomposer 3"
+page = "https://www.waproduction.com/plugins/view/instacomposer-3"
+version_regex = '(?s).*v ([0-9]+(?:\.[0-9]+)+)[^-]{0,15}- Update'
+changelog = "https://www.waproduction.com/plugins/view/instacomposer-3"
+
+[[product]]
+name = "Instascale"
+page = "https://www.waproduction.com/plugins/view/instascale"
+version_regex = '(?s).*version ([0-9]+(?:\.[0-9]+)+) - '
+changelog = "https://www.waproduction.com/plugins/view/instascale"

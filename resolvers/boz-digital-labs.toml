@@ -1,0 +1,10 @@
+# Re-checked 2026-08 with a browser UA: product pages (e.g. /product/transgressor/)
+# render fine but contain no plugin version strings, and no changelog/release-notes
+# links exist anywhere on the page. Installers are behind the my-account login.
+vendor = "Boz Digital Labs"
+homepage = "https://www.bozdigitallabs.com"
+skip = "no public version info: product pages carry no version strings (verified with browser UA); installers only behind my-account login"
+
+[manual]
+login = "https://www.bozdigitallabs.com/my-account/"
+steps = "Log in at bozdigitallabs.com/my-account/; installers under My Account > Downloads. Product pages carry no version strings."

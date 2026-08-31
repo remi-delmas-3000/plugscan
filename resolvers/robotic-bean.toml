@@ -1,0 +1,14 @@
+# Dedicated download page lists installers as "Portatron X.Y.Z for Windows/Mac"
+# with the latest version first; changelog text is on the same page.
+vendor = "Robotic Bean"
+homepage = "https://roboticbean.com"
+
+[manual]
+steps = "Go to roboticbean.com/download-portatron/ and grab the installer; release announcements are on the Robotic Bean blog."
+
+[[product]]
+name = "Portatron"
+page = "https://roboticbean.com/download-portatron/"
+version_regex = 'Portatron ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://roboticbean.com/download-portatron/"
+changelog = "https://roboticbean.com/download-portatron/"

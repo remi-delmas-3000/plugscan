@@ -1,0 +1,61 @@
+# Lunacy Audio embeds a JSON blob on each product page with the current installer
+# version (e.g. "beam/v2.3.1/BEAM-Installer-v2.3.1.pkg"). The BEAM standalone
+# effect plugins (Bismuth, Filter, Grains, Haze, Space, Taps, Time, Volt) ship
+# with the BEAM installer and version in lockstep with BEAM, so they all point
+# at the BEAM product page.
+vendor = "Lunacy Audio"
+homepage = "https://lunacy.audio"
+
+[manual]
+login = "https://lunacy.audio/account/"
+steps = "Log in at lunacy.audio/account; installers with version in the filename are under your account downloads. Product pages also state the current installer version."
+
+[[product]]
+name = "BEAM"
+page = "https://lunacy.audio/products/beam/"
+version_regex = 'beam/v([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "BEAM Bismuth"
+page = "https://lunacy.audio/products/beam/"
+version_regex = 'beam/v([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "BEAM Filter"
+page = "https://lunacy.audio/products/beam/"
+version_regex = 'beam/v([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "BEAM Grains"
+page = "https://lunacy.audio/products/beam/"
+version_regex = 'beam/v([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "BEAM Haze"
+page = "https://lunacy.audio/products/beam/"
+version_regex = 'beam/v([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "BEAM Space"
+page = "https://lunacy.audio/products/beam/"
+version_regex = 'beam/v([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "BEAM Taps"
+page = "https://lunacy.audio/products/beam/"
+version_regex = 'beam/v([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "BEAM Time"
+page = "https://lunacy.audio/products/beam/"
+version_regex = 'beam/v([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "BEAM Volt"
+page = "https://lunacy.audio/products/beam/"
+version_regex = 'beam/v([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "CUBE"
+page = "https://lunacy.audio/products/cube/"
+version_regex = 'cube/v([0-9]+\.[0-9.]+)'

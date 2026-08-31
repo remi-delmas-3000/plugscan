@@ -1,0 +1,13 @@
+# Mercuriall does not publish version numbers on public product pages
+# (mercuriall.com/cms/details_ampbox has no version string; downloads sit behind a
+# user account). KVR product pages are Cloudflare-protected against plain HTTP
+# clients. Manual-only. Latest known as of 2026-08: Ampbox 1.9.0.
+# Wave-2 re-check 2026-08-30: the Ampbox binary contacts mercuriall.com/cms only
+# for account/activation (no version endpoint).
+vendor = "Mercuriall"
+homepage = "https://mercuriall.com"
+skip = "No public version source: product pages carry no version strings and the plugins' mercuriall.com/cms endpoint is account/activation only"
+
+[manual]
+login = "https://mercuriall.com/cms/user"
+steps = "Log in at mercuriall.com, open your account's Downloads area for Ampbox and SS-11X installers; update announcements appear on the site front page and Mercuriall's KVR/Gearspace threads."

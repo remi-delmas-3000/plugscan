@@ -1,0 +1,17 @@
+# Automated per-product checking is not possible. The catalog entries are
+# WaveShell host components pinned to specific Waves V-releases (15.4, 15.5,
+# 16.0 ... 17.1); the installed set is an accumulation of shells from several
+# generations. Waves never ships patch updates to a superseded shell - only the
+# current release line advances - so a "latest version" per shell is not a
+# maintained value. Updates resolve per-license through Waves Central, whose
+# metadata (versionsData.json / availableProducts.json) is pulled from a
+# dynamically-named S3 bucket behind account auth (confirmed by mining Waves
+# Central.app app.asar 2026-08: no public, unauthenticated version endpoint).
+vendor = "WavesAudio"
+homepage = "https://www.waves.com"
+download_via = "Waves Central app (download from waves.com/downloads/central); log in with a Waves account and it installs/updates the current WaveShell for each licensed plug-in."
+skip = "Catalog entries are per-V-release WaveShell components; Waves does not update superseded shells and exposes no public per-shell version source. Updates ship only via Waves Central."
+
+[manual]
+login = "https://www.waves.com/login"
+steps = "Versions are managed by Waves Central: log in with a Waves account in the Waves Central app to see installed vs latest versions and update. Catalog entries are WaveShell components versioned per Waves V-release (e.g. 17.1)."

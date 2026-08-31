@@ -1,0 +1,13 @@
+# BLEASS publishes no plugin version numbers on product pages; the
+# software-updates blog category (bleass.com/category/software-updates/,
+# re-checked live 2026-08-30) has no versioned posts for Spectral Resonator or
+# Vox, and the plugin binaries reference only the shop. Updates ship through
+# the "BLEASS Plugins Installer" desktop app.
+vendor = "BLEASS"
+homepage = "https://www.bleass.com"
+download_via = "BLEASS Plugins Installer — BLEASS's desktop manager app (see bleass.com/bpi-help/); it checks for and installs plugin updates"
+skip = "No public version source: product pages and the software-updates blog carry no version numbers for Spectral Resonator or Vox"
+
+[manual]
+login = "https://www.bleass.com/my-account/"
+steps = "Run the BLEASS Plugins Installer app (see bleass.com/bpi-help/) to check for and install plugin updates; update announcements are posted at bleass.com/category/software-updates/."

@@ -1,0 +1,13 @@
+# OwnHammer's Shopify product pages (ownhammer.com/products/studio-standard,
+# /products/chugginator) do not state plugin version numbers, and no public
+# changelog page was found. Manual-only.
+# Wave-2 re-check 2026-08-30: /products.json (Shopify, 62 products) carries no
+# version strings; the OH Chugginator binary references only ilok.com and the
+# store (no update endpoint).
+vendor = "OwnHammer"
+homepage = "https://ownhammer.com"
+skip = "No version numbers anywhere: Shopify store pages and /products.json carry none, and the iLok-licensed plugins have no update-check endpoint"
+
+[manual]
+login = "https://ownhammer.com/account/login"
+steps = "Log in to your OwnHammer account (installers are re-downloadable from order history / download links in purchase emails); plugins authorize via iLok License Manager; update announcements appear on OwnHammer's site news and forum threads (KVR, The Gear Forum)."

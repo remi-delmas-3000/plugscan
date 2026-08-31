@@ -1,0 +1,13 @@
+# Illformed (dblue). Glitch page lists "Version 2.1.5" for current downloads first;
+# legacy Glitch 1.3 appears further down, so first match is the latest Glitch 2 version.
+vendor = "Illformed"
+homepage = "https://illformed.org"
+
+[manual]
+steps = "Go to illformed.org/glitch/ - the current Glitch 2 version is shown next to the download links. Glitch 2 is now free, no login needed."
+
+[[product]]
+name = "Glitch2"
+page = "https://illformed.org/glitch/"
+version_regex = 'Version ([0-9]+\.[0-9.]+)'
+download = "https://illformed.org/glitch/"

@@ -1,0 +1,12 @@
+# Plugin Boutique publishes Scaler changelogs on help.pluginboutique.com (Zendesk,
+# Cloudflare-gated to non-browser fetches); pluginboutique.com downloads require login.
+# Re-checked 2026-08: scalerplugin.com now redirects to scalermusic.com (Scaler 3
+# marketing) with no version text for Scaler 2 / Scaler EQ.
+# Scaler2 / ScalerAudio2 / ScalerControl2 are the same installer/version.
+vendor = "Plugin Boutique"
+homepage = "https://www.pluginboutique.com"
+skip = "no reachable version source: changelogs sit behind Cloudflare on help.pluginboutique.com, downloads behind login, scalermusic.com carries no version text (verified 2026-08)"
+
+[manual]
+login = "https://www.pluginboutique.com/auth/login"
+steps = "Log in to pluginboutique.com, go to My Account > Downloads, pick the product and OS, and use the version dropdown. Scaler 2 changelog: https://help.pluginboutique.com/hc/en-us/articles/6232885883412 (open in a browser)."

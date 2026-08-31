@@ -1,0 +1,10 @@
+# Fiedler-audio (fiedler-audio.com, Dolby Atmos tools; "fiedler audio splat").
+# WordPress/Elementor site: the splat page and /downloads/ carry no plugin version
+# strings (verified live; the only x.y.z values are WP/JS asset versions) and
+# purchases/trials run through FastSpring. Manual-only.
+vendor = "Fiedler-audio"
+homepage = "https://fiedler-audio.com"
+skip = "fiedler-audio.com publishes no version strings on the splat page or /downloads/ (verified; only WP asset versions)"
+
+[manual]
+steps = "Open fiedler-audio.com/splat/ and fiedler-audio.com/downloads/ for the latest splat installer/trial; the installed version is shown in the plugin UI. Updates are announced via the Fiedler Audio newsletter."

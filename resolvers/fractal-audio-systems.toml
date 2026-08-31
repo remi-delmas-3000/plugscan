@@ -1,0 +1,14 @@
+# Fractal Audio's site (WordPress) publishes no plugin/app version numbers;
+# Cab-Lab and companion software releases are announced on the forum and
+# delivered via the account.
+# Wave-2 re-check 2026-08-30: the Cab-Lab 4 app binary references an RSS feed
+# (fractalaudio.com/rss/dfgherycgnmhju/ -> 403 to plain clients) and a Rails API
+# (cablab.fractalaudio.com/api/download_links.json -> 404 without an
+# authenticated session/params); no /fullerton or /pasadena product pages exist.
+vendor = "Fractal Audio Systems"
+homepage = "https://www.fractalaudio.com"
+skip = "No public version source: the Cab-Lab update feed returns 403 and the cablab API requires an authenticated Shopify session; releases are announced only on the forum"
+
+[manual]
+login = "https://shop.fractalaudio.com/account/login"
+steps = "Log into the Fractal Audio account; Cab-Lab downloads live in the account area, release announcements on forum.fractalaudio.com."

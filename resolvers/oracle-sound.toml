@@ -1,0 +1,10 @@
+# Oracle Sound (oraclesound.com, Shopify store) publishes no version numbers or
+# changelog on any public page. Re-checked 2026-08 via /products.json: none of the
+# 65 products carry version strings in body_html.
+vendor = "Oracle Sound"
+homepage = "https://www.oraclesound.com"
+skip = "no public version info: Shopify products.json and STAGER product pages carry no version strings (verified 2026-08)"
+
+[manual]
+login = "https://www.oraclesound.com/account/login"
+steps = "Log in to your oraclesound.com (Shopify) account; downloads are delivered via the order page / download links emailed at purchase, which always serve the current build. No public changelog - contact support or re-download to update the STAGER plugins."

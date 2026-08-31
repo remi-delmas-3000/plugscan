@@ -1,0 +1,15 @@
+# VZtec (Argentinian pedal maker) hosts the free Fuzz plugin on a Wix site. The
+# product page states "Version 0.1.0" and that is the only "Version <ver>" match in
+# the served HTML (verified live 2026-08-30). Installed 0.1.0 is the current release
+# (announced Dec 2025), not a dev build.
+vendor = "VZtec"
+homepage = "https://en.vztecfx.com"
+
+[manual]
+steps = "Go to https://en.vztecfx.com/fuzz-plugin; the stated version and direct zip downloads (Win/macOS/Linux) are on the page, no signup required."
+
+[[product]]
+name = "Fuzz"
+page = "https://en.vztecfx.com/fuzz-plugin"
+version_regex = 'Version ([0-9]+\.[0-9.]+)'
+download = "https://en.vztecfx.com/fuzz-plugin"

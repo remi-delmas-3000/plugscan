@@ -1,0 +1,12 @@
+# McDSP publishes no per-plugin version info in static HTML: the downloads page
+# (mcdsp.com/downloads/plugin-downloads/) is login-gated/JS, and version announcements
+# are press releases. Re-checked 2026-08: the homepage only mentions v7.0/v7.1 in
+# stale marketing copy - no current version anywhere scrapable.
+# The whole v7 line versions in lockstep (installed line is 7.3.0).
+vendor = "McDSP"
+homepage = "https://mcdsp.com"
+skip = "no version info in public HTML: downloads login-gated, homepage only carries stale v7.0/v7.1 marketing text (verified 2026-08)"
+
+[manual]
+login = "https://mcdsp.com/login/"
+steps = "Log in at mcdsp.com, open Downloads > Plug-in Downloads for the latest installers; version news is under mcdsp.com press releases (all v7 plug-ins update in lockstep, e.g. v7.3.0)."

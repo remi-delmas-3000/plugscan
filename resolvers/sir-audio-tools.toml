@@ -1,0 +1,31 @@
+# SIR Audio Tools product pages link demo installers whose filenames carry the
+# version (e.g. SIR3_Mac_1.1.041_Demo.dmg). Third version segment is 3 digits.
+vendor = "SIR Audio Tools"
+homepage = "https://www.siraudiotools.com"
+
+[manual]
+steps = "Public demo/full installers on each product page (siraudiotools.com/SIR3.php etc.); licensed downloads via the customer login."
+
+[[product]]
+name = "SIR3"
+page = "https://www.siraudiotools.com/SIR3.php"
+version_regex = '([0-9]+\.[0-9]+\.[0-9]{3})'
+download = "https://www.siraudiotools.com/SIR3.php"
+
+[[product]]
+name = "SpectrumAnalyzer"
+page = "https://www.siraudiotools.com/Spectrum-Analyzer.php"
+version_regex = '([0-9]+\.[0-9]+\.[0-9]{3})'
+download = "https://www.siraudiotools.com/Spectrum-Analyzer.php"
+
+[[product]]
+name = "StandardCLIP"
+page = "https://www.siraudiotools.com/StandardCLIP.php"
+version_regex = '([0-9]+\.[0-9]+\.[0-9]{3})'
+download = "https://www.siraudiotools.com/StandardCLIP.php"
+
+[[product]]
+name = "StandardGATE"
+page = "https://www.siraudiotools.com/StandardGATE.php"
+version_regex = '([0-9]+\.[0-9]+\.[0-9]{3})'
+download = "https://www.siraudiotools.com/StandardGATE.php"

@@ -1,0 +1,34 @@
+# XILS-lab store pages show "Latest Version: x.y.z" in a changelog toggle; the older
+# product download page for PolyKB lists an installer-archive table, newest first
+# (first <td align="center">x.y.z</td> is the latest, currently a BETA).
+# Installed versions for XILS201/XILS5000 are hex-encoded (0x010103 = 1.1.3).
+# PolyKB II and XILS V+ have no verifiable public version page; omitted.
+vendor = "XILS-lab"
+homepage = "https://www.xils-lab.com"
+
+[manual]
+steps = "Product pages at xils-lab.com/store/<product>/ show 'Latest Version' in the Changelog toggle; full installers are public on each product's download page/tab (iLok or eLicenser builds)."
+
+[[product]]
+name = "polyKB III_x64"
+page = "https://www.xils-lab.com/products/polykb-iii-&-ii-p-159/download.html"
+version_regex = '<td align="center">([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.xils-lab.com/products/polykb-iii-&-ii-p-159/download.html"
+
+[[product]]
+name = "TheEighty_x64"
+page = "https://www.xils-lab.com/store/theeighty/"
+version_regex = 'Latest Version: ([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://www.xils-lab.com/store/theeighty/"
+
+[[product]]
+name = "XILS201x64"
+page = "https://www.xils-lab.com/store/xils-201/"
+version_regex = 'Latest Version: ([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://www.xils-lab.com/store/xils-201/"
+
+[[product]]
+name = "XILS5000x64"
+page = "https://www.xils-lab.com/store/xils-5000/"
+version_regex = 'Latest Version: ([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://www.xils-lab.com/store/xils-5000/"

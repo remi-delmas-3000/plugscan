@@ -1,0 +1,11 @@
+# pitchinnovations.com publishes no scrapable version info: product pages carry
+# no version numbers, the blog's version-updates tag is stale (last entry
+# Fluid Chords v1.0.4, 2021), downloads live behind a customer login, and
+# kvraudio.com blocks non-browser clients (403). Manual walkthrough only.
+vendor = "Pitch Innovations"
+homepage = "https://pitchinnovations.com"
+skip = "no public version source: product pages carry no versions, blog is stale, downloads behind customer login"
+
+[manual]
+login = "https://pitchinnovations.com/customer/login"
+steps = "Log in at pitchinnovations.com/customer/login; latest installers for all products (Fluid Chords/Chords 2, Fluid Pitch, Groove Shaper, Rhythm Box, incl. MFX variants) are under My Account downloads. Update announcements occasionally appear at pitchinnovations.com/blog."

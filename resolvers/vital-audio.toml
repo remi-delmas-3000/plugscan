@@ -1,0 +1,9 @@
+# vital.audio is a JS-rendered store/account site with no public changelog or
+# version string reachable by curl. Updates are offered in-app. Manual-only.
+vendor = "Vital Audio"
+homepage = "https://vital.audio"
+skip = "the only public endpoint, https://vital.audio/dist/vital_version.txt, is stale (returns 0.8.5 vs installed 1.6.4, verified live); current versions are behind the account login"
+
+[manual]
+login = "https://account.vital.audio"
+steps = "Log in at vital.audio and use the download page for the latest installer; Vital also prompts in-app when an update is available."

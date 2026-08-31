@@ -1,0 +1,8 @@
+# Shopify store; the Plugin Suite product page contains only theme/JS versions.
+# Updates are announced via KVR news and delivered by emailed download links.
+vendor = "Aguilar"
+homepage = "https://aguilaramp.com"
+skip = "Shopify page carries no version info; installers delivered via emailed links"
+
+[manual]
+steps = "License and download link are emailed on purchase; re-download via the link in your Aguilar order email or contact support. Product page: aguilaramp.com/products/aguilar-plugin-suite."

@@ -1,0 +1,13 @@
+# Morpho page links installers named neutone-morpho-X.Y.Z-installer.exe (and a
+# matching "Version X.Y.Z" label). Server-rendered, curl-friendly.
+vendor = "Neutone"
+homepage = "https://neutone.ai"
+
+[manual]
+steps = "Go to neutone.ai/morpho and use the direct installer download links."
+
+[[product]]
+name = "Neutone Morpho"
+page = "https://neutone.ai/morpho"
+version_regex = 'neutone-morpho-([0-9]+\.[0-9]+\.[0-9]+)-installer'
+download = "https://neutone.ai/morpho"

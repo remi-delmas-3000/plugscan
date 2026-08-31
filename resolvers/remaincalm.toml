@@ -1,0 +1,28 @@
+# remaincalm (remaincalm.org / remaincalm.audio) publishes no version numbers on
+# its plugin pages and download filenames are unversioned, BUT the plugins' own
+# update checker (URL found in the gossamer binary) queries
+# https://dl.remaincalm.audio/updates_{plugin}.xml, which returns XML with
+# <version id="X.Y.Z">…</version> entries. Verified live 2026-08-30:
+# updates_gossamer.xml and updates_paranoia.xml both report 1.0.0 (= installed).
+# The ?v= query parameter the plugin appends is optional.
+vendor = "remaincalm"
+homepage = "https://remaincalm.audio"
+
+[manual]
+steps = "Open remaincalm.audio/plugins/gossamer/ and /plugins/paranoia/; installers download directly from the Downloads section on each page (no login). Watch the site or the page's beta banner for update announcements; no public changelog."
+
+[[product]]
+name = "gossamer"
+page = "https://dl.remaincalm.audio/updates_gossamer.xml"
+strategy = "page_regex"
+version_regex = '<version id="([0-9]+\.[0-9.]+)"'
+exclude_regex = '(?i)beta|rc'
+changelog = "https://dl.remaincalm.audio/updates_gossamer.xml"
+
+[[product]]
+name = "paranoia"
+page = "https://dl.remaincalm.audio/updates_paranoia.xml"
+strategy = "page_regex"
+version_regex = '<version id="([0-9]+\.[0-9.]+)"'
+exclude_regex = '(?i)beta|rc'
+changelog = "https://dl.remaincalm.audio/updates_paranoia.xml"

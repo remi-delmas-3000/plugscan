@@ -1,0 +1,13 @@
+# Re-checked 2026-08-30: the downloads archive (eventideaudio.com/downloads/, and the
+# per-product /downloads/?product=<Name> pages) is server-rendered but lists product names
+# only -- the plugin version and download link are injected via JS after account login.
+# No version strings (e.g. 3.11.x) appear in the served HTML anywhere; the numbers on the page
+# (4.13.1 etc.) are the Astra WordPress theme's asset ?ver=. There is no Eventide download
+# manager on macOS (only per-plugin uninstallers ship). No public per-plugin version source.
+vendor = "Eventide"
+homepage = "https://www.eventideaudio.com"
+skip = "Plugin versions are shown only after account login; the downloads pages render product names but load versions/installers via authenticated JS, and there is no download-manager app or public version feed."
+
+[manual]
+login = "https://www.eventideaudio.com/my-account/"
+steps = "Log in at eventideaudio.com (My Account), then eventideaudio.com/downloads/ for installers. Each plugin's current version is shown next to its download only after login; product/marketing pages do not state plugin versions."

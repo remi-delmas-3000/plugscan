@@ -1,0 +1,238 @@
+# Each Blue Cat product page has a news section with anchors like
+# name="2026_05_21_V2.78" (newest first). Generic regex verified on PatchWork
+# and Axiom pages 2026-08-30. Slugs taken from bluecataudio.com/Products/Category_0_All/.
+vendor = "Blue Cat Audio"
+homepage = "https://www.bluecataudio.com"
+
+[manual]
+login = "https://www.bluecataudio.com/Login/"
+steps = "Log in at bluecataudio.com/Login/, then My Downloads for full installers. Demo installers are public on each product page."
+
+[[product]]
+name = "BC AcouFiend"
+page = "https://www.bluecataudio.com/Products/Product_AcouFiend/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_AcouFiend/"
+
+[[product]]
+name = "BC Axiom"
+page = "https://www.bluecataudio.com/Products/Product_Axiom/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_Axiom/"
+
+[[product]]
+name = "BC Chorus 4 (Mono)"
+page = "https://www.bluecataudio.com/Products/Product_Chorus/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_Chorus/"
+
+[[product]]
+name = "BC Chorus 4 (Stereo)"
+page = "https://www.bluecataudio.com/Products/Product_Chorus/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_Chorus/"
+
+[[product]]
+name = "BC Connector"
+page = "https://www.bluecataudio.com/Products/Product_Connector/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_Connector/"
+
+[[product]]
+name = "BC Connector MFX"
+page = "https://www.bluecataudio.com/Products/Product_Connector/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_Connector/"
+
+[[product]]
+name = "BC Destructor"
+page = "https://www.bluecataudio.com/Products/Product_Destructor/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_Destructor/"
+
+[[product]]
+name = "BC DP Meter Pro 4 (Mono)"
+page = "https://www.bluecataudio.com/Products/Product_DPeakMeterPro/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_DPeakMeterPro/"
+
+[[product]]
+name = "BC DP Meter Pro 4 (Srnd)"
+page = "https://www.bluecataudio.com/Products/Product_DPeakMeterPro/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_DPeakMeterPro/"
+
+[[product]]
+name = "BC DP Meter Pro 4 (Stereo)"
+page = "https://www.bluecataudio.com/Products/Product_DPeakMeterPro/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_DPeakMeterPro/"
+
+[[product]]
+name = "BC Dynamics 4 (Mono)"
+page = "https://www.bluecataudio.com/Products/Product_Dynamics/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_Dynamics/"
+
+[[product]]
+name = "BC Dynamics 4 (Stereo)"
+page = "https://www.bluecataudio.com/Products/Product_Dynamics/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_Dynamics/"
+
+[[product]]
+name = "BC Fader Hub"
+page = "https://www.bluecataudio.com/Products/Product_FaderHub/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_FaderHub/"
+
+[[product]]
+name = "BC Flanger 3 (Mono)"
+page = "https://www.bluecataudio.com/Products/Product_Flanger/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_Flanger/"
+
+[[product]]
+name = "BC Flanger 3 (Stereo)"
+page = "https://www.bluecataudio.com/Products/Product_Flanger/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_Flanger/"
+
+[[product]]
+name = "BC Free Amp"
+page = "https://www.bluecataudio.com/Products/Product_FreeAmp/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_FreeAmp/"
+
+[[product]]
+name = "BC FreqAnalyst Multi 2"
+page = "https://www.bluecataudio.com/Products/Product_FreqAnalystMulti/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_FreqAnalystMulti/"
+
+[[product]]
+name = "BC FreqAnalyst Pro 2 (Mono)"
+page = "https://www.bluecataudio.com/Products/Product_FreqAnalystPro/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_FreqAnalystPro/"
+
+[[product]]
+name = "BC FreqAnalyst Pro 2 (Stereo)"
+page = "https://www.bluecataudio.com/Products/Product_FreqAnalystPro/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_FreqAnalystPro/"
+
+[[product]]
+name = "BC Late Replies"
+page = "https://www.bluecataudio.com/Products/Product_LateReplies/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_LateReplies/"
+
+[[product]]
+name = "BC MB-5 Dynamix 2 (Mono)"
+page = "https://www.bluecataudio.com/Products/Product_MB5Dynamix/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_MB5Dynamix/"
+
+[[product]]
+name = "BC MB-5 Dynamix 2 (Stereo)"
+page = "https://www.bluecataudio.com/Products/Product_MB5Dynamix/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_MB5Dynamix/"
+
+[[product]]
+name = "BC MB-7 Mixer 2 (Dual)"
+page = "https://www.bluecataudio.com/Products/Product_MB7Mixer/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_MB7Mixer/"
+
+[[product]]
+name = "BC MB-7 Mixer 2 (Mono)"
+page = "https://www.bluecataudio.com/Products/Product_MB7Mixer/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_MB7Mixer/"
+
+[[product]]
+name = "BC MB-7 Mixer 2 (Stereo)"
+page = "https://www.bluecataudio.com/Products/Product_MB7Mixer/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_MB7Mixer/"
+
+[[product]]
+name = "BC Miaow Wah"
+page = "https://www.bluecataudio.com/Products/Product_MiaowWah/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_MiaowWah/"
+
+[[product]]
+name = "BC Oscilloscope Multi 2"
+page = "https://www.bluecataudio.com/Products/Product_OscilloscopeMulti/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_OscilloscopeMulti/"
+
+[[product]]
+name = "BC PatchWork"
+page = "https://www.bluecataudio.com/Products/Product_PatchWork/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_PatchWork/"
+
+[[product]]
+name = "BC PatchWork MFX"
+page = "https://www.bluecataudio.com/Products/Product_PatchWork/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_PatchWork/"
+
+[[product]]
+name = "BC PatchWork Synth"
+page = "https://www.bluecataudio.com/Products/Product_PatchWork/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_PatchWork/"
+
+[[product]]
+name = "BC PolyVibe"
+page = "https://www.bluecataudio.com/Products/Product_PolyVibe/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_PolyVibe/"
+
+[[product]]
+name = "BC Protector 2"
+page = "https://www.bluecataudio.com/Products/Product_Protector/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_Protector/"
+
+[[product]]
+name = "BC Re-Guitar"
+page = "https://www.bluecataudio.com/Products/Product_ReGuitar/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_ReGuitar/"
+
+[[product]]
+name = "BC Remote Control"
+page = "https://www.bluecataudio.com/Products/Product_RemoteControl/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_RemoteControl/"
+
+[[product]]
+name = "BC Remote Control MFX"
+page = "https://www.bluecataudio.com/Products/Product_RemoteControl/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_RemoteControl/"
+
+[[product]]
+name = "BC Spinal Vibe"
+page = "https://www.bluecataudio.com/Products/Product_SpinalVibe/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_SpinalVibe/"
+
+[[product]]
+name = "BC StereoScope Multi 2"
+page = "https://www.bluecataudio.com/Products/Product_StereoScopeMulti/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_StereoScopeMulti/"
+
+[[product]]
+name = "BC StereoScope Pro 2"
+page = "https://www.bluecataudio.com/Products/Product_StereoScopePro/"
+version_regex = 'name="[0-9]{4}_[0-9]{2}_[0-9]{2}_V([0-9.]+)"'
+changelog = "https://www.bluecataudio.com/Products/Product_StereoScopePro/"
+

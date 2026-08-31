@@ -1,0 +1,12 @@
+# Catalog vendor string is 'Minimal' = Minimal Audio.
+# Checked 2026-08-31: Minimal Hub.app (Tauri) manages installs/updates via
+# api.minimal.audio /api/v2/products (fields latest_version, download_url),
+# but that API and api.minimalplugins.com both return Cloudflare 403
+# challenges to non-browser clients, so it cannot be scraped directly.
+vendor = "Minimal"
+homepage = "https://www.minimal.audio"
+download_via = "Minimal Hub app (in /Applications; download from minimal.audio account) installs and updates all Minimal Audio plugins."
+
+[manual]
+login = "https://www.minimal.audio/account"
+steps = "Log in at minimal.audio (Account) and use the Minimal Audio installer/account downloads. Site is fully JS-rendered; no scrapeable version info."

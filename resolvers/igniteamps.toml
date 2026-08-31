@@ -1,0 +1,25 @@
+# Ignite Amps lists every plugin with its version ("Emissary 2.0.2",
+# "Libra v1.3.0") on the single-page site. All downloads are free.
+vendor = "Igniteamps"
+homepage = "https://www.igniteamps.com"
+
+[manual]
+steps = "All plugins free; scroll the one-page site to each product's Download button."
+
+[[product]]
+name = "Emissary"
+page = "https://www.igniteamps.com/"
+version_regex = 'Emissary[^0-9<]{0,8}v? ?([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.igniteamps.com/"
+
+[[product]]
+name = "Libra"
+page = "https://www.igniteamps.com/"
+version_regex = 'Libra[^0-9<]{0,8}v?([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.igniteamps.com/"
+
+[[product]]
+name = "NadIR"
+page = "https://www.igniteamps.com/"
+version_regex = 'NadIR[^0-9<]{0,8}v?([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.igniteamps.com/"

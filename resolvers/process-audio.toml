@@ -1,0 +1,13 @@
+# Ripple product page carries its changelog inline, newest first
+# ("Ripple - 1.0.3" heading, then "Version 1.0.3", "Version 1.0.2", ...).
+vendor = "Process.audio"
+homepage = "https://process.audio"
+
+[manual]
+steps = "Log in at process.audio, open the Ripple product page; downloads and the changelog are on the page."
+
+[[product]]
+name = "Ripple"
+page = "https://process.audio/en/products/ripple"
+version_regex = 'Ripple - ([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://process.audio/en/products/ripple"

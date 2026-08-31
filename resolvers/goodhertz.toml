@@ -1,0 +1,134 @@
+# All Goodhertz plugins ship in one bundle installer; goodhertz.com/downloads/ shows
+# "Goodhertz X.Y.Z" with public installer links. Verified 2026-08-30 (3.14.1).
+vendor = "Goodhertz"
+homepage = "https://goodhertz.com"
+
+[manual]
+steps = "Installers are public at goodhertz.com/downloads/ (one bundle for all plugins). Licences activate in-plugin."
+
+[[product]]
+name = "Ghz CanOpener Studio 3"
+page = "https://goodhertz.com/downloads/"
+version_regex = 'Goodhertz ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://goodhertz.com/downloads/"
+
+[[product]]
+name = "Ghz DC19 3"
+page = "https://goodhertz.com/downloads/"
+version_regex = 'Goodhertz ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://goodhertz.com/downloads/"
+
+[[product]]
+name = "Ghz Faraday Limiter 3"
+page = "https://goodhertz.com/downloads/"
+version_regex = 'Goodhertz ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://goodhertz.com/downloads/"
+
+[[product]]
+name = "Ghz Good Dither 3"
+page = "https://goodhertz.com/downloads/"
+version_regex = 'Goodhertz ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://goodhertz.com/downloads/"
+
+[[product]]
+name = "Ghz LA-210 3 B1"
+page = "https://goodhertz.com/downloads/"
+version_regex = 'Goodhertz ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://goodhertz.com/downloads/"
+
+[[product]]
+name = "Ghz Lohi 3"
+page = "https://goodhertz.com/downloads/"
+version_regex = 'Goodhertz ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://goodhertz.com/downloads/"
+
+[[product]]
+name = "Ghz Lossy 3"
+page = "https://goodhertz.com/downloads/"
+version_regex = 'Goodhertz ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://goodhertz.com/downloads/"
+
+[[product]]
+name = "Ghz Loudness 3"
+page = "https://goodhertz.com/downloads/"
+version_regex = 'Goodhertz ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://goodhertz.com/downloads/"
+
+[[product]]
+name = "Ghz Megaverb 3"
+page = "https://goodhertz.com/downloads/"
+version_regex = 'Goodhertz ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://goodhertz.com/downloads/"
+
+[[product]]
+name = "Ghz Midside 3"
+page = "https://goodhertz.com/downloads/"
+version_regex = 'Goodhertz ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://goodhertz.com/downloads/"
+
+[[product]]
+name = "Ghz Midside Matrix 3"
+page = "https://goodhertz.com/downloads/"
+version_regex = 'Goodhertz ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://goodhertz.com/downloads/"
+
+[[product]]
+name = "Ghz Panpot 3"
+page = "https://goodhertz.com/downloads/"
+version_regex = 'Goodhertz ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://goodhertz.com/downloads/"
+
+[[product]]
+name = "Ghz Tiltshift 3"
+page = "https://goodhertz.com/downloads/"
+version_regex = 'Goodhertz ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://goodhertz.com/downloads/"
+
+[[product]]
+name = "Ghz Tone Control 3"
+page = "https://goodhertz.com/downloads/"
+version_regex = 'Goodhertz ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://goodhertz.com/downloads/"
+
+[[product]]
+name = "Ghz Trem Control 3"
+page = "https://goodhertz.com/downloads/"
+version_regex = 'Goodhertz ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://goodhertz.com/downloads/"
+
+[[product]]
+name = "Ghz Tupe 3"
+page = "https://goodhertz.com/downloads/"
+version_regex = 'Goodhertz ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://goodhertz.com/downloads/"
+
+[[product]]
+name = "Ghz Tupe Wow 3 B2"
+page = "https://goodhertz.com/downloads/"
+version_regex = 'Goodhertz ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://goodhertz.com/downloads/"
+
+[[product]]
+name = "Ghz VCME 3"
+page = "https://goodhertz.com/downloads/"
+version_regex = 'Goodhertz ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://goodhertz.com/downloads/"
+
+[[product]]
+name = "Ghz VCME Soft Clip 3"
+page = "https://goodhertz.com/downloads/"
+version_regex = 'Goodhertz ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://goodhertz.com/downloads/"
+
+[[product]]
+name = "Ghz Vulf Compressor 3"
+page = "https://goodhertz.com/downloads/"
+version_regex = 'Goodhertz ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://goodhertz.com/downloads/"
+
+[[product]]
+name = "Ghz Wow Control 3"
+page = "https://goodhertz.com/downloads/"
+version_regex = 'Goodhertz ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://goodhertz.com/downloads/"
+

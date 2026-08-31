@@ -1,0 +1,22 @@
+# oeksound product pages link installers named like soothe3_v1.0.5_macos.pkg.
+# bloom mac/win builds can differ; we track the macOS build. spiff filenames
+# are undotted (spiff_v144_Mac.pkg) so spiff is not auto-resolvable; soothe2 is
+# discontinued (its page redirects to soothe3).
+vendor = "oeksound"
+homepage = "https://oeksound.com"
+
+[manual]
+login = "https://oeksound.com/account/"
+steps = "Public installers on each plugin page (oeksound.com/plugins/...); spiff and legacy soothe2 installers via the account downloads."
+
+[[product]]
+name = "soothe3"
+page = "https://oeksound.com/plugins/soothe3/"
+version_regex = 'soothe3_v([0-9]+\.[0-9]+\.[0-9]+)_macos'
+download = "https://oeksound.com/plugins/soothe3/"
+
+[[product]]
+name = "bloom"
+page = "https://oeksound.com/plugins/bloom/"
+version_regex = 'bloom_v([0-9]+\.[0-9]+\.[0-9]+)_macos'
+download = "https://oeksound.com/plugins/bloom/"

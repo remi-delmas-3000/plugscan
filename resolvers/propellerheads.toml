@@ -1,0 +1,15 @@
+# Propellerheads (now Reason Studios). Official release-notes page lists releases
+# newest-first as "Reason 14.1.0" etc. Reason Rack Plugin versions ship with the
+# Reason app version. Note: installed "14.1d100 build 20457" is a 14.1 beta build.
+vendor = "Propellerheads"
+homepage = "https://www.reasonstudios.com"
+
+[manual]
+login = "https://login.reasonstudios.com"
+steps = "Release notes: reasonstudios.com/reason/updates/release-notes. Download the latest installer from your Reason Studios account or via Reason's in-app update."
+
+[[product]]
+name = "Reason Rack Plugin"
+page = "https://www.reasonstudios.com/reason/updates/release-notes"
+version_regex = 'Reason ([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://www.reasonstudios.com/reason/updates/release-notes"

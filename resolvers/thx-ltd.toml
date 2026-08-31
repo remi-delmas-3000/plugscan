@@ -1,0 +1,9 @@
+# THX Ltd (THX Spatial Creator). thx.com is behind a Cloudflare challenge for
+# automated fetches (verified: "Attention Required" page), and no local app with
+# an update feed is installed. Manual-only.
+vendor = "THX Ltd"
+homepage = "https://www.thx.com"
+skip = "thx.com is Cloudflare-blocked to automated fetches; no public version endpoint found"
+
+[manual]
+steps = "Open thx.com (Spatial Creator product page) in a browser for the latest THX Spatial Creator build; the app/installer and your THX account show the current version."

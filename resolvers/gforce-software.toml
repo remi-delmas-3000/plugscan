@@ -1,0 +1,120 @@
+# Version detection: the single aggregated changelog at
+# gforcesoftware.com/help/updates-and-releases/ lists every product newest-first
+# as <h3>Publisher Product</h3> ... <h3>v X.Y.Z</h3>. Per-product regexes anchor
+# on the product's <h3> title and grab the first following version. Verified live
+# 2026-08: 15 products matched or exceeded installed. NOT auto-checked (changelog
+# lags the installed build, so it would report an older "latest"): M-Tron Pro IV
+# (page 1.0.1 < installed 1.0.2), OB-E (page 2.5.1 < installed 2.6); IconDrum has
+# no changelog entry yet. Those three stay manual.
+vendor = "GForce Software"
+homepage = "https://www.gforcesoftware.com"
+
+[manual]
+login = "https://www.gforcesoftware.com/my-account/"
+steps = "Log in at gforcesoftware.com/my-account/; installers under Account > Downloads. Latest versions are listed at gforcesoftware.com/help/updates-and-releases/. M-Tron Pro IV, OB-E and IconDrum are not auto-checked (changelog lags or lacks an entry) - verify them on that page manually."
+
+
+[[product]]
+name = "Axxess"
+page = "https://www.gforcesoftware.com/help/updates-and-releases/"
+strategy = "page_regex"
+version_regex = '(?s)<h3>Axxess</h3>.*?<h3>(?:<[^>]+>)*v([0-9]+(?:\.[0-9]+)*)'
+changelog = "https://www.gforcesoftware.com/help/updates-and-releases/"
+
+[[product]]
+name = "Bass Station"
+page = "https://www.gforcesoftware.com/help/updates-and-releases/"
+strategy = "page_regex"
+version_regex = '(?s)<h3>Novation Bass Station</h3>.*?<h3>(?:<[^>]+>)*v([0-9]+(?:\.[0-9]+)*)'
+changelog = "https://www.gforcesoftware.com/help/updates-and-releases/"
+
+[[product]]
+name = "DMX"
+page = "https://www.gforcesoftware.com/help/updates-and-releases/"
+strategy = "page_regex"
+version_regex = '(?s)<h3>Oberheim DMX</h3>.*?<h3>(?:<[^>]+>)*v([0-9]+(?:\.[0-9]+)*)'
+changelog = "https://www.gforcesoftware.com/help/updates-and-releases/"
+
+[[product]]
+name = "Halogen FM"
+page = "https://www.gforcesoftware.com/help/updates-and-releases/"
+strategy = "page_regex"
+version_regex = '(?s)<h3>Halogen FM</h3>.*?<h3>(?:<[^>]+>)*v([0-9]+(?:\.[0-9]+)*)'
+changelog = "https://www.gforcesoftware.com/help/updates-and-releases/"
+
+[[product]]
+name = "impOSCar3"
+page = "https://www.gforcesoftware.com/help/updates-and-releases/"
+strategy = "page_regex"
+version_regex = '(?s)<h3>impOSCar3</h3>.*?<h3>(?:<[^>]+>)*v([0-9]+(?:\.[0-9]+)*)'
+changelog = "https://www.gforcesoftware.com/help/updates-and-releases/"
+
+[[product]]
+name = "MAP"
+page = "https://www.gforcesoftware.com/help/updates-and-releases/"
+strategy = "page_regex"
+version_regex = '(?s)<h3>GForce MAP</h3>.*?<h3>(?:<[^>]+>)*v([0-9]+(?:\.[0-9]+)*)'
+changelog = "https://www.gforcesoftware.com/help/updates-and-releases/"
+
+[[product]]
+name = "Minimonsta2"
+page = "https://www.gforcesoftware.com/help/updates-and-releases/"
+strategy = "page_regex"
+version_regex = '(?s)<h3>Minimonsta2</h3>.*?<h3>(?:<[^>]+>)*v([0-9]+(?:\.[0-9]+)*)'
+changelog = "https://www.gforcesoftware.com/help/updates-and-releases/"
+
+[[product]]
+name = "OB-1"
+page = "https://www.gforcesoftware.com/help/updates-and-releases/"
+strategy = "page_regex"
+version_regex = '(?s)<h3>Oberheim OB-1</h3>.*?<h3>(?:<[^>]+>)*v([0-9]+(?:\.[0-9]+)*)'
+changelog = "https://www.gforcesoftware.com/help/updates-and-releases/"
+
+[[product]]
+name = "OB-EZ"
+page = "https://www.gforcesoftware.com/help/updates-and-releases/"
+strategy = "page_regex"
+version_regex = '(?s)<h3>Oberheim OB-EZ</h3>.*?<h3>(?:<[^>]+>)*v([0-9]+(?:\.[0-9]+)*)'
+changelog = "https://www.gforcesoftware.com/help/updates-and-releases/"
+
+[[product]]
+name = "OB-X"
+page = "https://www.gforcesoftware.com/help/updates-and-releases/"
+strategy = "page_regex"
+version_regex = '(?s)<h3>Oberheim OB-X</h3>.*?<h3>(?:<[^>]+>)*v([0-9]+(?:\.[0-9]+)*)'
+changelog = "https://www.gforcesoftware.com/help/updates-and-releases/"
+
+[[product]]
+name = "Oddity3"
+page = "https://www.gforcesoftware.com/help/updates-and-releases/"
+strategy = "page_regex"
+version_regex = '(?s)<h3>Oddity3</h3>.*?<h3>(?:<[^>]+>)*v([0-9]+(?:\.[0-9]+)*)'
+changelog = "https://www.gforcesoftware.com/help/updates-and-releases/"
+
+[[product]]
+name = "Prophet 5"
+page = "https://www.gforcesoftware.com/help/updates-and-releases/"
+strategy = "page_regex"
+version_regex = '(?s)<h3>Sequential Prophet~5</h3>.*?<h3>(?:<[^>]+>)*v([0-9]+(?:\.[0-9]+)*)'
+changelog = "https://www.gforcesoftware.com/help/updates-and-releases/"
+
+[[product]]
+name = "SEM"
+page = "https://www.gforcesoftware.com/help/updates-and-releases/"
+strategy = "page_regex"
+version_regex = '(?s)<h3>Oberheim SEM</h3>.*?<h3>(?:<[^>]+>)*v([0-9]+(?:\.[0-9]+)*)'
+changelog = "https://www.gforcesoftware.com/help/updates-and-releases/"
+
+[[product]]
+name = "TVS Pro"
+page = "https://www.gforcesoftware.com/help/updates-and-releases/"
+strategy = "page_regex"
+version_regex = '(?s)<h3>Oberheim TVS Pro</h3>.*?<h3>(?:<[^>]+>)*v([0-9]+(?:\.[0-9]+)*)'
+changelog = "https://www.gforcesoftware.com/help/updates-and-releases/"
+
+[[product]]
+name = "VSM IV"
+page = "https://www.gforcesoftware.com/help/updates-and-releases/"
+strategy = "page_regex"
+version_regex = '(?s)<h3>VSM IV</h3>.*?<h3>(?:<[^>]+>)*v([0-9]+(?:\.[0-9]+)*)'
+changelog = "https://www.gforcesoftware.com/help/updates-and-releases/"

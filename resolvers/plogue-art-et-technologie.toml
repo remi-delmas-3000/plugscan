@@ -1,0 +1,22 @@
+# Plogue publishes everything on one downloads page. Bidule is versioned 0.97xx
+# there (matches installed convention). chipsynth/chipspeech/chipcrusher installers
+# are versioned by marketing version (v1.123, v1.982, v2.123) while the installed
+# plugins report a shared internal build number (e.g. 2123) — no page publishes
+# that build number, so those products are manual-only.
+vendor = "Plogue Art et Technologie"
+homepage = "https://www.plogue.com"
+
+[manual]
+steps = "Open https://www.plogue.com/downloads.html; installer filenames carry the marketing version (e.g. WIN_chipsynth_C64_v1.123.exe). Chipsynth-family builds are released in lockstep; compare against the build number shown in the plugin's about box."
+
+[[product]]
+name = "Bidule"
+page = "https://www.plogue.com/downloads.html"
+version_regex = '(0\.97[0-9]{2,})'
+download = "https://www.plogue.com/downloads.html"
+
+[[product]]
+name = "Bidule P64"
+page = "https://www.plogue.com/downloads.html"
+version_regex = '(0\.97[0-9]{2,})'
+download = "https://www.plogue.com/downloads.html"

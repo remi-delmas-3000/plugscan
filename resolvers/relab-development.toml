@@ -1,0 +1,56 @@
+# Relab publishes all installers on one public downloads page; version numbers
+# appear in the S3 download URLs (relab-software-downloads.s3...). Each product
+# has exactly one current version on the page. LX480 Mac/Windows can differ by
+# a patch level (regex pins the Mac installer). "Essentials" variants share the
+# page; regexes are anchored to the full product paths to avoid them.
+vendor = "Relab Development"
+homepage = "https://relabdevelopment.com"
+
+[manual]
+steps = "Go to https://relabdevelopment.com/downloads/ - every plugin's latest installer (with version in the file name) is listed publicly, no login needed."
+
+[[product]]
+name = "LX480 v4"
+page = "https://relabdevelopment.com/downloads/"
+version_regex = 'LX480_Complete/Mac/LX480_Mac_v([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://relabdevelopment.com/downloads/"
+
+[[product]]
+name = "Maselec MEA-2"
+page = "https://relabdevelopment.com/downloads/"
+version_regex = 'Maselec/MEA-2/v([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "Maselec MLA-4"
+page = "https://relabdevelopment.com/downloads/"
+version_regex = 'Maselec/MLA-4/v([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "Relab 176"
+page = "https://relabdevelopment.com/downloads/"
+version_regex = 'products/Relab\+176/v([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "Relab Color Drive"
+page = "https://relabdevelopment.com/downloads/"
+version_regex = 'Relab\+Color\+Drive/v([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "Relab Q82"
+page = "https://relabdevelopment.com/downloads/"
+version_regex = 'products/Q82/v([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "REV6000"
+page = "https://relabdevelopment.com/downloads/"
+version_regex = 'products/VSR_REV6000/v([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "Sonsig Rev-A"
+page = "https://relabdevelopment.com/downloads/"
+version_regex = 'Sonsig_Rev-A_Mac_v([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "SonsigACE"
+page = "https://relabdevelopment.com/downloads/"
+version_regex = 'products/Sonsig_ACE/v([0-9]+\.[0-9]+\.[0-9]+)'

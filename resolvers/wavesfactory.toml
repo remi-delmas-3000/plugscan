@@ -1,0 +1,43 @@
+# Wavesfactory keeps a single changelog page listing the latest version of every product
+# as '<a ...>Name</a> - X.Y.Z'. Note "Cassette Transport" (free plugin) appears after "Cassette".
+vendor = "Wavesfactory"
+homepage = "https://www.wavesfactory.com"
+
+[manual]
+steps = "Plugins have a built-in auto-updater; installers also at wavesfactory.com/support (My Purchases requires the order email). Version list: wavesfactory.com/blog/posts/changelog-and-updates/."
+
+[[product]]
+name = "Cassette"
+page = "https://www.wavesfactory.com/blog/posts/changelog-and-updates/"
+version_regex = 'Cassette</a> - ([0-9]+\.[0-9.]+)'
+changelog = "https://www.wavesfactory.com/blog/posts/changelog-and-updates/"
+
+[[product]]
+name = "Echo Cat"
+page = "https://www.wavesfactory.com/blog/posts/changelog-and-updates/"
+version_regex = 'Echo Cat</a> - ([0-9]+\.[0-9.]+)'
+changelog = "https://www.wavesfactory.com/blog/posts/changelog-and-updates/"
+
+[[product]]
+name = "Equalizer"
+page = "https://www.wavesfactory.com/blog/posts/changelog-and-updates/"
+version_regex = 'Equalizer</a> - ([0-9]+\.[0-9.]+)'
+changelog = "https://www.wavesfactory.com/blog/posts/changelog-and-updates/"
+
+[[product]]
+name = "Quantum"
+page = "https://www.wavesfactory.com/blog/posts/changelog-and-updates/"
+version_regex = 'Quantum</a> - ([0-9]+\.[0-9.]+)'
+changelog = "https://www.wavesfactory.com/blog/posts/changelog-and-updates/"
+
+[[product]]
+name = "Spectre"
+page = "https://www.wavesfactory.com/blog/posts/changelog-and-updates/"
+version_regex = 'Spectre</a> - ([0-9]+\.[0-9.]+)'
+changelog = "https://www.wavesfactory.com/blog/posts/changelog-and-updates/"
+
+[[product]]
+name = "Trackspacer25"
+page = "https://www.wavesfactory.com/blog/posts/changelog-and-updates/"
+version_regex = 'Trackspacer</a> - ([0-9]+\.[0-9.]+)'
+changelog = "https://www.wavesfactory.com/blog/posts/changelog-and-updates/"

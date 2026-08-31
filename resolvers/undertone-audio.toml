@@ -1,0 +1,8 @@
+# undertoneaudio.com is a Google Sites-style site; the UnFairchild plug-in page
+# publishes no version numbers (only a "v1-0" marketing slug). Manual-only.
+vendor = "Undertone Audio"
+homepage = "https://www.undertoneaudio.com"
+skip = "site publishes no version numbers (only a v1-0 marketing slug)"
+
+[manual]
+steps = "Open undertoneaudio.com > UnFairchild Plug-In for downloads; installer/plugin UI shows the version. Updates are announced via UTA's newsletter."

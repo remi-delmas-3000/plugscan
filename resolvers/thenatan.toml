@@ -1,0 +1,8 @@
+# Thenatan. Store (thenatan.store) publishes no version numbers on product pages
+# and KVR is Cloudflare-blocked for automated fetching, so manual-only.
+vendor = "Thenatan"
+homepage = "https://www.thenatan.store"
+skip = "store pages publish no versions; KVR is Cloudflare-blocked"
+
+[manual]
+steps = "Product page: thenatan.store/p/aura-granulator-vst/. Updates are announced on KVR (kvraudio.com news for Thenatan) and re-downloaded from the store account / delivery email."

@@ -1,0 +1,9 @@
+# Lindell Audio plugins are developed/distributed by Plugin Alliance; the PA
+# site is JS-rendered and version info sits behind the account, so no
+# scrapeable page.
+vendor = "Lindellaudio"
+homepage = "https://www.plugin-alliance.com"
+
+[manual]
+login = "https://www.plugin-alliance.com/en/login.html"
+steps = "Log in at plugin-alliance.com, use Manage My Account > My Licenses, or install updates via the Plugin Alliance Installation Manager which shows latest versions per plugin."

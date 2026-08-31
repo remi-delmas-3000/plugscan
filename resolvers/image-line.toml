@@ -1,0 +1,24 @@
+# "FL Studio" is tracked as the FL Studio APPLICATION (locally
+# /Applications/FL Studio 2026.app = 26.1.5.5384). The download page
+# https://www.image-line.com/fl-studio-download/ embeds JSON-LD with per-OS
+# "softwareVersion" fields (Windows first, then macOS); the regex below anchors
+# on the macOS entry. Verified live 2026-08-30: macOS 26.1.5.5384 (= installed
+# app), Windows 26.1.5.5618.
+# NOTE: older catalogs listed "FL Studio" as the macOS AU plugin wrapper
+# (1.5.0); if the installed value is a 1.x wrapper version, the comparison
+# against the app version is not meaningful.
+# "FL Studio VSTi" (1.0.0) is the plugin wrapper; it has no separately
+# published version (it updates with the app), so it stays manual.
+vendor = "Image-Line"
+homepage = "https://www.image-line.com"
+
+[manual]
+login = "https://www.image-line.com/my-account/"
+steps = "Log in to your Image-Line account and download the latest FL Studio installer (lifetime free updates); the plugin wrappers (FL Studio VSTi etc.) update together with the app; app release notes: image-line.com/fl-studio/whats-new-in-fl-studio/ and forum announcements."
+
+[[product]]
+name = "FL Studio"
+page = "https://www.image-line.com/fl-studio-download/"
+strategy = "page_regex"
+version_regex = '"operatingSystem":"macOS[^"]*","softwareVersion":"([0-9]+\.[0-9.]+)"'
+changelog = "https://www.image-line.com/fl-studio/whats-new-in-fl-studio/"

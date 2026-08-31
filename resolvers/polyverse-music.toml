@@ -1,0 +1,13 @@
+# Polyverse's downloads page returns an empty body to non-browser clients and
+# the support pages carry only CMS asset versions, so nothing scrapeable.
+# Wave-2 re-check 2026-08-30: the Manipulator binary calls
+# polyversemusic.com/edd-api/products/?product=<name>, but that endpoint now
+# 301-redirects to the store page (EDD public API disabled), and
+# polyversemusic.com/update/ renders its version table via JS (no plugin
+# versions in the served HTML).
+vendor = "Polyverse Music"
+homepage = "https://polyversemusic.com"
+skip = "No public version source: the EDD products API the plugins use is disabled (redirects to the store) and the /update/ page is JS-rendered"
+
+[manual]
+steps = "Open polyversemusic.com/downloads in a browser for the latest installers of Manipulator, Filterverse and Supermodal; release announcements on the Polyverse blog."

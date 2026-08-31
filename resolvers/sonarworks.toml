@@ -1,0 +1,29 @@
+# Sonarworks publishes SoundID Reference release notes newest first as
+# 4-part versions (5.13.8.1308). Requiring a >=3-digit build tail skips the
+# CSS framework versions earlier in the page; we capture the x.y.z part.
+vendor = "Sonarworks"
+homepage = "https://www.sonarworks.com"
+
+[manual]
+steps = "Installers at sonarworks.com/download-center; activation via the SoundID Reference app login."
+
+[[product]]
+name = "SoundID Reference AU Plugin"
+page = "https://www.sonarworks.com/legal/soundid-reference/release-notes"
+version_regex = '([0-9]+\.[0-9]+\.[0-9]+)\.[0-9]{3,}'
+download = "https://www.sonarworks.com/download-center"
+changelog = "https://www.sonarworks.com/legal/soundid-reference/release-notes"
+
+[[product]]
+name = "SoundID Reference VST Plugin"
+page = "https://www.sonarworks.com/legal/soundid-reference/release-notes"
+version_regex = '([0-9]+\.[0-9]+\.[0-9]+)\.[0-9]{3,}'
+download = "https://www.sonarworks.com/download-center"
+changelog = "https://www.sonarworks.com/legal/soundid-reference/release-notes"
+
+[[product]]
+name = "SoundID Reference VST3 Plugin"
+page = "https://www.sonarworks.com/legal/soundid-reference/release-notes"
+version_regex = '([0-9]+\.[0-9]+\.[0-9]+)\.[0-9]{3,}'
+download = "https://www.sonarworks.com/download-center"
+changelog = "https://www.sonarworks.com/legal/soundid-reference/release-notes"

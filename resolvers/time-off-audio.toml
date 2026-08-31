@@ -1,0 +1,11 @@
+# time off audio (timeoff.audio, Shopify) publishes no version numbers on its
+# product pages.
+# Wave-2 re-check 2026-08-30: timeoff.audio now serves a Next.js storefront
+# (no Shopify /products.json), and the dime plugin binaries contain no update
+# endpoint (web-UI assets only).
+vendor = "time off audio"
+homepage = "https://timeoff.audio"
+skip = "No public version source: store pages carry no version numbers and the plugins have no update-check endpoint"
+
+[manual]
+steps = "Log into the timeoff.audio customer portal; downloads there carry the current dime [mb]/[ms]/[tt] installers."

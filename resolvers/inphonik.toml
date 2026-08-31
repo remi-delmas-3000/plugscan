@@ -1,0 +1,22 @@
+# Inphonik product pages have a "<name> version history" section whose first
+# entry is the current version.
+vendor = "Inphonik"
+homepage = "https://www.inphonik.com"
+
+[manual]
+steps = "Public demo installers on each product page; licensed builds via the email download links or inphonik.com account."
+
+[[product]]
+name = "RYM2612"
+page = "https://www.inphonik.com/products/rym2612-iconic-fm-synthesizer/"
+version_regex = '(?s)version history.{0,60}?([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "RX950"
+page = "https://www.inphonik.com/products/rx950-classic-ad-da-converter/"
+version_regex = '(?s)version history.{0,60}?([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "RX1200"
+page = "https://www.inphonik.com/products/rx1200-12bit-sampler-instrument/"
+version_regex = '(?s)version history.{0,60}?([0-9]+\.[0-9]+\.[0-9]+)'

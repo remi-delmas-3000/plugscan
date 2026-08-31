@@ -1,0 +1,16 @@
+# Reason Studios lists releases newest-first on the updates page ("Reason 14.1",
+# "Reason 14.0.2", ...; verified live 2026-08-30, first match captured 14.1).
+# Note: the page shows marketing versions (14.1) without the build suffix that the
+# installed metadata carries (e.g. "14.1d100 build 20457").
+vendor = "Reason Studios"
+homepage = "https://www.reasonstudios.com"
+
+[manual]
+login = "https://login.reasonstudios.com"
+steps = "Log in at reasonstudios.com, download the latest Reason installer from your account; release notes for each version are at https://www.reasonstudios.com/reason/updates."
+
+[[product]]
+name = "Reason Rack Plugin"
+page = "https://www.reasonstudios.com/reason/updates"
+version_regex = 'Reason[^0-9]*([0-9]+\.[0-9.]+)'
+changelog = "https://www.reasonstudios.com/reason/updates"

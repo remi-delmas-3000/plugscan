@@ -1,0 +1,20 @@
+# acondigital.com product pages embed installer names like "Acon Digital Limit 1.0.59"
+# in the Nuxt payload (server-rendered, curl-friendly).
+vendor = "Acon Digital"
+homepage = "https://acondigital.com"
+
+[manual]
+login = "https://acondigital.com/account/"
+steps = "Installers are public: acondigital.com/products/<name> has Download buttons for the latest version. License key applied in-plugin; purchases listed under Account."
+
+[[product]]
+name = "Limit"
+page = "https://acondigital.com/products/limit"
+version_regex = 'Acon Digital Limit ([0-9]+\.[0-9.]+)'
+download = "https://acondigital.com/products/limit"
+
+[[product]]
+name = "Remix"
+page = "https://acondigital.com/products/remix"
+version_regex = 'Acon Digital Remix ([0-9]+\.[0-9.]+)'
+download = "https://acondigital.com/products/remix"

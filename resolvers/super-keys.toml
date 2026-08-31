@@ -1,0 +1,8 @@
+# "Super Keys" is the plugin-metadata vendor for Safari Audio's SuperKeys
+# instrument series (Cubby, Super-Chunk, Polyrex). Safari Audio (formerly
+# Safari Pedals, safariaudio.com, Shopify) publishes no version numbers.
+vendor = "Super Keys"
+homepage = "https://safariaudio.com"
+
+[manual]
+steps = "Installers via the Safari Audio account / order emails at safariaudio.com; same account as the Safari Pedals effect plugins."

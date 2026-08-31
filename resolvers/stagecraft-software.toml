@@ -1,0 +1,8 @@
+# stagecraftsoftware.com product pages publish no plugin version numbers
+# (only a JS 'version=2.0' asset string). Manual-only.
+vendor = "Stagecraft Software"
+homepage = "https://www.stagecraftsoftware.com"
+skip = "no version strings or changelog published on stagecraftsoftware.com"
+
+[manual]
+steps = "Open stagecraftsoftware.com/products/echothief/ and download the installer; the installed version is visible in the plugin UI. No public changelog."

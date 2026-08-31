@@ -1,0 +1,10 @@
+# Channel Robot's Atmosia 3 is distributed through Tracktion; downloads live
+# behind the Tracktion marketplace account (JS-rendered, no public changelog
+# with a scrapeable version). channelrobot.com itself lists no versions. Manual-only.
+vendor = "ChannelRobot"
+homepage = "https://channelrobot.com"
+skip = "distributed via Tracktion marketplace behind login; no public version source"
+
+[manual]
+login = "https://marketplace.tracktion.com"
+steps = "Log in to marketplace.tracktion.com (or your Channel Robot purchase account) and download the latest Atmosia 3 installer; update threads appear on the KVR Instruments forum."

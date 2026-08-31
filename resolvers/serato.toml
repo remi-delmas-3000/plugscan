@@ -1,0 +1,22 @@
+# serato.com per-product download pages state the latest version prominently
+# (e.g. "Serato Sample 2.2.0"); archives with release notes at .../downloads/archive.
+vendor = "Serato"
+homepage = "https://serato.com"
+
+[manual]
+login = "https://account.serato.com"
+steps = "Downloads are public at serato.com/<product>/downloads (latest installer + release notes); log in at account.serato.com to manage licenses. Archive of prior versions at serato.com/<product>/downloads/archive."
+
+[[product]]
+name = "Serato Hex FX"
+page = "https://serato.com/hex-fx/downloads"
+version_regex = 'Hex FX[^0-9]*([0-9]+\.[0-9.]+)'
+download = "https://serato.com/hex-fx/downloads"
+changelog = "https://serato.com/hex-fx/downloads/archive"
+
+[[product]]
+name = "Serato Sample"
+page = "https://serato.com/sample/downloads"
+version_regex = 'Serato Sample[^0-9]*([0-9]+\.[0-9.]+)'
+download = "https://serato.com/sample/downloads"
+changelog = "https://serato.com/sample/downloads/archive"

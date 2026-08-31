@@ -1,0 +1,11 @@
+# Audio Damage publishes no version numbers publicly. Re-checked 2026-08 via the
+# Shopify /products.json feed: body_html carries no version strings for any of the
+# installed titles (a stray "4.1.5" in Discord4's copy is the only hit - not a
+# dependable pattern). Versions are only visible in installer filenames after login.
+vendor = "Audio Damage, Inc."
+homepage = "https://www.audiodamage.com"
+skip = "no reliable public version source: Shopify products.json and product pages carry no version fields (verified 2026-08); versions only in installer filenames behind login"
+
+[manual]
+login = "https://www.audiodamage.com/account"
+steps = "Log in at audiodamage.com/account; installers (version in filename) are under your order/downloads history. Update announcements appear at audiodamage.com/blogs/news."

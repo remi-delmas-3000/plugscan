@@ -1,0 +1,13 @@
+# cymatics.fm is a Shopify store. Its plugins ARE Shopify products
+# (/products/pluto-multi-fx-plugin, /products/diablo-plugin, etc.), but the product
+# JSON carries no version: verified 2026-08-30, /products/<handle>.json returns an
+# empty body_html, a single "Default Title" variant and no SKU. Installers are
+# delivered through the account / purchase emails, and there is no public plugin
+# version or changelog page -> skip.
+vendor = "Cymatics"
+homepage = "https://cymatics.fm"
+skip = "Shopify store exposes no plugin version (product JSON has empty body_html / no SKU); installers delivered via account and purchase emails only."
+
+[manual]
+login = "https://cymatics.fm/account"
+steps = "Downloads are delivered via cymatics.fm account/purchase emails. No public plugin version or changelog page; product pages (e.g. /products/pluto-multi-fx-plugin) carry no version."

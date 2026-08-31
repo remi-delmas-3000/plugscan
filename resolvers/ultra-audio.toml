@@ -1,0 +1,8 @@
+# ultra.audio is a JS-rendered app site; the only x.y.z strings are bundled JS
+# asset versions and /changelog 404s. Manual-only.
+vendor = "Ultra.Audio"
+homepage = "https://ultra.audio"
+skip = "ultra.audio/download 302s to /signin (verified); app self-updates in place, no public version endpoint"
+
+[manual]
+steps = "Log in at ultra.audio and use the Download Ultra button; the app self-updates and shows its version in the UI."

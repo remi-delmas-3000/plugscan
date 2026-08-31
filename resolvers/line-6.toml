@@ -1,0 +1,22 @@
+# Line 6's download picker (line6.com/software/) is a form-driven app, but its
+# results page also answers plain GET queries, e.g.
+# /software/index.html?hardware=All&name=Helix+Native&platform=2&submit_form=set
+# renders "Helix Native 3.82 (released December 3, 2024)" as the first (newest)
+# entry. Verified live 2026-08-30 (first match 3.82 = installed).
+# "Helix Stadium Native" is NOT resolvable the same way: the same GET query for
+# it returns the empty chooser page (its results only render via POST), so it
+# stays manual. Both products install/authorize through Line 6 Central.
+vendor = "Line 6"
+homepage = "https://line6.com"
+download_via = "Line 6 Central (line6.com/software/, pick 'Line 6 Central') manages downloads/updates for Line 6 software including Helix Native and Helix Stadium Native"
+
+[manual]
+login = "https://line6.com/account/"
+steps = "Open line6.com/software/, pick 'Helix Native' (or 'Helix Stadium Native') as the product and your OS to see the latest installer and its release notes; a Line 6 account is needed to download and to authorize licenses."
+
+[[product]]
+name = "Helix Native"
+page = "https://line6.com/software/index.html?hardware=All&name=Helix+Native&platform=2&submit_form=set&show_all=0"
+strategy = "page_regex"
+version_regex = 'Helix Native ([0-9]+\.[0-9.]+) \(released'
+exclude_regex = '(?i)beta|rc'

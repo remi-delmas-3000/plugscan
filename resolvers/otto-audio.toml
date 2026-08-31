@@ -1,0 +1,9 @@
+# Otto Audio (ottoaudio.net, Shopify) publishes no version numbers on its store
+# pages. Re-checked 2026-08 via /products.json: none of the 37 products carry
+# version strings in body_html.
+vendor = "Otto Audio"
+homepage = "https://ottoaudio.net"
+skip = "no public version info: Shopify products.json and store pages carry no version strings (verified 2026-08)"
+
+[manual]
+steps = "Downloads are delivered via the order email / Shopify account at ottoaudio.net; re-download links there carry the current installer for II II II II, LEAD and DJAA MAASTA."

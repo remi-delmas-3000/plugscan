@@ -1,0 +1,15 @@
+# Korneff Audio publishes per-product changelog pages (newest entry at top, "Current/Initial Release : X.Y.Z").
+# Wow Thing omitted: its changelog page (korneffaudio.com/wow-thing-changelog/) states "Current Release : WOW 1.0.5"
+# while the installed build is 1.0.8, so the page is stale/out of sync with shipped versions.
+vendor = "Korneff Audio"
+homepage = "https://korneffaudio.com"
+
+[manual]
+login = "https://korneffaudio.com/my-account/"
+steps = "Log in at korneffaudio.com/my-account/; installers are under My Account > Downloads. Per-product changelogs live at korneffaudio.com/<product-slug>-changelog/ (e.g. wow-thing-changelog)."
+
+[[product]]
+name = "KA1776 Limiting Amplifier"
+page = "https://korneffaudio.com/ka1776-limiting-amplifier-changelog/"
+version_regex = 'Release ?:[^0-9]*([0-9]+\.[0-9.]+)'
+changelog = "https://korneffaudio.com/ka1776-limiting-amplifier-changelog/"

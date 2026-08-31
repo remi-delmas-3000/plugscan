@@ -1,0 +1,11 @@
+# Spl (SPL Machine Head). SPL plugins are a Plugin Alliance brand: distribution
+# and updates go through the PA Installation Manager / plugin-alliance.com account.
+# PA product pages render version info via JS only, so no scrape target. Manual-only.
+vendor = "Spl"
+homepage = "https://www.plugin-alliance.com"
+download_via = "PA Installation Manager - free from plugin-alliance.com (Installation Manager page), manages installs/updates for all Plugin Alliance brands including SPL"
+skip = "Plugin Alliance product pages render version info via JS only; updates are delivered through the PA Installation Manager"
+
+[manual]
+login = "https://www.plugin-alliance.com/en/my-account.html"
+steps = "Open the PA Installation Manager (or plugin-alliance.com > My Account > Installation Manager) and update SPL Machine Head from there."

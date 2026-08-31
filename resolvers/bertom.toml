@@ -1,0 +1,19 @@
+# Bertom Audio (bertomaudio.com) states "Latest version: X.Y.Z" directly on each product page.
+# Downloads are free/direct from the product page (licenses via Lemon Squeezy). No public changelog page.
+vendor = "Bertom"
+homepage = "https://bertomaudio.com"
+
+[manual]
+steps = "Open the product page on bertomaudio.com (e.g. /denoiser-pro.html, /eq-curve-analyzer.html); the latest version is stated on the page and installers download directly from it."
+
+[[product]]
+name = "Bertom_DenoiserPro"
+page = "https://bertomaudio.com/denoiser-pro.html"
+version_regex = 'Latest version:[^0-9]*([0-9]+\.[0-9.]+)'
+download = "https://bertomaudio.com/denoiser-pro.html"
+
+[[product]]
+name = "Bertom_EQCurveAnalyzer2"
+page = "https://bertomaudio.com/eq-curve-analyzer.html"
+version_regex = 'Latest version:[^0-9]*([0-9]+\.[0-9.]+)'
+download = "https://bertomaudio.com/eq-curve-analyzer.html"

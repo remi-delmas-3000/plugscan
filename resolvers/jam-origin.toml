@@ -1,0 +1,13 @@
+# Download portal states "MIDI Guitar 3.1.1 / MIDI Bass 3.1.1 ..." with the latest
+# MG3 version; older MIDI Guitar 2.x entries appear later in the document.
+vendor = "Jam Origin"
+homepage = "https://www.jamorigin.com"
+
+[manual]
+steps = "Go to jamorigin.com/download/ and pick the MIDI Guitar 3 build for your OS; license activates in-app."
+
+[[product]]
+name = "MIDI Guitar 3"
+page = "https://www.jamorigin.com/download/"
+version_regex = 'MIDI Guitar ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.jamorigin.com/download/"

@@ -1,0 +1,8 @@
+# Nightfox Audio. Shopify store publishes no version numbers on the Rendition
+# product page or blog posts, so manual-only.
+vendor = "Nightfox Audio"
+homepage = "https://store.nightfoxaudio.com"
+skip = "Shopify pages and the rendition.atom blog feed carry no version numbers (feed verified: entry titles only)"
+
+[manual]
+steps = "Check store.nightfoxaudio.com/products/rendition and the Rendition blog (store.nightfoxaudio.com/blogs/rendition) for update announcements; re-download installers from the store account / delivery email."

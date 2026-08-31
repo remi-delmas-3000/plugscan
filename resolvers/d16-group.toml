@@ -1,0 +1,34 @@
+# D16 product pages link public installers named Product-X.Y.Z, e.g.
+# "Lush2-2.1.5(x64).msi". Verified on lush2, phoscyon2, drumazon2, punchbox2
+# pages 2026-08-30. Other product pages not verified.
+vendor = "D16 Group"
+homepage = "https://d16.pl"
+
+[manual]
+login = "https://d16.pl/login"
+steps = "Installers are public on each product page (d16.pl/<product>); licence keys come from the user area after login."
+
+[[product]]
+name = "Lush2"
+page = "https://d16.pl/lush2"
+version_regex = 'Lush2-([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://d16.pl/lush2"
+
+[[product]]
+name = "Phoscyon2"
+page = "https://d16.pl/phoscyon2"
+version_regex = 'Phoscyon2-([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://d16.pl/phoscyon2"
+
+[[product]]
+name = "Drumazon2"
+page = "https://d16.pl/drumazon2"
+version_regex = 'Drumazon2-([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://d16.pl/drumazon2"
+
+[[product]]
+name = "PunchBox2"
+page = "https://d16.pl/punchbox2"
+version_regex = 'PunchBox2-([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://d16.pl/punchbox2"
+

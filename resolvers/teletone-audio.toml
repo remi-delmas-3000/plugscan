@@ -1,0 +1,11 @@
+# Teletone Audio (teletoneaudio.com, Shopify) publishes no version numbers on
+# its store or support pages.
+# Wave-2 re-check 2026-08-30: /products.json (Shopify) carries no version
+# strings in any product body_html/tags, and the plugin binaries reference only
+# product-page URLs (no update endpoint).
+vendor = "Teletone Audio"
+homepage = "https://teletoneaudio.com"
+skip = "No version numbers anywhere: Shopify store pages and /products.json carry none, and the plugins have no update-check endpoint"
+
+[manual]
+steps = "Installers via the Teletone Audio account / order emails; support portal at teletoneaudio.com/pages/support."

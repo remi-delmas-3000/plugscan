@@ -1,0 +1,9 @@
+# wavealchemy.co.uk product pages (WordPress) contain only theme/JS versions;
+# no plugin version or changelog is exposed to curl. Manual-only.
+vendor = "Wave Alchemy"
+homepage = "https://www.wavealchemy.co.uk"
+skip = "no version or changelog in public HTML; installers behind My Account downloads"
+
+[manual]
+login = "https://www.wavealchemy.co.uk/my-account/"
+steps = "Log in to wavealchemy.co.uk; the latest Pulse installer (with version in filename) is under My Account > Downloads."

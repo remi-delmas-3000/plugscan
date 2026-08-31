@@ -1,0 +1,352 @@
+# Version detection: per-product version-history pages at
+# cherryaudio.com/products/<slug>/version-history. Verified live 2026-08 across
+# DCO-106 (page 1.4.0 == installed 1.4.0), Blue3 (1.0.13 == 1.0.13), Trident
+# (page 1.0.16 vs installed 1.0.17) and Mercury-4 (page 1.5.0 vs 1.6.0): the
+# first <strong>X.Y.Z Build N</strong> entry is the latest PUBLISHED version and
+# uses the same numbering the installed plugins report (page may trail the newest
+# installer by a build). Slugs confirmed from cherryaudio.com/products.
+# FX / Multi Out variants share their base synth's page (same engine version).
+# Installers still require an account login (see [manual]).
+vendor = "Cherry Audio"
+homepage = "https://cherryaudio.com"
+
+[manual]
+login = "https://cherryaudio.com/login"
+steps = "Log in at cherryaudio.com/login; installers under Your Account > Downloads. Original 'Memorymode' (superseded by Memorymode V2) has no standalone version-history page, so it is checked manually."
+
+
+[[product]]
+name = "Atomika"
+page = "https://cherryaudio.com/products/atomika-synthesizer/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/atomika-synthesizer/version-history"
+
+[[product]]
+name = "Blue3 Organ"
+page = "https://cherryaudio.com/products/blue3-tonewheel-organ/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/blue3-tonewheel-organ/version-history"
+
+[[product]]
+name = "CA2600"
+page = "https://cherryaudio.com/products/ca2600/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/ca2600/version-history"
+
+[[product]]
+name = "CA2600 FX"
+page = "https://cherryaudio.com/products/ca2600/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/ca2600/version-history"
+
+[[product]]
+name = "Chroma"
+page = "https://cherryaudio.com/products/chroma/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/chroma/version-history"
+
+[[product]]
+name = "CR-78"
+page = "https://cherryaudio.com/products/cr-78/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/cr-78/version-history"
+
+[[product]]
+name = "CR-78 Multi Out"
+page = "https://cherryaudio.com/products/cr-78/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/cr-78/version-history"
+
+[[product]]
+name = "DCO-106"
+page = "https://cherryaudio.com/products/dco-106/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/dco-106/version-history"
+
+[[product]]
+name = "Dreamsynth"
+page = "https://cherryaudio.com/products/dreamsynth/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/dreamsynth/version-history"
+
+[[product]]
+name = "DS-2"
+page = "https://cherryaudio.com/products/ds-2-synthesizer/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/ds-2-synthesizer/version-history"
+
+[[product]]
+name = "Eight Voice"
+page = "https://cherryaudio.com/products/eight-voice/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/eight-voice/version-history"
+
+[[product]]
+name = "Elka-X"
+page = "https://cherryaudio.com/products/elka-x/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/elka-x/version-history"
+
+[[product]]
+name = "ESQ-1"
+page = "https://cherryaudio.com/products/esq-1-synthesizer/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/esq-1-synthesizer/version-history"
+
+[[product]]
+name = "Filtomika"
+page = "https://cherryaudio.com/products/filtomika-filter/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/filtomika-filter/version-history"
+
+[[product]]
+name = "Galactic Reverb"
+page = "https://cherryaudio.com/products/galactic-reverb/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/galactic-reverb/version-history"
+
+[[product]]
+name = "GX-80"
+page = "https://cherryaudio.com/products/gx-80/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/gx-80/version-history"
+
+[[product]]
+name = "Harmonia"
+page = "https://cherryaudio.com/products/harmonia/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/harmonia/version-history"
+
+[[product]]
+name = "KR-55C"
+page = "https://cherryaudio.com/products/kr-55c/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/kr-55c/version-history"
+
+[[product]]
+name = "KR-55C Multi Out"
+page = "https://cherryaudio.com/products/kr-55c/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/kr-55c/version-history"
+
+[[product]]
+name = "Lowdown"
+page = "https://cherryaudio.com/products/lowdown/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/lowdown/version-history"
+
+[[product]]
+name = "Memorymode V2"
+page = "https://cherryaudio.com/products/memorymode-v2/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/memorymode-v2/version-history"
+
+[[product]]
+name = "Mercury-4"
+page = "https://cherryaudio.com/products/mercury-4/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/mercury-4/version-history"
+
+[[product]]
+name = "Mercury-6"
+page = "https://cherryaudio.com/products/mercury-6/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/mercury-6/version-history"
+
+[[product]]
+name = "Mercury-8"
+page = "https://cherryaudio.com/products/mercury-8/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/mercury-8/version-history"
+
+[[product]]
+name = "Miniverse"
+page = "https://cherryaudio.com/products/miniverse/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/miniverse/version-history"
+
+[[product]]
+name = "Novachord"
+page = "https://cherryaudio.com/products/novachord-solovox/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/novachord-solovox/version-history"
+
+[[product]]
+name = "Octave Cat"
+page = "https://cherryaudio.com/products/octave-cat/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/octave-cat/version-history"
+
+[[product]]
+name = "ODC 2800"
+page = "https://cherryaudio.com/products/odc-2800-synthesizer/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/odc-2800-synthesizer/version-history"
+
+[[product]]
+name = "P-10"
+page = "https://cherryaudio.com/products/p-10/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/p-10/version-history"
+
+[[product]]
+name = "Polymode Synthesizer"
+page = "https://cherryaudio.com/products/polymode-synthesizer/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/polymode-synthesizer/version-history"
+
+[[product]]
+name = "Pro Soloist"
+page = "https://cherryaudio.com/products/pro-soloist/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/pro-soloist/version-history"
+
+[[product]]
+name = "PS-20"
+page = "https://cherryaudio.com/products/ps-20/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/ps-20/version-history"
+
+[[product]]
+name = "PS-20 FX"
+page = "https://cherryaudio.com/products/ps-20/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/ps-20/version-history"
+
+[[product]]
+name = "PS-3300"
+page = "https://cherryaudio.com/products/ps-3300/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/ps-3300/version-history"
+
+[[product]]
+name = "Quadra"
+page = "https://cherryaudio.com/products/quadra/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/quadra/version-history"
+
+[[product]]
+name = "Quadra Multi Out"
+page = "https://cherryaudio.com/products/quadra/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/quadra/version-history"
+
+[[product]]
+name = "SH-MAX"
+page = "https://cherryaudio.com/products/sh-max-synthesizer/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/sh-max-synthesizer/version-history"
+
+[[product]]
+name = "Sines"
+page = "https://cherryaudio.com/products/sines/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/sines/version-history"
+
+[[product]]
+name = "Solovox"
+page = "https://cherryaudio.com/products/novachord-solovox/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/novachord-solovox/version-history"
+
+[[product]]
+name = "Spirit"
+page = "https://cherryaudio.com/products/spirit-synthesizer/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/spirit-synthesizer/version-history"
+
+[[product]]
+name = "Stardust 201 Tape Echo"
+page = "https://cherryaudio.com/products/stardust-201/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/stardust-201/version-history"
+
+[[product]]
+name = "Surrealistic MG-1 Plus"
+page = "https://cherryaudio.com/products/surrealistic-mg-1-plus/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/surrealistic-mg-1-plus/version-history"
+
+[[product]]
+name = "Synthesizer Expander Module"
+page = "https://cherryaudio.com/products/synthesizer-expander-module/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/synthesizer-expander-module/version-history"
+
+[[product]]
+name = "Trident"
+page = "https://cherryaudio.com/products/trident-synthesizer/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/trident-synthesizer/version-history"
+
+[[product]]
+name = "Voltage Modular"
+page = "https://cherryaudio.com/products/voltage-modular/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/voltage-modular/version-history"
+
+[[product]]
+name = "Voltage Modular FX"
+page = "https://cherryaudio.com/products/voltage-modular/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/voltage-modular/version-history"
+
+[[product]]
+name = "Wurlybird 140B"
+page = "https://cherryaudio.com/products/wurlybird140b/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/wurlybird140b/version-history"
+
+[[product]]
+name = "Yellowjacket"
+page = "https://cherryaudio.com/products/yellowjacket-synthesizer/version-history"
+strategy = "page_regex"
+version_regex = '<strong>\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://cherryaudio.com/products/yellowjacket-synthesizer/version-history"

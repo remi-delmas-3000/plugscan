@@ -1,0 +1,12 @@
+# TDR product pages carry the changelog, newest entry first.
+vendor = "Tokyo Dawn Labs"
+homepage = "https://www.tokyodawn.net"
+
+[manual]
+steps = "Public downloads on each product page. GE licenses via the user area."
+
+[[product]]
+name = "TDR Kotelnikov"
+page = "https://www.tokyodawn.net/tdr-kotelnikov/"
+version_regex = '([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.tokyodawn.net/tdr-kotelnikov/"

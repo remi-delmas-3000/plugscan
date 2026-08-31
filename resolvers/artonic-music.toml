@@ -1,0 +1,9 @@
+# ARTonic Music (ChordAXE). chordaxe.com is a Wix site rendered by JS; version
+# announcements ("Version 1.0.31 is now available") appear on the News page but are
+# not present in static HTML, so no automatic resolver is possible.
+vendor = "ARTonic Music"
+homepage = "https://www.artonicmusic.com"
+skip = "version announcements only on the JS-rendered Wix news page"
+
+[manual]
+steps = "Check chordaxe.com/news for 'Version x.y.z is now available' posts (requires JS). Downloads for ChordAXE / ChordAXE Lite come via the vendor's delivery email or Plugin Boutique account."

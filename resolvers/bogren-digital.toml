@@ -1,0 +1,11 @@
+# Re-checked 2026-08-31: Shopify /products.json (full catalog) contains no
+# version strings; plugin binaries (AmpKnob - RevC.component) carry no
+# update/version endpoint URLs. Installed versions are build-style
+# (e.g. 1.0.246) and are never published on the site.
+vendor = "Bogren Digital"
+homepage = "https://bogrendigital.com"
+skip = "Shopify storefront is version-free (catalog JSON checked); build-number versions are only visible in the installers/account downloads."
+
+[manual]
+login = "https://bogrendigital.com/account"
+steps = "Log in at bogrendigital.com/account; installers under My Downloads. Product pages carry no version strings."

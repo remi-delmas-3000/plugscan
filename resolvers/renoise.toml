@@ -1,0 +1,20 @@
+# Renoise. The download page shows "<img alt="Redux"> ... 1.4.4 - demo version".
+# Regex anchors on the Redux logo img and grabs the following x.y.z.
+vendor = "Renoise"
+homepage = "https://www.renoise.com"
+
+[manual]
+login = "https://backstage.renoise.com"
+steps = "Latest Renoise/Redux versions are shown on renoise.com/download. Licensed full installers are in the Renoise Backstage account area."
+
+[[product]]
+name = "Renoise Redux"
+page = "https://www.renoise.com/download"
+version_regex = '(?s)alt="Redux".*?([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.renoise.com/download"
+
+[[product]]
+name = "Renoise"
+page = "https://www.renoise.com/download"
+version_regex = '([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.renoise.com/download"

@@ -1,0 +1,13 @@
+# Audified product pages carry no static version numbers (WordPress/Shopify);
+# release-notes PDFs exist but at unversioned upload URLs. Updates via shop
+# account.
+# Wave-2 re-check 2026-08-30: the plugins POST JSON to
+# https://api.audified.com/Plugin (UA "Audified_Plugin"), but the API gateway
+# rejects unauthenticated requests ("Missing Authentication Token", 403).
+vendor = "Audified"
+homepage = "https://audified.com"
+skip = "No public version source: site pages carry no versions and the plugins' api.audified.com endpoint requires authentication"
+
+[manual]
+login = "https://shop.audified.com/account/login"
+steps = "Log in at shop.audified.com; account downloads list current installers (U78 Saturator, MixChecker Ultra). Release notes PDFs are linked from each product page on audified.com."

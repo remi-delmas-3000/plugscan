@@ -1,0 +1,13 @@
+# Official release notes live on a public Nuclino share page, newest first
+# (vX.Y.Z.W entries). Updates are installed via the Cradle Hub app.
+vendor = "Cradle"
+homepage = "https://cradle.app"
+
+[manual]
+steps = "Open the Cradle Hub desktop app to install updates, or check the release notes page. Downloads require a cradle.app account."
+
+[[product]]
+name = "Cradle The God Particle"
+page = "https://share.nuclino-site.com/The-God-Particle---Release-Notes-gQczwW4XIyWidszbYTDSAD"
+version_regex = 'v([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://share.nuclino-site.com/The-God-Particle---Release-Notes-gQczwW4XIyWidszbYTDSAD"

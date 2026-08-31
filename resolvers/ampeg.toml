@@ -1,0 +1,14 @@
+# Ampeg software downloads page lists SVT Suite release notes newest first
+# ("Version 1.11", "Version 1.10", ...). Developed with Line 6 (Yamaha Guitar Group).
+vendor = "Ampeg"
+homepage = "https://ampeg.com"
+
+[manual]
+steps = "Go to ampeg.com > Software (Downloads), select SVT Suite; installers and release notes are listed there. License via your Ampeg/Line 6 account."
+
+[[product]]
+name = "SVT Suite"
+page = "https://ampeg.com/software/index.html?submit_form=set&name=SVT+Suite"
+version_regex = 'Version ([0-9]+\.[0-9]+)'
+download = "https://ampeg.com/svtsuite-download"
+changelog = "https://ampeg.com/software/index.html?submit_form=set&name=SVT+Suite"

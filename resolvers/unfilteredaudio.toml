@@ -1,0 +1,11 @@
+# LTL SILVER BULLET mk2 is also a Plugin Alliance (Louder Than Liftoff) title.
+# All titles here are installed under /Applications/Plugin Alliance/ and update via the
+# PA Installation Manager. plugin-alliance.com is JS-rendered with no public version
+# endpoint (re-checked 2026-08), so no [[product]] entries are possible.
+vendor = "UnfilteredAudio"
+homepage = "https://www.unfilteredaudio.com"
+download_via = "Plugin Alliance Installation Manager - log in at plugin-alliance.com, then Manage My Account > Installation Manager (or the PA Installation Manager desktop app)"
+
+[manual]
+login = "https://www.plugin-alliance.com/en/login.html"
+steps = "Unfiltered Audio plugins are distributed by Plugin Alliance: log in at plugin-alliance.com, then Manage My Account > Installation Manager for latest installers/versions (site is JS-rendered)."

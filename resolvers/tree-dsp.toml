@@ -1,0 +1,15 @@
+# Tree DSP. The NN76 product page (Next.js) embeds a Changelog section plus a
+# versioned manual link "NN76-v1.1.3-manual.pdf"; the manual filename tracks the
+# current release and survives HTML-minification quirks better than the changelog text.
+vendor = "Tree DSP"
+homepage = "https://www.treedsp.com"
+
+[manual]
+login = "https://www.treedsp.com/login"
+steps = "treedsp.com/products/NN76 shows the changelog (latest version + date) near the bottom. Installers are in the account area after login."
+
+[[product]]
+name = "NN76"
+page = "https://www.treedsp.com/products/NN76"
+version_regex = 'NN76-v([0-9]+\.[0-9.]+)-manual'
+changelog = "https://www.treedsp.com/products/NN76"

@@ -1,0 +1,11 @@
+# Checked 2026-08-31: standalone apps live in /Applications/Neural DSP (one per
+# plugin, versions match the plugins) and check for updates in-app; the app
+# binaries expose no public update/version API URL (only neuraldsp.com links),
+# so there is nothing scrapeable.
+vendor = "Neural DSP"
+homepage = "https://neuraldsp.com"
+download_via = "Neural DSP standalone apps (in /Applications/Neural DSP) check for updates in-app; installers come from the neuraldsp.com account downloads area."
+
+[manual]
+login = "https://neuraldsp.com/login"
+steps = "Log in at neuraldsp.com (My Account) and download installers from the account downloads area. Product pages are JS-rendered with no version strings."

@@ -1,0 +1,14 @@
+# Shopify store at futurephonic.co.uk (futurephonic.com does not resolve).
+# The product page links a demo zip named Futurephonic-Rhythmizer-Fusion-<ver>-DEMO.zip
+# which tracks the current release version.
+vendor = "Futurephonic"
+homepage = "https://www.futurephonic.co.uk"
+
+[manual]
+steps = "Full installers are delivered via your futurephonic.co.uk account / purchase email; the product page's demo download filename shows the current version."
+
+[[product]]
+name = "Rhythmizer Fusion"
+page = "https://www.futurephonic.co.uk/products/rhythmizer-fusion"
+version_regex = 'Rhythmizer-Fusion-([0-9]+\.[0-9.]+)-DEMO'
+download = "https://www.futurephonic.co.uk/products/rhythmizer-fusion"

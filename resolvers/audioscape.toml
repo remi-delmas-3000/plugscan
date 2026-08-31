@@ -1,0 +1,10 @@
+# AudioScape Engineering's plugins are developed with Kiive Audio; both
+# audio-scape.com and kiiveaudio.com carry no public version numbers.
+# Re-checked 2026-08: audio-scape.com/products.json returns 404 (headless/custom
+# storefront), so not even the Shopify JSON route exists.
+vendor = "Audioscape"
+homepage = "https://www.audio-scape.com"
+skip = "no public version source: no version numbers on the store pages and no products.json feed (verified 2026-08)"
+
+[manual]
+steps = "Installers via the Kiive Audio / AudioScape order emails or the kiiveaudio.com account downloads; product pages at audio-scape.com/audioscape-plugins."

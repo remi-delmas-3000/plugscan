@@ -1,0 +1,17 @@
+# AIR (inMusic brand). The airmusictech.com site is a Gatsby SPA; product page-data
+# JSON (e.g. /page-data/effects/delay-pro/page-data.json) does expose direct
+# cdn.inmusicbrands.com installer URLs, BUT those public installers lag the inMusic
+# Software Center that actually delivers updates. Verified 2026-08-30:
+#   Delay Pro: site installer v1.2.0.5  vs installed 1.2.1.14
+#   Velvet:    site installer 2.1.1     vs installed 2.2.0
+# The site version is consistently OLDER than what is installed, so a resolver reading
+# it would falsely report users as ahead of "latest". Updates ship via the Software
+# Center instead -> download_via + skip.
+vendor = "AIR Music Technology"
+homepage = "https://www.airmusictech.com"
+download_via = "inMusic Software Center (desktop app) — download from profile.inmusicbrands.com Software tab; it installs and updates all registered AIR plugins."
+skip = "Public airmusictech.com installers lag the inMusic Software Center that delivers updates (site versions verified older than installed), so no reliable 'latest' is web-scrapeable."
+
+[manual]
+login = "https://profile.inmusicbrands.com"
+steps = "Log in to the inMusic Profile, register products, and install/update via the inMusic Software Center (Software tab). airmusictech.com product pages list only older bundled installers."

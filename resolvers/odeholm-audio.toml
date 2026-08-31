@@ -1,0 +1,8 @@
+# Shopify store (odeholm-audio.com); the thall amp product page contains only
+# theme/JS versions, no plugin version. Manual-only.
+vendor = "Odeholm Audio"
+homepage = "https://odeholm-audio.com"
+skip = "Shopify page carries no version info"
+
+[manual]
+steps = "Open odeholm-audio.com/products/thall-amp; downloads/updates via the account or purchase email. Version shown in installer filename and plugin UI."

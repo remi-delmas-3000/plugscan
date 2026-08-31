@@ -1,0 +1,17 @@
+# Fuse Audio Labs. The site is a JS single-page app, but its CMS content lives in
+# openly listable markdown under fuseaudiolabs.com/pages/ - including changelog.md,
+# ordered newest-first with per-product headings like "### TCS-68 [v2.3]"
+# (verified live; first TCS-68 match = 2.3, installed 1.0).
+vendor = "Fuse Audio Labs"
+homepage = "https://fuseaudiolabs.com"
+
+[manual]
+login = "https://fuseaudiolabs.com/#/pages/account"
+steps = "Open fuseaudiolabs.com > Plugins > TCS-68; the product page shows the current version and free download links (site requires JavaScript). Purchased licenses/downloads are under Account."
+
+[[product]]
+name = "TCS-68"
+page = "https://fuseaudiolabs.com/pages/changelog.md"
+strategy = "page_regex"
+version_regex = 'TCS-68[^\[\n]*\[v([0-9][0-9.]*)\]'
+changelog = "https://fuseaudiolabs.com/#/pages/changelog"

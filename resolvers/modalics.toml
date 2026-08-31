@@ -1,0 +1,10 @@
+# Modalics runs on Wix. Re-checked 2026-08: the Beat Scholar "ChangeBlog"
+# (modalics.com/beatscholarversions) static HTML contains only Wix platform data -
+# the changelog entries (and the current 1.5.0 version) are not present in the
+# served page at all, so there is nothing to regex.
+vendor = "Modalics"
+homepage = "https://www.modalics.com"
+skip = "no version data in served HTML: the Wix ChangeBlog page is fully JS-rendered and its warmup data contains no changelog entries (verified 2026-08)"
+
+[manual]
+steps = "Check modalics.com/beatscholarversions in a browser for the Beat Scholar changelog; installers via the account/order emails."

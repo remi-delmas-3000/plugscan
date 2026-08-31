@@ -1,0 +1,9 @@
+# Re-checked 2026-08-31: plugin binaries (Rule Tec Heritage Pro.component)
+# carry no update/version endpoint URLs; no local manager app.
+vendor = "NoiseAsh"
+homepage = "https://noiseash.com"
+skip = "No public version source: product pages carry no version strings, plugins have no update-check endpoint, and installers are account-only."
+
+[manual]
+login = "https://noiseash.com/my-account/"
+steps = "Log in at noiseash.com/my-account/; installers under My Account > Downloads. Product pages only show stale version strings in image filenames."

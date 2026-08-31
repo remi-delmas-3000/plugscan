@@ -1,0 +1,16 @@
+# BFD Drums (inMusic). Release notes live on the Freshdesk support portal; the
+# article title carries the version ("BFD 3.5 Release Notes"). Only major.minor is
+# published there (no 3.5.x build numbers on a stable public page). A new major
+# release will get a new article, so this page may need re-pointing then.
+vendor = "BFD Drums"
+homepage = "https://www.bfddrums.com"
+
+[manual]
+login = "https://profile.inmusicbrands.com"
+steps = "Updates are installed via the inMusic Software Center app (BFD 3.5 dropped the BFD License Manager). Release notes: support.bfddrums.com > Solutions > BFD 3."
+
+[[product]]
+name = "BFD3"
+page = "https://support.bfddrums.com/en/support/solutions/articles/69000873210-bfd-3-5-release-notes"
+version_regex = 'BFD ([0-9]+\.[0-9.]+) Release Notes'
+changelog = "https://support.bfddrums.com/en/support/solutions/articles/69000873210-bfd-3-5-release-notes"

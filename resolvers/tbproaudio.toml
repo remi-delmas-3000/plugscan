@@ -1,0 +1,38 @@
+# TBProAudio product pages embed the full changelog, newest entry first,
+# inside a "Changelog for <name>" modal. Anchor on that phrase; earlier
+# numbers on the page are CSS/SVG noise.
+vendor = "TBProAudio"
+homepage = "https://www.tbproaudio.de"
+
+[manual]
+steps = "Public installers on tbproaudio.de/download (filenames encode version, e.g. dpMeter5_Installer_OSX_539.zip = 5.3.9). Licenses via FastSpring account email."
+
+[[product]]
+name = "dpMeter5"
+page = "https://www.tbproaudio.de/products/dpmeter"
+version_regex = '(?s)Changelog for dpMeter5.{0,300}?([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.tbproaudio.de/download"
+
+[[product]]
+name = "GSatPlus"
+page = "https://www.tbproaudio.de/products/gsatplus"
+version_regex = '(?s)Changelog for GSatPlus.{0,300}?([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.tbproaudio.de/download"
+
+[[product]]
+name = "ISOL8"
+page = "https://www.tbproaudio.de/products/isol8"
+version_regex = '(?s)Changelog for ISOL8.{0,300}?([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.tbproaudio.de/download"
+
+[[product]]
+name = "mvMeter2"
+page = "https://www.tbproaudio.de/products/mvmeter2"
+version_regex = '(?s)Changelog for mvMeter2.{0,300}?([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.tbproaudio.de/download"
+
+[[product]]
+name = "sTiltV2"
+page = "https://www.tbproaudio.de/products/stilt"
+version_regex = '(?s)Changelog for sTiltV2.{0,300}?([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.tbproaudio.de/download"

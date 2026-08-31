@@ -1,0 +1,63 @@
+# Pulsar Audio publishes all current installer links on a single public download
+# page; the version is embedded in the S3 installer filename (Pulsar-<Name>-X.Y.Z.dmg/.exe).
+# Note: /downloads/ (plural) is Cloudflare-403; /download/ (singular) works with a browser UA.
+vendor = "Pulsar"
+homepage = "https://pulsar.audio"
+
+[manual]
+steps = "Open https://pulsar.audio/download/ — every plugin's latest installer (dmg/exe) is listed with the version in the filename."
+
+[[product]]
+name = "Pulsar 1178"
+page = "https://pulsar.audio/download/"
+version_regex = 'Pulsar-1178-([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "Pulsar 8200"
+page = "https://pulsar.audio/download/"
+version_regex = 'Pulsar-8200-([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "Pulsar Echorec"
+page = "https://pulsar.audio/download/"
+version_regex = 'Pulsar-Echorec-([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "Pulsar IPA 25"
+page = "https://pulsar.audio/download/"
+version_regex = 'Pulsar-IPA25-([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "Pulsar MP-EQ"
+page = "https://pulsar.audio/download/"
+version_regex = 'Pulsar-MP-EQ-([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "Pulsar Poseidon"
+page = "https://pulsar.audio/download/"
+version_regex = 'Pulsar-Poseidon-([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "Pulsar Primavera"
+page = "https://pulsar.audio/download/"
+version_regex = 'Pulsar-Primavera-([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "Pulsar Smasher"
+page = "https://pulsar.audio/download/"
+version_regex = 'Pulsar-Smasher-([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "Pulsar VM-Comp"
+page = "https://pulsar.audio/download/"
+version_regex = 'Pulsar-VM-Comp-([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "Pulsar Vocal Studio"
+page = "https://pulsar.audio/download/"
+version_regex = 'Pulsar-VocalStudio-([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "Pulsar W495"
+page = "https://pulsar.audio/download/"
+version_regex = 'Pulsar-W495-([0-9]+\.[0-9]+\.[0-9]+)'

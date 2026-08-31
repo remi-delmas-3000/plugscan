@@ -1,0 +1,10 @@
+# Re-verified 2026-08-31: auroradsp.com serves a ~4.5KB stub to curl even with
+# a Chrome UA; plugin binaries (Rhino.component) carry no update/version
+# endpoint URLs; standalone apps but no manager app.
+vendor = "Aurora DSP"
+homepage = "https://auroradsp.com"
+skip = "Site blocks non-browser clients (stub page served to curl) and plugins have no update-check endpoint; versions only readable in a real browser or client area."
+
+[manual]
+login = "https://auroradsp.com/en/login"
+steps = "Log in at auroradsp.com/en/login; installers in the client area. Site blocks non-browser clients (page served to curl is a stub)."

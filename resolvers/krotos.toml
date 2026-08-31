@@ -1,0 +1,13 @@
+# Krotos announces Dehumaniser updates in blog posts (e.g. the 1.4.0 Apple Silicon
+# post) but publishes no machine-readable current-version number: the Dehumaniser 2
+# product page carries no version string (verified live 2026-08-30) and no public
+# release-notes page for 1.4.x beyond 1.4.0 was found. Manual-only.
+# Wave-2 re-check 2026-08-30: the Dehumaniser binary references only
+# dehumaniser.com info pages and ilok.com — no update-check endpoint.
+vendor = "Krotos"
+homepage = "https://www.krotosaudio.com"
+skip = "No machine-readable current version: blog announcements only, no version on the product page, and the iLok-licensed plugin has no update endpoint"
+
+[manual]
+login = "https://www.krotosaudio.com/my-account/"
+steps = "Log in at krotosaudio.com/my-account and download the latest Dehumaniser installer from your account downloads; update announcements appear at https://www.krotosaudio.com/category/plugins/dehumaniser/."

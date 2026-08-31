@@ -1,0 +1,59 @@
+# Moog's own update portal (software.moogmusic.com) sits behind a Cloudflare
+# challenge, but the Moogerfooger plug-ins ship in lockstep on the Apple App
+# Store, so the iTunes lookup API gives the latest version as clean JSON
+# (verified 1.3.0 == installed for all eight). Mariana is not on the App Store
+# and has no scrapable public version page -> manual only.
+vendor = "Moog"
+homepage = "https://www.moogmusic.com"
+
+[manual]
+login = "https://software.moogmusic.com"
+steps = "Log in at software.moogmusic.com; your registered plug-ins (incl. Mariana) list their latest installers there. Release notes also appear on each product's Apple App Store page."
+
+[[product]]
+name = "MF-101S"
+page = "https://itunes.apple.com/lookup?id=6449946747"
+version_regex = '"version":"([0-9]+\.[0-9.]+)"'
+changelog = "https://apps.apple.com/us/app/id6449946747"
+
+[[product]]
+name = "MF-102S"
+page = "https://itunes.apple.com/lookup?id=6450608409"
+version_regex = '"version":"([0-9]+\.[0-9.]+)"'
+changelog = "https://apps.apple.com/us/app/id6450608409"
+
+[[product]]
+name = "MF-103S"
+page = "https://itunes.apple.com/lookup?id=6450717283"
+version_regex = '"version":"([0-9]+\.[0-9.]+)"'
+changelog = "https://apps.apple.com/us/app/id6450717283"
+
+[[product]]
+name = "MF-104S"
+page = "https://itunes.apple.com/lookup?id=6450062211"
+version_regex = '"version":"([0-9]+\.[0-9.]+)"'
+changelog = "https://apps.apple.com/us/app/id6450062211"
+
+[[product]]
+name = "MF-105S"
+page = "https://itunes.apple.com/lookup?id=6450717545"
+version_regex = '"version":"([0-9]+\.[0-9.]+)"'
+changelog = "https://apps.apple.com/us/app/id6450717545"
+
+[[product]]
+name = "MF-107S"
+page = "https://itunes.apple.com/lookup?id=6450717622"
+version_regex = '"version":"([0-9]+\.[0-9.]+)"'
+changelog = "https://apps.apple.com/us/app/id6450717622"
+
+[[product]]
+name = "MF-108S"
+page = "https://itunes.apple.com/lookup?id=6450717755"
+version_regex = '"version":"([0-9]+\.[0-9.]+)"'
+changelog = "https://apps.apple.com/us/app/id6450717755"
+
+[[product]]
+name = "MF-109S"
+page = "https://itunes.apple.com/lookup?id=6450717719"
+version_regex = '"version":"([0-9]+\.[0-9.]+)"'
+changelog = "https://apps.apple.com/us/app/id6450717719"

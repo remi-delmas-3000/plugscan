@@ -1,0 +1,57 @@
+# Temecula DSP has per-product release-notes pages (Next.js but server-rendered,
+# curl-friendly). Newest release is the first <h2>vX.Y.Z</h2> on each page.
+# Note: MCV-I has no page of its own — it ships with MDV-II and shares its
+# release notes / version stream. The /release-notes index itself is JS-only.
+vendor = "Temecula DSP"
+homepage = "https://www.temeculadsp.com"
+
+[manual]
+steps = "Check https://www.temeculadsp.com/release-notes/<slug> (slugs: deep4, deepz, mdv-ii, msp-126, sg-626, sst-206, vext); latest version is at the top. Downloads are on the matching product pages."
+
+[[product]]
+name = "TemeculaDSPDEEP4"
+page = "https://www.temeculadsp.com/release-notes/deep4"
+version_regex = '>v([0-9]+\.[0-9]+\.[0-9]+)<'
+changelog = "https://www.temeculadsp.com/release-notes/deep4"
+
+[[product]]
+name = "TemeculaDSPDEEPZ"
+page = "https://www.temeculadsp.com/release-notes/deepz"
+version_regex = '>v([0-9]+\.[0-9]+\.[0-9]+)<'
+changelog = "https://www.temeculadsp.com/release-notes/deepz"
+
+[[product]]
+name = "TemeculaDSPMCVI"
+page = "https://www.temeculadsp.com/release-notes/mdv-ii"
+version_regex = '>v([0-9]+\.[0-9]+\.[0-9]+)<'
+changelog = "https://www.temeculadsp.com/release-notes/mdv-ii"
+
+[[product]]
+name = "TemeculaDSPMDVII"
+page = "https://www.temeculadsp.com/release-notes/mdv-ii"
+version_regex = '>v([0-9]+\.[0-9]+\.[0-9]+)<'
+changelog = "https://www.temeculadsp.com/release-notes/mdv-ii"
+
+[[product]]
+name = "TemeculaDSPMSP126"
+page = "https://www.temeculadsp.com/release-notes/msp-126"
+version_regex = '>v([0-9]+\.[0-9]+\.[0-9]+)<'
+changelog = "https://www.temeculadsp.com/release-notes/msp-126"
+
+[[product]]
+name = "TemeculaDSPSG626"
+page = "https://www.temeculadsp.com/release-notes/sg-626"
+version_regex = '>v([0-9]+\.[0-9]+\.[0-9]+)<'
+changelog = "https://www.temeculadsp.com/release-notes/sg-626"
+
+[[product]]
+name = "TemeculaDSPSST206"
+page = "https://www.temeculadsp.com/release-notes/sst-206"
+version_regex = '>v([0-9]+\.[0-9]+\.[0-9]+)<'
+changelog = "https://www.temeculadsp.com/release-notes/sst-206"
+
+[[product]]
+name = "TemeculaDSPVEXT"
+page = "https://www.temeculadsp.com/release-notes/vext"
+version_regex = '>v([0-9]+\.[0-9]+\.[0-9]+)<'
+changelog = "https://www.temeculadsp.com/release-notes/vext"

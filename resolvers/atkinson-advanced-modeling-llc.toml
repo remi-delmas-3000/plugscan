@@ -1,0 +1,9 @@
+# Same developer as "Steven Atkinson" (Neural Amp Modeler). Gateway (NAM A2 loader)
+# is distributed via neuralampmodeler.com, a Wix site (JS-rendered, no scrapeable
+# version). No public GitHub releases for the Gateway binary. Manual-only.
+vendor = "Atkinson Advanced Modeling, LLC"
+homepage = "https://www.neuralampmodeler.com"
+skip = "JS-rendered Wix site with no scrapeable version; no Gateway repo among sdatkinson GitHub repos (verified via API)"
+
+[manual]
+steps = "Go to neuralampmodeler.com/users and download the latest Gateway build; version announcements appear on the NAM blog and tone3000.com."

@@ -1,0 +1,26 @@
+# PolyChrome DSP publishes per-product changelog articles on their Freshdesk
+# support portal (newest version first, headings like "v1.3"). Only the products
+# below have known/verified changelog article URLs; others need manual lookup.
+vendor = "PolyChrome DSP"
+homepage = "https://www.polychromedsp.com"
+
+[manual]
+steps = "Browse polychromedsp.freshdesk.com > Solutions for the '<Product> Changelog' article (newest version listed first); downloads are in your account at polychromedsp.com."
+
+[[product]]
+name = "HyperTune"
+page = "https://polychromedsp.freshdesk.com/support/solutions/articles/103000305083-hypertune-changelog"
+version_regex = '[Vv]([0-9]+\.[0-9][0-9.]*)'
+changelog = "https://polychromedsp.freshdesk.com/support/solutions/articles/103000305083-hypertune-changelog"
+
+[[product]]
+name = "Graphene"
+page = "https://polychromedsp.freshdesk.com/support/solutions/articles/103000386351-graphene-changelog"
+version_regex = '[Vv]([0-9]+\.[0-9][0-9.]*)'
+changelog = "https://polychromedsp.freshdesk.com/support/solutions/articles/103000386351-graphene-changelog"
+
+[[product]]
+name = "Nutcracker"
+page = "https://polychromedsp.freshdesk.com/support/solutions/articles/103000343228-nutcracker-changelog"
+version_regex = '[Vv]([0-9]+\.[0-9][0-9.]*)'
+changelog = "https://polychromedsp.freshdesk.com/support/solutions/articles/103000343228-nutcracker-changelog"

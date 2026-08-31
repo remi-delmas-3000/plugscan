@@ -1,0 +1,40 @@
+# Newfangled Audio (distributed by Eventide). The Elevate Mastering Bundle
+# (Elevate, EQuivocate, Punctuate, Saturate) versions in lockstep; its release
+# notes page lists the newest version first as a Wix rich-text heading like
+# "4.4 (3/1/2026)". Per-product release-notes pages for the other plugins
+# (e.g. /generate-release-notes) are stale (Generate page tops out at 1.5 while
+# 1.7.0 is shipping), so those products are manual-only. kvraudio.com is
+# Cloudflare-blocked to curl.
+vendor = "Newfangled Audio"
+homepage = "https://www.newfangledaudio.com"
+
+[manual]
+steps = "Installers for all plugins are linked from newfangledaudio.com/downloads (hosted by Eventide); check version via each plugin's release-notes page (newfangledaudio.com/<product>-release-notes, some stale) or the Eventide downloads portal."
+
+[[product]]
+name = "Newfangled Elevate"
+page = "https://www.newfangledaudio.com/elevate-release-notes"
+version_regex = 'wixui-rich-text__text">([0-9]+\.[0-9][0-9.]*)'
+changelog = "https://www.newfangledaudio.com/elevate-release-notes"
+download = "https://www.newfangledaudio.com/downloads"
+
+[[product]]
+name = "Newfangled EQuivocate"
+page = "https://www.newfangledaudio.com/elevate-release-notes"
+version_regex = 'wixui-rich-text__text">([0-9]+\.[0-9][0-9.]*)'
+changelog = "https://www.newfangledaudio.com/elevate-release-notes"
+download = "https://www.newfangledaudio.com/downloads"
+
+[[product]]
+name = "Newfangled Punctuate"
+page = "https://www.newfangledaudio.com/elevate-release-notes"
+version_regex = 'wixui-rich-text__text">([0-9]+\.[0-9][0-9.]*)'
+changelog = "https://www.newfangledaudio.com/elevate-release-notes"
+download = "https://www.newfangledaudio.com/downloads"
+
+[[product]]
+name = "Newfangled Saturate"
+page = "https://www.newfangledaudio.com/elevate-release-notes"
+version_regex = 'wixui-rich-text__text">([0-9]+\.[0-9][0-9.]*)'
+changelog = "https://www.newfangledaudio.com/elevate-release-notes"
+download = "https://www.newfangledaudio.com/downloads"

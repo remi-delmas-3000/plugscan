@@ -1,0 +1,9 @@
+# Sweet Audio (Marius Metzger, KVR Developer Challenge 2026 winner). Scintillate is
+# free; sweet-audio.net states no version number in its static HTML and points to
+# KVR (Cloudflare-blocked for automated fetches). Manual-only.
+vendor = "Sweet Audio"
+homepage = "https://sweet-audio.net"
+skip = "sweet-audio.net has no version string in static HTML; KVR page Cloudflare-blocked"
+
+[manual]
+steps = "Download the latest Scintillate build from sweet-audio.net (free). Version/update announcements are on its KVR product page: kvraudio.com/product/scintillate-by-sweet-audio."

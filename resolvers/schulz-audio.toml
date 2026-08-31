@@ -1,0 +1,8 @@
+# schulz.audio product pages (e.g. /products/portacrunch-424/) publish no version
+# strings reachable by curl. Manual-only.
+vendor = "schulz.audio"
+homepage = "https://schulz.audio"
+skip = "product pages publish no version strings"
+
+[manual]
+steps = "Open schulz.audio/products/portacrunch-424/ and use the download/purchase links; the current version is shown in the installer/plugin UI."

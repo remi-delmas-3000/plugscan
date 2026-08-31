@@ -1,0 +1,10 @@
+# BEATSURFING publishes no version numbers on public pages: product pages and
+# the knowledge base (knowledge.beatsurfing.com) carry no plugin version info,
+# and installers are delivered via personal download links / the user account.
+vendor = "BEATSURFING"
+homepage = "https://beatsurfing.com"
+skip = "no public version info: product pages and knowledge base carry no version numbers; installers via personal download links behind login"
+
+[manual]
+login = "https://beatsurfing.com/my-account/"
+steps = "Log in at beatsurfing.com/my-account, open the Downloads section to grab the latest installers; version numbers are only visible in the installer file names / release emails."

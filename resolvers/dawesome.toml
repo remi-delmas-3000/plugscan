@@ -1,0 +1,39 @@
+# Dawesome (distributed via Tracktion) lists every current plugin with its version
+# on the dawesomemusic.com downloads page, in spans tagged urn:dwsm:plugin:<id>:version.
+# Versions use two-segment format (e.g. 2.02, 1.21). Legacy v1 products (Abyss 1,
+# Love 1) are no longer listed there, so they are omitted here.
+vendor = "Dawesome"
+homepage = "https://www.dawesomemusic.com"
+
+[manual]
+steps = "Open dawesomemusic.com/downloads/ - each plugin card shows its current version next to the download links; legacy v1 installers (Abyss 1, Love 1) are no longer offered there."
+
+[[product]]
+name = "Abyss2"
+page = "https://www.dawesomemusic.com/downloads/"
+version_regex = 'urn:dwsm:plugin:abyss2:version">([0-9][0-9.]*)'
+download = "https://www.dawesomemusic.com/downloads/"
+
+[[product]]
+name = "Kult"
+page = "https://www.dawesomemusic.com/downloads/"
+version_regex = 'urn:dwsm:plugin:kult:version">([0-9][0-9.]*)'
+download = "https://www.dawesomemusic.com/downloads/"
+
+[[product]]
+name = "Love2"
+page = "https://www.dawesomemusic.com/downloads/"
+version_regex = 'urn:dwsm:plugin:love2:version">([0-9][0-9.]*)'
+download = "https://www.dawesomemusic.com/downloads/"
+
+[[product]]
+name = "Novum"
+page = "https://www.dawesomemusic.com/downloads/"
+version_regex = 'urn:dwsm:plugin:novum:version">([0-9][0-9.]*)'
+download = "https://www.dawesomemusic.com/downloads/"
+
+[[product]]
+name = "Sol"
+page = "https://www.dawesomemusic.com/downloads/"
+version_regex = 'urn:dwsm:plugin:sol:version">([0-9][0-9.]*)'
+download = "https://www.dawesomemusic.com/downloads/"

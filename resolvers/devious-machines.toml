@@ -1,0 +1,45 @@
+# Devious Machines has a per-product downloads page (deviousmachines.com/<slug>-downloads/)
+# whose download buttons carry "Name X.Y.Z" (latest first; older builds listed below).
+# Note the Duck 2 page lives at /duck2-downloads/.
+vendor = "Devious Machines"
+homepage = "https://deviousmachines.com"
+
+[manual]
+login = "https://deviousmachines.com/my-account/"
+steps = "Installers are public on each product's downloads page (deviousmachines.com/downloads/ links them all); licenses via My Account."
+
+[[product]]
+name = "BassFocus"
+page = "https://deviousmachines.com/bassfocus-downloads/"
+version_regex = 'BassFocus(?: |%20)([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://deviousmachines.com/bassfocus-downloads/#changelog"
+
+[[product]]
+name = "Duck"
+page = "https://deviousmachines.com/duck2-downloads/"
+version_regex = 'Duck(?: |%20)([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://deviousmachines.com/duck2-downloads/#changelog"
+
+[[product]]
+name = "Infiltrator"
+page = "https://deviousmachines.com/infiltrator-downloads/"
+version_regex = 'Infiltrator(?: |%20)([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://deviousmachines.com/infiltrator-downloads/#changelog"
+
+[[product]]
+name = "Multiband X6"
+page = "https://deviousmachines.com/multibandx6-downloads/"
+version_regex = 'Multiband X6(?: |%20)([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://deviousmachines.com/multibandx6-downloads/#changelog"
+
+[[product]]
+name = "PitchMonster"
+page = "https://deviousmachines.com/pitchmonster-downloads/"
+version_regex = 'PitchMonster(?: |%20)([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://deviousmachines.com/pitchmonster-downloads/#changelog"
+
+[[product]]
+name = "Texture"
+page = "https://deviousmachines.com/texture-downloads/"
+version_regex = 'Texture(?: |%20)([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://deviousmachines.com/texture-downloads/#changelog"

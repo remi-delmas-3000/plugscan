@@ -1,0 +1,15 @@
+# Decidedly (David Hilowitz / decent|SAMPLES). The store's versions page lists all
+# DecentSampler releases newest-first with a "Latest" badge; first release-version
+# block is the newest.
+vendor = "Decidedly"
+homepage = "https://www.decentsamples.com"
+
+[manual]
+steps = "Version history and installers: store.decentsamples.com/downloads/decent-sampler/versions (free, no login). Also linked from decentsamples.com/product/decent-sampler-plugin/."
+
+[[product]]
+name = "DecentSampler"
+page = "https://store.decentsamples.com/downloads/decent-sampler/versions"
+version_regex = 'release-version">\s*Version\s*([0-9]+\.[0-9.]+)'
+download = "https://store.decentsamples.com/downloads/decent-sampler/versions"
+changelog = "https://store.decentsamples.com/downloads/decent-sampler/versions"

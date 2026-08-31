@@ -1,0 +1,11 @@
+# Strymon publishes firmware release notes for the hardware pedals only; the plugin
+# product pages (e.g. /product/bigsky-plugin/) carry no plugin version numbers
+# (re-checked 2026-08 with browser UA), and plugin installers are delivered through
+# the user account.
+vendor = "Strymon"
+homepage = "https://www.strymon.net"
+skip = "no public plugin version info: product pages carry only pedal-firmware references, plugin installers behind my-account login (verified 2026-08)"
+
+[manual]
+login = "https://www.strymon.net/my-account/"
+steps = "Log in at strymon.net (My Account > downloads) to get the latest plugin installers for BigSky/Cloudburst/Deco/DIG/El Capistan/NightSky; the faq pages under strymon.net/faq/ list pedal FIRMWARE versions, not plugin versions - do not confuse the two."

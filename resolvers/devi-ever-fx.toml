@@ -1,0 +1,9 @@
+# devi ever : fx Core plugins (Goddess Zero, Soda Meiser, Vintage Fuzz Master,
+# Zero Good). deviever.com is WordPress with no version numbers published.
+# Catalog vendor "Kx" carries the identical product list (same plugins).
+vendor = "devi ever fx"
+homepage = "https://www.deviever.com"
+skip = "deviever.com (WordPress) publishes no version numbers for the Core plugins and there is no update endpoint or changelog"
+
+[manual]
+steps = "Core plugin downloads via the deviever.com store order links; no public changelog. Plugins need no activation, so re-download to update."

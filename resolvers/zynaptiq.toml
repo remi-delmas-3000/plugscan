@@ -1,0 +1,18 @@
+# Zynaptiq per-product downloads pages list release notes newest first
+# ("Version 1.9.2 ..."). AU/VST3 catalog entries share one product page.
+vendor = "Zynaptiq"
+homepage = "https://www.zynaptiq.com"
+
+[manual]
+steps = "Public installers and release notes on zynaptiq.com/<product>/<product>-downloads/; serials via the shop account or reseller."
+
+[[product]]
+name = "PITCHMAP"
+page = "https://www.zynaptiq.com/pitchmap/pitchmap-downloads/"
+version_regex = 'Version ([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "ADAPTIVERB"
+page = "https://www.zynaptiq.com/adaptiverb/adaptiverb-downloads/"
+version_regex = 'Version ([0-9]+\.[0-9]+\.[0-9]+)'
+

@@ -1,0 +1,11 @@
+# Xfer publishes no public changelog page; product pages and the support page carry
+# no version numbers (re-checked /support and /products/serum-2 2026-08 - only
+# unrelated library version strings appear) and kvraudio blocks bots. Release notes
+# live behind the account downloads area.
+vendor = "Xfer Records"
+homepage = "https://xferrecords.com"
+skip = "no public version info: product/support pages carry no plugin version numbers (verified 2026-08); versions only in the login-gated downloads area"
+
+[manual]
+login = "https://xferrecords.com/customer_sessions/new"
+steps = "Log in at xferrecords.com, open Account > Downloads: each product (Serum 2, Cthulhu, ...) lists the current installer version and release notes."

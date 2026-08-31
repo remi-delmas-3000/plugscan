@@ -1,0 +1,10 @@
+# valhalladsp.com sits behind Cloudflare, which blocks non-browser clients by TLS
+# fingerprint. Verified 2026-08-30 with the standard Chrome UA: product pages,
+# /wp-json/wp/v2/pages all return HTTP 403. No endpoint is reachable without a real
+# browser, so no automated resolver is possible. Manual walkthrough only.
+vendor = "Valhalla DSP"
+homepage = "https://valhalladsp.com"
+skip = "Cloudflare blocks non-browser clients (403 on product pages and wp-json via TLS fingerprinting); versions only readable in a real browser."
+
+[manual]
+steps = "Versions are announced on valhalladsp.com/blog. Downloads are public: each product page has Mac installer links; no login needed. Registered users can also use the link from their purchase email."

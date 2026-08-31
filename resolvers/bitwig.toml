@@ -1,0 +1,13 @@
+# Download page states "Bitwig Studio 6.1". Full installers behind account login.
+vendor = "Bitwig"
+homepage = "https://www.bitwig.com"
+
+[manual]
+login = "https://www.bitwig.com/login/"
+steps = "Download the installer from bitwig.com/download (login), or use in-app update check."
+
+[[product]]
+name = "Bitwig Studio"
+page = "https://www.bitwig.com/download/"
+version_regex = 'Bitwig Studio ([0-9]+\.[0-9.]+)'
+download = "https://www.bitwig.com/download/"

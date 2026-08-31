@@ -1,0 +1,14 @@
+# Akai's MPC release notes page is a Gatsby app; its page-data JSON
+# (akaipro.com/page-data/mpc-release-notes/page-data.json) is fetchable and lists the
+# newest release first, but only with TRUNCATED versions ("MPC 3.9.1", "MPC 2.15.1" -
+# verified 2026-08) while installers use 4-part versions (installed 3.9.1.2 /
+# 2.15.1.1), so a resolver would report an older-looking version than what is
+# installed. The smaller plugins (Flex Beat, Ring The Alarm, Studio Instrument
+# Collection) have no public version pages at all.
+vendor = "Akai Professional"
+homepage = "https://www.akaipro.com"
+skip = "release-notes JSON only carries truncated 3-part versions (e.g. MPC 3.9.1 vs installed 3.9.1.2) and the smaller plugins have no public version pages (verified 2026-08)"
+
+[manual]
+login = "https://profile.inmusicbrands.com"
+steps = "Log in to your inMusic Profile (profile.inmusicbrands.com) and download MPC / MPC 3 and plugin installers from your registered products. Release notes: https://www.akaipro.com/mpc-release-notes/ (browser only; content is JS-rendered)."

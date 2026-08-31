@@ -1,0 +1,15 @@
+# Celemony publishes the full Melodyne 5 version history in its helpcenter; entries
+# are listed newest-first as "Version 5.4.2", "Version 5.4.1", ... (verified live
+# 2026-08-30, first match captured 5.4.2).
+vendor = "Celemony"
+homepage = "https://www.celemony.com"
+
+[manual]
+login = "https://www.celemony.com/en/login"
+steps = "Log in at celemony.com to download the latest Melodyne installer (or run the Update Check from Melodyne's Preferences window); release notes live in the helpcenter version history."
+
+[[product]]
+name = "Melodyne"
+page = "https://helpcenter.celemony.com/M5/doc/melodyneStudio5/en/M5tour_VersionHistory?env=standAlone"
+version_regex = 'Version[^0-9]*([0-9]+\.[0-9.]+)'
+changelog = "https://helpcenter.celemony.com/M5/doc/melodyneStudio5/en/M5tour_VersionHistory?env=standAlone"

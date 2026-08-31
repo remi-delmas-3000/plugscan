@@ -1,0 +1,11 @@
+# Re-checked 2026-08-31: babyaud.io is Webflow (no /products.json); the
+# Crystalline product page carries no version strings; plugin binaries only
+# reference the licence-activation API (activation.babyaud.io), no
+# update/version endpoint; no local manager app.
+vendor = "BABY Audio"
+homepage = "https://babyaud.io"
+skip = "Webflow site and plugin binaries expose no version source (product pages version-free; only an activation API in the binaries)."
+
+[manual]
+login = "https://babyaud.io/account"
+steps = "Installers are delivered via the download links on babyaud.io product pages (demo) and via the account/purchase email for full versions. Product pages carry no version strings."

@@ -1,0 +1,9 @@
+# Same developer as "Atkinson Advanced Modeling, LLC" (Neural Amp Modeler).
+# ParametricOD is distributed via neuralampmodeler.com, a Wix site (JS-rendered,
+# no scrapeable version). No public GitHub releases for this plugin. Manual-only.
+vendor = "Steven Atkinson"
+homepage = "https://www.neuralampmodeler.com"
+skip = "neuralampmodeler.com is JS-rendered Wix with no version string; no ParametricOD repo among sdatkinson GitHub repos (verified via API)"
+
+[manual]
+steps = "Go to neuralampmodeler.com (Users/Downloads section) and download the latest ParametricOD build; version announcements appear on the NAM blog."

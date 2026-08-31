@@ -1,0 +1,16 @@
+# Genome versions are published on the official changelog page (newest entry first,
+# headings like "GENOME 2.0.4"). Torpedo Wall Of Sound is legacy software; no public
+# scrape-friendly changelog was found (help-center pages are JS-rendered), so WoS is
+# covered by the manual steps only.
+vendor = "Two notes Audio Engineering"
+homepage = "https://www.two-notes.com"
+
+[manual]
+login = "https://www.two-notes.com/en/my-account/"
+steps = "Log in at two-notes.com > My Account; Genome and Torpedo Wall Of Sound installers live under Downloads/Software; Genome release notes at two-notes.com/en/genome/changelog/."
+
+[[product]]
+name = "Genome"
+page = "https://www.two-notes.com/en/genome/changelog/"
+version_regex = 'GENOME ([0-9]+\.[0-9.]+)'
+changelog = "https://www.two-notes.com/en/genome/changelog/"

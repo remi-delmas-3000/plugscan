@@ -1,0 +1,76 @@
+# Audiority publishes a single HTML table of all plugin latest versions at
+# /plugin-versions/ (columns: name | vX.Y | date | download links). Each product
+# appears once; regex anchors on the name cell followed by the version cell.
+# Note: table lists "Green Reaper GR9" for Green Reaper; full "Klirrton Grindstein"
+# name is used in the cell.
+vendor = "Audiority"
+homepage = "https://www.audiority.com"
+
+[manual]
+login = "https://www.audiority.com/my-account/"
+steps = "Log in at audiority.com/my-account/, or check the public table at audiority.com/plugin-versions/ for latest versions and direct download links."
+
+[[product]]
+name = "Big Goat"
+page = "https://www.audiority.com/plugin-versions/"
+version_regex = 'Big Goat</td>\s*<td>v([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "Big Swarma"
+page = "https://www.audiority.com/plugin-versions/"
+version_regex = 'Big Swarma</td>\s*<td>v([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "Blue Face"
+page = "https://www.audiority.com/plugin-versions/"
+version_regex = 'Blue Face</td>\s*<td>v([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "Chief Flanger"
+page = "https://www.audiority.com/plugin-versions/"
+version_regex = 'Chief Flanger</td>\s*<td>v([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "Distortion 1 mkII"
+page = "https://www.audiority.com/plugin-versions/"
+version_regex = 'Distortion 1 mkII</td>\s*<td>v([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "Doomagorgon"
+page = "https://www.audiority.com/plugin-versions/"
+version_regex = 'Doomagorgon</td>\s*<td>v([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "GrainSpace"
+page = "https://www.audiority.com/plugin-versions/"
+version_regex = 'GrainSpace</td>\s*<td>v([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "Green Reaper"
+page = "https://www.audiority.com/plugin-versions/"
+version_regex = 'Green Reaper[^<]*</td>\s*<td>v([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "Heavy Pedal mkII"
+page = "https://www.audiority.com/plugin-versions/"
+version_regex = 'Heavy Pedal mkII</td>\s*<td>v([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "Klirrton Grindstein"
+page = "https://www.audiority.com/plugin-versions/"
+version_regex = 'Klirrton Grindstein</td>\s*<td>v([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "Pyros"
+page = "https://www.audiority.com/plugin-versions/"
+version_regex = 'Pyros</td>\s*<td>v([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "Space Station UM282"
+page = "https://www.audiority.com/plugin-versions/"
+version_regex = 'Space Station UM282</td>\s*<td>v([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "Tube Modulator"
+page = "https://www.audiority.com/plugin-versions/"
+version_regex = 'Tube Modulator</td>\s*<td>v([0-9]+\.[0-9.]+)'

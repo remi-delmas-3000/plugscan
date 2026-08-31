@@ -1,0 +1,8 @@
+# tcelectronic.com (Music Tribe) is a JS-driven catalog; plugin product pages are
+# not stable curl targets and publish no version strings. Manual-only.
+vendor = "TC Electronic"
+homepage = "https://www.tcelectronic.com"
+skip = "tcelectronic.com is a JS-driven catalog with no stable curl-able product pages or version strings"
+
+[manual]
+steps = "Search tcelectronic.com for TC8210 (TC8210-DT / native), open the product's Downloads tab for the latest installer, or use the TC Electronic download manager that came with the plugin."

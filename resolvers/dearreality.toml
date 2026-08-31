@@ -1,0 +1,9 @@
+# Dear Reality (Sennheiser). dearVR line is discontinued as a paid product; all
+# dearVR plugins are now free via Sennheiser/Dear Reality signup. The Shopify site
+# renders via JS and publishes no version numbers, so manual-only.
+vendor = "Dearreality"
+homepage = "https://www.dear-reality.com"
+skip = "dearVR line is discontinued (now free); 1.13.x is likely final and the JS site publishes no versions"
+
+[manual]
+steps = "dearVR MUSIC is free from dear-reality.com (mailing-list signup gets the download). Development has effectively ended, so 1.13.x is likely final; check dear-reality.com product page or Sennheiser support for any newer installer."

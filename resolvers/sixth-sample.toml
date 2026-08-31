@@ -1,0 +1,18 @@
+# Cramit's changelog on sixthsample.com/cramit/ lists versions in ASCENDING order
+# (1.1.0 ... 1.3.2 last), so a plain first-match regex would return the oldest.
+# The regex below anchors to the LAST entry instead: a greedy prefix after the
+# unique ">Changelog<" heading captures the final x.y.z that still precedes the
+# unique ">Compatibility<" heading that follows the changelog (verified live:
+# captures 1.3.2 = installed; both anchors occur exactly once in the page).
+vendor = "Sixth Sample"
+homepage = "https://sixthsample.com"
+
+[manual]
+steps = "Open sixthsample.com/cramit/ and scroll to the Changelog section; the last listed version is the newest. Downloads via the account/download links on the site."
+
+[[product]]
+name = "Cramit"
+page = "https://sixthsample.com/cramit/"
+strategy = "page_regex"
+version_regex = '(?s)>Changelog<.*([0-9]+\.[0-9]+\.[0-9]+)[\s\S]*?>Compatibility<'
+changelog = "https://sixthsample.com/cramit/"

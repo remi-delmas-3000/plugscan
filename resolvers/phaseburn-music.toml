@@ -1,0 +1,8 @@
+# Phaseburn ONE is in public beta (installed 0.1.x); phaseburn.com / phaseburn.net
+# do not resolve and no stable changelog page exists yet. Manual-only.
+vendor = "Phaseburn Music"
+homepage = "https://www.kvraudio.com/forum/viewtopic.php?p=9289547"
+skip = "beta distributed via KVR forum thread; no stable site or changelog yet"
+
+[manual]
+steps = "Phaseburn ONE beta builds are announced on the KVR Instruments forum thread ('Public Beta: Phaseburn ONE') and Gearspace; full release planned Oct 2026. Revisit for an official site/changelog after release."

@@ -1,0 +1,27 @@
+# Scaler Music maintains a pinned "Scaler 3 Latest Version" topic on their Discourse
+# forum; the first "Scaler 3.x.y" occurrence (topic title) is the latest release.
+# Scaler 3 Audio / Control are components shipped with the same version number.
+# Carbon Electra 2 and Scaler Detector have no public version page found; use account downloads.
+vendor = "Scaler Music"
+homepage = "https://www.scalermusic.com"
+
+[manual]
+steps = "Check forum.scalermusic.com category 'Latest Version' (topic 'Scaler 3 Latest Version') for Scaler 3 releases; installers for all products (incl. Carbon Electra 2 and Scaler Detector) come from your account downloads at scalermusic.com."
+
+[[product]]
+name = "Scaler 3"
+page = "https://forum.scalermusic.com/t/scaler-3-latest-version/20939"
+version_regex = 'Scaler (3\.[0-9]+\.[0-9]+)'
+changelog = "https://forum.scalermusic.com/t/scaler-3-latest-version/20939"
+
+[[product]]
+name = "Scaler 3 Audio"
+page = "https://forum.scalermusic.com/t/scaler-3-latest-version/20939"
+version_regex = 'Scaler (3\.[0-9]+\.[0-9]+)'
+changelog = "https://forum.scalermusic.com/t/scaler-3-latest-version/20939"
+
+[[product]]
+name = "Scaler 3 Control"
+page = "https://forum.scalermusic.com/t/scaler-3-latest-version/20939"
+version_regex = 'Scaler (3\.[0-9]+\.[0-9]+)'
+changelog = "https://forum.scalermusic.com/t/scaler-3-latest-version/20939"

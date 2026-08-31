@@ -1,0 +1,21 @@
+# Synapse Audio announces The Legend HZ updates on their news page (newest first,
+# e.g. "Legend HZ v2.1"). Quirk: the plugin reports versions like "2.10" meaning
+# 2.1.0, while the site writes "2.1" -- compare accordingly. LegendHZ and LegendHZFX
+# ship together in the same installer/version.
+vendor = "Synapse Audio"
+homepage = "https://www.synapse-audio.com"
+
+[manual]
+steps = "Downloads require login at synapse-audio.com (User Area); latest version is announced on synapse-audio.com/news.html; product page: synapse-audio.com/thelegendhz.html."
+
+[[product]]
+name = "LegendHZ"
+page = "https://www.synapse-audio.com/news.html"
+version_regex = 'Legend HZ v([0-9]+\.[0-9]+)'
+changelog = "https://www.synapse-audio.com/news.html"
+
+[[product]]
+name = "LegendHZFX"
+page = "https://www.synapse-audio.com/news.html"
+version_regex = 'Legend HZ v([0-9]+\.[0-9]+)'
+changelog = "https://www.synapse-audio.com/news.html"

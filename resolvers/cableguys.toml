@@ -1,0 +1,12 @@
+# Cableguys does not publish plugin versions publicly. Re-checked 2026-08: the update
+# checker endpoint (cableguys.com/update?product=...) now serves a static page that
+# answers "we couldn't find any information for this product" for guessable codes -
+# real product codes / version info are only available to the logged-in updater.
+# Product pages carry no version text; KVR is Cloudflare-blocked for curl.
+vendor = "Cableguys"
+homepage = "https://www.cableguys.com"
+skip = "no public version source: update endpoint rejects unauthenticated/unknown product codes and product pages carry no version text (verified 2026-08)"
+
+[manual]
+login = "https://www.cableguys.com/login"
+steps = "Log in at cableguys.com, then your account download area shows the latest ShaperBox/HalfTime/Kickstart/MidiShaper/Curve/FilterShaper/Snapback installers with version numbers; plugins also self-report updates in their UI."

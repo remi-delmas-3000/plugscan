@@ -1,0 +1,9 @@
+# DynAssist was DISCONTINUED by NoiseWorks (noiseworksaudio.com) in favor of
+# VoiceAssist; 2.2.12 (Oct 2025) was the final update. Neither the product page
+# nor the blog index exposes a scrapeable version string. Manual-only.
+vendor = "NoiseWorks"
+homepage = "https://noiseworksaudio.com"
+skip = "DynAssist is discontinued; 2.2.12 (Oct 2025) was the final release"
+
+[manual]
+steps = "DynAssist is discontinued (final version 2.2.12); paid licenses were upgraded to VoiceAssist Standard. Check noiseworksaudio.com blog / your account downloads."

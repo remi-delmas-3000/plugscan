@@ -1,0 +1,128 @@
+# All plugins ship in one Soundtoys 5.x bundle sharing a single version.
+# The public installer manifest at storage.googleapis.com/soundtoys-download/download.json
+# (referenced by soundtoys.com/downloads/) is a JSON dict keyed "<Sku>_Mac";
+# each entry's `fullversion` is the released build. Verified 2026-08-30:
+# all products at 5.5.5.19885 (installed baseline 5.5.4.18982). FilterFreak1/2 share
+# the single FilterFreak installer.
+vendor = "Soundtoys"
+homepage = "https://www.soundtoys.com"
+
+[manual]
+login = "https://accounts.soundtoys.com/"
+steps = "Log in at accounts.soundtoys.com to download the latest Soundtoys 5.5 bundle installer; a single bundle authorizes all owned plugins."
+
+[[product]]
+name = "Crystallizer"
+page = "https://storage.googleapis.com/soundtoys-download/download.json"
+strategy = "json"
+json_path = "Crystallizer5_Mac.fullversion"
+[[product]]
+name = "Decapitator"
+page = "https://storage.googleapis.com/soundtoys-download/download.json"
+strategy = "json"
+json_path = "Decapitator5_Mac.fullversion"
+[[product]]
+name = "Devil-Loc"
+page = "https://storage.googleapis.com/soundtoys-download/download.json"
+strategy = "json"
+json_path = "DevilLoc5_Mac.fullversion"
+[[product]]
+name = "Devil-Loc_Deluxe"
+page = "https://storage.googleapis.com/soundtoys-download/download.json"
+strategy = "json"
+json_path = "DevilLocDeluxe5_Mac.fullversion"
+[[product]]
+name = "EchoBoy"
+page = "https://storage.googleapis.com/soundtoys-download/download.json"
+strategy = "json"
+json_path = "EchoBoy5_Mac.fullversion"
+[[product]]
+name = "EchoBoyJr"
+page = "https://storage.googleapis.com/soundtoys-download/download.json"
+strategy = "json"
+json_path = "EchoBoyJr5_Mac.fullversion"
+[[product]]
+name = "EffectRack"
+page = "https://storage.googleapis.com/soundtoys-download/download.json"
+strategy = "json"
+json_path = "EffectRack5_Mac.fullversion"
+[[product]]
+name = "FilterFreak1"
+page = "https://storage.googleapis.com/soundtoys-download/download.json"
+strategy = "json"
+json_path = "FilterFreak5_Mac.fullversion"
+[[product]]
+name = "FilterFreak2"
+page = "https://storage.googleapis.com/soundtoys-download/download.json"
+strategy = "json"
+json_path = "FilterFreak5_Mac.fullversion"
+[[product]]
+name = "LittleAlterBoy"
+page = "https://storage.googleapis.com/soundtoys-download/download.json"
+strategy = "json"
+json_path = "LittleAlterBoy5_Mac.fullversion"
+[[product]]
+name = "LittleMicroShift"
+page = "https://storage.googleapis.com/soundtoys-download/download.json"
+strategy = "json"
+json_path = "LittleMicroShift5_Mac.fullversion"
+[[product]]
+name = "LittlePlate"
+page = "https://storage.googleapis.com/soundtoys-download/download.json"
+strategy = "json"
+json_path = "LittlePlate5_Mac.fullversion"
+[[product]]
+name = "LittlePrimalTap"
+page = "https://storage.googleapis.com/soundtoys-download/download.json"
+strategy = "json"
+json_path = "LittlePrimalTap5_Mac.fullversion"
+[[product]]
+name = "LittleRadiator"
+page = "https://storage.googleapis.com/soundtoys-download/download.json"
+strategy = "json"
+json_path = "LittleRadiator5_Mac.fullversion"
+[[product]]
+name = "MicroShift"
+page = "https://storage.googleapis.com/soundtoys-download/download.json"
+strategy = "json"
+json_path = "MicroShift5_Mac.fullversion"
+[[product]]
+name = "PanMan"
+page = "https://storage.googleapis.com/soundtoys-download/download.json"
+strategy = "json"
+json_path = "PanMan5_Mac.fullversion"
+[[product]]
+name = "PhaseMistress"
+page = "https://storage.googleapis.com/soundtoys-download/download.json"
+strategy = "json"
+json_path = "PhaseMistress5_Mac.fullversion"
+[[product]]
+name = "PrimalTap"
+page = "https://storage.googleapis.com/soundtoys-download/download.json"
+strategy = "json"
+json_path = "PrimalTap5_Mac.fullversion"
+[[product]]
+name = "Radiator"
+page = "https://storage.googleapis.com/soundtoys-download/download.json"
+strategy = "json"
+json_path = "Radiator5_Mac.fullversion"
+[[product]]
+name = "SieQ"
+page = "https://storage.googleapis.com/soundtoys-download/download.json"
+strategy = "json"
+json_path = "SieQ5_Mac.fullversion"
+[[product]]
+name = "SpaceBlender"
+page = "https://storage.googleapis.com/soundtoys-download/download.json"
+strategy = "json"
+json_path = "SpaceBlender5_Mac.fullversion"
+[[product]]
+name = "SuperPlate"
+page = "https://storage.googleapis.com/soundtoys-download/download.json"
+strategy = "json"
+json_path = "SuperPlate5_Mac.fullversion"
+[[product]]
+name = "Tremolator"
+page = "https://storage.googleapis.com/soundtoys-download/download.json"
+strategy = "json"
+json_path = "Tremolator5_Mac.fullversion"

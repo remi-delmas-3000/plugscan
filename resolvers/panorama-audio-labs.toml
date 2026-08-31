@@ -1,0 +1,8 @@
+# panoramalabs.com.au product page contains only WP/JS asset versions, no plugin
+# version string. Debut plugin (macOS-only at launch). Manual-only.
+vendor = "Panorama Audio Labs"
+homepage = "https://panoramalabs.com.au"
+skip = "product page exposes only WP asset versions, no plugin version"
+
+[manual]
+steps = "Check panoramalabs.com.au/panoramic/ and your purchase email/account for the latest Panoramic installer; updates announced via KVR news."

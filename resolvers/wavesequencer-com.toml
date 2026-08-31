@@ -1,0 +1,15 @@
+# Wavesequencer (wavesequencer.com / hyperionsynth.com) publishes update news on
+# hyperionsynth.com/news, but the page is stale relative to shipped builds (news
+# showed v1.64 while installed Hyperion is 1.66), and neither wavesequencer.com
+# nor tracktion.com product pages state the current version. The Hyperion binary
+# authenticates against tracktion.com/marketplace/authenticate.php (login
+# required, no version data). Updates are distributed through the Tracktion
+# Download Manager.
+vendor = "wavesequencer.com"
+homepage = "https://www.wavesequencer.com"
+download_via = "Tracktion Download Manager — Tracktion's desktop manager app (tracktion.com account); it downloads/updates the Hyperion and Theia installers"
+skip = "No reliable public version source: hyperionsynth.com/news lags shipped builds and the Tracktion marketplace requires a login"
+
+[manual]
+login = "https://www.tracktion.com/account"
+steps = "Log in to your Tracktion account (tracktion.com) or run the Tracktion Download Manager to get the latest Hyperion/Theia installers; update announcements (often lagging) are posted at hyperionsynth.com/news and wavesequencer.com/news."

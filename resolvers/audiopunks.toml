@@ -1,0 +1,48 @@
+# Audiopunks publish all plugin installers on a single downloads page; versions
+# appear in the installer file names (e.g. "Audiopunks - Buenos-v1.1.0.pkg").
+# Only the latest installer is listed per product, so first match = latest.
+vendor = "Audiopunks"
+homepage = "https://audiopunks.com"
+
+[manual]
+steps = "Open https://audiopunks.com/downloads/ — every plugin is listed with its latest Mac (.pkg) and Windows (.zip) installer; the version is in the file name."
+
+[[product]]
+name = "AP Buenos"
+page = "https://audiopunks.com/downloads/"
+version_regex = 'Buenos-v?([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "AP Ecoplate Reverb"
+page = "https://audiopunks.com/downloads/"
+version_regex = 'Ecoplate%20Reverb-v?([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "AP Mongrel Rack"
+page = "https://audiopunks.com/downloads/"
+version_regex = 'Mongrel%20Rack-v?([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "AP SansAmp Rack"
+page = "https://audiopunks.com/downloads/"
+version_regex = 'SansAmp%20Rack-v?([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "AP Spectra 610 Complimiter"
+page = "https://audiopunks.com/downloads/"
+version_regex = 'Spectra-v?([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "AP Tape Eater"
+page = "https://audiopunks.com/downloads/"
+version_regex = 'Tape%20Eater-v?([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "AP Telefunken Echomixer"
+page = "https://audiopunks.com/downloads/"
+version_regex = 'Echomixer-v?([0-9]+\.[0-9]+\.[0-9]+)'
+
+[[product]]
+name = "AP The Great British Spring"
+page = "https://audiopunks.com/downloads/"
+version_regex = 'The%20Great%20British%20Spring-v?([0-9]+\.[0-9]+\.[0-9]+)'

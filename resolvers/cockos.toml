@@ -1,0 +1,9 @@
+# reaper.fm homepage announces the current build ("REAPER 7.79") first.
+vendor = "Cockos"
+homepage = "https://www.reaper.fm"
+
+[[product]]
+name = "REAPER"
+page = "https://www.reaper.fm/"
+version_regex = 'REAPER ([0-9]+\.[0-9]+)'
+download = "https://www.reaper.fm/download.php"

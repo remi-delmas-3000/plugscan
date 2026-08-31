@@ -1,0 +1,19 @@
+# The Spire product page states the current version ("SPIRE Ver 1.5.21") and links
+# versioned installers. The static changelog.txt on static.reveal-sound.com is stale
+# (stops at 1.1.13) -- do not use it. "Spire-1.5" is the same plugin (versioned
+# bundle name), same page/regex.
+vendor = "Reveal Sound"
+homepage = "https://www.reveal-sound.com"
+
+[manual]
+steps = "Open reveal-sound.com/spire; the demo/download section states 'SPIRE Ver x.y.z' with direct installer links; licensed users install the same build and unlock with their key."
+
+[[product]]
+name = "Spire"
+page = "https://www.reveal-sound.com/spire"
+version_regex = 'SPIRE Ver[^0-9]*([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "Spire-1.5"
+page = "https://www.reveal-sound.com/spire"
+version_regex = 'SPIRE Ver[^0-9]*([0-9]+\.[0-9.]+)'

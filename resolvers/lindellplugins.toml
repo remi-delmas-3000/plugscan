@@ -1,0 +1,46 @@
+# Lindell (Plugin Alliance brand). Each product page on plugin-alliance.com has a
+# collapsible "<X> Changelog" section listing versions newest-first. curl-friendly.
+# 69 Channel, 902 De-esser, EQ825, MU-66 omitted (request budget) — same pattern
+# should work on their product pages.
+vendor = "Lindellplugins"
+homepage = "https://www.lindellplugins.com"
+
+[manual]
+login = "https://www.plugin-alliance.com/account"
+steps = "Log in at plugin-alliance.com, open the product page (e.g. /products/80-series, /products/mbc) and expand the Changelog section; downloads live under Account > Installers."
+
+[[product]]
+name = "Lindell 80 Bus"
+page = "https://www.plugin-alliance.com/products/80-series"
+version_regex = 'Version\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://www.plugin-alliance.com/products/80-series"
+
+[[product]]
+name = "Lindell 80 Channel"
+page = "https://www.plugin-alliance.com/products/80-series"
+version_regex = 'Version\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://www.plugin-alliance.com/products/80-series"
+
+[[product]]
+name = "Lindell 50 Buss"
+page = "https://www.plugin-alliance.com/products/50-series"
+version_regex = 'Version\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://www.plugin-alliance.com/products/50-series"
+
+[[product]]
+name = "Lindell 50 Channel"
+page = "https://www.plugin-alliance.com/products/50-series"
+version_regex = 'Version\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://www.plugin-alliance.com/products/50-series"
+
+[[product]]
+name = "Lindell MBC"
+page = "https://www.plugin-alliance.com/products/mbc"
+version_regex = 'Version\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://www.plugin-alliance.com/products/mbc"
+
+[[product]]
+name = "Lindell SBC"
+page = "https://www.plugin-alliance.com/products/sbc"
+version_regex = 'Version\s*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://www.plugin-alliance.com/products/sbc"

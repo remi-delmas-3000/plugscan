@@ -1,0 +1,14 @@
+# The Updates page (higher-plane.uk/updates) lists release posts newest first,
+# e.g. "SpaceWalk v1.2 Released". Beta entries appear further down.
+vendor = "Higher Plane Software"
+homepage = "https://www.higher-plane.uk"
+
+[manual]
+steps = "Download installers from higher-plane.uk/downloads (also sold via Gumroad); update announcements at higher-plane.uk/updates."
+
+[[product]]
+name = "SpaceWalk"
+page = "https://www.higher-plane.uk/updates"
+version_regex = 'SpaceWalk v([0-9]+\.[0-9.]+)'
+download = "https://www.higher-plane.uk/downloads"
+changelog = "https://www.higher-plane.uk/updates"

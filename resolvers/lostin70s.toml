@@ -1,0 +1,10 @@
+# Lostin70s (lostin70s.com) is a JS-rendered Angular SPA - the HTML shell contains no
+# product data - and the TLS certificate chain fails strict verification (curl fails
+# without -k; re-verified 2026-08), so the resolver engine cannot fetch it at all.
+# Free plugins; versions only visible in the rendered site.
+vendor = "Lostin70s"
+homepage = "https://www.lostin70s.com"
+skip = "TLS certificate chain fails strict verification and the site is a JS-rendered Angular SPA with no product data in static HTML (verified 2026-08)"
+
+[manual]
+steps = "Open lostin70s.com in a browser (site is JS-rendered); each plugin page shows the current version next to its free download links. All plugins are free - re-download to update."

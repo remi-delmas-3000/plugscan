@@ -1,0 +1,14 @@
+# Versions are announced on the Klanghelm news page, newest entries first,
+# e.g. "DC8C 3.5.2". Product pages themselves do not state version numbers.
+vendor = "Klanghelm"
+homepage = "https://klanghelm.com"
+
+[manual]
+login = "https://klanghelm.com/contents/login.php"
+steps = "Log in to the Klanghelm user area with your purchase account; downloads for each plugin are listed there. News page lists version announcements."
+
+[[product]]
+name = "DC8C3"
+page = "https://klanghelm.com/contents/common/news.html"
+version_regex = 'DC8C[^0-9<]*([0-9]+\.[0-9.]+)'
+changelog = "https://klanghelm.com/contents/common/news.html"

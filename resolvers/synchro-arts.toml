@@ -1,0 +1,11 @@
+# Synchro Arts moved all installer downloads behind the app.synchroarts.com portal.
+# Re-checked 2026-08: that portal is a LANDR-platform SPA (assets on cdn.landr.com,
+# data from api3.landr.com behind authentication) - no public version endpoint.
+# The public downloads-and-manuals page only links manuals, not installer versions.
+vendor = "Synchro Arts"
+homepage = "https://www.synchroarts.com"
+skip = "no public version source: app.synchroarts.com is an authenticated LANDR-platform SPA and the public site only hosts manuals (verified 2026-08)"
+
+[manual]
+login = "https://app.synchroarts.com/my-plugins"
+steps = "Log in at app.synchroarts.com/my-plugins to see your plugins and latest installer versions (RePitch, VocAlign, Revoice Pro); public synchroarts.com/downloads-and-manuals only hosts manuals. Legacy installers: synchroarts.zendesk.com article 'Synchro Arts Legacy Installers'."

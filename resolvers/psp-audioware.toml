@@ -1,0 +1,27 @@
+# Custom site (not Shopify; /products.json is 404). Some product pages carry a
+# public 30-day-trial link whose filename embeds the version, e.g.
+# PSP_VintageWarmer2_2.11.0_macOS.dmg (macOS link first in doc order).
+# Verified live 2026-08-31 on /products/psp-vintagewarmer2 (2.11.0). Other pages
+# checked (psp-mixpack2, psp-preqursor2) expose no versioned installer link, so
+# only the verified VintageWarmer pages are converted; the rest stays manual.
+vendor = "PSP Audioware"
+homepage = "https://www.pspaudioware.com"
+
+[manual]
+login = "https://www.pspaudioware.com/account/login"
+steps = "Log in at pspaudioware.com/account/login; installers live under Your Account > Downloads. Updates are announced on the site news/newsletter; product pages state versions only in prose."
+
+[[product]]
+name = "PSP VintageWarmer2"
+page = "https://www.pspaudioware.com/products/psp-vintagewarmer2"
+strategy = "page_regex"
+version_regex = '_([0-9]+\.[0-9]+\.[0-9]+)_macOS\.dmg'
+download = "https://www.pspaudioware.com/products/psp-vintagewarmer2"
+
+# VintageWarmer (classic) ships in the same installer as VintageWarmer2.
+[[product]]
+name = "PSP VintageWarmer"
+page = "https://www.pspaudioware.com/products/psp-vintagewarmer2"
+strategy = "page_regex"
+version_regex = '_([0-9]+\.[0-9]+\.[0-9]+)_macOS\.dmg'
+download = "https://www.pspaudioware.com/products/psp-vintagewarmer2"

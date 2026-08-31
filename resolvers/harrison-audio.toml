@@ -1,0 +1,60 @@
+# Harrison Audio (now part of SSL). Latest plugin versions are listed in Zendesk
+# support articles. The HTML article pages sit behind a Cloudflare JS challenge,
+# but the Zendesk help-center JSON API serves the same body to plain HTTP clients,
+# so product pages below point at the .json API endpoints. Most plugins are on the
+# Harrison support article; 32 Classic Channel Strip v2.x is only listed on the
+# SSL "Plug-in Downloads" article (the Harrison article still shows the old v1.1.0
+# line for that name).
+vendor = "Harrison Audio"
+homepage = "https://harrisonaudio.com"
+
+[manual]
+steps = "Open https://support.harrisonaudio.com/hc/en-gb/articles/15986119874845-Harrison-Plug-in-Downloads (and https://support.solidstatelogic.com/hc/en-gb/articles/4849510029085-SSL-Plug-in-Downloads for 32 Classic Channel Strip v2.x); each table row shows the plugin name, latest version, and Mac/Windows installer links."
+
+[[product]]
+name = "Harrison Tape Saturator"
+page = "https://support.harrisonaudio.com/api/v2/help_center/en-gb/articles/15986119874845.json"
+version_regex = 'Tape Saturator[^0-9]*([0-9]+\.[0-9.]+)'
+changelog = "https://support.harrisonaudio.com/hc/en-gb/articles/15986119874845-Harrison-Plug-in-Downloads"
+
+[[product]]
+name = "Harrison_32ClassicChannelStrip"
+page = "https://support.solidstatelogic.com/api/v2/help_center/en-gb/articles/4849510029085.json"
+version_regex = '32 Classic Channel Strip[^0-9]*([0-9]+\.[0-9.]+)'
+changelog = "https://support.solidstatelogic.com/hc/en-gb/articles/4849510029085-SSL-Plug-in-Downloads"
+
+[[product]]
+name = "Harrison_BassFlow"
+page = "https://support.harrisonaudio.com/api/v2/help_center/en-gb/articles/15986119874845.json"
+version_regex = 'Bass Flow[^0-9]*([0-9]+\.[0-9.]+)'
+changelog = "https://support.harrisonaudio.com/hc/en-gb/articles/15986119874845-Harrison-Plug-in-Downloads"
+
+[[product]]
+name = "Harrison_DrumFlow"
+page = "https://support.harrisonaudio.com/api/v2/help_center/en-gb/articles/15986119874845.json"
+version_regex = 'Drum Flow[^0-9]*([0-9]+\.[0-9.]+)'
+changelog = "https://support.harrisonaudio.com/hc/en-gb/articles/15986119874845-Harrison-Plug-in-Downloads"
+
+[[product]]
+name = "Harrison_MasteringEQ"
+page = "https://support.harrisonaudio.com/api/v2/help_center/en-gb/articles/15986119874845.json"
+version_regex = 'Mastering EQ[^0-9]*([0-9]+\.[0-9.]+)'
+changelog = "https://support.harrisonaudio.com/hc/en-gb/articles/15986119874845-Harrison-Plug-in-Downloads"
+
+[[product]]
+name = "Harrison_MPCCompressor"
+page = "https://support.harrisonaudio.com/api/v2/help_center/en-gb/articles/15986119874845.json"
+version_regex = 'MPC Compressor[^0-9]*([0-9]+\.[0-9.]+)'
+changelog = "https://support.harrisonaudio.com/hc/en-gb/articles/15986119874845-Harrison-Plug-in-Downloads"
+
+[[product]]
+name = "Harrison_MPCSpectralCompressor"
+page = "https://support.harrisonaudio.com/api/v2/help_center/en-gb/articles/15986119874845.json"
+version_regex = 'MPC Spectral Compressor[^0-9]*([0-9]+\.[0-9.]+)'
+changelog = "https://support.harrisonaudio.com/hc/en-gb/articles/15986119874845-Harrison-Plug-in-Downloads"
+
+[[product]]
+name = "Harrison_MultiBandCompressor"
+page = "https://support.harrisonaudio.com/api/v2/help_center/en-gb/articles/15986119874845.json"
+version_regex = 'Multi Band Compressor[^0-9]*([0-9]+\.[0-9.]+)'
+changelog = "https://support.harrisonaudio.com/hc/en-gb/articles/15986119874845-Harrison-Plug-in-Downloads"

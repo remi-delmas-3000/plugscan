@@ -1,0 +1,12 @@
+# u-he product pages state "Diva 1.4.8 (revision 16519)".
+vendor = "u-he"
+homepage = "https://u-he.com"
+
+[manual]
+steps = "All installers are public: u-he.com/products/<name>/ has a Download section. Serial applied in-plugin."
+
+[[product]]
+name = "Diva"
+page = "https://u-he.com/products/diva/"
+version_regex = 'Diva ([0-9]+\.[0-9.]+)'
+download = "https://u-he.com/products/diva/"

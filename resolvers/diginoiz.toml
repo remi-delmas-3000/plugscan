@@ -1,0 +1,9 @@
+# Diginoiz (diginoiz.com, WooCommerce). The whole site is behind a Cloudflare JS
+# challenge for automated fetches (verified live), so no version source is
+# reachable. Manual-only.
+vendor = "Diginoiz"
+homepage = "https://diginoiz.com"
+skip = "diginoiz.com is behind a Cloudflare JS challenge (verified); no automated fetch possible"
+
+[manual]
+steps = "Search diginoiz.com for Distiller in a browser; re-download installers from your Diginoiz account / delivery email. Installed version is shown in the plugin UI."

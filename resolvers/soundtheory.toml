@@ -1,0 +1,12 @@
+# Soundtheory's site is a JS-rendered SPA. Re-checked 2026-08 by mining the webpack
+# bundle (/packs/application-*.js): the only API routes are authenticated account
+# endpoints (/api/user.json etc.) and the only public version record is a PDF
+# changelog (compressed streams, not regex-able). No public version endpoint exists.
+# Gullfoss / Gullfoss Live / Gullfoss Master share one version; Kraftur / Kraftur Focus share one.
+vendor = "Soundtheory"
+homepage = "https://www.soundtheory.com"
+skip = "no scrapable version source: SPA with only authenticated /api/*.json endpoints; changelog published only as PDF (verified 2026-08)"
+
+[manual]
+login = "https://www.soundtheory.com/home"
+steps = "Log in at soundtheory.com and download installers from your account (Gullfoss and Kraftur installers bundle all editions). Latest versions are listed in the PDF changelogs, e.g. https://www.soundtheory.com/static/Gullfoss%20Changelog.pdf."

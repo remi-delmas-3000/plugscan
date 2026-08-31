@@ -1,0 +1,50 @@
+# UnitedPlugins' public site has no version text, but the UnitedPlugins Manager app
+# fetches https://unitedplugins.com/downloads/unitedpluginsmanager/UPINSTALLERDATABASE.xml
+# (URL recovered from UnitedPluginsManager.app binary strings), which lists every
+# package build. Entries are in ASCENDING order, so each regex below anchors on the
+# last <package> of the "<Product>-mac" block (the entry directly before </packages>);
+# the first match of that pattern is therefore the newest release.
+# Verified 2026-08: Biverb 2.4.1, FireEQ 2.1.0, Hyperspace 3.1.0, Lofinity 1.1.1,
+# Orbitron 2.2.1 (all >= installed). Use the non-www URL: www. 308-redirects here.
+vendor = "UnitedPlugins"
+homepage = "https://unitedplugins.com"
+download_via = "UnitedPlugins Manager app (in /Applications/UnitedPlugins; download from unitedplugins.com/download/manager) installs and updates all plugins"
+
+[manual]
+login = "https://unitedplugins.com/download/"
+steps = "Use the UnitedPlugins Download Manager (unitedplugins.com/download/manager) or sign in and use unitedplugins.com/download/offline to fetch current installers; installers are always the latest version. Update announcements appear at unitedplugins.com/news/."
+
+[[product]]
+name = "Biverb"
+page = "https://unitedplugins.com/downloads/unitedpluginsmanager/UPINSTALLERDATABASE.xml"
+strategy = "page_regex"
+version_regex = 'name="Biverb-mac" version="([0-9][0-9.]*)"[^>]*>\s*</packages>'
+changelog = "https://unitedplugins.com/news/"
+
+[[product]]
+name = "FireEQ"
+page = "https://unitedplugins.com/downloads/unitedpluginsmanager/UPINSTALLERDATABASE.xml"
+strategy = "page_regex"
+version_regex = 'name="FireEQ-mac" version="([0-9][0-9.]*)"[^>]*>\s*</packages>'
+changelog = "https://unitedplugins.com/news/"
+
+[[product]]
+name = "Hyperspace"
+page = "https://unitedplugins.com/downloads/unitedpluginsmanager/UPINSTALLERDATABASE.xml"
+strategy = "page_regex"
+version_regex = 'name="Hyperspace-mac" version="([0-9][0-9.]*)"[^>]*>\s*</packages>'
+changelog = "https://unitedplugins.com/news/"
+
+[[product]]
+name = "Lofinity"
+page = "https://unitedplugins.com/downloads/unitedpluginsmanager/UPINSTALLERDATABASE.xml"
+strategy = "page_regex"
+version_regex = 'name="Lofinity-mac" version="([0-9][0-9.]*)"[^>]*>\s*</packages>'
+changelog = "https://unitedplugins.com/news/"
+
+[[product]]
+name = "Orbitron"
+page = "https://unitedplugins.com/downloads/unitedpluginsmanager/UPINSTALLERDATABASE.xml"
+strategy = "page_regex"
+version_regex = 'name="Orbitron-mac" version="([0-9][0-9.]*)"[^>]*>\s*</packages>'
+changelog = "https://unitedplugins.com/news/"

@@ -1,0 +1,10 @@
+# Tracktion's product pages (BioTek, F-em, Collective, Attracktive) are JS-rendered and
+# show no version numbers. Instruments are installed and updated through the Tracktion
+# Download Manager app (present in /Applications), which shows current versions after login.
+vendor = "Tracktion"
+homepage = "https://www.tracktion.com"
+download_via = "Tracktion Download Manager app (in /Applications; get it from tracktion.com > Account > My Downloads) installs and updates BioTek 3, F-em, Collective and Attracktive"
+
+[manual]
+login = "https://www.tracktion.com/login"
+steps = "Log in at tracktion.com; Account > My Downloads lists the current installer version for each owned instrument (BioTek 3, F-em, Collective, Attracktive), or use the Tracktion Download Manager app."

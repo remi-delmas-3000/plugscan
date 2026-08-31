@@ -1,0 +1,12 @@
+# Three-Body Technology (threebodytech.com). Product pages carry no current version
+# numbers, and the demo download endpoints (download.threebodytech.com/<Product>/mac/
+# en/programs/demo) never answer non-browser clients - requests hang with no response
+# (verified 2026-08), so the header strategy is impossible. Catalog vendor "TBTECH"
+# (Cenozoix, Kirchhoff-EQ, ...) is the same company but those ship via Plugin Alliance.
+vendor = "Threebodytech"
+homepage = "https://www.threebodytech.com"
+skip = "no scrapable version source: product pages carry no current versions and download.threebodytech.com does not answer non-browser clients (verified 2026-08)"
+
+[manual]
+login = "https://my.threebodytech.com"
+steps = "Log in at my.threebodytech.com; the user center lists current installers for Cabinetron, SpecCraft, Unmask and VOTT. Demo downloads also on each product page."

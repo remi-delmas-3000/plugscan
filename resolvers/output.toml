@@ -1,0 +1,12 @@
+# Output's site is JS-rendered and publishes no plugin version numbers; the
+# Output Hub app's backends (auth.output.com / legacy-rest.output.com, found in
+# the Hub's app.asar) all require an authenticated session, so there is no
+# public version endpoint. Updates are delivered through Output Hub.
+vendor = "Output"
+homepage = "https://output.com"
+download_via = "Output Hub — Output's desktop manager app (get it from output.com after logging in); it shows and installs the latest versions of Movement, Portal and Thermal"
+skip = "No public version endpoint: output.com is JS-rendered with no version strings, and the Output Hub API requires an authenticated login session"
+
+[manual]
+login = "https://output.com/login"
+steps = "Log in at output.com or open Output Hub; it shows and installs the latest versions of Movement, Portal and Thermal."

@@ -1,0 +1,10 @@
+# martinic.com serves 403 to non-browser clients even with a full Chrome User-Agent
+# (re-verified 2026-08), so the product pages cannot be scraped even though they
+# exist and show versions in a browser.
+vendor = "Martinic"
+homepage = "https://www.martinic.com"
+skip = "martinic.com returns 403 to all non-browser clients, including requests with a full Chrome UA (verified 2026-08)"
+
+[manual]
+login = "https://www.martinic.com/en/account"
+steps = "Open martinic.com in a browser; each product page (e.g. /en/products/ax73) and the account downloads list the current installer version."

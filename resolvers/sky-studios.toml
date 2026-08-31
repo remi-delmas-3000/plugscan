@@ -1,0 +1,8 @@
+# Small vendor; no public changelog or version listing found for S.K.Y. Keys
+# (KVR product page is Cloudflare-403 to curl). Manual-only.
+vendor = "S.K.Y. Studios"
+homepage = "https://www.skystudios.shop"
+skip = "no public changelog; KVR product page is Cloudflare-403 to automated fetches"
+
+[manual]
+steps = "Check your S.K.Y. Studios purchase email / account for the latest SKY Keys installer, or the KVR product page (S.K.Y. Keys by S.K.Y. Studios) for version news."

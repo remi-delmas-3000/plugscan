@@ -1,0 +1,132 @@
+# Plugin binaries link nuroaudio.com/pages/<family>-version-history pages
+# (found via strings on Xvox Pro.component). Newest release is listed first,
+# so the first "Version X.Y.Z" match is the latest. Verified live 2026-08-31 on
+# xvox-pro-version-history (1.5.2); xrack-pro/supernova/xpitch pages verified
+# to exist (HTTP 200). Family members (Xvox */Xrack */Supernova *) release in
+# lockstep and share the family page. Blockchain Ultra, Flexion and Xrider
+# have no verified history page and stay manual-only.
+vendor = "Nuro Audio"
+homepage = "https://www.nuroaudio.com"
+
+[manual]
+login = "https://www.nuroaudio.com/login"
+steps = "Log in at nuroaudio.com and download installers from the user dashboard."
+
+[[product]]
+name = "Supernova"
+page = "https://nuroaudio.com/pages/supernova-version-history"
+strategy = "page_regex"
+version_regex = 'Version ?([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://www.nuroaudio.com"
+
+[[product]]
+name = "Supernova Delay"
+page = "https://nuroaudio.com/pages/supernova-version-history"
+strategy = "page_regex"
+version_regex = 'Version ?([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://www.nuroaudio.com"
+
+[[product]]
+name = "Supernova Verb"
+page = "https://nuroaudio.com/pages/supernova-version-history"
+strategy = "page_regex"
+version_regex = 'Version ?([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://www.nuroaudio.com"
+
+[[product]]
+name = "Xpitch"
+page = "https://nuroaudio.com/pages/xpitch-version-history"
+strategy = "page_regex"
+version_regex = 'Version ?([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://www.nuroaudio.com"
+
+[[product]]
+name = "Xrack Comp"
+page = "https://nuroaudio.com/pages/xrack-pro-version-history"
+strategy = "page_regex"
+version_regex = 'Version ?([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://www.nuroaudio.com"
+
+[[product]]
+name = "Xrack Max"
+page = "https://nuroaudio.com/pages/xrack-pro-version-history"
+strategy = "page_regex"
+version_regex = 'Version ?([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://www.nuroaudio.com"
+
+[[product]]
+name = "Xrack Mod"
+page = "https://nuroaudio.com/pages/xrack-pro-version-history"
+strategy = "page_regex"
+version_regex = 'Version ?([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://www.nuroaudio.com"
+
+[[product]]
+name = "Xrack Pro"
+page = "https://nuroaudio.com/pages/xrack-pro-version-history"
+strategy = "page_regex"
+version_regex = 'Version ?([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://www.nuroaudio.com"
+
+[[product]]
+name = "Xrack Sat"
+page = "https://nuroaudio.com/pages/xrack-pro-version-history"
+strategy = "page_regex"
+version_regex = 'Version ?([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://www.nuroaudio.com"
+
+[[product]]
+name = "Xrack Tone"
+page = "https://nuroaudio.com/pages/xrack-pro-version-history"
+strategy = "page_regex"
+version_regex = 'Version ?([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://www.nuroaudio.com"
+
+[[product]]
+name = "Xrack Transient"
+page = "https://nuroaudio.com/pages/xrack-pro-version-history"
+strategy = "page_regex"
+version_regex = 'Version ?([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://www.nuroaudio.com"
+
+[[product]]
+name = "Xvox Comp"
+page = "https://nuroaudio.com/pages/xvox-pro-version-history"
+strategy = "page_regex"
+version_regex = 'Version ?([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://www.nuroaudio.com"
+
+[[product]]
+name = "Xvox DS"
+page = "https://nuroaudio.com/pages/xvox-pro-version-history"
+strategy = "page_regex"
+version_regex = 'Version ?([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://www.nuroaudio.com"
+
+[[product]]
+name = "Xvox Pro"
+page = "https://nuroaudio.com/pages/xvox-pro-version-history"
+strategy = "page_regex"
+version_regex = 'Version ?([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://www.nuroaudio.com"
+
+[[product]]
+name = "Xvox SFX"
+page = "https://nuroaudio.com/pages/xvox-pro-version-history"
+strategy = "page_regex"
+version_regex = 'Version ?([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://www.nuroaudio.com"
+
+[[product]]
+name = "Xvox Space"
+page = "https://nuroaudio.com/pages/xvox-pro-version-history"
+strategy = "page_regex"
+version_regex = 'Version ?([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://www.nuroaudio.com"
+
+[[product]]
+name = "Xvox Tone"
+page = "https://nuroaudio.com/pages/xvox-pro-version-history"
+strategy = "page_regex"
+version_regex = 'Version ?([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://www.nuroaudio.com"

@@ -1,0 +1,12 @@
+# Reverb Foundry (LiquidSonics sister brand). Product pages embed a version
+# history section listing releases newest-first ("Version 1.6.2", "Version 1.6.1", ...).
+vendor = "Reverb Foundry"
+homepage = "https://reverbfoundry.com"
+
+[manual]
+steps = "Go to reverbfoundry.com, open the product page (Products > Tai Chi); scroll to the version history section. Installers are on the product page / downloads section, no login needed."
+
+[[product]]
+name = "Tai Chi"
+page = "https://reverbfoundry.com/product/tai-chi/"
+version_regex = 'Version ([0-9]+\.[0-9.]+)'

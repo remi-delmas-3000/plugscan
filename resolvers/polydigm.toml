@@ -1,0 +1,20 @@
+# Polydigm publishes the latest Klimper version on the official update page
+# (klimper-plugin.com/pages/update): "Klimper 2.4 Installer for Standalone and Plugins".
+# One installer covers all Klimper components (Main / Track), so both products share the page.
+vendor = "polydigm"
+homepage = "https://www.klimper-plugin.com"
+
+[manual]
+steps = "Open klimper-plugin.com/pages/update; download the latest installer (covers Standalone, AU and VST3 for all Klimper components) and activate with your original license key."
+
+[[product]]
+name = "Klimper Main"
+page = "https://www.klimper-plugin.com/pages/update"
+version_regex = 'Klimper[^0-9<]{0,15}([0-9]+\.[0-9.]+)'
+download = "https://www.klimper-plugin.com/pages/update"
+
+[[product]]
+name = "Klimper Track"
+page = "https://www.klimper-plugin.com/pages/update"
+version_regex = 'Klimper[^0-9<]{0,15}([0-9]+\.[0-9.]+)'
+download = "https://www.klimper-plugin.com/pages/update"

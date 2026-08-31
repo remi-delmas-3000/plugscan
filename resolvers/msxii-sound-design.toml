@@ -1,0 +1,15 @@
+# Desktop versions of Fly Tape II / Lo Fly Dirt are built and distributed by
+# AIR Music Tech (airmusictech.com) via the inMusic Profile account portal.
+# Neither airmusictech.com nor msxaudio.com states the plugin version on any
+# public page (verified: airmusictech.com/effects/lo-fly-dirt only mentions MPC
+# firmware versions), so manual walkthrough only.
+# The plugin binaries talk to api.inmusicbrands.com / auth.profile.inmusicbrands.com
+# (authenticated inMusic endpoints, no public version feed).
+vendor = "MSXII Sound Design"
+homepage = "https://www.msxaudio.com"
+download_via = "inMusic Software Center / inMusic Profile (profile.inmusicbrands.com) — lists and installs the latest Fly Tape II and Lo Fly Dirt versions"
+skip = "No public version source: distribution goes through the authenticated inMusic Profile portal and no site page states plugin versions"
+
+[manual]
+login = "https://profile.inmusicbrands.com"
+steps = "Log in to the inMusic Profile (profile.inmusicbrands.com), open Software/Downloads: latest Fly Tape II and Lo Fly Dirt installers are listed there with version numbers. Product info at airmusictech.com/effects/."

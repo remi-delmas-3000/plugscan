@@ -1,0 +1,117 @@
+# klevgrand.com product pages render installer cards server-side as
+# "macOS version ... <Product> v<!-- -->X.Y.Z" (macOS card first, so the first
+# regex match is the latest macOS installer version). Verified live 2026-08-31
+# on dawcassette (1.2.3), korvpressor (2.1.2), oneshot (2.0.2).
+# OneShot (v1) is legacy and no longer has its own page; /products/oneshot now
+# serves OneShot2, so only OneShot2 gets an entry.
+vendor = "Klevgrand"
+homepage = "https://klevgrand.com"
+
+[manual]
+login = "https://klevgrand.com/login"
+steps = "Log in at klevgrand.com/login; downloads on each product page (public demos, licences in account)."
+
+[[product]]
+name = "Altitude"
+page = "https://klevgrand.com/products/altitude"
+strategy = "page_regex"
+version_regex = 'v<!-- -->([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://klevgrand.com/products/altitude"
+
+[[product]]
+name = "Borsta"
+page = "https://klevgrand.com/products/borsta"
+strategy = "page_regex"
+version_regex = 'v<!-- -->([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://klevgrand.com/products/borsta"
+
+[[product]]
+name = "DAWCassette"
+page = "https://klevgrand.com/products/dawcassette"
+strategy = "page_regex"
+version_regex = 'v<!-- -->([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://klevgrand.com/products/dawcassette"
+
+[[product]]
+name = "FreeAMP"
+page = "https://klevgrand.com/products/freeamp"
+strategy = "page_regex"
+version_regex = 'v<!-- -->([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://klevgrand.com/products/freeamp"
+
+[[product]]
+name = "Knorr"
+page = "https://klevgrand.com/products/knorr"
+strategy = "page_regex"
+version_regex = 'v<!-- -->([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://klevgrand.com/products/knorr"
+
+[[product]]
+name = "Korvpressor"
+page = "https://klevgrand.com/products/korvpressor"
+strategy = "page_regex"
+version_regex = 'v<!-- -->([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://klevgrand.com/products/korvpressor"
+
+[[product]]
+name = "OneShot2"
+page = "https://klevgrand.com/products/oneshot"
+strategy = "page_regex"
+version_regex = 'v<!-- -->([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://klevgrand.com/products/oneshot"
+
+[[product]]
+name = "Parrot"
+page = "https://klevgrand.com/products/parrot"
+strategy = "page_regex"
+version_regex = 'v<!-- -->([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://klevgrand.com/products/parrot"
+
+[[product]]
+name = "Richter"
+page = "https://klevgrand.com/products/richter"
+strategy = "page_regex"
+version_regex = 'v<!-- -->([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://klevgrand.com/products/richter"
+
+[[product]]
+name = "Skaka"
+page = "https://klevgrand.com/products/skaka"
+strategy = "page_regex"
+version_regex = 'v<!-- -->([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://klevgrand.com/products/skaka"
+
+[[product]]
+name = "Slammer"
+page = "https://klevgrand.com/products/slammer"
+strategy = "page_regex"
+version_regex = 'v<!-- -->([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://klevgrand.com/products/slammer"
+
+[[product]]
+name = "SyndtSphere"
+page = "https://klevgrand.com/products/syndtsphere"
+strategy = "page_regex"
+version_regex = 'v<!-- -->([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://klevgrand.com/products/syndtsphere"
+
+[[product]]
+name = "Ting"
+page = "https://klevgrand.com/products/ting"
+strategy = "page_regex"
+version_regex = 'v<!-- -->([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://klevgrand.com/products/ting"
+
+[[product]]
+name = "Tomofon"
+page = "https://klevgrand.com/products/tomofon"
+strategy = "page_regex"
+version_regex = 'v<!-- -->([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://klevgrand.com/products/tomofon"
+
+[[product]]
+name = "Walls"
+page = "https://klevgrand.com/products/walls"
+strategy = "page_regex"
+version_regex = 'v<!-- -->([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://klevgrand.com/products/walls"

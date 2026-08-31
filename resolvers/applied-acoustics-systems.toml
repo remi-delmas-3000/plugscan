@@ -1,0 +1,11 @@
+# AAS product pages carry no version numbers; updates are announced per account and
+# via the in-plugin update check. Re-checked 2026-08: the AAS Player binary only
+# references authenticated endpoints (applied-acoustics.com/unlock/inapp/v2/) - no
+# public version feed.
+vendor = "Applied Acoustics Systems"
+homepage = "https://www.applied-acoustics.com"
+skip = "no public version source: product pages carry no versions and the in-app update check uses authenticated /unlock/ endpoints (verified 2026-08)"
+
+[manual]
+login = "https://www.applied-acoustics.com/login/"
+steps = "Log in at applied-acoustics.com; the Downloads/My Products area lists the current installer version for Chromaphone, Objeq Delay and AAS Player. Plugins also have a built-in update check."

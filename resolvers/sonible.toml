@@ -1,0 +1,12 @@
+# Probed 2026-08-31: plugin binaries call downloads01.sonible.com/update.php
+# (found via strings on smartlimit.component). That endpoint only renders an
+# HTML page linking download.php with the caller-supplied product/version
+# params echoed back; neither endpoint discloses the latest version number,
+# and download.php returned no response to a direct request.
+vendor = "sonible"
+homepage = "https://www.sonible.com"
+skip = "In-plugin updater endpoint (downloads01.sonible.com/update.php) does not disclose the latest version; no public page or API carries plugin version strings."
+
+[manual]
+login = "https://account.sonible.com"
+steps = "Log in at account.sonible.com for licences and installers; release notes are in the help centre (help.sonible.com). Product pages carry no plugin version strings."

@@ -1,0 +1,8 @@
+# beyerdynamic.com's Headphone Lab page is a marketing/download page with no
+# version string (Next.js app). Manual-only.
+vendor = "beyerdynamic"
+homepage = "https://www.beyerdynamic.com"
+skip = "Next.js page ships no version string in its payload and no direct download links (verified)"
+
+[manual]
+steps = "Go to beyerdynamic.com/headphone-lab and download the free Headphone Lab plugin; version is visible in the plugin UI/installer."

@@ -1,0 +1,9 @@
+# Voxengo product pages encode the version only in download filenames without a dot
+# (e.g. VoxengoSPANPlus_125_... = 1.25), so no dotted-version regex is possible.
+# KVR product pages are Cloudflare-403 to curl. Manual-only.
+vendor = "Voxengo"
+homepage = "https://www.voxengo.com"
+skip = "version appears only in undotted download filenames (SPANPlus_125 vs installed 1.25); a regex capture would yield 125, which cannot be reliably mapped to the dotted form, and the news page carries no dotted versions (verified)"
+
+[manual]
+steps = "Open https://www.voxengo.com/product/spanplus/ and check the download filenames (e.g. SPANPlus_125 = version 1.25). Downloads are free-form on the product page; purchased licenses via voxengo.com login."

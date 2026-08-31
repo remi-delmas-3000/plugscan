@@ -1,0 +1,11 @@
+# Shift Line's site covers mainly hardware; the /downloads page lists pedal
+# user guides but no plugin version numbers for the A+ software line.
+# Wave-2 re-check 2026-08-30: the Astronaut binary checks
+# digital.shift-line.com/astronautplugin/update, but that URL serves a
+# JS-rendered Tilda page shell with no version strings for plain clients.
+vendor = "Shift Line"
+homepage = "https://shift-line.com"
+skip = "No scrapeable version source: the plugin's own update page (digital.shift-line.com/astronautplugin/update) is a JS-rendered Tilda page and the site publishes no plugin versions"
+
+[manual]
+steps = "Plugin builds (Astronaut, OktabEP, Prism) via shift-line.com/downloads and their store/Bandcamp order links; no public changelog."

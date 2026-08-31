@@ -1,0 +1,9 @@
+# WordPress/EDD store. The public HoriZEN page is still titled "HoriZEN 2.0" and
+# exposes no current version string (installed 2.7.x). Manual-only.
+vendor = "TheSynthFactory"
+homepage = "https://thesynthfactory.com"
+skip = "public page still titled HoriZEN 2.0 with no current version (installed 2.7.x); downloads behind account login"
+
+[manual]
+login = "https://thesynthfactory.com/my-account/"
+steps = "Log in to thesynthfactory.com, open Account > Downloads for the latest HoriZEN installer; update announcements are posted on the site news/KVR."

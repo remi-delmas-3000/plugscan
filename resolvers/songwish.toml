@@ -1,0 +1,13 @@
+# SongWish (songwish.ca) is a JS-rendered SPA; the served HTML is a 474-byte shell with no
+# version info, and KVR product/release-note pages are Cloudflare-protected. Manual-only.
+# reMIDI 4 and reMIDI 4 MFX ship from the same installer/store.
+# Wave-2 re-check 2026-08-30: still a 474-byte SPA shell loading a
+# content-hashed bundle (/assets/index-<hash>.js), so even if the bundle held a
+# version string the URL would break on every site rebuild; the reMIDI 4 binary
+# has no update endpoint.
+vendor = "SongWish"
+homepage = "https://songwish.ca"
+skip = "songwish.ca is a JS SPA (hash-named bundles, no stable scrapeable URL) and the plugins have no update-check endpoint"
+
+[manual]
+steps = "Open songwish.ca in a browser; the store/download area serves the latest reMIDI 4 installer (covers reMIDI 4 and reMIDI 4 MFX). Installation notes at songwish.ca/remidi-4-installation. Release announcements appear on the KVR SongWish developer page."

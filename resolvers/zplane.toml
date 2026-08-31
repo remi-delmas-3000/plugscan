@@ -1,0 +1,16 @@
+# products.zplane.de product pages link demo installers with the version in the
+# filename (e.g. ElastiquePitch_2.5.2_DEMO_Installer.pkg). PPMulator and the rest
+# of the metering range are discontinued -- no version info published, manual only.
+vendor = "zplane"
+homepage = "https://products.zplane.de"
+
+[manual]
+login = "https://products.zplane.de/my-account"
+steps = "Full installers live in My Account on products.zplane.de (serial + key authorization). Elastique Pitch demo installers on the product page reveal the current version. PPMulator is discontinued; last builds remain in the account download area."
+
+[[product]]
+name = "ElastiquePitchV2"
+page = "https://products.zplane.de/products/elastiquepitch"
+version_regex = 'ElastiquePitch_([0-9]+\.[0-9.]+)'
+download = "https://products.zplane.de/products/elastiquepitch"
+changelog = "https://products.zplane.de/blog/elastique-pitch-version-25-update"

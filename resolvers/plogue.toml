@@ -1,0 +1,82 @@
+# Alias note: catalog vendor 'Plogue Art et Technologie' is the same company.
+# plogue.com/downloads.html lists Bidule builds as 0.97xx (matches installed
+# convention; verified 0.9792 live). The chipsynth/chipspeech/chipcrusher
+# installers on that page carry marketing versions (v1.123, v2.123 etc.) while
+# the installed plugins report a shared internal build number (e.g. 2123) that
+# no public page publishes — chip* products stay manual-only.
+vendor = "Plogue"
+homepage = "https://plogue.com"
+
+[manual]
+login = "https://plogue.com/login.php"
+steps = "Log in to the Plogue store account for installers; updates are announced on plogue.com and the Plogue forum. chipsynth-family builds release in lockstep; compare the marketing version on downloads.html against the build number in the plugin's about box."
+
+[[product]]
+name = "Bidule"
+page = "https://www.plogue.com/downloads.html"
+strategy = "page_regex"
+version_regex = '(0\.97[0-9]{2,})'
+download = "https://www.plogue.com/downloads.html"
+
+[[product]]
+name = "Bidule FX"
+page = "https://www.plogue.com/downloads.html"
+strategy = "page_regex"
+version_regex = '(0\.97[0-9]{2,})'
+download = "https://www.plogue.com/downloads.html"
+
+[[product]]
+name = "Bidule FX 16"
+page = "https://www.plogue.com/downloads.html"
+strategy = "page_regex"
+version_regex = '(0\.97[0-9]{2,})'
+download = "https://www.plogue.com/downloads.html"
+
+[[product]]
+name = "Bidule FX 32"
+page = "https://www.plogue.com/downloads.html"
+strategy = "page_regex"
+version_regex = '(0\.97[0-9]{2,})'
+download = "https://www.plogue.com/downloads.html"
+
+[[product]]
+name = "Bidule FX 64"
+page = "https://www.plogue.com/downloads.html"
+strategy = "page_regex"
+version_regex = '(0\.97[0-9]{2,})'
+download = "https://www.plogue.com/downloads.html"
+
+[[product]]
+name = "Bidule Inst"
+page = "https://www.plogue.com/downloads.html"
+strategy = "page_regex"
+version_regex = '(0\.97[0-9]{2,})'
+download = "https://www.plogue.com/downloads.html"
+
+[[product]]
+name = "Bidule Inst 16"
+page = "https://www.plogue.com/downloads.html"
+strategy = "page_regex"
+version_regex = '(0\.97[0-9]{2,})'
+download = "https://www.plogue.com/downloads.html"
+
+[[product]]
+name = "Bidule Inst 32"
+page = "https://www.plogue.com/downloads.html"
+strategy = "page_regex"
+version_regex = '(0\.97[0-9]{2,})'
+download = "https://www.plogue.com/downloads.html"
+
+[[product]]
+name = "Bidule Inst 64"
+page = "https://www.plogue.com/downloads.html"
+strategy = "page_regex"
+version_regex = '(0\.97[0-9]{2,})'
+download = "https://www.plogue.com/downloads.html"
+
+[[product]]
+name = "Bidule P64"
+page = "https://www.plogue.com/downloads.html"
+strategy = "page_regex"
+version_regex = '(0\.97[0-9]{2,})'
+download = "https://www.plogue.com/downloads.html"

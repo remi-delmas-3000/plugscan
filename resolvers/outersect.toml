@@ -1,0 +1,9 @@
+# Outersect Modeler (OM) is distributed through Tracktion; downloads live behind
+# the Tracktion marketplace account (JS-rendered, no public changelog). Manual-only.
+vendor = "Outersect"
+homepage = "https://www.tracktion.com"
+skip = "distributed via Tracktion marketplace behind account login; no public version source"
+
+[manual]
+login = "https://marketplace.tracktion.com"
+steps = "Log in to marketplace.tracktion.com, open your products, and download the latest Outersect Modeler installer; version is shown next to the download."

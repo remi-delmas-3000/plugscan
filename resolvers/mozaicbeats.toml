@@ -1,0 +1,13 @@
+# mozaicbeats.com was unreachable from plain HTTP clients at build time (connection
+# failed), and no scrape-friendly changelog is known. Chord Prism 2 updates are
+# announced on the Mozaic Beats KVR forum (Cloudflare-blocked for curl). Manual-only.
+# Both catalog entries (effect + instrument) ship in the same installer/version.
+# Wave-2 re-check 2026-08-30: mozaicbeats.com (and www.) still unreachable from
+# plain HTTP clients (connection failure); the Chord Prism 2 binary contains no
+# update endpoint (code-signing cert URLs only).
+vendor = "MozaicBeats"
+homepage = "https://mozaicbeats.com"
+skip = "mozaicbeats.com is unreachable from HTTP clients and the plugins have no update-check endpoint"
+
+[manual]
+steps = "Open mozaicbeats.com in a browser and check the Chord Prism 2 page / your account downloads for the latest installer; updates are also announced in the Mozaic Beats vendor forum on kvraudio.com (forum topic 'Chord Prism' downloads)."

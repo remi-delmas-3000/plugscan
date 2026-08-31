@@ -1,0 +1,288 @@
+# Downloads page https://www.kuassa.com/downloads/ verified 2026-08-30: served HTML lists
+# every product with "Current version:" (single X.Y.Z, or "<b>WIN</b> (Win) <br><b>MAC</b> (Mac)"
+# for dual-build products). plugscan tracks macOS installs, so dual-build regexes capture the
+# (Mac) version. All regexes verified offline against the fetched page (first match = latest).
+# EfektorRV3604 omitted: page shows 1.1.0 while installed is 1.2.0 (page not updated for it).
+vendor = "Kuassa"
+homepage = "https://www.kuassa.com"
+
+[manual]
+login = "https://www.kuassa.com/my-account/"
+steps = "Log in at kuassa.com/my-account/; installers are under the member downloads area. The public kuassa.com/downloads/ page lists current versions per product."
+
+
+[[product]]
+name = "Amplifikation360"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Amplifikation 360</strong>[\s\S]*?\(Win\) <br><b>([0-9][0-9.]*)</b> \(Mac\)'
+
+[[product]]
+name = "Amplifikation360i"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Amplifikation 360</strong>[\s\S]*?\(Win\) <br><b>([0-9][0-9.]*)</b> \(Mac\)'
+
+[[product]]
+name = "AmplifikationArkhive"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Amplifikation Arkhive</strong>[\s\S]*?Current [Vv]ersion:[^0-9]*([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "AmplifikationCaliburn"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Amplifikation Caliburn</strong>[\s\S]*?\(Win\) <br><b>([0-9][0-9.]*)</b> \(Mac\)'
+
+[[product]]
+name = "AmplifikationClarent"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Amplifikation Clarent</strong>[\s\S]*?\(Win\) <br><b>([0-9][0-9.]*)</b> \(Mac\)'
+
+[[product]]
+name = "AmplifikationCreme"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Amplifikation Creme</strong>[\s\S]*?\(Win\) <br><b>([0-9][0-9.]*)</b> \(Mac\)'
+
+[[product]]
+name = "AmplifikationLancaster"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Amplifikation Lancaster</strong>[\s\S]*?\(Win\) <br><b>([0-9][0-9.]*)</b> \(Mac\)'
+
+[[product]]
+name = "AmplifikationMatchlock"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Amplifikation Matchlock</strong>[\s\S]*?\(Win\) <br><b>([0-9][0-9.]*)</b> \(Mac\)'
+
+[[product]]
+name = "AmplifikationRectifor"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Amplifikation Rectifor</strong>[\s\S]*?Current [Vv]ersion:[^0-9]*([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "AmplifikationVermilion"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Amplifikation Vermilion</strong>[\s\S]*?\(Win\) <br><b>([0-9][0-9.]*)</b> \(Mac\)'
+
+[[product]]
+name = "AmplifikationVVV"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Amplifikation VVV</strong>[\s\S]*?Current [Vv]ersion:[^0-9]*([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "basiQ2"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'basiQ2</strong>[\s\S]*?Current [Vv]ersion:[^0-9]*([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "CerberusBassAmp"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Cerberus Bass Amplifikation</strong>[\s\S]*?\(Win\) <br><b>([0-9][0-9.]*)</b> \(Mac\)'
+
+[[product]]
+name = "EfektorBassCruncher"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Efektor Bass Cruncher</strong>[\s\S]*?Current [Vv]ersion:[^0-9]*([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "EfektorBassDriver"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Efektor Bass Driver</strong>[\s\S]*?Current [Vv]ersion:[^0-9]*([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "EfektorBassSmasher"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Efektor Bass Smasher</strong>[\s\S]*?Current [Vv]ersion:[^0-9]*([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "EfektorBluesBarker"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Efektor Blues Barker</strong>[\s\S]*?Current [Vv]ersion:[^0-9]*([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "EfektorBluesRiver"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Efektor Blues River</strong>[\s\S]*?Current [Vv]ersion:[^0-9]*([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "EfektorCH3604"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'EFEKTOR CH3604</strong>[\s\S]*?\(Win\) <br><b>([0-9][0-9.]*)</b> \(Mac\)'
+
+[[product]]
+name = "EfektorCP3603"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'EFEKTOR CP3603</strong>[\s\S]*?\(Win\) <br><b>([0-9][0-9.]*)</b> \(Mac\)'
+
+[[product]]
+name = "EfektorDL3606"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'EFEKTOR DL3606</strong>[\s\S]*?\(Win\) <br><b>([0-9][0-9.]*)</b> \(Mac\)'
+
+[[product]]
+name = "EfektorDS3603"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'EFEKTOR DS3603</strong>[\s\S]*?\(Win\) <br><b>([0-9][0-9.]*)</b> \(Mac\)'
+
+[[product]]
+name = "EfektorEcholyte"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Efektor Echolyte</strong>[\s\S]*?Current [Vv]ersion:[^0-9]*([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "EfektorFiltrator"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Efektor Filtrator</strong>[\s\S]*?Current [Vv]ersion:[^0-9]*([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "EfektorFL3606"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'EFEKTOR FL3606</strong>[\s\S]*?\(Win\) <br><b>([0-9][0-9.]*)</b> \(Mac\)'
+
+[[product]]
+name = "EfektorFZ3603"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'EFEKTOR FZ3603</strong>[\s\S]*?\(Win\) <br><b>([0-9][0-9.]*)</b> \(Mac\)'
+
+[[product]]
+name = "EfektorGainiaHB"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Efektor Gainia HB</strong>[\s\S]*?Current [Vv]ersion:[^0-9]*([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "EfektorGainiaTD"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Efektor Gainia TD</strong>[\s\S]*?Current [Vv]ersion:[^0-9]*([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "EfektorGainiaXT"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Efektor Gainia XT</strong>[\s\S]*?Current [Vv]ersion:[^0-9]*([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "EfektorGQ3607"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'EFEKTOR GQ3607  \(Free\)</strong>[\s\S]*?\(Win\) <br><b>([0-9][0-9.]*)</b> \(Mac\)'
+
+[[product]]
+name = "EfektorGrandmaster"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Efektor Grandmaster</strong>[\s\S]*?Current [Vv]ersion:[^0-9]*([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "EfektorHarmonitron"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Efektor Harmonitron</strong>[\s\S]*?Current [Vv]ersion:[^0-9]*([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "EfektorMeloditron"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Efektor Meloditron</strong>[\s\S]*?Current [Vv]ersion:[^0-9]*([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "EfektorMoonMuffin"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Efektor Moon Muffin</strong>[\s\S]*?Current [Vv]ersion:[^0-9]*([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "EfektorOD3603"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'EFEKTOR OD3603</strong>[\s\S]*?\(Win\) <br><b>([0-9][0-9.]*)</b> \(Mac\)'
+
+[[product]]
+name = "EfektorOmnivibe"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Efektor Omnivibe</strong>[\s\S]*?Current [Vv]ersion:[^0-9]*([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "EfektorPAten"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Efektor PAten</strong>[\s\S]*?Current [Vv]ersion:[^0-9]*([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "EfektorPH3605"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'EFEKTOR PH3605</strong>[\s\S]*?\(Win\) <br><b>([0-9][0-9.]*)</b> \(Mac\)'
+
+[[product]]
+name = "EfektorRingmojo"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Efektor Ringmojo</strong>[\s\S]*?Current [Vv]ersion:[^0-9]*([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "EfektorRotarion"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Efektor Rotarion</strong>[\s\S]*?Current [Vv]ersion:[^0-9]*([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "EfektorTR3604"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'EFEKTOR TR3604</strong>[\s\S]*?\(Win\) <br><b>([0-9][0-9.]*)</b> \(Mac\)'
+
+[[product]]
+name = "EfektorVibracula"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Efektor Vibracula</strong>[\s\S]*?Current [Vv]ersion:[^0-9]*([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "EfektorWF3607"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'EFEKTOR WF3607</strong>[\s\S]*?\(Win\) <br><b>([0-9][0-9.]*)</b> \(Mac\)'
+
+[[product]]
+name = "EfektorWhammo"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Efektor Whammo</strong>[\s\S]*?Current [Vv]ersion:[^0-9]*([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "PillarPowerAmp"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'Pillar Power Amp</strong>[\s\S]*?Current [Vv]ersion:[^0-9]*([0-9]+\.[0-9.]+)'
+
+[[product]]
+name = "tilQ"
+page = "https://www.kuassa.com/downloads/"
+strategy = "page_regex"
+version_regex = 'TiLQ Equalizer</strong>[\s\S]*?Current [Vv]ersion:[^0-9]*([0-9]+\.[0-9.]+)'

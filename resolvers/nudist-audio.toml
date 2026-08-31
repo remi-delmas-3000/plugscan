@@ -1,0 +1,13 @@
+# Nudist Audio (nudistaudio.com) is a JS-rendered Next.js site with no version numbers in the
+# served HTML for Fermenter or Nudistort, and no public changelog. KVR product pages are
+# Cloudflare-protected. Update news goes out via their Substack newsletter. Manual-only.
+# Wave-2 re-check 2026-08-30: nudistaudio.com is a Next.js app-router (RSC)
+# site — no /_next/data JSON routes to mine, no version strings in served HTML,
+# and the Nudistort binary has no update endpoint.
+vendor = "Nudist Audio"
+homepage = "https://www.nudistaudio.com"
+skip = "No public version source: JS-rendered Next.js site with no version strings in served HTML or data routes, and no plugin update endpoint"
+
+[manual]
+login = "https://www.nudistaudio.com/login"
+steps = "Log in at nudistaudio.com/login and re-download installers from the downloads page (/download); update announcements are posted to nudistaudio.substack.com."

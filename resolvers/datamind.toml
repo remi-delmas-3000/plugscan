@@ -1,0 +1,8 @@
+# Datamind Audio (datamindaudio.ai) publishes no version numbers on its
+# WordPress site; installers and updates are delivered via the account area.
+vendor = "Datamind"
+homepage = "https://datamindaudio.ai"
+
+[manual]
+login = "https://datamindaudio.ai/my-account/"
+steps = "Log in at datamindaudio.ai; My Account > Downloads lists the current installers for Combobulator, Concatenator and Refractalizer."

@@ -1,0 +1,17 @@
+# Official release notes live in the "BIAS X Update History / Release Notes" article
+# on help.positivegrid.com (Zendesk). The help-center HTML is behind a Cloudflare JS
+# challenge, but the Zendesk Help Center REST API serves the same article as open
+# JSON, with versions listed newest-first ("BIAS X ver. 1.2.4" first; verified live,
+# installed 1.2.1).
+vendor = "PositiveGrid"
+homepage = "https://www.positivegrid.com"
+
+[manual]
+steps = "Check https://help.positivegrid.com/hc/en-us/articles/35701353314317-BIAS-X-Update-History-Release-Notes in a browser; BIAS X updates itself via the in-app updater / Positive Grid account."
+
+[[product]]
+name = "BIAS X"
+page = "https://help.positivegrid.com/api/v2/help_center/en-us/articles/35701353314317.json"
+strategy = "page_regex"
+version_regex = 'BIAS X ver\.[^0-9]*([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://help.positivegrid.com/hc/en-us/articles/35701353314317-BIAS-X-Update-History-Release-Notes"

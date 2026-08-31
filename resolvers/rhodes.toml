@@ -1,0 +1,8 @@
+# rhodesmusic.com (WooCommerce) publishes no plugin version numbers on the V-Pan
+# product page (only WP/JS asset versions). Manual-only.
+vendor = "Rhodes"
+homepage = "https://rhodesmusic.com"
+skip = "rhodesmusic.com publishes no plugin version; downloads behind account login"
+
+[manual]
+steps = "Log in to your rhodesmusic.com account; V-Pan downloads are under My Account > Downloads. Product page: rhodesmusic.com/rhodes-v-pan-plugin/."

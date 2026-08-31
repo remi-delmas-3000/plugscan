@@ -1,0 +1,10 @@
+# Evabeat's site only states the major.minor ("Version 3.0") for Melody Sauce,
+# never a full x.y.z (re-checked /melody-sauce-3/ 2026-08 - no version strings at
+# all in the page). Updates via account.
+vendor = "Evabeat"
+homepage = "https://www.evabeat.com"
+skip = "no public version numbers: product pages carry no x.y.z version strings (verified 2026-08); installers behind my-account login"
+
+[manual]
+login = "https://www.evabeat.com/my-account/"
+steps = "Log in at evabeat.com; My Account > Downloads has the latest Melody Sauce 2/3 installers. Support section on the homepage notes current build."

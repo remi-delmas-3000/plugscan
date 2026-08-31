@@ -1,0 +1,14 @@
+# Update announcements are blog posts titled "New SubLab XL Update: X.Y.Z"; the
+# /tag/download/ index lists them newest-first.
+vendor = "FutureAudioWorkshop"
+homepage = "https://futureaudioworkshop.com"
+
+[manual]
+login = "https://futureaudioworkshop.com/my-account/"
+steps = "Log in to your Future Audio Workshop account; installers are under My Account downloads. Update posts are tagged 'download' on the blog."
+
+[[product]]
+name = "SubLabXL"
+page = "https://futureaudioworkshop.com/tag/download/"
+version_regex = 'SubLab XL Update: ([0-9]+\.[0-9]+\.[0-9]+)'
+changelog = "https://futureaudioworkshop.com/tag/download/"

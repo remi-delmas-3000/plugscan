@@ -1,0 +1,20 @@
+# voosteq.com product pages link installers on S3 with the version in the path
+# (e.g. .../materialcomp/v1.7.13/...). Anchoring on the S3 path avoids the many
+# unrelated version numbers elsewhere in the page.
+vendor = "VoosteQ"
+homepage = "https://www.voosteq.com"
+
+[manual]
+steps = "Installers are public: each product page on voosteq.com has Mac/Win download buttons for the latest version (S3 links). License key applied in-plugin."
+
+[[product]]
+name = "Material Comp"
+page = "https://www.voosteq.com/material-comp/"
+version_regex = 'materialcomp/v([0-9]+\.[0-9.]+)'
+download = "https://www.voosteq.com/material-comp/"
+
+[[product]]
+name = "Model N Channel"
+page = "https://www.voosteq.com/model-n-channel/"
+version_regex = 'model_n_channel/v([0-9]+\.[0-9.]+)'
+download = "https://www.voosteq.com/model-n-channel/"

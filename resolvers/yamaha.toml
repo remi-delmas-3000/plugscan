@@ -1,0 +1,10 @@
+# Yamaha (Omnivocal Beta vocal synth VST3). Distributed through the Steinberg
+# Download Assistant; yamaha.com's Omnivocal page states no version number in HTML
+# (the beta user manual PDF is versioned, currently v1.2.5.0). Manual-only.
+vendor = "Yamaha"
+homepage = "https://www.yamaha.com/en/about/business/music-connect/omnivocal/"
+download_via = "Steinberg Download Assistant (free from steinberg.net) - lists and installs the current Omnivocal Beta build"
+skip = "distributed only via the Steinberg Download Assistant; no public version string in HTML"
+
+[manual]
+steps = "Update Omnivocal Beta via the Steinberg Download Assistant (it lists the current beta build). Docs/FAQ at yamaha.com/en/about/business/music-connect/omnivocal/ - the user manual PDF filename/title carries the version."

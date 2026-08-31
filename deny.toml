@@ -1,0 +1,21 @@
+# License policy: MIT or Apache-2.0 only.
+# Enforced with `cargo deny check licenses` (install: cargo install cargo-deny).
+#
+# Reviewed exceptions:
+# - Unicode-3.0: rides along with unicode-ident as "(MIT OR Apache-2.0) AND
+#   Unicode-3.0" (a permissive attribution-only license for Unicode data
+#   tables). Unavoidable: unicode-ident underpins syn/proc-macro2, i.e. every
+#   derive macro. Accepted 2026-08-30.
+# - SQLite itself (bundled by libsqlite3-sys, which is MIT) is public domain.
+
+[licenses]
+allow = ["MIT", "Apache-2.0", "Unicode-3.0"]
+# webpki-root-certs carries CDLA-Permissive-2.0 (a permissive DATA license on
+# Mozilla's CA certificate bundle, not code). It stays in ureq's graph even
+# with the native-tls backend, which is what we actually use at runtime
+# (system trust store via Security.framework). Scoped exception, not a
+# policy widening. Accepted 2026-08-30.
+exceptions = [{ name = "webpki-root-certs", allow = ["CDLA-Permissive-2.0"] }]
+
+[bans]
+multiple-versions = "allow"

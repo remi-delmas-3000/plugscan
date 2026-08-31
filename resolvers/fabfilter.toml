@@ -1,0 +1,13 @@
+# FabFilter posts releases on the news page, newest first, as "Pro-Q 4.13".
+vendor = "FabFilter"
+homepage = "https://www.fabfilter.com"
+
+[manual]
+login = "https://www.fabfilter.com/myaccount"
+steps = "Public installers: fabfilter.com/download (no login needed). License key is in My Account."
+
+[[product]]
+name = "FabFilter Pro-Q 4"
+page = "https://www.fabfilter.com/news"
+version_regex = 'Pro-Q ([0-9]+\.[0-9]+)'
+download = "https://www.fabfilter.com/download"

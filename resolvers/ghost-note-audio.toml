@@ -1,0 +1,17 @@
+# Ghost Note Audio. The product page only links unversioned "-Latest" installers
+# (CDN serves no versioned filename in headers, verified), but the site's
+# downloads archive at /pages/downloads lists versioned files newest-first
+# (SpectrumThief-v0.4.1 first; verified live, = installed).
+vendor = "Ghost Note Audio"
+homepage = "https://ghostnoteaudio.uk"
+
+[manual]
+steps = "Grab the latest installer from ghostnoteaudio.uk/products/spectrum-thief (SpectrumThief-Latest.pkg/.exe direct links, always the newest build); check installed version in the plugin's about screen. Also see ghostnoteaudio.uk/pages/downloads."
+
+[[product]]
+name = "SpectrumThief"
+page = "https://ghostnoteaudio.uk/pages/downloads"
+strategy = "page_regex"
+version_regex = 'SpectrumThief-v([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://ghostnote-releases.ams3.cdn.digitaloceanspaces.com/SpectrumThief/SpectrumThief-v${version}.pkg"
+changelog = "https://ghostnoteaudio.uk/pages/downloads"

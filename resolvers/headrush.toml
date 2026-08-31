@@ -1,0 +1,19 @@
+# revalver.headrushfx.com only ever states the marketing version, but ReValver's
+# own updater endpoint (found in the app binary) is an open XML feed:
+# api.inmusicbrands.com/revalver/v1/latest_firmware_version, stating
+# "ReValver and Amp Cloner version 5.1.2" (verified live). Note: plugscan's
+# installed string is the build form "release_5.1.2-578"; the feed carries only
+# the x.y.z part.
+vendor = "HeadRush"
+homepage = "https://revalver.headrushfx.com"
+
+[manual]
+login = "https://profile.inmusicbrands.com"
+steps = "Log in with the inMusic profile; revalver.headrushfx.com/free links the current ReValver 5 installer, in-app store/updater shows the exact build."
+
+[[product]]
+name = "ReValver"
+page = "https://api.inmusicbrands.com/revalver/v1/latest_firmware_version"
+strategy = "page_regex"
+version_regex = 'ReValver and Amp Cloner version ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://cdn.inmusicbrands.com/Software/SIR1/ReValver%20Suite%20${version}%20Mac.pkg.zip"

@@ -1,0 +1,14 @@
+# Heavyocity's site publishes no plugin version numbers. The plugins call
+# heavyocity.com/api only for licensing (?activate / ?check-token / ?login, per
+# the Fury binary), and the Heavyocity Portal app's API
+# (portal.heavyocity.com/api, per its App.plist) has no public version
+# endpoints (probed live 2026-08-30: unknown_endpoint). Updates ship through
+# the Heavyocity Portal app / account downloads.
+vendor = "Heavyocity"
+homepage = "https://heavyocity.com"
+download_via = "Heavyocity Portal — Heavyocity's desktop manager app (heavyocity.com account required); it installs and updates Fury, Vast and MicroFX Refiner"
+skip = "No public version endpoint: site pages carry no versions and both the plugin licensing API and the Portal API require an authenticated account"
+
+[manual]
+login = "https://heavyocity.com/my-account/"
+steps = "Log in at heavyocity.com; My Account > Downloads lists the current installers for Fury, Vast and MicroFX Refiner, or use the Heavyocity Portal app."

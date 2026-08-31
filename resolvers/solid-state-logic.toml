@@ -1,0 +1,265 @@
+# Version detection: SSL Download Manager's public catalog API.
+# https://api.solidstatelogic.com/software/dm/all?track=live returns
+# deployableInfos.<id>.latestVersionMac for every plug-in. Verified live 2026-08:
+# all 42 installed products matched their latestVersionMac exactly. Endpoint
+# extracted from SSL Download Manager.app (Electron) app.asar.
+vendor = "Solid State Logic"
+homepage = "https://www.solidstatelogic.com"
+download_via = "SSL Download Manager app (get it at solidstatelogic.com/support-page/downloads); it installs/updates licensed plug-ins."
+
+[manual]
+login = "https://account.solidstatelogic.com"
+steps = "Log in to the SSL portal (account.solidstatelogic.com / store.solidstatelogic.com) and use the SSL Download Manager to install plug-in updates. Release notes live in the Zendesk help centre (support.solidstatelogic.com)."
+
+
+[[product]]
+name = "SSL 360 Link"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.360Link.latestVersionMac"
+
+[[product]]
+name = "SSL 360 Link Bus Compressor"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.360LinkBusCompressor.latestVersionMac"
+
+[[product]]
+name = "SSL 4K B"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.4KB.latestVersionMac"
+
+[[product]]
+name = "SSL 4K E"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.4KE.latestVersionMac"
+
+[[product]]
+name = "SSL 4K G"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.4KG.latestVersionMac"
+
+[[product]]
+name = "SSL Acoustifier"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.Acoustifier.latestVersionMac"
+
+[[product]]
+name = "SSL autoBUS"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.autoBUS.latestVersionMac"
+
+[[product]]
+name = "SSL autoDYN"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.autoDYN.latestVersionMac"
+
+[[product]]
+name = "SSL autoEQ"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.autoEQ.latestVersionMac"
+
+[[product]]
+name = "SSL Blitzer"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.Blitzer.latestVersionMac"
+
+[[product]]
+name = "SSL DeEss"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.DeEss.latestVersionMac"
+
+[[product]]
+name = "SSL Digicrush"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.Digicrush.latestVersionMac"
+
+[[product]]
+name = "SSL Fusion HF Compressor"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.FusionHFCompressor.latestVersionMac"
+
+[[product]]
+name = "SSL Fusion Stereo Image"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.FusionStereoImage.latestVersionMac"
+
+[[product]]
+name = "SSL Fusion Transformer"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.FusionTransformer.latestVersionMac"
+
+[[product]]
+name = "SSL Fusion Vintage Drive"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.FusionVintageDrive.latestVersionMac"
+
+[[product]]
+name = "SSL Fusion Violet EQ"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.FusionVioletEQ.latestVersionMac"
+
+[[product]]
+name = "SSL G3 MultiBusComp"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.G3MultiBusComp.latestVersionMac"
+
+[[product]]
+name = "SSL GateVerb"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.GateVerb.latestVersionMac"
+
+[[product]]
+name = "SSL Guitarstrip"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.Guitarstrip.latestVersionMac"
+
+[[product]]
+name = "SSL LMC+"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.LMC+.latestVersionMac"
+
+[[product]]
+name = "SSL Meter Pro"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.MeterPro.latestVersionMac"
+
+[[product]]
+name = "SSL Module8"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.Module8.latestVersionMac"
+
+[[product]]
+name = "SSL Native Bus Compressor 2"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.BusCompressor2.latestVersionMac"
+
+[[product]]
+name = "SSL Native Channel Strip 2"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.ChannelStrip2.latestVersionMac"
+
+[[product]]
+name = "SSL Native Drumstrip v6"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.Drumstrip.latestVersionMac"
+
+[[product]]
+name = "SSL Native FlexVerb"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.FlexVerb.latestVersionMac"
+
+[[product]]
+name = "SSL Native Vocalstrip 2"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.Vocalstrip 2.latestVersionMac"
+
+[[product]]
+name = "SSL Native X-Comp v6"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.XComp.latestVersionMac"
+
+[[product]]
+name = "SSL Native X-Echo"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.XEcho.latestVersionMac"
+
+[[product]]
+name = "SSL Native X-EQ 2"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.XEQ2.latestVersionMac"
+
+[[product]]
+name = "SSL Native X-Phase v6"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.XPhase.latestVersionMac"
+
+[[product]]
+name = "SSL Native X-Saturator v6"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.XSaturator.latestVersionMac"
+
+[[product]]
+name = "SSL Native X-ValveComp v6"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.XValveComp.latestVersionMac"
+
+[[product]]
+name = "SSL PlateVerb"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.PlateVerb.latestVersionMac"
+
+[[product]]
+name = "SSL Sourcerer"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.Sourcerer.latestVersionMac"
+
+[[product]]
+name = "SSL SpringVerb"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.SpringVerb.latestVersionMac"
+
+[[product]]
+name = "SSL SubGen"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.SubGen.latestVersionMac"
+
+[[product]]
+name = "SSL X-Delay"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.XDelay.latestVersionMac"
+
+[[product]]
+name = "SSL X-DynEQ"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.XDynEQ.latestVersionMac"
+
+[[product]]
+name = "SSL X-Gate"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.XGate.latestVersionMac"
+
+[[product]]
+name = "SSL X-Limit"
+page = "https://api.solidstatelogic.com/software/dm/all?track=live"
+strategy = "json"
+json_path = "deployableInfos.XLimit.latestVersionMac"

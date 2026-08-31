@@ -1,0 +1,11 @@
+# DataMind Audio (datamindaudio.ai, WordPress) exposes no version numbers publicly:
+# product pages have unversioned download links (?dma_dl=1&p=...) which 302 to the
+# my-account login when fetched (verified 2026-08 - so the header strategy is
+# impossible), and there is no changelog page.
+vendor = "DataMind Audio"
+homepage = "https://datamindaudio.ai"
+skip = "no public version source: download links 302 to my-account login and no changelog exists (verified 2026-08)"
+
+[manual]
+login = "https://datamindaudio.ai/my-account/"
+steps = "Download the latest installers from the Downloads section of each product page (e.g. datamindaudio.ai/combobulator/#downloads) or from My Account; installers are always the current version. No public changelog."

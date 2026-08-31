@@ -1,0 +1,10 @@
+# Logic Pro ships via the Mac App Store; the iTunes lookup API is stable JSON.
+vendor = "Apple"
+homepage = "https://www.apple.com/logic-pro/"
+
+[[product]]
+name = "Logic Pro"
+page = "https://itunes.apple.com/lookup?id=634148309"
+strategy = "json"
+json_path = "results.0.version"
+download = "https://apps.apple.com/app/logic-pro/id634148309"

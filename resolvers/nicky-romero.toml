@@ -1,0 +1,13 @@
+# Kickstart 2 (Nicky Romero x Cableguys). The homepage states the current demo
+# version, e.g. "Download Kickstart 2.0.9 Demo"; that is the first "Kickstart <ver>"
+# match in document order (verified live 2026-08-30, captured 2.0.9).
+vendor = "Nicky Romero"
+homepage = "https://www.kickstart-plugin.com"
+
+[manual]
+steps = "Go to https://www.kickstart-plugin.com, the current version appears in the demo download button; full-version downloads are re-delivered via the Cableguys/Kickstart purchase email."
+
+[[product]]
+name = "Kickstart 2"
+page = "https://www.kickstart-plugin.com/"
+version_regex = 'Kickstart[^0-9]*([0-9]+\.[0-9.]+)'

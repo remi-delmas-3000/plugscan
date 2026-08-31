@@ -1,0 +1,23 @@
+# sonicacademy.com itself is behind Cloudflare (challenge page for non-browser
+# clients; re-verified 2026-08-30), but their Discourse forum
+# (forums.sonicacademy.com) serves JSON openly. The KICK Synth category keeps a
+# maintained "Kick 3 latest release notes <version>" topic whose title carries
+# the current version; the category JSON is matched below. Verified live
+# 2026-08-30: title "Kick 3 latest release notes 1.1.6" (installed 1.1.2).
+# Caveat: if that topic ever falls off the category's first JSON page the regex
+# stops matching (resolver errors rather than reporting a wrong version).
+# SA76 has no release-notes topic in its category (forums.sonicacademy.com
+# /c/plugins/sa76/67.json checked live), so SA76 stays manual.
+vendor = "Sonic Academy"
+homepage = "https://www.sonicacademy.com"
+
+[manual]
+login = "https://www.sonicacademy.com/login"
+steps = "Log in at sonicacademy.com, open Account > Downloads for the latest Kick 3 / SA76 installers. Update announcements appear on the product pages (sonicacademy.com/products/kick-3) and in the in-plugin update notice."
+
+[[product]]
+name = "Kick 3"
+page = "https://forums.sonicacademy.com/c/plugins/kick-synth/9.json"
+strategy = "page_regex"
+version_regex = 'Kick 3 latest release notes ([0-9]+\.[0-9.]+)'
+changelog = "https://forums.sonicacademy.com/c/plugins/kick-synth/9"

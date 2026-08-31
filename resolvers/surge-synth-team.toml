@@ -1,0 +1,14 @@
+# Open-source (GitHub, surge-synthesizer org). Releases atom feed lists "Nightly" first,
+# then tagged releases newest-first, so match "Release v" to skip the nightly entry.
+vendor = "Surge Synth Team"
+homepage = "https://surge-synthesizer.github.io"
+
+[manual]
+steps = "Free/open-source. Download latest from https://github.com/surge-synthesizer/OB-Xf/releases (skip the Nightly entry)."
+
+[[product]]
+name = "OB-Xf"
+page = "https://github.com/surge-synthesizer/OB-Xf/releases.atom"
+version_regex = 'Release v([0-9]+\.[0-9.]+)'
+download = "https://github.com/surge-synthesizer/OB-Xf/releases/latest"
+changelog = "https://github.com/surge-synthesizer/OB-Xf/releases"

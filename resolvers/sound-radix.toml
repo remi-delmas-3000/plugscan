@@ -1,0 +1,13 @@
+# Product page links installers named "Drum Leveler X.Y.Z Installer"; the latest
+# version appears first in document order (older setup/manual links come later).
+vendor = "Sound Radix"
+homepage = "https://www.soundradix.com"
+
+[manual]
+steps = "Go to soundradix.com/products/drum-leveler/ and use the Download links; licenses are managed via the Sound Radix account area."
+
+[[product]]
+name = "DrumLeveler"
+page = "https://www.soundradix.com/products/drum-leveler/"
+version_regex = 'Drum Leveler ([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://www.soundradix.com/products/drum-leveler/"

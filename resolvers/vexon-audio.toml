@@ -1,0 +1,11 @@
+# Vexon Audio product pages (vexonaudio.com) do not state plugin version numbers,
+# and KVR (which announces their updates, e.g. Poly Shimmer v1.0.1) blocks plain
+# HTTP clients with Cloudflare. Manual-only.
+# Wave-2 re-check 2026-08-30: vexonaudio.com is WordPress (no Shopify
+# /products.json), and the PolyShimmer binary has no update endpoint.
+vendor = "Vexon Audio"
+homepage = "https://www.vexonaudio.com"
+skip = "No public version source: WordPress product pages carry no version strings and the plugins have no update-check endpoint"
+
+[manual]
+steps = "Check vexonaudio.com product pages (products/polly-shimmer) and your purchase email/Payhip library for installer downloads; version updates are announced via KVR news (search 'Vexon Audio' on kvraudio.com)."

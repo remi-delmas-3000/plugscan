@@ -1,0 +1,78 @@
+# The Usual Suspects (DSP56300 emulator project). All plugins ship together in one
+# gearmulator release, so every product shares the same GitHub releases atom feed.
+# Feed lists newest release first; entry <title> is the bare version number.
+vendor = "The Usual Suspects"
+homepage = "https://dsp56300.wordpress.com"
+
+[manual]
+steps = "Go to https://github.com/dsp56300/gearmulator/releases and download the latest release; one installer bundle covers all plugins (Osirus, OsTIrus, Vavra, Xenia, NodalRed2x, JE8086 and their FX variants)."
+
+[[product]]
+name = "JE8086"
+page = "dsp56300/gearmulator"
+strategy = "github_release"
+download = "https://github.com/dsp56300/gearmulator/releases/latest"
+changelog = "https://github.com/dsp56300/gearmulator/releases"
+
+[[product]]
+name = "NodalRed2x"
+page = "dsp56300/gearmulator"
+strategy = "github_release"
+download = "https://github.com/dsp56300/gearmulator/releases/latest"
+changelog = "https://github.com/dsp56300/gearmulator/releases"
+
+[[product]]
+name = "Osirus"
+page = "dsp56300/gearmulator"
+strategy = "github_release"
+download = "https://github.com/dsp56300/gearmulator/releases/latest"
+changelog = "https://github.com/dsp56300/gearmulator/releases"
+
+[[product]]
+name = "OsirusFX"
+page = "dsp56300/gearmulator"
+strategy = "github_release"
+download = "https://github.com/dsp56300/gearmulator/releases/latest"
+changelog = "https://github.com/dsp56300/gearmulator/releases"
+
+[[product]]
+name = "OsTIrus"
+page = "dsp56300/gearmulator"
+strategy = "github_release"
+download = "https://github.com/dsp56300/gearmulator/releases/latest"
+changelog = "https://github.com/dsp56300/gearmulator/releases"
+
+[[product]]
+name = "OsTIrusFX"
+page = "dsp56300/gearmulator"
+strategy = "github_release"
+download = "https://github.com/dsp56300/gearmulator/releases/latest"
+changelog = "https://github.com/dsp56300/gearmulator/releases"
+
+[[product]]
+name = "Vavra"
+page = "dsp56300/gearmulator"
+strategy = "github_release"
+download = "https://github.com/dsp56300/gearmulator/releases/latest"
+changelog = "https://github.com/dsp56300/gearmulator/releases"
+
+[[product]]
+name = "VavraFX"
+page = "dsp56300/gearmulator"
+strategy = "github_release"
+download = "https://github.com/dsp56300/gearmulator/releases/latest"
+changelog = "https://github.com/dsp56300/gearmulator/releases"
+
+[[product]]
+name = "Xenia"
+page = "dsp56300/gearmulator"
+strategy = "github_release"
+download = "https://github.com/dsp56300/gearmulator/releases/latest"
+changelog = "https://github.com/dsp56300/gearmulator/releases"
+
+[[product]]
+name = "XeniaFX"
+page = "dsp56300/gearmulator"
+strategy = "github_release"
+download = "https://github.com/dsp56300/gearmulator/releases/latest"
+changelog = "https://github.com/dsp56300/gearmulator/releases"

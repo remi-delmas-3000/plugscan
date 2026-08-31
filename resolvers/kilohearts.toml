@@ -1,0 +1,324 @@
+# All Kilohearts plugins ship in one bundle; kilohearts.com/changelog lists
+# releases newest-first as <a href="/changelog#X.Y.Z"> anchors. Verified 2026-08-30 (2.4.6).
+vendor = "Kilohearts"
+homepage = "https://kilohearts.com"
+
+[manual]
+login = "https://kilohearts.com/login"
+steps = "Install/update everything with the Kilohearts Installer from kilohearts.com/downloads (public). Versions listed at kilohearts.com/changelog."
+
+[[product]]
+name = "Carve EQ"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "Disperser"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "Faturator"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs 3-Band EQ"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Bitcrush"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Channel Mixer"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Chorus"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Clipper"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Comb Filter"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Compactor"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Compressor"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Convolver"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Delay"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Distortion"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Dual Delay"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Dynamics"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Ensemble"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Filter"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Filter Table"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Flanger"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Formant Filter"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Frequency Shifter"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Gain"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Gate"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Haas"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Ladder Filter"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Limiter"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Nonlinear Filter"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Phase Distortion"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Phaser"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Pitch Shifter"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Resonator"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Reverb"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Reverser"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Ring Mod"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Shaper"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Shaper Table"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Stereo"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Tape Stop"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Trance Gate"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "kHs Transient Shaper"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "Multipass"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "Phase Plant"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "Slice EQ"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
+[[product]]
+name = "Snap Heap"
+page = "https://kilohearts.com/changelog"
+version_regex = 'changelog#([0-9]+\.[0-9]+\.[0-9]+)'
+download = "https://kilohearts.com/downloads"
+changelog = "https://kilohearts.com/changelog"
+
