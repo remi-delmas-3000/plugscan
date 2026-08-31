@@ -1,8 +1,16 @@
-# Shopify store; the Plugin Suite product page contains only theme/JS versions.
-# Updates are announced via KVR news and delivered by emailed download links.
+# Third-party source: KVR Audio product-database page (developer-maintained,
+# may lag releases; KVR is where Aguilar announces plugin updates anyway).
+# KVR needs HTTP/1.1 + browser UA (plugscan's ureq client qualifies; verified
+# live 2026-08-31: Aguilar Plugin Suite 1.3.2, exact match to installed).
+# id="verosx" is the Mac "Product Version" field.
 vendor = "Aguilar"
 homepage = "https://aguilaramp.com"
-skip = "Shopify page carries no version info; installers delivered via emailed links; re-verified 2026-08-31: products.json (250 items) rechecked including the aguilar-plugin-suite body_html - no version strings"
 
 [manual]
 steps = "License and download link are emailed on purchase; re-download via the link in your Aguilar order email or contact support. Product page: aguilaramp.com/products/aguilar-plugin-suite."
+
+[[product]]
+name = "Aguilar Plugin Suite"
+page = "https://www.kvraudio.com/product/aguilar-plugin-suite-by-aguilar"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"

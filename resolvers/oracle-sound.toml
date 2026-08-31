@@ -3,8 +3,7 @@
 # 65 products carry version strings in body_html.
 vendor = "Oracle Sound"
 homepage = "https://www.oraclesound.com"
-skip = "no public version info: Shopify products.json and STAGER product pages carry no version strings (verified 2026-08)"
-
+skip = "no public version info: Shopify products.json and STAGER product pages carry no version strings (verified 2026-08); re-verified 2026-08-31: the Shopify products.json and /pages/support were re-checked and carry no version strings"
 [manual]
 login = "https://www.oraclesound.com/account/login"
 steps = "Log in to your oraclesound.com (Shopify) account; downloads are delivered via the order page / download links emailed at purchase, which always serve the current build. No public changelog - contact support or re-download to update the STAGER plugins."

@@ -10,8 +10,7 @@
 vendor = "AIR Music Technology"
 homepage = "https://www.airmusictech.com"
 download_via = "inMusic Software Center (desktop app) — download from profile.inmusicbrands.com Software tab; it installs and updates all registered AIR plugins."
-skip = "Public airmusictech.com installers lag the inMusic Software Center that delivers updates (site versions verified older than installed), so no reliable 'latest' is web-scrapeable."
-
+skip = "Public airmusictech.com installers lag the inMusic Software Center that delivers updates (site versions verified older than installed), so no reliable 'latest' is web-scrapeable; re-verified 2026-08-31: the /product/* pages now 404 and updates still ship only via the inMusic Software Center"
 [manual]
 login = "https://profile.inmusicbrands.com"
 steps = "Log in to the inMusic Profile, register products, and install/update via the inMusic Software Center (Software tab). airmusictech.com product pages list only older bundled installers."

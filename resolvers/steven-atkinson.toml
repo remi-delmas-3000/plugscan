@@ -3,7 +3,7 @@
 # no scrapeable version). No public GitHub releases for this plugin. Manual-only.
 vendor = "Steven Atkinson"
 homepage = "https://www.neuralampmodeler.com"
-skip = "neuralampmodeler.com is JS-rendered Wix with no version string; no ParametricOD repo among sdatkinson GitHub repos (verified via API); re-verified 2026-08-31: Wix blog-posts sitemap crawled - posts cover NAM trainer/core releases only, no ParametricOD version announcements"
+skip = "neuralampmodeler.com is JS-rendered Wix with no version string; no ParametricOD repo among sdatkinson GitHub repos (verified via API); re-verified 2026-08-31: Wix blog-posts sitemap crawled - posts cover NAM trainer/core releases only, no ParametricOD version announcements; third-party sweep 2026-08-31: nothing found - ParametricOD is absent from the KVR product DB (no steven-atkinson developer page), sdatkinson's GitHub repos (rechecked via API), and plugin-news sites"
 
 [manual]
 steps = "Go to neuralampmodeler.com (Users/Downloads section) and download the latest ParametricOD build; version announcements appear on the NAM blog."

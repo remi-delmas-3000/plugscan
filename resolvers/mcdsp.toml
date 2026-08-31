@@ -1,12 +1,95 @@
-# McDSP publishes no per-plugin version info in static HTML: the downloads page
-# (mcdsp.com/downloads/plugin-downloads/) is login-gated/JS, and version announcements
-# are press releases. Re-checked 2026-08: the homepage only mentions v7.0/v7.1 in
-# stale marketing copy - no current version anywhere scrapable.
-# The whole v7 line versions in lockstep (installed line is 7.3.0).
+# Third-party source: KVR Audio product-database pages (developer-maintained,
+# may lag releases). KVR needs HTTP/1.1 + browser UA (plugscan's ureq client
+# qualifies; verified live 2026-08-31: every McDSP page shows Mac 7.3.17
+# (Windows 7.3.0.18) vs 7.3.0 installed - the whole v7 line versions in
+# lockstep, so any one product page tracks the line).
+# Catalog bundle -> KVR page mapping notes:
+#   MC2000_MC202/MC303/MC404 ship in the MC2000 installer (mc2000 page);
+#   ML4000_ML1/ML4 ship in the ML4000 installer (ml4000 page);
+#   SA2_Dialog_Processor has no KVR page of its own - it points at the SA-3
+#   page, valid because the whole line versions in lockstep.
+# Single-product pages; id="verosx" is the Mac "Product Version" field.
 vendor = "McDSP"
 homepage = "https://mcdsp.com"
-skip = "no version info in public HTML: downloads login-gated, homepage only carries stale v7.0/v7.1 marketing text (verified 2026-08); re-verified 2026-08-31: /downloads/ and /support/ re-fetched - still only v7.0/v7.1 marketing text vs 7.3.0 installed"
 
 [manual]
 login = "https://mcdsp.com/login/"
-steps = "Log in at mcdsp.com, open Downloads > Plug-in Downloads for the latest installers; version news is under mcdsp.com press releases (all v7 plug-ins update in lockstep, e.g. v7.3.0)."
+steps = "Log in at mcdsp.com, open Downloads > Plug-in Downloads for the latest installers; version news is under mcdsp.com press releases (all v7 plug-ins update in lockstep)."
+
+[[product]]
+name = "AE600_Active_EQ"
+page = "https://www.kvraudio.com/product/ae600-active-equalizer-by-mcdsp"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "EC300"
+page = "https://www.kvraudio.com/product/ec-300-by-mcdsp"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "FutzBox"
+page = "https://www.kvraudio.com/product/futzbox-by-mcdsp"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "FutzVerb"
+page = "https://www.kvraudio.com/product/futzverb-by-mcdsp"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "MC2000_MC202"
+page = "https://www.kvraudio.com/product/mc2000-by-mcdsp"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "MC2000_MC303"
+page = "https://www.kvraudio.com/product/mc2000-by-mcdsp"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "MC2000_MC404"
+page = "https://www.kvraudio.com/product/mc2000-by-mcdsp"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "ML4000_ML1"
+page = "https://www.kvraudio.com/product/ml4000-mastering-limiter-by-mcdsp"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "ML4000_ML4"
+page = "https://www.kvraudio.com/product/ml4000-mastering-limiter-by-mcdsp"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "ML8000"
+page = "https://www.kvraudio.com/product/ml8000-advanced-limiter-by-mcdsp"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "Revolver"
+page = "https://www.kvraudio.com/product/revolver-by-mcdsp"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "SA2_Dialog_Processor"
+page = "https://www.kvraudio.com/product/sa-3-dialog-processor-by-mcdsp"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "SA3_Spectral_Processor"
+page = "https://www.kvraudio.com/product/sa-3-dialog-processor-by-mcdsp"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"

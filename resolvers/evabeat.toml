@@ -3,8 +3,7 @@
 # all in the page). Updates via account.
 vendor = "Evabeat"
 homepage = "https://www.evabeat.com"
-skip = "no public version numbers: product pages carry no x.y.z version strings (verified 2026-08); installers behind my-account login"
-
+skip = "no public version numbers: product pages carry no x.y.z version strings (verified 2026-08); installers behind my-account login; re-verified 2026-08-31: wp-json search, the product pages and /download* and accounts.evabeat.com all 404 or carry no version (licensing runs through api.keyzy.io only)"
 [manual]
 login = "https://www.evabeat.com/my-account/"
 steps = "Log in at evabeat.com; My Account > Downloads has the latest Melody Sauce 2/3 installers. Support section on the homepage notes current build."

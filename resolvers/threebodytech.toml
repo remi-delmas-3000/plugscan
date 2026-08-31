@@ -5,8 +5,7 @@
 # (Cenozoix, Kirchhoff-EQ, ...) is the same company but those ship via Plugin Alliance.
 vendor = "Threebodytech"
 homepage = "https://www.threebodytech.com"
-skip = "no scrapable version source: product pages carry no current versions and download.threebodytech.com does not answer non-browser clients (verified 2026-08)"
-
+skip = "no scrapable version source: product pages carry no current versions and download.threebodytech.com does not answer non-browser clients (verified 2026-08); re-verified 2026-08-31: download.threebodytech.com does answer (HTTP 200) but is a login-gated Vue SPA (it demands 'Please login to download') and the product pages carry no version"
 [manual]
 login = "https://my.threebodytech.com"
 steps = "Log in at my.threebodytech.com; the user center lists current installers for Cabinetron, SpecCraft, Unmask and VOTT. Demo downloads also on each product page."

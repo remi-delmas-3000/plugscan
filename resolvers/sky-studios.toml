@@ -1,8 +1,16 @@
-# Small vendor; no public changelog or version listing found for S.K.Y. Keys
-# (KVR product page is Cloudflare-403 to curl). Manual-only.
+# Third-party source: KVR Audio product-database page (developer-maintained,
+# may lag releases). The earlier "KVR is Cloudflare-403" claim only holds for
+# HTTP/2 clients: KVR serves HTTP/1.1 + browser UA requests (plugscan's ureq
+# client qualifies; verified live 2026-08-31: S.K.Y. Keys 1.0.0, exact match
+# to installed). id="verosx" is the Mac "Product Version" field.
 vendor = "S.K.Y. Studios"
 homepage = "https://www.skystudios.shop"
-skip = "no public changelog; KVR product page is Cloudflare-403 to automated fetches; re-verified 2026-08-31: skystudios.shop (bare and www) no longer connects at all from HTTP clients"
 
 [manual]
 steps = "Check your S.K.Y. Studios purchase email / account for the latest SKY Keys installer, or the KVR product page (S.K.Y. Keys by S.K.Y. Studios) for version news."
+
+[[product]]
+name = "SKY_Keys"
+page = "https://www.kvraudio.com/product/s-k-y-keys-by-s-k-y-studios"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"

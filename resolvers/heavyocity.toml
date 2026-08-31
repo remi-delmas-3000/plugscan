@@ -7,8 +7,7 @@
 vendor = "Heavyocity"
 homepage = "https://heavyocity.com"
 download_via = "Heavyocity Portal — Heavyocity's desktop manager app (heavyocity.com account required); it installs and updates Fury, Vast and MicroFX Refiner"
-skip = "No public version endpoint: site pages carry no versions and both the plugin licensing API and the Portal API require an authenticated account"
-
+skip = "No public version endpoint: site pages carry no versions and both the plugin licensing API and the Portal API require an authenticated account; re-verified 2026-08-31: the Shopify catalog carries no versions and the plugin/portal APIs require an authenticated account"
 [manual]
 login = "https://heavyocity.com/my-account/"
 steps = "Log in at heavyocity.com; My Account > Downloads lists the current installers for Fury, Vast and MicroFX Refiner, or use the Heavyocity Portal app."

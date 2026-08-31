@@ -1,11 +1,57 @@
-# Strymon publishes firmware release notes for the hardware pedals only; the plugin
-# product pages (e.g. /product/bigsky-plugin/) carry no plugin version numbers
-# (re-checked 2026-08 with browser UA), and plugin installers are delivered through
-# the user account.
+# Correction 2026-08-31 (wave-3 re-test): the skip was wrong. Each plug-in's
+# PUBLIC support page (strymon.net/support/<slug>-plug-in/) carries a direct,
+# unauthenticated installer link whose filename holds the current version, e.g.
+#   /downloads/cloudburstplugin/strymon_Cloudburst_plugin_setup_macOS_1.0.1.pkg
+# The macOS .pkg link is the first .pkg on the page = latest. Verified live
+# 2026-08-31 (all >= installed; BigSky 1.3.2 and NightSky 1.0.2 are newer).
+# Filename shape differs by age: newer plug-ins use "_setup_macOS_X.Y.Z.pkg",
+# older ones "_setup_X.Y.Z.pkg" (and BigSky is lowercase), so each product
+# anchors on its own filename.
 vendor = "Strymon"
 homepage = "https://www.strymon.net"
-skip = "no public plugin version info: product pages carry only pedal-firmware references, plugin installers behind my-account login (verified 2026-08)"
 
 [manual]
 login = "https://www.strymon.net/my-account/"
-steps = "Log in at strymon.net (My Account > downloads) to get the latest plugin installers for BigSky/Cloudburst/Deco/DIG/El Capistan/NightSky; the faq pages under strymon.net/faq/ list pedal FIRMWARE versions, not plugin versions - do not confuse the two."
+steps = "Public installers on each plug-in support page: strymon.net/support/<name>-plug-in/ (direct .pkg/.zip links; the account is only needed for authorization)."
+
+[[product]]
+name = "BigSky"
+page = "https://www.strymon.net/support/bigsky-plug-in/"
+strategy = "page_regex"
+version_regex = 'strymon_bigsky_plugin_setup_([0-9]+\.[0-9]+\.[0-9]+)\.pkg'
+download = "https://www.strymon.net/support/bigsky-plug-in/"
+
+[[product]]
+name = "Cloudburst"
+page = "https://www.strymon.net/support/cloudburst-plug-in/"
+strategy = "page_regex"
+version_regex = 'strymon_Cloudburst_plugin_setup_macOS_([0-9]+\.[0-9]+\.[0-9]+)\.pkg'
+download = "https://www.strymon.net/support/cloudburst-plug-in/"
+
+[[product]]
+name = "Deco"
+page = "https://www.strymon.net/support/deco-plug-in/"
+strategy = "page_regex"
+version_regex = 'strymon_Deco_plugin_setup_macOS_([0-9]+\.[0-9]+\.[0-9]+)\.pkg'
+download = "https://www.strymon.net/support/deco-plug-in/"
+
+[[product]]
+name = "DIG"
+page = "https://www.strymon.net/support/dig-plug-in/"
+strategy = "page_regex"
+version_regex = 'strymon_DIG_plugin_setup_([0-9]+\.[0-9]+\.[0-9]+)\.pkg'
+download = "https://www.strymon.net/support/dig-plug-in/"
+
+[[product]]
+name = "El Capistan"
+page = "https://www.strymon.net/support/elcapistan-plug-in/"
+strategy = "page_regex"
+version_regex = 'strymon_ElCapistan_plugin_setup_([0-9]+\.[0-9]+\.[0-9]+)\.pkg'
+download = "https://www.strymon.net/support/elcapistan-plug-in/"
+
+[[product]]
+name = "NightSky"
+page = "https://www.strymon.net/support/nightsky-plug-in/"
+strategy = "page_regex"
+version_regex = 'strymon_NightSky_plugin_setup_macOS_([0-9]+\.[0-9]+\.[0-9]+)\.pkg'
+download = "https://www.strymon.net/support/nightsky-plug-in/"

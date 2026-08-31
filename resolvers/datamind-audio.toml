@@ -4,8 +4,7 @@
 # impossible), and there is no changelog page.
 vendor = "DataMind Audio"
 homepage = "https://datamindaudio.ai"
-skip = "no public version source: download links 302 to my-account login and no changelog exists (verified 2026-08)"
-
+skip = "no public version source: download links 302 to my-account login and no changelog exists (verified 2026-08); re-verified 2026-08-31: the wp-json licensing/v1/GetPluginVersion endpoint needs an undocumented appId (404/empty) and the GitHub data-store releases are model manifests, not plugin versions"
 [manual]
 login = "https://datamindaudio.ai/my-account/"
 steps = "Download the latest installers from the Downloads section of each product page (e.g. datamindaudio.ai/combobulator/#downloads) or from My Account; installers are always the current version. No public changelog."

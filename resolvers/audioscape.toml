@@ -1,10 +1,34 @@
-# AudioScape Engineering's plugins are developed with Kiive Audio; both
-# audio-scape.com and kiiveaudio.com carry no public version numbers.
-# Re-checked 2026-08: audio-scape.com/products.json returns 404 (headless/custom
-# storefront), so not even the Shopify JSON route exists.
+# Third-party source: KVR Audio product-database pages (developer-maintained,
+# may lag releases). KVR needs HTTP/1.1 + browser UA (plugscan's ureq client
+# qualifies; verified live 2026-08-31, all exact matches to installed:
+# MK 609 1.0.2, V-Comp 1.0.5, Golden 58 1.1.0, XL-305R 1.1.2).
+# Single-product pages; id="verosx" is the Mac "Product Version" field.
 vendor = "Audioscape"
 homepage = "https://www.audio-scape.com"
-skip = "no public version source: no version numbers on the store pages and no products.json feed (verified 2026-08); re-verified 2026-08-31: the site is Squarespace (audio-scape.com) and /products?format=json returns only a landing block with no product items or version strings"
 
 [manual]
 steps = "Installers via the Kiive Audio / AudioScape order emails or the kiiveaudio.com account downloads; product pages at audio-scape.com/audioscape-plugins."
+
+[[product]]
+name = "AS MK609"
+page = "https://www.kvraudio.com/product/mk-609-precision-stereo-diode-limiter-compressor-by-audioscape"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "AS V-Comp"
+page = "https://www.kvraudio.com/product/v-comp-vari-mu-compressor-by-audioscape"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "Golden 58 Preamp"
+page = "https://www.kvraudio.com/product/golden-58-stereo-tube-preamp-by-audioscape"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "XL305R"
+page = "https://www.kvraudio.com/product/xl-305r-by-audioscape"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"

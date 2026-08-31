@@ -1,13 +1,24 @@
-# BLEASS publishes no plugin version numbers on product pages; the
-# software-updates blog category (bleass.com/category/software-updates/,
-# re-checked live 2026-08-30) has no versioned posts for Spectral Resonator or
-# Vox, and the plugin binaries reference only the shop. Updates ship through
-# the "BLEASS Plugins Installer" desktop app.
+# Third-party source: KVR Audio product-database pages (developer-maintained,
+# may lag releases). KVR needs HTTP/1.1 + browser UA (plugscan's ureq client
+# qualifies; verified live 2026-08-31, exact matches to installed:
+# Spectral Resonator 1.0.9, Vox 1.0.5).
+# Single-product pages; id="verosx" is the Mac "Product Version" field.
 vendor = "BLEASS"
 homepage = "https://www.bleass.com"
 download_via = "BLEASS Plugins Installer — BLEASS's desktop manager app (see bleass.com/bpi-help/); it checks for and installs plugin updates"
-skip = "No public version source: product pages and the software-updates blog carry no version numbers for Spectral Resonator or Vox; re-verified 2026-08-31: per-product pages found via wp-sitemap (bleass.com/product/bleass-vox and /bleass-spectral-resonator) carry only boilerplate 'version 1.0' text, no real plugin versions"
 
 [manual]
 login = "https://www.bleass.com/my-account/"
 steps = "Run the BLEASS Plugins Installer app (see bleass.com/bpi-help/) to check for and install plugin updates; update announcements are posted at bleass.com/category/software-updates/."
+
+[[product]]
+name = "BLEASS Spectral Resonator"
+page = "https://www.kvraudio.com/product/bleass-spectral-resonator-by-bleass"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "BLEASS Vox"
+page = "https://www.kvraudio.com/product/bleass-vox-by-bleass"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"

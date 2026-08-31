@@ -8,7 +8,6 @@
 # guessed ?product= value), so it is not publicly usable.
 vendor = "Fine Classics Plugins"
 homepage = "https://fineclassicsplugins.com"
-skip = "No usable version endpoint: the vendor's product_version cloud function requires an undocumented product identifier and the Shopify store publishes no versions"
-
+skip = "No usable version endpoint: the vendor's product_version cloud function requires an undocumented product identifier and the Shopify store publishes no versions; re-verified 2026-08-31: the cloud function product_version returns HTTP 500 to unparameterized calls and the Shopify catalog carries no versions"
 [manual]
 steps = "Check https://fineclassicsplugins.com/products/fine-classics-pedalboard and https://fineclassicsplugins.com/pages/subtle-spaces-free-plugin for update announcements; no version numbers are published on the site, so re-download installers from your purchase/freebie email link or contact support to confirm the latest version."

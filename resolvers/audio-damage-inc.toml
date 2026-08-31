@@ -4,8 +4,7 @@
 # dependable pattern). Versions are only visible in installer filenames after login.
 vendor = "Audio Damage, Inc."
 homepage = "https://www.audiodamage.com"
-skip = "no reliable public version source: Shopify products.json and product pages carry no version fields (verified 2026-08); versions only in installer filenames behind login"
-
+skip = "no reliable public version source: Shopify products.json and product pages carry no version fields (verified 2026-08); versions only in installer filenames behind login; re-verified 2026-08-31: the Shopify catalog only has marketing text (e.g. V3.23) and the public demo zips are unversioned"
 [manual]
 login = "https://www.audiodamage.com/account"
 steps = "Log in at audiodamage.com/account; installers (version in filename) are under your order/downloads history. Update announcements appear at audiodamage.com/blogs/news."

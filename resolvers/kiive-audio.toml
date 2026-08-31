@@ -3,8 +3,7 @@
 # endpoint URLs; no local manager app.
 vendor = "Kiive Audio"
 homepage = "https://kiiveaudio.com"
-skip = "Shopify storefront is version-free (catalog JSON and product pages checked) and plugins have no update-check endpoint."
-
+skip = "Shopify storefront is version-free (catalog JSON and product pages checked) and plugins have no update-check endpoint; re-verified 2026-08-31: the Shopify catalog and content pages (Zipify) were re-checked and carry no version strings"
 [manual]
 login = "https://kiiveaudio.com/account"
 steps = "Log in at kiiveaudio.com/account; installers via account downloads or purchase emails. Shopify product pages carry no reliable version strings."

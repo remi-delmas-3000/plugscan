@@ -1,12 +1,24 @@
-# Woodstock Audio (woodstockaudio.com, Shopify store) publishes no version numbers or changelogs
-# on its public product pages. KVR product pages are Cloudflare-protected (curl gets "Just a moment...").
-# Manual-only.
-# Wave-2 re-check 2026-08-30: /products.json (Shopify) lists both plugins but
-# carries no version strings; the Open Compressor binary has no update endpoint.
+# Third-party source: KVR Audio product-database pages (developer-maintained,
+# may lag releases). The earlier "KVR is Cloudflare-protected" claim only
+# holds for HTTP/2 clients: KVR serves HTTP/1.1 + browser UA requests
+# (plugscan's ureq client qualifies; verified live 2026-08-31:
+# Open Compressor 1.0.7 exact, Waveform Compressor 1.0.7 >= 1.0.6 installed).
+# Single-product pages; id="verosx" is the Mac "Product Version" field.
 vendor = "Woodstock Audio"
 homepage = "https://woodstockaudio.com"
-skip = "No version numbers anywhere: Shopify store pages and /products.json carry none, and the plugins have no update-check endpoint; re-verified 2026-08-31: /products/compressor product page recrawled - only theme/library version tokens, no plugin version"
 
 [manual]
 login = "https://woodstockaudio.com/account/login"
-steps = "Log in to your Shopify account at woodstockaudio.com/account/login; re-download installers from your order history. No public changelog; product pages (e.g. /products/compressor) announce major versions only."
+steps = "Log in to your Shopify account at woodstockaudio.com/account/login; re-download installers from your order history."
+
+[[product]]
+name = "Open Compressor"
+page = "https://www.kvraudio.com/product/open-compressor-by-woodstock-audio"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "Waveform Compressor"
+page = "https://www.kvraudio.com/product/waveform-compressor-by-woodstock-audio"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"

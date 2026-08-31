@@ -3,8 +3,7 @@
 # Update announcements go out via their blog/newsletter.
 vendor = "Audio Hertz"
 homepage = "https://audiohertz.com"
-skip = "no public version info: shop/product pages carry no version numbers or changelogs; downloads behind my-account login"
-
+skip = "no public version info: shop/product pages carry no version numbers or changelogs; downloads behind my-account login; re-verified 2026-08-31: wp-json search and the WordPress product pages were re-checked and carry no version strings or changelogs"
 [manual]
 login = "https://audiohertz.com/my-account/"
 steps = "Log in at audiohertz.com/my-account/ and re-download installers (downloads always serve the latest build); watch audiohertz.com/blog/ or the newsletter for update announcements. Product pages carry no version numbers."

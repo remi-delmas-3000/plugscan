@@ -5,8 +5,7 @@
 # and download.php returned no response to a direct request.
 vendor = "sonible"
 homepage = "https://www.sonible.com"
-skip = "In-plugin updater endpoint (downloads01.sonible.com/update.php) does not disclose the latest version; no public page or API carries plugin version strings."
-
+skip = "In-plugin updater endpoint (downloads01.sonible.com/update.php) does not disclose the latest version; no public page or API carries plugin version strings; re-verified 2026-08-31: the update.php endpoint was re-tested and only echoes the caller's product/version params, and download.php returns nothing"
 [manual]
 login = "https://account.sonible.com"
 steps = "Log in at account.sonible.com for licences and installers; release notes are in the help centre (help.sonible.com). Product pages carry no plugin version strings."

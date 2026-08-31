@@ -1,11 +1,33 @@
-# Xfer publishes no public changelog page; product pages and the support page carry
-# no version numbers (re-checked /support and /products/serum-2 2026-08 - only
-# unrelated library version strings appear) and kvraudio blocks bots. Release notes
-# live behind the account downloads area.
+# Third-party source: KVR Audio product-database pages (developer-maintained,
+# may lag releases). The earlier "kvraudio blocks bots" claim only holds for
+# HTTP/2 clients: KVR serves HTTP/1.1 + browser UA requests (plugscan's ureq
+# client qualifies; verified live 2026-08-31: Serum 2 at 2.1.5 exact,
+# Cthulhu Mac 1.249 >= 1.248 installed).
+# Cthulhu_MFX ships in the Cthulhu installer and shares its version.
+# PinkTrombone / PinkTromboneFX (installed 1.0.5) have no KVR page and no
+# other indexed version source was found - those two bundles stay unresolved.
+# Single-product pages; id="verosx" is the Mac "Product Version" field.
 vendor = "Xfer Records"
 homepage = "https://xferrecords.com"
-skip = "no public version info: product/support pages carry no plugin version numbers (verified 2026-08); versions only in the login-gated downloads area; re-verified 2026-08-31: Serum2's binary is PACE-encrypted (zero URL/changelog strings to mine) and the serum-2 product page's only x.y.z numbers are webfont asset versions"
 
 [manual]
 login = "https://xferrecords.com/customer_sessions/new"
 steps = "Log in at xferrecords.com, open Account > Downloads: each product (Serum 2, Cthulhu, ...) lists the current installer version and release notes."
+
+[[product]]
+name = "Cthulhu"
+page = "https://www.kvraudio.com/product/cthulhu-by-xfer-records"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "Cthulhu_MFX"
+page = "https://www.kvraudio.com/product/cthulhu-by-xfer-records"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "Serum2"
+page = "https://www.kvraudio.com/product/serum-2-by-xfer-records"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"

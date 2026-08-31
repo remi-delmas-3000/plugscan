@@ -4,8 +4,7 @@
 # Plugin Alliance Installation Manager.
 vendor = "Mixland"
 homepage = "https://mixland.io"
-skip = "no public version info: Shopify products.json and product pages carry no version strings (verified 2026-08); downloads behind customer login"
-
+skip = "no public version info: Shopify products.json and product pages carry no version strings (verified 2026-08); downloads behind customer login; re-verified 2026-08-31: Shopify products.json, /pages/support and /pages/ext carry no versions and the HISE binary only calls an activation endpoint"
 [manual]
 login = "https://mixland.io/account/login"
 steps = "Log in to your Mixland account; your order history contains the download links, which always serve the latest installers. See https://mixland.io/pages/support for help. (Mixland Vac Attack is also distributed via Plugin Alliance: check your plugin-alliance.com account or the Plugin Alliance Installation Manager.)"

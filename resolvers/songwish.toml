@@ -1,13 +1,24 @@
-# SongWish (songwish.ca) is a JS-rendered SPA; the served HTML is a 474-byte shell with no
-# version info, and KVR product/release-note pages are Cloudflare-protected. Manual-only.
-# reMIDI 4 and reMIDI 4 MFX ship from the same installer/store.
-# Wave-2 re-check 2026-08-30: still a 474-byte SPA shell loading a
-# content-hashed bundle (/assets/index-<hash>.js), so even if the bundle held a
-# version string the URL would break on every site rebuild; the reMIDI 4 binary
-# has no update endpoint.
+# Third-party source: KVR Audio product-database page (developer-maintained,
+# may lag releases; SongWish announces releases on KVR). The earlier "KVR is
+# Cloudflare-protected" claim only holds for HTTP/2 clients: KVR serves
+# HTTP/1.1 + browser UA requests (plugscan's ureq client qualifies; verified
+# live 2026-08-31: reMIDI 4 at 4.5.0 >= 4.4.2 installed).
+# reMIDI 4 and reMIDI 4 MFX ship from the same installer and share a version.
+# id="verosx" is the Mac "Product Version" field.
 vendor = "SongWish"
 homepage = "https://songwish.ca"
-skip = "songwish.ca is a JS SPA (hash-named bundles, no stable scrapeable URL) and the plugins have no update-check endpoint; re-verified 2026-08-31: the Vite bundle (assets/index-*.js) was mined - it contains 'reMIDI 4' marketing text and JS-library versions but no plugin release version, and the bundle URL is hash-named"
 
 [manual]
-steps = "Open songwish.ca in a browser; the store/download area serves the latest reMIDI 4 installer (covers reMIDI 4 and reMIDI 4 MFX). Installation notes at songwish.ca/remidi-4-installation. Release announcements appear on the KVR SongWish developer page."
+steps = "Open songwish.ca in a browser; the store/download area serves the latest reMIDI 4 installer (covers reMIDI 4 and reMIDI 4 MFX). Release announcements appear on the KVR SongWish developer page."
+
+[[product]]
+name = "reMIDI 4"
+page = "https://www.kvraudio.com/product/remidi-4-by-songwish"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "reMIDI 4 MFX"
+page = "https://www.kvraudio.com/product/remidi-4-by-songwish"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"

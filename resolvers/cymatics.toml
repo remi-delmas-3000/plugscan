@@ -6,8 +6,7 @@
 # version or changelog page -> skip.
 vendor = "Cymatics"
 homepage = "https://cymatics.fm"
-skip = "Shopify store exposes no plugin version (product JSON has empty body_html / no SKU); installers delivered via account and purchase emails only."
-
+skip = "Shopify store exposes no plugin version (product JSON has empty body_html / no SKU); installers delivered via account and purchase emails only; re-verified 2026-08-31: the Shopify catalog and /pages/downloads (AWS Lambda secure-link generator) carry no version strings"
 [manual]
 login = "https://cymatics.fm/account"
 steps = "Downloads are delivered via cymatics.fm account/purchase emails. No public plugin version or changelog page; product pages (e.g. /products/pluto-multi-fx-plugin) carry no version."

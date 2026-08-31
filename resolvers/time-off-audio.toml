@@ -5,7 +5,6 @@
 # endpoint (web-UI assets only).
 vendor = "time off audio"
 homepage = "https://timeoff.audio"
-skip = "No public version source: store pages carry no version numbers and the plugins have no update-check endpoint"
-
+skip = "No public version source: store pages carry no version numbers and the plugins have no update-check endpoint; re-verified 2026-08-31: the Next.js site serves no version strings and wp-json 404s"
 [manual]
 steps = "Log into the timeoff.audio customer portal; downloads there carry the current dime [mb]/[ms]/[tt] installers."

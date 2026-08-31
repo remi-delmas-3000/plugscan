@@ -7,8 +7,7 @@
 vendor = "UJAM"
 homepage = "https://www.ujam.com"
 download_via = "UJAM App (ujam.com/ujam-app): the desktop manager installs and updates all UJAM products for the logged-in account."
-skip = "Versions come from the authenticated UJAM App catalog API (producthub.ujam.com, keyed by a login-resolved manufacturer/channel id); no unauthenticated endpoint and the release-notes page is JS-rendered."
-
+skip = "Versions come from the authenticated UJAM App catalog API (producthub.ujam.com, keyed by a login-resolved manufacturer/channel id); no unauthenticated endpoint and the release-notes page is JS-rendered; re-verified 2026-08-31: the producthub.ujam.com API (/api/v1/products) returns 401 Authorization header missing without a login"
 [manual]
 login = "https://www.ujam.com/login/"
 steps = "Use the UJAM App to install and update products (it manages versions for your account). ujam.com/release-notes/ exists but is JS-rendered, so it cannot be scraped."

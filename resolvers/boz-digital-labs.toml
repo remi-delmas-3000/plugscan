@@ -3,8 +3,7 @@
 # links exist anywhere on the page. Installers are behind the my-account login.
 vendor = "Boz Digital Labs"
 homepage = "https://www.bozdigitallabs.com"
-skip = "no public version info: product pages carry no version strings (verified with browser UA); installers only behind my-account login"
-
+skip = "no public version info: product pages carry no version strings (verified with browser UA); installers only behind my-account login; re-verified 2026-08-31: the wp-json product API and product pages carry no versions (only Pan Knob 2 leaks a versioned demo S3 link; all other installers are login-gated)"
 [manual]
 login = "https://www.bozdigitallabs.com/my-account/"
 steps = "Log in at bozdigitallabs.com/my-account/; installers under My Account > Downloads. Product pages carry no version strings."

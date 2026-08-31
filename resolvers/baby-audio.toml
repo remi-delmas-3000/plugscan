@@ -1,11 +1,121 @@
-# Re-checked 2026-08-31: babyaud.io is Webflow (no /products.json); the
-# Crystalline product page carries no version strings; plugin binaries only
-# reference the licence-activation API (activation.babyaud.io), no
-# update/version endpoint; no local manager app.
+# Correction 2026-08-31 (wave-3 re-test): the skip was wrong. The PUBLIC
+# babyaud.io/downloads page (Webflow "fs_accordion" list) states each plugin's
+# current version inline next to its name:
+#   <div class="fs_accordion-2_label">NAME</div><div>vX.Y[.Z]</div>
+# and links direct, unauthenticated S3 installers. All 15 tracked plugins that
+# appear on the page verified live 2026-08-31 (>= installed; Grainferno 1.2 and
+# SubCulture 1.0.3 are newer). NOTE: many BABY versions are 2-part (v1.6).
+# Not on the downloads page (free/bundled extras, no version shown): BA-1 FX
+# Strip, BabyComeback, Beat Slammer, Magic Dice, Magic Switch, Pitch Drift,
+# Smooth Operator (base), Warp -- those stay unresolved.
 vendor = "BABY Audio"
 homepage = "https://babyaud.io"
-skip = "Webflow site and plugin binaries expose no version source (product pages version-free; only an activation API in the binaries)."
 
 [manual]
-login = "https://babyaud.io/account"
-steps = "Installers are delivered via the download links on babyaud.io product pages (demo) and via the account/purchase email for full versions. Product pages carry no version strings."
+login = "https://plan.babyaud.io/"
+steps = "Public installers + current versions: babyaud.io/downloads (direct S3 links; the account portal is only needed for licences)."
+
+[[product]]
+name = "Atoms"
+page = "https://babyaud.io/downloads"
+strategy = "page_regex"
+version_regex = 'Atoms\s*</div><div>\s*v([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://babyaud.io/downloads"
+
+[[product]]
+name = "BA-1"
+page = "https://babyaud.io/downloads"
+strategy = "page_regex"
+version_regex = 'BA\-1\s*</div><div>\s*v([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://babyaud.io/downloads"
+
+[[product]]
+name = "Comeback Kid"
+page = "https://babyaud.io/downloads"
+strategy = "page_regex"
+version_regex = 'Comeback\ Kid\s*</div><div>\s*v([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://babyaud.io/downloads"
+
+[[product]]
+name = "Crystalline"
+page = "https://babyaud.io/downloads"
+strategy = "page_regex"
+version_regex = 'Crystalline\s*</div><div>\s*v([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://babyaud.io/downloads"
+
+[[product]]
+name = "Grainferno"
+page = "https://babyaud.io/downloads"
+strategy = "page_regex"
+version_regex = 'Grainferno\s*</div><div>\s*v([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://babyaud.io/downloads"
+
+[[product]]
+name = "Humanoid"
+page = "https://babyaud.io/downloads"
+strategy = "page_regex"
+version_regex = 'Humanoid\s*</div><div>\s*v([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://babyaud.io/downloads"
+
+[[product]]
+name = "IHNY-2"
+page = "https://babyaud.io/downloads"
+strategy = "page_regex"
+version_regex = 'IHNY\-2\s*</div><div>\s*v([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://babyaud.io/downloads"
+
+[[product]]
+name = "Parallel Aggressor"
+page = "https://babyaud.io/downloads"
+strategy = "page_regex"
+version_regex = 'Parallel\ Aggressor\s*</div><div>\s*v([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://babyaud.io/downloads"
+
+[[product]]
+name = "Smooth Operator Pro"
+page = "https://babyaud.io/downloads"
+strategy = "page_regex"
+version_regex = 'Smooth\ Operator\ Pro\s*</div><div>\s*v([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://babyaud.io/downloads"
+
+[[product]]
+name = "Spaced Out"
+page = "https://babyaud.io/downloads"
+strategy = "page_regex"
+version_regex = 'Spaced\ Out\s*</div><div>\s*v([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://babyaud.io/downloads"
+
+[[product]]
+name = "SubCulture"
+page = "https://babyaud.io/downloads"
+strategy = "page_regex"
+version_regex = 'SubCulture\s*</div><div>\s*v([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://babyaud.io/downloads"
+
+[[product]]
+name = "Super VHS"
+page = "https://babyaud.io/downloads"
+strategy = "page_regex"
+version_regex = 'Super\ VHS\s*</div><div>\s*v([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://babyaud.io/downloads"
+
+[[product]]
+name = "TAIP"
+page = "https://babyaud.io/downloads"
+strategy = "page_regex"
+version_regex = 'TAIP\s*</div><div>\s*v([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://babyaud.io/downloads"
+
+[[product]]
+name = "Tekno"
+page = "https://babyaud.io/downloads"
+strategy = "page_regex"
+version_regex = 'Tekno\s*</div><div>\s*v([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://babyaud.io/downloads"
+
+[[product]]
+name = "Transit 2"
+page = "https://babyaud.io/downloads"
+strategy = "page_regex"
+version_regex = 'Transit\ 2\s*</div><div>\s*v([0-9]+\.[0-9]+(?:\.[0-9]+)?)'
+download = "https://babyaud.io/downloads"

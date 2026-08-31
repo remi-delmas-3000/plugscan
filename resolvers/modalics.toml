@@ -1,10 +1,37 @@
-# Modalics runs on Wix. Re-checked 2026-08: the Beat Scholar "ChangeBlog"
-# (modalics.com/beatscholarversions) static HTML contains only Wix platform data -
-# the changelog entries (and the current 1.5.0 version) are not present in the
-# served page at all, so there is nothing to regex.
+# Third-party source: KVR Audio product-database pages (developer-maintained,
+# may lag releases - though currently AHEAD of the vendor's own stale Wix
+# blog). KVR needs HTTP/1.1 + browser UA (plugscan's ureq client qualifies;
+# verified live 2026-08-31: Beat Scholar 1.6.2 >= 1.5.0 installed,
+# BitFuzzer 1.0.4 >= 1.0.3, Plugin Buddy Free 1.2.1 >= 1.0.7).
+# Beat Scholar MIDI ships in the Beat Scholar installer and shares its
+# version; "Plugin Buddy" is KVR's "Plugin Buddy Free" entry.
+# Single-product pages; id="verosx" is the Mac "Product Version" field.
 vendor = "Modalics"
 homepage = "https://www.modalics.com"
-skip = "no version data in served HTML: the Wix ChangeBlog page is fully JS-rendered and its warmup data contains no changelog entries (verified 2026-08); re-verified 2026-08-31: the Wix blog RSS (modalics.com/blog-feed.xml) IS fetchable but stale - newest Beat Scholar changelog post says 1.4.8 while 1.5.0 is installed, and BitFuzzer/Plugin Buddy have no changelog posts"
 
 [manual]
 steps = "Check modalics.com/beatscholarversions in a browser for the Beat Scholar changelog; installers via the account/order emails."
+
+[[product]]
+name = "Beat Scholar"
+page = "https://www.kvraudio.com/product/beat-scholar-by-modalics"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "Beat Scholar MIDI"
+page = "https://www.kvraudio.com/product/beat-scholar-by-modalics"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "BitFuzzer"
+page = "https://www.kvraudio.com/product/bitfuzzer-by-modalics"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "Plugin Buddy"
+page = "https://www.kvraudio.com/product/plugin-buddy-free-by-modalics"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"

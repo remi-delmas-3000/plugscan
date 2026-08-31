@@ -1,12 +1,51 @@
-# Soundtheory's site is a JS-rendered SPA. Re-checked 2026-08 by mining the webpack
-# bundle (/packs/application-*.js): the only API routes are authenticated account
-# endpoints (/api/user.json etc.) and the only public version record is a PDF
-# changelog (compressed streams, not regex-able). No public version endpoint exists.
-# Gullfoss / Gullfoss Live / Gullfoss Master share one version; Kraftur / Kraftur Focus share one.
+# Correction 2026-08-31 (wave-3 re-test): the skip was wrong. The SPA loads a
+# PUBLIC JSON endpoint that needs no login: https://www.soundtheory.com/changelog.json
+# Its downloads.publiclyVisible.primary array carries the current installer URLs
+# with the version in the filename, e.g.
+#   ".../static/Soundtheory Gullfoss 1.11.9.dmg"
+#   ".../static/Soundtheory Kraftur 1.2.6.dmg"
+# Verified live 2026-08-31: Gullfoss 1.11.9, Kraftur 1.2.6 (== installed).
+# The regex anchors on "Soundtheory <Product> X.Y.Z.dmg" so it ignores the
+# non-iLok build line ("Gullfoss non-iLok 1.4.1.dmg"). Gullfoss Live/Master and
+# Kraftur Focus ship inside the base product installer.
 vendor = "Soundtheory"
 homepage = "https://www.soundtheory.com"
-skip = "no scrapable version source: SPA with only authenticated /api/*.json endpoints; changelog published only as PDF (verified 2026-08)"
 
 [manual]
-login = "https://www.soundtheory.com/home"
-steps = "Log in at soundtheory.com and download installers from your account (Gullfoss and Kraftur installers bundle all editions). Latest versions are listed in the PDF changelogs, e.g. https://www.soundtheory.com/static/Gullfoss%20Changelog.pdf."
+login = "https://www.soundtheory.com/account"
+steps = "Public installers + versions: https://www.soundtheory.com/changelog.json (downloads.publiclyVisible). Per-product changelog PDFs linked there too."
+
+[[product]]
+name = "Gullfoss"
+page = "https://www.soundtheory.com/changelog.json"
+strategy = "page_regex"
+version_regex = 'Soundtheory Gullfoss ([0-9]+\.[0-9]+\.[0-9]+)\.dmg'
+download = "https://www.soundtheory.com/download"
+
+[[product]]
+name = "Gullfoss Live"
+page = "https://www.soundtheory.com/changelog.json"
+strategy = "page_regex"
+version_regex = 'Soundtheory Gullfoss ([0-9]+\.[0-9]+\.[0-9]+)\.dmg'
+download = "https://www.soundtheory.com/download"
+
+[[product]]
+name = "Gullfoss Master"
+page = "https://www.soundtheory.com/changelog.json"
+strategy = "page_regex"
+version_regex = 'Soundtheory Gullfoss ([0-9]+\.[0-9]+\.[0-9]+)\.dmg'
+download = "https://www.soundtheory.com/download"
+
+[[product]]
+name = "Kraftur"
+page = "https://www.soundtheory.com/changelog.json"
+strategy = "page_regex"
+version_regex = 'Soundtheory Kraftur ([0-9]+\.[0-9]+\.[0-9]+)\.dmg'
+download = "https://www.soundtheory.com/download"
+
+[[product]]
+name = "Kraftur Focus"
+page = "https://www.soundtheory.com/changelog.json"
+strategy = "page_regex"
+version_regex = 'Soundtheory Kraftur ([0-9]+\.[0-9]+\.[0-9]+)\.dmg'
+download = "https://www.soundtheory.com/download"

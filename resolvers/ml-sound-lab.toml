@@ -3,8 +3,7 @@
 # update/version endpoint URLs; no local manager app.
 vendor = "ML Sound Lab"
 homepage = "https://ml-sound-lab.com"
-skip = "Shopify storefront is version-free (catalog JSON checked) and Amped plugins have no update-check endpoint."
-
+skip = "Shopify storefront is version-free (catalog JSON checked) and Amped plugins have no update-check endpoint; re-verified 2026-08-31: the Shopify catalog, sitemap pages and individual Amped product pages were re-checked and carry no version strings"
 [manual]
 login = "https://ml-sound-lab.com/account"
 steps = "Log in to the Shopify account at ml-sound-lab.com/account; Amped installers are delivered through the account downloads / purchase emails. No public version page."

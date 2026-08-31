@@ -6,7 +6,6 @@
 vendor = "Way Out Ware"
 homepage = "https://www.airmusictech.com"
 download_via = "inMusic Software Center / inMusic Profile (profile.inmusicbrands.com) — delivers the actual latest Odyssey installer"
-skip = "AIR's Odyssey product page states 1.2.0.8, which is OLDER than the installed 1.2.1.14 (stale page), so no page resolver is safe; real updates come via the authenticated inMusic portal"
-
+skip = "AIR's Odyssey product page states 1.2.0.8, which is OLDER than the installed 1.2.1.14 (stale page), so no page resolver is safe; real updates come via the authenticated inMusic portal; re-verified 2026-08-31: the airmusictech.com Odyssey product page now 404s and updates still come via the inMusic portal"
 [manual]
 steps = "Check https://www.airmusictech.com/virtual-instruments/odyssey/ (version banner is often stale) and update through the inMusic Software Center / your inMusic profile at profile.inmusicbrands.com, which delivers the actual latest installer."

@@ -8,8 +8,7 @@
 # release threads are user-titled (unreliable for first-match-is-latest).
 vendor = "Modartt"
 homepage = "https://www.modartt.com"
-skip = "modartt.com is fully JS-rendered with token-gated data loading; no scrapeable version endpoint found on site, forum, RSS, or in the app binary"
-
+skip = "modartt.com is fully JS-rendered with token-gated data loading; no scrapeable version endpoint found on site, forum, RSS, or in the app binary; re-verified 2026-08-31: the /check_version endpoint (found in the binary) serves only a JS shell and the Pianoteq binary carries no plaintext version URL"
 [manual]
 login = "https://www.modartt.com/user_area"
 steps = "Open https://www.modartt.com/pianoteq_changes in a browser for the version history (JS-rendered), then log in to the Modartt user area to download the latest Pianoteq installer; the app's built-in 'Check for updates' also reports the newest version."

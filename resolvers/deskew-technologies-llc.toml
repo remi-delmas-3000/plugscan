@@ -1,9 +1,16 @@
-# GPRelayer ships inside the Gig Performer installer; Deskew publishes no
-# standalone version page for the plugin (its version differs from Gig
-# Performer's own). Manual-only.
+# Third-party source: KVR Audio product-database page (developer-maintained,
+# may lag releases). KVR tracks GP Relayer as its own product, independently
+# of Gig Performer's versioning (verified live 2026-08-31: 1.0.22, exact
+# match to installed). KVR needs HTTP/1.1 + browser UA (plugscan's ureq
+# client qualifies); id="verosx" is the Mac "Product Version" field.
 vendor = "Deskew Technologies, LLC"
 homepage = "https://gigperformer.com"
-skip = "GPRelayer is bundled with Gig Performer but versioned independently; no standalone version source; re-verified 2026-08-31: gigperformer.com serves 0-byte responses to non-browser clients and GPRelayer's 1.0.x versioning is independent of Gig Performer's anyway"
 
 [manual]
 steps = "Download the latest Gig Performer installer from gigperformer.com/download (GPRelayer is bundled); update announcements at community.gigperformer.com."
+
+[[product]]
+name = "GPRelayer"
+page = "https://www.kvraudio.com/product/gp-relayer-by-deskew-technologies"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"

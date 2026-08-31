@@ -1,13 +1,24 @@
-# Nudist Audio (nudistaudio.com) is a JS-rendered Next.js site with no version numbers in the
-# served HTML for Fermenter or Nudistort, and no public changelog. KVR product pages are
-# Cloudflare-protected. Update news goes out via their Substack newsletter. Manual-only.
-# Wave-2 re-check 2026-08-30: nudistaudio.com is a Next.js app-router (RSC)
-# site — no /_next/data JSON routes to mine, no version strings in served HTML,
-# and the Nudistort binary has no update endpoint.
+# Third-party source: KVR Audio product-database pages (developer-maintained,
+# may lag releases). The earlier "KVR is Cloudflare-protected" claim only
+# holds for HTTP/2 clients: KVR serves HTTP/1.1 + browser UA requests
+# (plugscan's ureq client qualifies; verified live 2026-08-31, exact matches
+# to installed: Fermenter 1.2.1, Nudistort 1.2.6).
+# Single-product pages; id="verosx" is the Mac "Product Version" field.
 vendor = "Nudist Audio"
 homepage = "https://www.nudistaudio.com"
-skip = "No public version source: JS-rendered Next.js site with no version strings in served HTML or data routes, and no plugin update endpoint; re-verified 2026-08-31: homepage re-fetched - App-Router Next.js with no __NEXT_DATA__ and no version strings in served HTML or chunk URLs"
 
 [manual]
 login = "https://www.nudistaudio.com/login"
 steps = "Log in at nudistaudio.com/login and re-download installers from the downloads page (/download); update announcements are posted to nudistaudio.substack.com."
+
+[[product]]
+name = "Fermenter"
+page = "https://www.kvraudio.com/product/fermenter-by-nudist-audio"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "Nudistort"
+page = "https://www.kvraudio.com/product/nudistort-by-nudist-audio"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"

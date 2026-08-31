@@ -1,11 +1,24 @@
-# Shift Line's site covers mainly hardware; the /downloads page lists pedal
-# user guides but no plugin version numbers for the A+ software line.
-# Wave-2 re-check 2026-08-30: the Astronaut binary checks
-# digital.shift-line.com/astronautplugin/update, but that URL serves a
-# JS-rendered Tilda page shell with no version strings for plain clients.
+# Third-party source: KVR Audio product-database pages (developer-maintained,
+# may lag releases). KVR needs HTTP/1.1 + browser UA (plugscan's ureq client
+# qualifies; verified live 2026-08-31: Astronaut Reverb 1.4.0 (installed
+# "1.4"), OktabEP 1.0.0 (installed "1")).
+# Prism (installed 0.1, early/beta build) has no KVR page and no other indexed
+# version source was found - that bundle stays unresolved.
+# Single-product pages; id="verosx" is the Mac "Product Version" field.
 vendor = "Shift Line"
 homepage = "https://shift-line.com"
-skip = "No scrapeable version source: the plugin's own update page (digital.shift-line.com/astronautplugin/update) is a JS-rendered Tilda page and the site publishes no plugin versions; re-verified 2026-08-31: digital.shift-line.com/astronautplugin/update re-fetched - 1.5KB Tilda JS stub with no server-side version data"
 
 [manual]
 steps = "Plugin builds (Astronaut, OktabEP, Prism) via shift-line.com/downloads and their store/Bandcamp order links; no public changelog."
+
+[[product]]
+name = "Astronaut"
+page = "https://www.kvraudio.com/product/astronaut-reverb-by-shift-line"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
+
+[[product]]
+name = "oktabep"
+page = "https://www.kvraudio.com/product/oktabep-by-shift-line"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"

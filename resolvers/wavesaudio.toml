@@ -10,8 +10,7 @@
 vendor = "WavesAudio"
 homepage = "https://www.waves.com"
 download_via = "Waves Central app (download from waves.com/downloads/central); log in with a Waves account and it installs/updates the current WaveShell for each licensed plug-in."
-skip = "Catalog entries are per-V-release WaveShell components; Waves does not update superseded shells and exposes no public per-shell version source. Updates ship only via Waves Central."
-
+skip = "Catalog entries are per-V-release WaveShell components; Waves does not update superseded shells and exposes no public per-shell version source. Updates ship only via Waves Central; re-verified 2026-08-31: no public per-shell version source was found; updates ship only through Waves Central"
 [manual]
 login = "https://www.waves.com/login"
 steps = "Versions are managed by Waves Central: log in with a Waves account in the Waves Central app to see installed vs latest versions and update. Catalog entries are WaveShell components versioned per Waves V-release (e.g. 17.1)."

@@ -1,9 +1,18 @@
-# vital.audio is a JS-rendered store/account site with no public changelog or
-# version string reachable by curl. Updates are offered in-app. Manual-only.
+# Third-party source: KVR Audio product-database page (developer-maintained,
+# may lag releases). Unlike the vendor's own stale vital.audio/dist/
+# vital_version.txt (still 0.8.5), the KVR "Vital by Matt Tytel" page tracks
+# the real release: Mac 1.6.4, exact match to installed (verified live
+# 2026-08-31). KVR needs HTTP/1.1 + browser UA (plugscan's ureq client
+# qualifies); id="verosx" is the Mac "Product Version" field.
 vendor = "Vital Audio"
 homepage = "https://vital.audio"
-skip = "the only public endpoint, https://vital.audio/dist/vital_version.txt, is stale (returns 0.8.5 vs installed 1.6.4, verified live); current versions are behind the account login; re-verified 2026-08-31: the Vital 1.6.4 binary itself still points only at vital.audio/dist/vital_version.txt (which serves 0.8.5) and api.vital.audio does not resolve"
 
 [manual]
 login = "https://account.vital.audio"
 steps = "Log in at vital.audio and use the download page for the latest installer; Vital also prompts in-app when an update is available."
+
+[[product]]
+name = "Vital"
+page = "https://www.kvraudio.com/product/vital-by-matt-tytel"
+version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
+via = "KVR Audio"
