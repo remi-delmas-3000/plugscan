@@ -1,95 +1,89 @@
-# Third-party source: KVR Audio product-database pages (developer-maintained,
-# may lag releases). KVR needs HTTP/1.1 + browser UA (plugscan's ureq client
-# qualifies; verified live 2026-08-31: every McDSP page shows Mac 7.3.17
-# (Windows 7.3.0.18) vs 7.3.0 installed - the whole v7 line versions in
-# lockstep, so any one product page tracks the line).
-# Catalog bundle -> KVR page mapping notes:
-#   MC2000_MC202/MC303/MC404 ship in the MC2000 installer (mc2000 page);
-#   ML4000_ML1/ML4 ship in the ML4000 installer (ml4000 page);
-#   SA2_Dialog_Processor has no KVR page of its own - it points at the SA-3
-#   page, valid because the whole line versions in lockstep.
-# Single-product pages; id="verosx" is the Mac "Product Version" field.
+# McDSP versions its whole Native plugin line in lockstep; the public
+# plugin-downloads page links the current installer whose filename carries the
+# version (McDSP_NV_Install_7_3_17_MAC.zip). One page + one regex covers every
+# McDSP plugin. Vendor-direct, replaces the earlier KVR-sourced entries.
+# Verified 2026-08-31.
 vendor = "McDSP"
-homepage = "https://mcdsp.com"
+homepage = "https://www.mcdsp.com"
 
 [manual]
-login = "https://mcdsp.com/login/"
-steps = "Log in at mcdsp.com, open Downloads > Plug-in Downloads for the latest installers; version news is under mcdsp.com press releases (all v7 plug-ins update in lockstep)."
+login = "https://mcdsp.com/my-account/"
+steps = "Installers: mcdsp.com/downloads/plugin-downloads/ (one Native installer covers all McDSP plugins). License via iLok."
 
 [[product]]
 name = "AE600_Active_EQ"
-page = "https://www.kvraudio.com/product/ae600-active-equalizer-by-mcdsp"
-version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
-via = "KVR Audio"
+page = "https://mcdsp.com/downloads/plugin-downloads/"
+version_regex = 'NV/Mac/[^"]*?_([0-9]+_[0-9]+_[0-9]+)_MAC'
+download = "https://mcdsp.com/downloads/plugin-downloads/"
 
 [[product]]
 name = "EC300"
-page = "https://www.kvraudio.com/product/ec-300-by-mcdsp"
-version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
-via = "KVR Audio"
+page = "https://mcdsp.com/downloads/plugin-downloads/"
+version_regex = 'NV/Mac/[^"]*?_([0-9]+_[0-9]+_[0-9]+)_MAC'
+download = "https://mcdsp.com/downloads/plugin-downloads/"
 
 [[product]]
 name = "FutzBox"
-page = "https://www.kvraudio.com/product/futzbox-by-mcdsp"
-version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
-via = "KVR Audio"
+page = "https://mcdsp.com/downloads/plugin-downloads/"
+version_regex = 'NV/Mac/[^"]*?_([0-9]+_[0-9]+_[0-9]+)_MAC'
+download = "https://mcdsp.com/downloads/plugin-downloads/"
 
 [[product]]
 name = "FutzVerb"
-page = "https://www.kvraudio.com/product/futzverb-by-mcdsp"
-version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
-via = "KVR Audio"
+page = "https://mcdsp.com/downloads/plugin-downloads/"
+version_regex = 'NV/Mac/[^"]*?_([0-9]+_[0-9]+_[0-9]+)_MAC'
+download = "https://mcdsp.com/downloads/plugin-downloads/"
 
 [[product]]
 name = "MC2000_MC202"
-page = "https://www.kvraudio.com/product/mc2000-by-mcdsp"
-version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
-via = "KVR Audio"
+page = "https://mcdsp.com/downloads/plugin-downloads/"
+version_regex = 'NV/Mac/[^"]*?_([0-9]+_[0-9]+_[0-9]+)_MAC'
+download = "https://mcdsp.com/downloads/plugin-downloads/"
 
 [[product]]
 name = "MC2000_MC303"
-page = "https://www.kvraudio.com/product/mc2000-by-mcdsp"
-version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
-via = "KVR Audio"
+page = "https://mcdsp.com/downloads/plugin-downloads/"
+version_regex = 'NV/Mac/[^"]*?_([0-9]+_[0-9]+_[0-9]+)_MAC'
+download = "https://mcdsp.com/downloads/plugin-downloads/"
 
 [[product]]
 name = "MC2000_MC404"
-page = "https://www.kvraudio.com/product/mc2000-by-mcdsp"
-version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
-via = "KVR Audio"
+page = "https://mcdsp.com/downloads/plugin-downloads/"
+version_regex = 'NV/Mac/[^"]*?_([0-9]+_[0-9]+_[0-9]+)_MAC'
+download = "https://mcdsp.com/downloads/plugin-downloads/"
 
 [[product]]
 name = "ML4000_ML1"
-page = "https://www.kvraudio.com/product/ml4000-mastering-limiter-by-mcdsp"
-version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
-via = "KVR Audio"
+page = "https://mcdsp.com/downloads/plugin-downloads/"
+version_regex = 'NV/Mac/[^"]*?_([0-9]+_[0-9]+_[0-9]+)_MAC'
+download = "https://mcdsp.com/downloads/plugin-downloads/"
 
 [[product]]
 name = "ML4000_ML4"
-page = "https://www.kvraudio.com/product/ml4000-mastering-limiter-by-mcdsp"
-version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
-via = "KVR Audio"
+page = "https://mcdsp.com/downloads/plugin-downloads/"
+version_regex = 'NV/Mac/[^"]*?_([0-9]+_[0-9]+_[0-9]+)_MAC'
+download = "https://mcdsp.com/downloads/plugin-downloads/"
 
 [[product]]
 name = "ML8000"
-page = "https://www.kvraudio.com/product/ml8000-advanced-limiter-by-mcdsp"
-version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
-via = "KVR Audio"
+page = "https://mcdsp.com/downloads/plugin-downloads/"
+version_regex = 'NV/Mac/[^"]*?_([0-9]+_[0-9]+_[0-9]+)_MAC'
+download = "https://mcdsp.com/downloads/plugin-downloads/"
 
 [[product]]
 name = "Revolver"
-page = "https://www.kvraudio.com/product/revolver-by-mcdsp"
-version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
-via = "KVR Audio"
+page = "https://mcdsp.com/downloads/plugin-downloads/"
+version_regex = 'NV/Mac/[^"]*?_([0-9]+_[0-9]+_[0-9]+)_MAC'
+download = "https://mcdsp.com/downloads/plugin-downloads/"
 
 [[product]]
 name = "SA2_Dialog_Processor"
-page = "https://www.kvraudio.com/product/sa-3-dialog-processor-by-mcdsp"
-version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
-via = "KVR Audio"
+page = "https://mcdsp.com/downloads/plugin-downloads/"
+version_regex = 'NV/Mac/[^"]*?_([0-9]+_[0-9]+_[0-9]+)_MAC'
+download = "https://mcdsp.com/downloads/plugin-downloads/"
 
 [[product]]
 name = "SA3_Spectral_Processor"
-page = "https://www.kvraudio.com/product/sa-3-dialog-processor-by-mcdsp"
-version_regex = 'id="verosx">\s*([0-9][0-9A-Za-z.]*)'
-via = "KVR Audio"
+page = "https://mcdsp.com/downloads/plugin-downloads/"
+version_regex = 'NV/Mac/[^"]*?_([0-9]+_[0-9]+_[0-9]+)_MAC'
+download = "https://mcdsp.com/downloads/plugin-downloads/"

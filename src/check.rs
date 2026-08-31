@@ -22,6 +22,11 @@ pub struct Fetcher {
     agent: ureq::Agent,
     no_redirect: ureq::Agent,
     cache: HashMap<String, Option<String>>,
+    // Politeness delay before each real network fetch (not cache hits), so a
+    // host serving many same-page bundles is throttled without penalizing the
+    // cache. Zero for the interactive debug/new tools.
+    fetch_delay: std::time::Duration,
+    fetched: bool,
 }
 
 fn tls() -> ureq::tls::TlsConfig {
@@ -48,13 +53,25 @@ impl Fetcher {
             agent,
             no_redirect,
             cache: HashMap::new(),
+            fetch_delay: std::time::Duration::ZERO,
+            fetched: false,
         }
+    }
+
+    /// Sleep before a real fetch (skipping the very first), so consecutive
+    /// network requests to one host are spaced out; cache hits never wait.
+    fn throttle(&mut self) {
+        if self.fetched && !self.fetch_delay.is_zero() {
+            std::thread::sleep(self.fetch_delay);
+        }
+        self.fetched = true;
     }
 
     fn page(&mut self, url: &str) -> Option<String> {
         if let Some(cached) = self.cache.get(url) {
             return cached.clone();
         }
+        self.throttle();
         let result = self
             .agent
             .get(url)
@@ -68,7 +85,8 @@ impl Fetcher {
 
     /// For the `header` strategy: the version hides in the redirect Location
     /// or Content-Disposition of a stable URL; no body needed.
-    fn headers(&self, url: &str) -> Option<String> {
+    fn headers(&mut self, url: &str) -> Option<String> {
+        self.throttle();
         let res = self
             .no_redirect
             .get(url)
@@ -291,13 +309,11 @@ fn run_concurrent(items: Vec<Work>) -> Vec<Outcome> {
                     agent: agent.clone(),
                     no_redirect: no_redirect.clone(),
                     cache: HashMap::new(),
+                    fetch_delay: std::time::Duration::from_millis(250),
+                    fetched: false,
                 };
                 let mut out = Vec::with_capacity(work.len());
-                for (i, w) in work.iter().enumerate() {
-                    if i > 0 {
-                        // Only delay between distinct fetches; cache hits are free.
-                        std::thread::sleep(std::time::Duration::from_millis(250));
-                    }
+                for w in work.iter() {
                     out.push(Outcome {
                         vendor: w.vendor.to_string(),
                         name: w.name.to_string(),
