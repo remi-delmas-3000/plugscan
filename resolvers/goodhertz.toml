@@ -1,5 +1,7 @@
 # All Goodhertz plugins ship in one bundle installer; goodhertz.com/downloads/ shows
 # "Goodhertz X.Y.Z" with public installer links. Verified 2026-08-30 (3.14.1).
+# Beta builds (names ending B1/B2) are excluded: they version
+# independently of the main release and are not on the downloads page.
 vendor = "Goodhertz"
 homepage = "https://goodhertz.com"
 
@@ -26,12 +28,6 @@ download = "https://goodhertz.com/downloads/"
 
 [[product]]
 name = "Ghz Good Dither 3"
-page = "https://goodhertz.com/downloads/"
-version_regex = 'Goodhertz ([0-9]+\.[0-9]+\.[0-9]+)'
-download = "https://goodhertz.com/downloads/"
-
-[[product]]
-name = "Ghz LA-210 3 B1"
 page = "https://goodhertz.com/downloads/"
 version_regex = 'Goodhertz ([0-9]+\.[0-9]+\.[0-9]+)'
 download = "https://goodhertz.com/downloads/"
@@ -98,12 +94,6 @@ download = "https://goodhertz.com/downloads/"
 
 [[product]]
 name = "Ghz Tupe 3"
-page = "https://goodhertz.com/downloads/"
-version_regex = 'Goodhertz ([0-9]+\.[0-9]+\.[0-9]+)'
-download = "https://goodhertz.com/downloads/"
-
-[[product]]
-name = "Ghz Tupe Wow 3 B2"
 page = "https://goodhertz.com/downloads/"
 version_regex = 'Goodhertz ([0-9]+\.[0-9]+\.[0-9]+)'
 download = "https://goodhertz.com/downloads/"
