@@ -14,9 +14,11 @@ download = "https://www.igniteamps.com/"
 
 [[product]]
 name = "Libra"
-page = "https://www.igniteamps.com/"
-version_regex = 'Libra[^0-9<]{0,8}v?([0-9]+\.[0-9]+\.[0-9]+)'
-download = "https://www.igniteamps.com/"
+# Libra is "STL Ignite - Libra", an STL Tones x Ignite Amps release distributed
+# by STL Tones; their file-downloads page carries the versioned Mac installer.
+page = "https://www.stltones.com/pages/file-downloads"
+version_regex = 'STL Ignite - Libra ([0-9]+\.[0-9]+\.[0-9]+) Mac'
+download = "https://www.stltones.com/pages/file-downloads"
 
 [[product]]
 name = "NadIR"
