@@ -9,6 +9,16 @@
 # https://mixwave.com/pages/downloads (script tag "product-downloads.js").
 # "Collection" products (Benson Chimera/Monarch, JHS Loud Is More Good,
 # Milkman Creamer) are the parent installers for those bundles.
+#
+# Collection-delivered pedals (2026-09-04): six Benson pedals (Delay, Florist,
+# Germanium Boost, Germanium Fuzz, Preamp, Tall Bird) and three Milkman pedals
+# (Harmonic Tremolo Reverb, JHS Slap Boost, Pop Top Boost) are shipped ONLY by
+# their collection installer, which stamps each pedal's Info.plist with the
+# collection's version (Chimera 1.2.0, Creamer 1.0.4). MixWave never retired
+# the pedals' standalone currentVersion fields (frozen at 1.0.x), so reading a
+# pedal's own field reported a "latest" BELOW the installed collection build.
+# Those pedals' version_regex therefore anchors on the *collection* product
+# name, not the pedal's, so latest tracks what actually gets installed.
 vendor = "MixWave"
 homepage = "https://mixwave.com"
 
@@ -41,28 +51,28 @@ download = "https://mixwave.com/pages/downloads"
 name = "MixWave Benson Delay"
 page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
 strategy = "page_regex"
-version_regex = 'productName:"Benson\ Delay"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+version_regex = 'productName:"Benson\ Chimera\ Collection"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
 download = "https://mixwave.com/pages/downloads"
 
 [[product]]
 name = "MixWave Benson Florist"
 page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
 strategy = "page_regex"
-version_regex = 'productName:"Benson\ Florist"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+version_regex = 'productName:"Benson\ Chimera\ Collection"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
 download = "https://mixwave.com/pages/downloads"
 
 [[product]]
 name = "MixWave Benson Germanium Boost"
 page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
 strategy = "page_regex"
-version_regex = 'productName:"Benson\ Germanium\ Boost"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+version_regex = 'productName:"Benson\ Chimera\ Collection"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
 download = "https://mixwave.com/pages/downloads"
 
 [[product]]
 name = "MixWave Benson Germanium Fuzz"
 page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
 strategy = "page_regex"
-version_regex = 'productName:"Benson\ Germanium\ Fuzz"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+version_regex = 'productName:"Benson\ Chimera\ Collection"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
 download = "https://mixwave.com/pages/downloads"
 
 [[product]]
@@ -76,7 +86,7 @@ download = "https://mixwave.com/pages/downloads"
 name = "MixWave Benson Preamp"
 page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
 strategy = "page_regex"
-version_regex = 'productName:"Benson\ Preamp"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+version_regex = 'productName:"Benson\ Chimera\ Collection"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
 download = "https://mixwave.com/pages/downloads"
 
 [[product]]
@@ -90,7 +100,7 @@ download = "https://mixwave.com/pages/downloads"
 name = "MixWave Benson Tall Bird"
 page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
 strategy = "page_regex"
-version_regex = 'productName:"Benson\ Tall\ Bird"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+version_regex = 'productName:"Benson\ Chimera\ Collection"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
 download = "https://mixwave.com/pages/downloads"
 
 [[product]]
@@ -195,21 +205,21 @@ download = "https://mixwave.com/pages/downloads"
 name = "MixWave Milkman Harmonic Tremolo Reverb"
 page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
 strategy = "page_regex"
-version_regex = 'productName:"Milkman\ Harmonic\ Tremolo\ Reverb"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+version_regex = 'productName:"Milkman\ Creamer\ Collection"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
 download = "https://mixwave.com/pages/downloads"
 
 [[product]]
 name = "MixWave Milkman JHS Slap Boost"
 page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
 strategy = "page_regex"
-version_regex = 'productName:"Milkman\ JHS\ Slap\ Boost"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+version_regex = 'productName:"Milkman\ Creamer\ Collection"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
 download = "https://mixwave.com/pages/downloads"
 
 [[product]]
 name = "MixWave Milkman Pop Top Boost"
 page = "https://mixwave.com/cdn/shop/t/46/assets/product-downloads.js"
 strategy = "page_regex"
-version_regex = 'productName:"Milkman\ Pop\ Top\ Boost"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
+version_regex = 'productName:"Milkman\ Creamer\ Collection"[^\n]*?currentVersion:"([0-9]+\.[0-9]+\.[0-9]+)"'
 download = "https://mixwave.com/pages/downloads"
 
 [[product]]
