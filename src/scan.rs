@@ -554,7 +554,9 @@ pub fn run(conn: &mut Connection, full: bool) -> rusqlite::Result<()> {
     // plist), or the receipts dir changed since last time (a pkg installed).
     let receipts_sig = mtime_of(Path::new("/var/db/receipts")).to_string();
     let last_sig: Option<String> = conn
-        .query_row("SELECT value FROM meta WHERE key='receipts_sig'", [], |r| r.get(0))
+        .query_row("SELECT value FROM meta WHERE key='receipts_sig'", [], |r| {
+            r.get(0)
+        })
         .ok();
     let run_receipts = full || !scanned.is_empty() || last_sig.as_deref() != Some(&receipts_sig);
     let receipt_overrides = if !run_receipts {
@@ -599,7 +601,9 @@ pub fn run(conn: &mut Connection, full: bool) -> rusqlite::Result<()> {
     );
     println!("  added: {added}   removed: {removed}   version-changed: {changed}");
     if receipt_overrides > 0 {
-        println!("  receipt-corrected: {receipt_overrides} (bundle plist stale vs install receipt)");
+        println!(
+            "  receipt-corrected: {receipt_overrides} (bundle plist stale vs install receipt)"
+        );
     }
     Ok(())
 }

@@ -66,8 +66,9 @@ pub fn plugin_bundle_versions() -> HashMap<String, String> {
             let abs = format!("/{}/{}", prefix.trim_matches('/'), top);
             // Keep the highest version if several receipts touch one path.
             match map.get(&abs) {
-                Some(existing) if crate::report::cmp_versions(&version, existing)
-                    != std::cmp::Ordering::Greater => {}
+                Some(existing)
+                    if crate::report::cmp_versions(&version, existing)
+                        != std::cmp::Ordering::Greater => {}
                 _ => {
                     map.insert(abs, version.clone());
                 }

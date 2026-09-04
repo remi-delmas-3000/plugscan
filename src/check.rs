@@ -85,7 +85,13 @@ impl Fetcher {
             .header("User-Agent", USER_AGENT)
             .call()
             .ok()
-            .and_then(|mut res| res.body_mut().with_config().limit(16 * 1024 * 1024).read_to_vec().ok())
+            .and_then(|mut res| {
+                res.body_mut()
+                    .with_config()
+                    .limit(16 * 1024 * 1024)
+                    .read_to_vec()
+                    .ok()
+            })
             .map(|bytes| String::from_utf8_lossy(&bytes).into_owned());
         self.cache.insert(url.to_string(), result.clone());
         result
@@ -475,9 +481,7 @@ pub fn run(
             "SELECT bundle_id, version FROM plugins
              WHERE removed_at IS NULL AND version IS NOT NULL",
         )?;
-        let rows = stmt.query_map([], |r| {
-            Ok((r.get::<_, i64>(0)?, r.get::<_, String>(1)?))
-        })?;
+        let rows = stmt.query_map([], |r| Ok((r.get::<_, i64>(0)?, r.get::<_, String>(1)?)))?;
         for row in rows {
             let (id, v) = row?;
             installed
@@ -590,7 +594,9 @@ pub fn run(
                     _ => String::new(),
                 };
                 match &o.via {
-                    Some(via) => println!("  {} {} → latest {v} [via {via}]{warn}", o.vendor, o.name),
+                    Some(via) => {
+                        println!("  {} {} → latest {v} [via {via}]{warn}", o.vendor, o.name)
+                    }
                     None => println!("  {} {} → latest {v}{warn}", o.vendor, o.name),
                 }
             }

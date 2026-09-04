@@ -1,9 +1,9 @@
 mod check;
 mod db;
 mod fetch;
+mod receipts;
 mod report;
 mod resolver;
-mod receipts;
 mod scan;
 mod util;
 mod vendors;
