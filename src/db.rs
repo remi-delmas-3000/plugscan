@@ -104,6 +104,7 @@ CREATE TABLE IF NOT EXISTS downloads(
     fetched_at INTEGER NOT NULL,
     UNIQUE(bundle_id, version)
 );
+CREATE TABLE IF NOT EXISTS meta(key TEXT PRIMARY KEY, value TEXT);
 CREATE INDEX IF NOT EXISTS idx_plugins_bundle ON plugins(bundle_id);
 CREATE INDEX IF NOT EXISTS idx_plugins_removed ON plugins(removed_at);
 "#;

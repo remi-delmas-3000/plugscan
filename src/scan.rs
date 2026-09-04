@@ -544,6 +544,52 @@ pub fn run(conn: &mut Connection, full: bool) -> rusqlite::Result<()> {
     )?;
     tx.commit()?;
 
+    // Install-receipt override: some vendors ship a bundle whose Info.plist
+    // version was never bumped (Ignite Amps Libra 1.3.0 declares 1.2.0). The
+    // macOS pkg receipt records the real installed version. Apply it over the
+    // whole active catalog — cache-independent, since such bundles often keep
+    // a frozen mtime and are never re-read.
+    // Reading /var/db/receipts is ~6s, so only do it when it can matter: a
+    // full scan (plists reset), any freshly-read plugin (version reset to
+    // plist), or the receipts dir changed since last time (a pkg installed).
+    let receipts_sig = mtime_of(Path::new("/var/db/receipts")).to_string();
+    let last_sig: Option<String> = conn
+        .query_row("SELECT value FROM meta WHERE key='receipts_sig'", [], |r| r.get(0))
+        .ok();
+    let run_receipts = full || !scanned.is_empty() || last_sig.as_deref() != Some(&receipts_sig);
+    let receipt_overrides = if !run_receipts {
+        0u32
+    } else {
+        let receipts = crate::receipts::plugin_bundle_versions();
+        let mut fixed = 0u32;
+        conn.execute(
+            "INSERT INTO meta(key,value) VALUES('receipts_sig',?1)
+             ON CONFLICT(key) DO UPDATE SET value=excluded.value",
+            params![receipts_sig],
+        )?;
+        if !receipts.is_empty() {
+            let rtx = conn.transaction()?;
+            {
+                let mut stmt =
+                    rtx.prepare("SELECT id, path, version FROM plugins WHERE removed_at IS NULL")?;
+                let rows: Vec<(i64, String, Option<String>)> = stmt
+                    .query_map([], |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?)))?
+                    .collect::<Result<_, _>>()?;
+                let mut upd = rtx.prepare("UPDATE plugins SET version = ?1 WHERE id = ?2")?;
+                for (id, path, version) in rows {
+                    if let Some(receipt_ver) = receipts.get(&path) {
+                        if crate::receipts::receipt_supersedes(version.as_deref(), receipt_ver) {
+                            upd.execute(params![receipt_ver, id])?;
+                            fixed += 1;
+                        }
+                    }
+                }
+            }
+            rtx.commit()?;
+        }
+        fixed
+    };
+
     println!(
         "Scanned {} plugins in {} ms ({} read, {} cached)",
         total,
@@ -552,6 +598,9 @@ pub fn run(conn: &mut Connection, full: bool) -> rusqlite::Result<()> {
         unchanged_ids.len()
     );
     println!("  added: {added}   removed: {removed}   version-changed: {changed}");
+    if receipt_overrides > 0 {
+        println!("  receipt-corrected: {receipt_overrides} (bundle plist stale vs install receipt)");
+    }
     Ok(())
 }
 
