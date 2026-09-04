@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://plugscan.dev/schemas/apm-1.0.json",
+  "title": "Audio Plugin Manifest 1.0",
+  "type": "object",
+  "required": ["apm_version", "publisher", "products"],
+  "additionalProperties": false,
+  "properties": {
+    "apm_version": { "type": "string", "pattern": "^1\\.[0-9]+$" },
+    "updated": { "type": "string", "format": "date" },
+    "publisher": {
+      "type": "object",
+      "required": ["name", "homepage"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "homepage": { "type": "string", "format": "uri" },
+        "distributor": { "type": "string" },
+        "support": { "type": "string", "format": "uri" }
+      }
+    },
+    "products": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/product" }
+    }
+  },
+  "$defs": {
+    "product": {
+      "type": "object",
+      "required": ["id", "name", "plugins", "channels"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "name": { "type": "string", "minLength": 1 },
+        "homepage": { "type": "string", "format": "uri" },
+        "plugins": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/plugin" }
+        },
+        "channels": {
+          "type": "object",
+          "required": ["stable"],
+          "propertyNames": { "pattern": "^[a-z0-9-]+$" },
+          "additionalProperties": { "$ref": "#/$defs/channel" }
+        },
+        "entitlement": { "$ref": "#/$defs/entitlement" }
+      }
+    },
+    "plugin": {
+      "type": "object",
+      "required": ["formats", "identifiers"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "formats": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "enum": ["AU", "VST3", "VST2", "CLAP", "AAX"] }
+        },
+        "identifiers": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": false,
+          "properties": {
+            "au": { "type": "string" },
+            "vst3": { "type": "string" },
+            "vst2": { "type": "string" },
+            "clap": { "type": "string" }
+          }
+        }
+      }
+    },
+    "channel": {
+      "type": "object",
+      "required": ["current"],
+      "additionalProperties": false,
+      "properties": {
+        "current": { "$ref": "#/$defs/release" },
+        "history": { "type": "array", "items": { "$ref": "#/$defs/release" } }
+      }
+    },
+    "release": {
+      "type": "object",
+      "required": ["version", "stability", "platforms"],
+      "additionalProperties": false,
+      "properties": {
+        "version": { "type": "string", "pattern": "^[0-9]" },
+        "stability": { "enum": ["released", "rc", "beta", "alpha", "dev"] },
+        "released": { "type": "string", "format": "date" },
+        "notes": { "type": "string", "format": "uri" },
+        "platforms": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": { "enum": ["macos", "windows", "linux"] },
+          "additionalProperties": { "$ref": "#/$defs/platform" }
+        }
+      }
+    },
+    "platform": {
+      "type": "object",
+      "additionalProperties": false,
+      "anyOf": [
+        { "required": ["url"] },
+        { "required": ["download_page"] }
+      ],
+      "properties": {
+        "url": { "type": "string", "format": "uri" },
+        "download_page": { "type": "string", "format": "uri" },
+        "sha256": { "type": "string", "pattern": "^[0-9a-fA-F]{64}$" },
+        "size": { "type": "integer", "minimum": 0 },
+        "min_os": { "type": "string" },
+        "arch": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "entitlement": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "free_through": { "type": "string" },
+        "paid_from": { "type": "string" }
+      }
+    }
+  }
+}
