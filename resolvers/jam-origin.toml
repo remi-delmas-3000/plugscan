@@ -1,13 +1,15 @@
-# Download portal states "MIDI Guitar 3.1.1 / MIDI Bass 3.1.1 ..." with the latest
-# MG3 version; older MIDI Guitar 2.x entries appear later in the document.
+# Correction 2026-09-04: jamorigin.com/download/ now 302-redirects to
+# jam.live/downloads/ (rebrand). That page is an MkDocs doc whose entire
+# "Latest official version" MG3 block — MIDI Guitar/Bass/Cello 3.1.1 — is
+# HTML-commented-out (an unpublished draft); only legacy MIDI Guitar 2.2.1 /
+# MIDI Bass 1.2.1 are actually visible. The previous page_regex scraped the
+# commented 3.1.1 and reported a phantom 3.0.68 -> 3.1.1 update. plugscan now
+# strips HTML comments before matching (so the draft is ignored), which leaves
+# no published MG3 version string on the visible page — there is no reliable
+# automatable source right now. Kept manual until jam.live publishes the MG3
+# download section. (MG3 also self-updates in-app.)
 vendor = "Jam Origin"
-homepage = "https://www.jamorigin.com"
+homepage = "https://jam.live"
 
 [manual]
-steps = "Go to jamorigin.com/download/ and pick the MIDI Guitar 3 build for your OS; license activates in-app."
-
-[[product]]
-name = "MIDI Guitar 3"
-page = "https://www.jamorigin.com/download/"
-version_regex = 'MIDI Guitar ([0-9]+\.[0-9]+\.[0-9]+)'
-download = "https://www.jamorigin.com/download/"
+steps = "MIDI Guitar 3 downloads and updates from jam.live/downloads (rebranded from jamorigin.com); the app also updates itself in-app. License activates in-app."

@@ -129,6 +129,20 @@ fn json_at<'a>(v: &'a serde_json::Value, path: &str) -> Option<&'a serde_json::V
     Some(cur)
 }
 
+/// Remove HTML comment bodies before scraping. A browser never renders content
+/// inside `<!-- ... -->`, so a resolver must not either: Jam Origin's migrated
+/// jam.live download page keeps an unpublished "Latest official version" draft
+/// (MIDI Guitar 3.1.1) commented out, and scraping the raw HTML matched that
+/// hidden draft as if it were live. Also strips an unterminated trailing
+/// comment (`<!--` with no close), which browsers treat as commented to EOF.
+fn strip_html_comments(text: &str) -> std::borrow::Cow<'_, str> {
+    if !text.contains("<!--") {
+        return std::borrow::Cow::Borrowed(text);
+    }
+    let re = Regex::new(r"(?s)<!--.*?(?:-->|$)").unwrap();
+    re.replace_all(text, "")
+}
+
 fn compile(re: &Option<String>, ctx: &str) -> Result<Option<Regex>, String> {
     match re {
         None => Ok(None),
@@ -204,6 +218,14 @@ pub fn extract_version(pr: &BundleResolver, text: &str) -> Result<String, CheckE
         .map_err(|e| CheckError::structural(format!("bad exclude_regex: {e}")))?;
     let refine = compile(&pr.version_regex, "version_regex").map_err(CheckError::structural)?;
     let strategy = pr.strategy.as_deref().unwrap_or("page_regex");
+
+    // HTML/text strategies scrape rendered content, so ignore commented-out
+    // markup first. JSON/github responses are not HTML — leave them untouched.
+    let cleaned = match strategy {
+        "page_regex" | "sparkle" | "header" => strip_html_comments(text),
+        _ => std::borrow::Cow::Borrowed(text),
+    };
+    let text: &str = &cleaned;
 
     let refine_or_pass = |s: &str| -> Option<String> {
         match &refine {
@@ -902,6 +924,24 @@ mod tests {
             None,
         );
         assert_eq!(extract_version(&pr, body).unwrap(), "3.11.4");
+    }
+
+    #[test]
+    fn page_regex_ignores_commented_out_version() {
+        // Jam Origin trap: an unpublished draft version lives in an HTML
+        // comment; only the visible legacy version must be seen.
+        let body = "<!--- ## Latest\n### MIDI Guitar 3.1.1 --> \
+                    visible: MIDI Guitar 2.2.1 for MacOS";
+        let pr = r(None, Some(r"MIDI Guitar ([0-9]+\.[0-9]+\.[0-9]+)"), None);
+        assert_eq!(extract_version(&pr, body).unwrap(), "2.2.1");
+    }
+
+    #[test]
+    fn page_regex_strips_unterminated_comment_to_eof() {
+        // A browser treats `<!--` with no close as commented to end of document.
+        let body = "MIDI Guitar 2.2.1 visible <!-- MIDI Guitar 3.1.1 draft, no close";
+        let pr = r(None, Some(r"MIDI Guitar ([0-9]+\.[0-9]+\.[0-9]+)"), None);
+        assert_eq!(extract_version(&pr, body).unwrap(), "2.2.1");
     }
 
     #[test]
