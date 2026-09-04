@@ -72,13 +72,21 @@ impl Fetcher {
             return cached.clone();
         }
         self.throttle();
+        // Read the body as bytes and decode lossily rather than read_to_string:
+        // some resolver "pages" are binary sources whose text we scrape (the
+        // Fractal ICONS release-notes PDF embeds "VERSION x.y.z" as plaintext
+        // outline titles). read_to_string requires the *entire* body to be valid
+        // UTF-8, so one non-UTF-8 byte anywhere aborts the read and surfaces as a
+        // false "fetch failed". from_utf8_lossy keeps the plaintext we need and
+        // makes the fetcher robust to PDFs and Latin-1 pages alike.
         let result = self
             .agent
             .get(url)
             .header("User-Agent", USER_AGENT)
             .call()
             .ok()
-            .and_then(|mut res| res.body_mut().read_to_string().ok());
+            .and_then(|mut res| res.body_mut().with_config().limit(16 * 1024 * 1024).read_to_vec().ok())
+            .map(|bytes| String::from_utf8_lossy(&bytes).into_owned());
         self.cache.insert(url.to_string(), result.clone());
         result
     }
