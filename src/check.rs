@@ -458,6 +458,31 @@ pub fn run(
         }
     }
 
+    // Highest installed version per bundle, so a resolved "latest" can be
+    // sanity-checked against what's actually on disk: a result below installed
+    // is never an update and signals a misaimed resolver (see report::below_installed).
+    let mut installed: HashMap<i64, String> = HashMap::new();
+    {
+        let mut stmt = conn.prepare(
+            "SELECT bundle_id, version FROM plugins
+             WHERE removed_at IS NULL AND version IS NOT NULL",
+        )?;
+        let rows = stmt.query_map([], |r| {
+            Ok((r.get::<_, i64>(0)?, r.get::<_, String>(1)?))
+        })?;
+        for row in rows {
+            let (id, v) = row?;
+            installed
+                .entry(id)
+                .and_modify(|cur| {
+                    if crate::report::cmp_versions(&v, cur) == std::cmp::Ordering::Greater {
+                        *cur = v.clone();
+                    }
+                })
+                .or_insert(v);
+        }
+    }
+
     // Build the work list serially (needs the DB for the freshness check),
     // then fetch concurrently.
     let (mut missing, mut skipped, mut vendor_skips) = (0u32, 0u32, 0u32);
@@ -541,18 +566,37 @@ pub fn run(
         emit_json(&outcomes);
         return Ok(());
     }
+    let mut below = 0u32;
     for o in &outcomes {
         match &o.result {
-            Ok(v) => match &o.via {
-                Some(via) => println!("  {} {} → latest {v} [via {via}]", o.vendor, o.name),
-                None => println!("  {} {} → latest {v}", o.vendor, o.name),
-            },
+            Ok(v) => {
+                // A resolved version below what's installed is never an update;
+                // flag it so a misaimed resolver surfaces the moment it's run,
+                // not only buried in `outdated`'s RESOLVER STALE section.
+                let inst = o.bundle_id.and_then(|id| installed.get(&id));
+                let warn = match inst {
+                    Some(i) if crate::report::below_installed(v, i) => {
+                        below += 1;
+                        format!("  ⚠ below installed {i} — resolver likely misaimed")
+                    }
+                    _ => String::new(),
+                };
+                match &o.via {
+                    Some(via) => println!("  {} {} → latest {v} [via {via}]{warn}", o.vendor, o.name),
+                    None => println!("  {} {} → latest {v}{warn}", o.vendor, o.name),
+                }
+            }
             Err(e) => eprintln!("warning: {} {}: {}", o.vendor, o.name, e.message),
         }
     }
     println!(
         "\nChecked {checked} bundles ({skipped} fresh, {missing} not installed, {failed} failed, {vendor_skips} vendors skip-listed)"
     );
+    if below > 0 {
+        println!(
+            "  ⚠ {below} resolved below the installed version (likely misaimed resolvers — see `outdated` → RESOLVER STALE)"
+        );
+    }
     Ok(())
 }
 

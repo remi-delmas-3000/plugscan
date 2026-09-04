@@ -45,6 +45,19 @@ pub fn implausible_jump(installed: &str, latest: &str) -> bool {
     }
 }
 
+/// True when a resolver's reported latest is genuinely below the installed
+/// version — not merely shorter (a major.minor-only page like "3.5" against an
+/// installed "3.5.1" is Equal under the prefix comparator, not below). Such a
+/// result is never an update: it almost always means the resolver is aimed at
+/// the wrong field or product (the MixWave collection pedals, whose standalone
+/// currentVersion trailed the collection installer that actually delivered
+/// them), or, less often, the user runs a build newer than the vendor's public
+/// page. Callers surface it as a resolver-health signal rather than treating it
+/// as authoritative — plugscan never reports a "latest" below what's installed.
+pub fn below_installed(latest: &str, installed: &str) -> bool {
+    cmp_versions_prefix(latest, installed) == Ordering::Less
+}
+
 pub fn cmp_versions(a: &str, b: &str) -> Ordering {
     let nums = |s: &str| -> Vec<u64> {
         s.split(|c: char| !c.is_ascii_digit())
@@ -514,7 +527,7 @@ pub fn outdated(conn: &Connection, json: bool, explain: bool) -> rusqlite::Resul
             }
             // Vendor page trails the installed version: the resolver is
             // stale or the page lies — never shown as an update.
-            Some(latest) if cmp_versions_prefix(latest, &installed) == Ordering::Less => {
+            Some(latest) if below_installed(latest, &installed) => {
                 report.resolver_stale.push((
                     row.vendor.clone(),
                     row.bundle.clone(),
@@ -834,6 +847,18 @@ mod tests {
         assert!(!implausible_jump("12.4.5", "13.0"));
         assert!(!implausible_jump("3.13.2", "3.14.1"));
         assert!(!implausible_jump("26.1.5", "27.0"));
+    }
+
+    #[test]
+    fn below_installed_examples() {
+        // MixWave collection pedal: standalone field trails collection build
+        assert!(below_installed("1.0.0", "1.2.0"));
+        assert!(below_installed("1.0.3", "1.0.4"));
+        // equal / ahead are not "below"
+        assert!(!below_installed("1.2.0", "1.2.0"));
+        assert!(!below_installed("1.3.0", "1.2.0"));
+        // major.minor-only page vs longer install is not below (prefix-equal)
+        assert!(!below_installed("3.5", "3.5.1"));
     }
 
     proptest! {
