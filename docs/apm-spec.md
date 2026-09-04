@@ -212,15 +212,41 @@ A consumer MUST NOT present a `current.version` that is **lower** than the
 user's installed version as an update. **[case: MixWave — this is exactly the
 "latest below installed" symptom that flags a mis-modeled product.]**
 
-### 5.2 Determining the installed version (optional, authoritative)
+### 5.2 Determining the installed version
 
-The naive installed version is the bundle's embedded version string, which can
-be wrong. When a release publishes per-artifact `sha256` values, a consumer MAY
-instead identify the installed version by hashing the installed binary (or a
-stable component of it) and matching it against published checksums. A match is
-proof of exactly which release is installed, independent of any embedded string
-— retiring both plist-trust and OS-install-receipt workarounds. **[case:
-Libra, resolved without touching `/var/db/receipts`.]**
+A consumer must decide *which version the user currently has* before it can say
+whether an update exists. This is a consumer design choice, not a manifest
+requirement; the spec supports more than one approach and mandates none.
+
+**Option A — trust the bundle's embedded version (default).** Read the
+plugin's `CFBundleShortVersionString` (or platform equivalent). Zero extra
+cost, works with any manifest. Its weakness is that the embedded string is
+occasionally wrong — a vendor ships a new build without bumping it. **[case:
+Ignite Amps shipped Libra 1.3.0 with an `Info.plist` still saying 1.2.0.]**
+
+**Option B — checksum match against published artifacts (design option).**
+When a release publishes per-artifact `sha256`, a consumer MAY hash the
+installed binary (or a stable component of it) and match it against the
+manifest's checksums. A match proves exactly which release is installed,
+independent of any embedded string, and would retire both plist-trust and
+OS-install-receipt workarounds. The tradeoffs a consumer weighs: it costs a
+hash over each bundle during scan; it only resolves versions the manifest still
+lists (a very old install may match nothing); and it depends on the publisher
+providing checksums, which §4.6 recommends but does not require. Offering it as
+an opt-in refinement over Option A — rather than a default — keeps scans cheap
+while making authoritative detection available where it matters. **[case:
+Libra, resolvable this way without touching `/var/db/receipts`.]**
+
+Because Option B is optional on both sides (publisher may omit `sha256`,
+consumer may skip hashing), `sha256` is *recommended, not required* in §4.6:
+its primary guaranteed use is verified download, with installed-version
+identification as an additional payoff where present.
+
+> **To be discussed with plugin vendors.** Whether checksum-based installed
+> detection (Option B) is worth the publishing effort — and *what* gets hashed
+> (whole bundle, main binary, a designated component) so a consumer and a
+> publisher always agree — is an open design point to settle with vendors, not
+> a decision this draft fixes. See the appendix.
 
 ## 6. Consumer behavior
 
@@ -313,15 +339,32 @@ A **conforming consumer** implements §6, matches only by identifier, and never
 (a) presents a non-`stable` release as a stable update or (b) presents a
 version below the installed one as an update.
 
-## Appendix: open questions for reviewers
+## Appendix: open questions — to discuss with plugin vendors
 
-- **Identifier canonicalization** — exact string forms for VST3 `FUID` (byte
+These are deliberately unresolved in this draft. They are the points to settle
+*with the manufacturers who would publish manifests*, since they trade
+publishing effort against consumer capability and only adopters can judge that
+balance.
+
+- **Checksum-based installed detection (§5.2 Option B).** Is publishing
+  per-artifact `sha256` worth it to vendors, and if so what unit is hashed —
+  the whole installed bundle, the main binary, or a designated stable component
+  — so publisher and consumer always compute the same digest? If vendors won't
+  reliably publish checksums, Option B stays a niche refinement and Option A
+  (embedded version) remains the norm.
+- **Identifier canonicalization.** Exact string forms for VST3 `FUID` (byte
   order, casing) and AU four-char codes need a normative canonical encoding so
-  two implementations always agree on a match.
-- **Signing** — should manifests be signable (e.g. detached JWS) so a consumer
+  two implementations always agree on a match. Vendors' own tooling emits these
+  in varying forms today.
+- **Signing.** Should manifests be signable (e.g. detached JWS) so a consumer
   can trust a manifest fetched over a compromised path? Deferred to v1.1;
-  `sha256` on artifacts already covers download integrity.
-- **Bundle vs component versioning** — some suites version the suite but ship
+  `sha256` on artifacts already covers download integrity. Of interest to
+  vendors who care about update-channel authenticity.
+- **Bundle vs component versioning.** Some suites version the suite but ship
   independently-versioned plugins. v1.0 models one version per product; a
   future `plugins[].version_override` could handle the mixed case if real
-  examples demand it.
+  vendor examples demand it.
+- **Hosting & discovery burden.** Whether vendors prefer the `.well-known` path,
+  the embedded `Info.plist` pointer, or both — and how it fits existing CMS /
+  storefront setups (several already emit a JSON download feed today) — is worth
+  confirming before treating either mechanism as required.
